@@ -1,0 +1,77 @@
+{
+  "schema_version": "content-original-editorial-plan.v2",
+  "status": "candidate_only",
+  "human_approved": false,
+  "synthetic_only": true,
+  "title": "A fictional offline index keeps one reviewed trail",
+  "thesis": "A fictional handbook's reviewed-trail rule is a candidate design pattern for an offline index; it is not measured evidence about real field teams.",
+  "claim_ids": [
+    "claim-index-trail"
+  ],
+  "reviewed_research": {
+    "path": "reviewed-research.json",
+    "sha256": "30f2448a41bce635fb531c382d80d73c503028fc7d6ef0ffbaa3199ce1b91940"
+  },
+  "consumer_index_sha256": "2901900328369934c08c427a425ad2857c1facd3fae715e978b34ca5998d1f56",
+  "units": [
+    {
+      "id": "unit-quote-trail",
+      "type": "verified_quote",
+      "text": "keep one reviewed trail for every index entry.",
+      "quote_evidence_id": "ev-support-trail",
+      "quote_source_id": "source-field-notes-handbook",
+      "claim_id": null,
+      "assertion_kind": "interpretation"
+    },
+    {
+      "id": "unit-fact-trail",
+      "type": "source_fact",
+      "claim_id": "claim-index-trail",
+      "assertion_kind": "reviewed_source_fact",
+      "text": "The handbook asks a fictional note-taker to keep one reviewed trail for every index entry.",
+      "evidence_ids": [
+        "ev-support-trail"
+      ]
+    },
+    {
+      "id": "unit-position-trail",
+      "type": "author_position",
+      "assertion_kind": "recommendation",
+      "text": "A fictional editor should let the reviewed trail, not the loudest screenshot, decide what the index admits.",
+      "derived_from": [
+        "claim-index-trail"
+      ]
+    },
+    {
+      "id": "unit-boundary-trail",
+      "type": "agent_inference",
+      "assertion_kind": "boundary",
+      "text": "The handbook rule is a fictional design pattern, not a measured outcome.",
+      "derived_from": [
+        "claim-index-trail"
+      ]
+    }
+  ],
+  "article_order": [
+    "unit-quote-trail",
+    "unit-fact-trail",
+    "unit-position-trail",
+    "unit-boundary-trail"
+  ],
+  "oral_order": [
+    "unit-fact-trail",
+    "unit-quote-trail",
+    "unit-position-trail",
+    "unit-boundary-trail"
+  ],
+  "withheld": [
+    {
+      "text": "A screenshot is enough to prove the full context of a fictional note.",
+      "reason": "The fictional handbook says the opposite; this statement has no admitted support.",
+      "status": "needs_source"
+    }
+  ],
+  "unknowns": [
+    "No real field team, site or archive was observed; every name and record is fictional."
+  ]
+}

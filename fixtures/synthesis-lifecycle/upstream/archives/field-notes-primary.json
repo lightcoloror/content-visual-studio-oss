@@ -1,0 +1,14 @@
+{
+  "requested_url": "https://example.invalid/synthetic-field-notes/handbook",
+  "final_url": "https://example.invalid/synthetic-field-notes/handbook",
+  "status": "success",
+  "transport_ok": true,
+  "content_ok": true,
+  "http_status": 200,
+  "fetched_at": "2026-10-01T09:00:00+08:00",
+  "extracted_text": "Synthetic Field Notes Handbook, fictional edition 0.1. The handbook asks every fictional note-taker to keep one reviewed trail for every index entry. A reviewer records the source label, the reading date, and the exact excerpt before an entry can be cited. A screenshot alone does not establish the context of a note. An unreviewed draft cannot be cited as a handbook fact.",
+  "capture_completeness": {
+    "status": "full",
+    "reason": "explicitly fictional offline fixture; no network request"
+  }
+}

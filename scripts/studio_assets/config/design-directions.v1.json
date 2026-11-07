@@ -1,0 +1,135 @@
+{
+  "schema_version": "shared-design-directions.v1",
+  "updated_at": "2026-08-22T23:07:00+08:00",
+  "updated_by": "Codex (GPT-5.6 Sol)",
+  "source_snapshot": {
+    "symbolic_ref": "design-system/contracts/design-directions.v1.json",
+    "sha256": "841a7cd1667a66ddcdbbe67cf00ab5637ff8cccbb9d61189e2485ff5d30ace86",
+    "override_env": "CONTENT_STUDIO_DESIGN_DIRECTIONS_CONTRACT",
+    "missing_policy": "fail-closed"
+  },
+  "selection_policy": {
+    "mode": "explicit-content-item",
+    "inherits_visual_profile_tokens": true,
+    "automatic_renderer_selection": false,
+    "unregistered_direction_fails_closed": true
+  },
+  "directions": {
+    "editorial-field-guide": {
+      "version": "1.0.0",
+      "display_name": "编辑型实用指南",
+      "source_id": "first-party-editorial-field-guide-composition-reference",
+      "inherits_visual_profile_tokens": true,
+      "compatible_visual_profiles": [
+        {
+          "id": "visual/insurance-observational-advisor",
+          "version": "0.2.0"
+        }
+      ],
+      "routes": {
+        "article": {
+          "status": "route-eligible",
+          "artifact_theme": "editorial-field-guide",
+          "requires_artifact_theme": true
+        },
+        "web": {
+          "status": "route-eligible",
+          "artifact_theme": "editorial-field-guide",
+          "requires_artifact_theme": true
+        },
+        "social-card": {
+          "status": "structure-only-explicit",
+          "allowed_layout_intents": [
+            "sequence",
+            "timeline",
+            "process",
+            "list",
+            "comparison"
+          ],
+          "requires_renderer_option": "design_direction_id"
+        },
+        "pptx": {
+          "status": "structure-only-explicit",
+          "allowed_layout_intents": [
+            "sequence",
+            "timeline",
+            "process",
+            "list",
+            "comparison",
+            "hierarchy",
+            "quote-hero"
+          ],
+          "requires_renderer_option": "design_direction_id"
+        }
+      },
+      "excluded_routes": {
+        "visual_routes": [
+          "data_visualization"
+        ],
+        "article_visual_modes": [
+          "editorial-photo-mix"
+        ],
+        "content_jobs": [
+          "story",
+          "business-conversion",
+          "account-diagnosis"
+        ]
+      }
+    },
+    "reflective-personal-essay": {
+      "version": "1.0.0",
+      "display_name": "反思型个人叙事",
+      "source_id": "first-party-reflective-personal-essay-composition-reference",
+      "inherits_visual_profile_tokens": true,
+      "compatible_visual_profiles": [
+        {
+          "id": "visual/insurance-observational-advisor",
+          "version": "0.2.0"
+        }
+      ],
+      "routes": {
+        "social-card": {
+          "status": "route-eligible-explicit",
+          "allowed_layout_intents": [
+            "sequence",
+            "timeline",
+            "quote-hero"
+          ],
+          "artifact_theme": "reflective-personal-essay",
+          "requires_artifact_theme": true,
+          "requires_renderer_option": "design_direction_id"
+        },
+        "article": {
+          "status": "route-eligible-explicit",
+          "artifact_theme": "reflective-personal-essay",
+          "requires_artifact_theme": true
+        },
+        "pptx": {
+          "status": "structure-only-explicit",
+          "allowed_layout_intents": [
+            "sequence",
+            "timeline",
+            "quote-hero"
+          ],
+          "requires_renderer_option": "design_direction_id"
+        }
+      },
+      "excluded_routes": {
+        "visual_routes": [
+          "data_visualization",
+          "medical_decision",
+          "icon_led"
+        ],
+        "article_visual_modes": [
+          "editorial-photo-mix"
+        ],
+        "content_jobs": [
+          "mechanism-explanation",
+          "tool-or-checklist",
+          "business-conversion",
+          "account-diagnosis"
+        ]
+      }
+    }
+  }
+}

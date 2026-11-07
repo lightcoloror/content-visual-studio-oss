@@ -1,0 +1,69 @@
+{
+  "schema_version": "content-studio.document-render-artifact-classification.v1",
+  "artifacts": {
+    ".content-studio-synthetic-artifact-root.v1.json": {
+      "artifact_role": "evidence_receipt_manifest",
+      "lifecycle_state": "locked",
+      "sensitivity": "synthetic_only",
+      "depends_on": [],
+      "referenced_by": ["synthetic-root-marker"],
+      "rebuild_proof": {
+        "status": "verified",
+        "command": "fixture marker committed with this test root",
+        "input_hashes": ["synthetic-root-v1"],
+        "dependency_lock": "none",
+        "verification_ref": "fixture-only"
+      },
+      "minimum_keep_until": null,
+      "pin": true
+    },
+    "artifact-classification.v1.json": {
+      "artifact_role": "evidence_receipt_manifest",
+      "lifecycle_state": "locked",
+      "sensitivity": "synthetic_only",
+      "depends_on": [],
+      "referenced_by": ["adapter-classification"],
+      "rebuild_proof": {
+        "status": "verified",
+        "command": "fixture classification committed with this test root",
+        "input_hashes": ["synthetic-classification-v1"],
+        "dependency_lock": "none",
+        "verification_ref": "fixture-only"
+      },
+      "minimum_keep_until": null,
+      "pin": true
+    },
+    "candidate/preview.html": {
+      "artifact_role": "reproducible_derived",
+      "lifecycle_state": "superseded",
+      "sensitivity": "synthetic_only",
+      "depends_on": ["synthetic-content-input-v1"],
+      "referenced_by": [],
+      "rebuild_proof": {
+        "status": "verified",
+        "command": "python scripts/render_content_artifacts.py --fixture synthetic",
+        "input_hashes": ["synthetic-content-input-v1"],
+        "dependency_lock": "requirements-lock-synthetic-v1",
+        "verification_ref": "fixture-render-receipt-v1"
+      },
+      "minimum_keep_until": null,
+      "pin": false
+    },
+    "final/publish-ready.html": {
+      "artifact_role": "final_deliverable",
+      "lifecycle_state": "verified",
+      "sensitivity": "synthetic_only",
+      "depends_on": ["synthetic-content-input-v1"],
+      "referenced_by": ["manual-review"],
+      "rebuild_proof": {
+        "status": "verified",
+        "command": "not a cleanup candidate",
+        "input_hashes": ["synthetic-content-input-v1"],
+        "dependency_lock": "requirements-lock-synthetic-v1",
+        "verification_ref": "fixture-final-review-v1"
+      },
+      "minimum_keep_until": null,
+      "pin": true
+    }
+  }
+}

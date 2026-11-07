@@ -1,0 +1,102 @@
+{
+  "schema": "question-research-public-archive-input.v1",
+  "contract_version": "1.0.0",
+  "fixture_id": "synthetic-field-notes-trail-001",
+  "question": "How can a fictional field-notes team keep an offline index trustworthy?",
+  "audience": "fictional editors testing an offline note-index workflow",
+  "observed_at": "2026-10-01T09:00:00+08:00",
+  "budgets": {
+    "max_subquestions": 2,
+    "max_depth": 1,
+    "max_sources": 2,
+    "max_tokens": 500,
+    "max_expansions_per_round": 2,
+    "minimum_gap_score": 0.2,
+    "max_rounds": 1
+  },
+  "rounds_completed": 1,
+  "subquestions": [
+    {
+      "subquestion_id": "sq-index-trail",
+      "text": "What does the fictional handbook require for an index entry?",
+      "depth": 1,
+      "priority": "P0",
+      "gap_score": 0.9,
+      "token_cost": 60,
+      "candidate": {
+        "title": "One reviewed trail per index entry",
+        "problem": "Fictional notes can lose their evidence trail",
+        "angle": "Describe the handbook's reviewed-trail rule",
+        "unanswered_questions": [
+          "No real field team, archive or site was observed"
+        ],
+        "selection_reason": "Direct fictional handbook excerpt"
+      }
+    },
+    {
+      "subquestion_id": "sq-screenshot-limit",
+      "text": "Does a screenshot alone establish a note's context?",
+      "depth": 1,
+      "priority": "P1",
+      "gap_score": 0.4,
+      "token_cost": 50
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source-field-notes-handbook",
+      "title": "Synthetic Field Notes Handbook",
+      "canonical_ref": "https://example.invalid/synthetic-field-notes/handbook",
+      "archive_path": "archives/field-notes-primary.json",
+      "archive_contract": "web-content-fetcher.evidence_archive.v1",
+      "source_type": "official_documentation",
+      "publisher": "Fictional Field Notes Lab",
+      "quality": "good",
+      "review_status": "candidate",
+      "freshness": "current",
+      "content": "Synthetic Field Notes Handbook, fictional edition 0.1. The handbook asks every fictional note-taker to keep one reviewed trail for every index entry. A reviewer records the source label, the reading date, and the exact excerpt before an entry can be cited. A screenshot alone does not establish the context of a note. An unreviewed draft cannot be cited as a handbook fact.",
+      "content_sha256": "bc1c44c69c47ff691de3a53c9f132080559baf4f21ff4c4ea1e16ae974f6b932",
+      "archive_sha256": "91442e2b4ff928cff8e272fa5a04e8f7daba22bd06a80a9525a2eda2a38ca6a6",
+      "token_cost": 130,
+      "discovered_round": 1
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim-index-trail",
+      "subquestion_id": "sq-index-trail",
+      "text": "The handbook asks a fictional note-taker to keep one reviewed trail for every index entry.",
+      "claim_origin": "source_claim"
+    },
+    {
+      "claim_id": "claim-draft-only",
+      "subquestion_id": "sq-screenshot-limit",
+      "text": "A screenshot alone establishes the context of a note.",
+      "claim_origin": "source_claim"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev-support-trail",
+      "claim_id": "claim-index-trail",
+      "source_id": "source-field-notes-handbook",
+      "evidence_type": "source_claim",
+      "relation": "supports",
+      "status": "candidate",
+      "review_status": "candidate",
+      "text": "keep one reviewed trail for every index entry.",
+      "discovered_round": 1
+    },
+    {
+      "evidence_id": "ev-rejected-screenshot",
+      "claim_id": "claim-draft-only",
+      "source_id": "source-field-notes-handbook",
+      "evidence_type": "source_claim",
+      "relation": "contradicts",
+      "status": "candidate",
+      "review_status": "candidate",
+      "text": "A screenshot alone does not establish the context of a note.",
+      "discovered_round": 1
+    }
+  ]
+}

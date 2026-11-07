@@ -179,3 +179,39 @@ bounds input reads. The required Video source is explicit and byte-locked to
 the separate public MVP owner. No Video runtime or external binary is bundled.
 See `REVIEW-CHAIN-PROVENANCE.json` and `REVIEW-CHAIN-ACCEPTANCE.md` for actual
 synthetic/native checks and the pending browser/backend/human boundaries.
+
+## Multi-owner synthesis and document-render lifecycle (candidate 2026-11-07)
+
+`content-studio-synthesis` compiles an explicit hash-pinned editorial plan
+through the unchanged QRP candidate pack, fact-card, content-item, cross-platform
+consistency gate and HTML renderer. The QRP source root is explicit
+(`--qrp-root`/`CONTENT_STUDIO_QRP_ROOT`), the Main gate loads only through the
+registered `content-creation-system` record (`--tool-registry` or the existing
+environment), and the common workspace root must be explicit
+(`--workspace-root`/`CONTENT_STUDIO_SYNTHESIS_WORKSPACE`). A missing, mixed or
+drifted owner blocks; it is never mocked. Text-only and HTML are both supported.
+The review packet stays `pending_human_review`, the fact card stays `draft`, and
+no publication authority is created.
+
+`content-studio-artifacts` exposes only the Content Studio admission and
+classification layer over the unchanged Artifact Lifecycle Core. The Core root
+is explicit (`--core-root`/`ARTIFACT_LIFECYCLE_CORE_ROOT`) and hash-pinned to the
+public Core API and profile. Test copies require an explicit operator work root
+(`--work-root`/`CONTENT_STUDIO_ARTIFACT_WORK_ROOT`); no candidate `outputs`
+directory is admitted implicitly. Plans remain immutable, non-authorizing and
+plan-only: there is no production quarantine or purge command, and a valid plan
+is not permission to execute it. See `docs/candidate-synthesis-lifecycle.md`
+and `docs/candidate-synthesis-lifecycle-tests.md`.
+
+## Editorial synthesis, artifact plans and design directions (0.1.5)
+
+`content-studio-synthesis --help` compiles a hash-bound editorial plan and QRP
+pack into draft text, fact cards and optional HTML. Supply explicit public QRP
+and registered Main roots; installed use requires an explicit common workspace.
+`content-studio-artifacts --help` exposes synthetic-root scan/explain/plan/verify
+through the separate hash-pinned Artifact Core. A valid plan never authorizes
+cleanup; there is no production quarantine/purge command.
+`design_direction_validation` checks explicit direction/profile/medium/route
+combinations using packaged first-party contracts; it does not classify content
+or judge visual quality. No new rendering, research or routing engine is added.
+See SYNTHESIS-PROVENANCE.json and SYNTHESIS-ACCEPTANCE.md for scope and evidence.

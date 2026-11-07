@@ -1,0 +1,14 @@
+{
+  "source_sha256": "0abc7859938b1691048f310409d977d7e6cc0be94c26615d2a1d5a91ffa2764c",
+  "source_working_bytes_unchanged": true,
+  "distributed_module_sha256": "ab7c60cfecb5d4d52ce51fd85e2c4ce1fc559f27257ba333d4f92ad8d35cc40d",
+  "original_config_sha256": "519d09f6378be893c64f3ac9bfd0d9025c21fdfe0b3025d580534e15a366ccbb",
+  "distributed_config_sha256": "855174cbe7f9e3b64b46c7f2fdce49e268d97b03fbde7ece560c48eb528949f6",
+  "public_scope": "existing validator and first-party route contract only; no reference manuscripts, shared design repo, brand assets or renderer included",
+  "source_kind": "frozen tracked-working snapshot; no clean private HEAD claim",
+  "adaptation": "existing studio_paths.STUDIO_ROOT, historical reference IDs replaced by generic composition-reference IDs; route/profile/version/policy values unchanged",
+  "time_utc": "2026-11-07T15:28:49.305054+00:00",
+  "private_reference_ids_replaced_count": 2,
+  "license": "Apache-2.0, owner-authorized first-party public edition",
+  "scope": "Design direction admission library only; no renderer, brand authority, semantic content-job classifier or external shared-design-system runtime bundled."
+}

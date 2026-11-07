@@ -1,0 +1,53 @@
+{
+  "schema": "content-studio.synthesis-public-provenance.v1",
+  "edition": "0.1.5",
+  "license": "Apache-2.0 first-party edition",
+  "source_files": [
+    {
+      "path": "scripts/original_synthesis_adapter.py",
+      "source_kind": "frozen first-party working bytes; not attributed to a private Git HEAD",
+      "source_sha256": "b479ddbde665a115204e6d63f3b1cf11583b84bae9b11be10a4fa4df38dbc5e6",
+      "distributed_sha256": "0251e5371f3b558333ece8453eac1eddfaaa063f4515b475ad7c25f7d6050240",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "scripts/document_render_artifact_lifecycle.py",
+      "source_kind": "frozen first-party working bytes; not attributed to a private Git HEAD",
+      "source_sha256": "02fa9fbb6955072b424b9feca490631ddd37b67b61e236b3a7ad34e649bea9a7",
+      "distributed_sha256": "22ab9f00aa98977e0f913c845e270cf93c36ec14c6d0fb12c9e62f7e2b2c539d",
+      "license": "Apache-2.0"
+    }
+  ],
+  "design_direction_provenance": "DESIGN-DIRECTION-PROVENANCE.json",
+  "owners": {
+    "qrp": {
+      "repository": "https://github.com/lightcoloror/question-research-poc-oss",
+      "commit": "646b3871257b0861446615e7c96390f5dc714bde"
+    },
+    "main": {
+      "repository": "https://github.com/lightcoloror/self-media-creation-system-oss",
+      "commit": "fff2b6e19f7a64c33f01705e506bc0087cd69b0f"
+    },
+    "artifact": {
+      "repository": "https://github.com/lightcoloror/artifact-lifecycle-core-oss",
+      "commit": "fab239085724458c2a6b9452d0a1ba4f4012593e"
+    }
+  },
+  "owners_vendored": false,
+  "fixtures": "wholly invented offline handbook/research/render text; synthetic review labels are not real verification",
+  "host_source_tests": {
+    "synthesis": 21,
+    "lifecycle": 21,
+    "native_owner_integration": 7,
+    "cli_git_boundary": 3,
+    "design_direction": 15,
+    "skip": 0
+  },
+  "excludes": [
+    "private history/task records/paths",
+    "real manuscripts/customer/health/voice/media",
+    "external binaries/fonts/music/model weights",
+    "local-rough-cut P1",
+    "private shared-design authority or brand assets"
+  ]
+}

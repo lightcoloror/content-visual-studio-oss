@@ -10,3 +10,12 @@ id = "sentry-access-token"
     regexTarget = "secret"
     regexes = ['''^7d050266c57661f7bf3bc8413fa2571565c3ae07f66e080117f3576c417d449b$''']
     paths = ['''(?:^|[/\\])(?:config|scripts[/\\]studio_assets[/\\]config)[/\\]video-timeline-runtime\.v1\.lock\.json$''']
+
+[[rules]]
+id = "generic-api-key"
+    [[rules.allowlists]]
+    description = "Exact public Artifact Core source SHA in two lifecycle config copies only"
+    condition = "AND"
+    regexTarget = "secret"
+    regexes = ['''^e0b6ad47beef86a1245389049f6264831e07a42b9cc656fd8264879a7377b297$''']
+    paths = ['''(?:^|[/\\])(?:config|scripts[/\\]studio_assets[/\\]config)[/\\]document-render-artifact-lifecycle\.v1\.json$''']

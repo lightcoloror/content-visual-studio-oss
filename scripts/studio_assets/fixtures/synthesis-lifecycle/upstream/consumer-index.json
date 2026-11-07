@@ -1,0 +1,21 @@
+{
+  "schema_version": "content-original-upstream-index.v1",
+  "fixture_id": "synthetic-field-notes-trail-001",
+  "status": "synthetic_only",
+  "network_called": false,
+  "provider_called": false,
+  "artifacts": [
+    {
+      "path": "public-input.json",
+      "sha256": "8240e45293a27b6f682f84f2d6e22310e9a03c91241e8e336bf9bfe6cdfd65cc"
+    },
+    {
+      "path": "reviewed-research.json",
+      "sha256": "30f2448a41bce635fb531c382d80d73c503028fc7d6ef0ffbaa3199ce1b91940"
+    },
+    {
+      "path": "archives/field-notes-primary.json",
+      "sha256": "91442e2b4ff928cff8e272fa5a04e8f7daba22bd06a80a9525a2eda2a38ca6a6"
+    }
+  ]
+}

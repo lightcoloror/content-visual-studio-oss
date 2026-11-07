@@ -1,0 +1,39 @@
+{
+  "schema_version": "content-studio.document-render-artifact-lifecycle.v1",
+  "tool_id": "content-studio-poc.document-render-lifecycle",
+  "owner_lane": "content-creation-self-media",
+  "lifecycle_profile": "document_render",
+  "cleanup_mode": "plan_only",
+  "automatic_purge": false,
+  "disk_policy": {
+    "source": "shared_core_profile",
+    "large_operation_requires_estimated_output_bytes": true,
+    "unknown_operation_class": "fail_closed"
+  },
+  "max_files": 64,
+  "synthetic_root_marker": ".content-studio-synthetic-artifact-root.v1.json",
+  "allowed_synthetic_roots": [
+    "fixtures/artifact-lifecycle/synthetic-render-root"
+  ],
+  "authoritative_paths": [
+    "admin",
+    "config",
+    "content",
+    "docs",
+    "fixtures",
+    "schemas",
+    "scripts",
+    "static",
+    "themes",
+    "vendor",
+    "README.md",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "core_contract": {
+    "core_root_env": "ARTIFACT_LIFECYCLE_CORE_ROOT",
+    "default_root": "",
+    "api_sha256": "e0b6ad47beef86a1245389049f6264831e07a42b9cc656fd8264879a7377b297",
+    "profile_sha256": "a3067ad998929a2287b48dc9debe7bb4791d394d73535dcdac09915bf92da44b"
+  },
+  "boundary": "Only marker-bound synthetic render roots are eligible for this adapter. Plans are immutable, non-authorizing, and never execute quarantine or purge."
+}

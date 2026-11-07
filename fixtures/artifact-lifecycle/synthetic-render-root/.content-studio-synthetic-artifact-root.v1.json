@@ -1,0 +1,7 @@
+{
+  "schema_version": "content-studio.synthetic-artifact-root.v1",
+  "synthetic_only": true,
+  "lifecycle_profile": "document_render",
+  "cleanup_mode": "plan_only",
+  "filesystem_mutation_performed": false
+}
