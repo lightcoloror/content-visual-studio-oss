@@ -1,3 +1,5 @@
+> Historical core 0.1.0 acceptance, retained unchanged below. See CAPTURE_ACCEPTANCE.md for the 0.1.1 increment.
+
 # Public core acceptance
 
 2026-11-07, Codex (exact runtime model not independently verified).

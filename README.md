@@ -72,3 +72,7 @@ No real paper, policy, web page, customer material or medical fact is researched
 The installer smoke uses this fresh producer-to-consumer chain and separately
 tests a canonical verified synthetic fixture. Browser layout and audience
 response are not implied by an HTML file or a passing contract.
+
+## Saved capture handoff 0.1.1
+
+[Capture, selected delivery and registry boundaries](docs/saved-capture-handoff.md). No new acquisition, source verification or publication authority is granted.

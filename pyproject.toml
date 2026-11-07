@@ -4,18 +4,22 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "content-visual-studio"
-version = "0.1.0"
+version = "0.1.1"
 description = "Offline evidence-to-content and hash-bound case review contracts"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 license-files = ["LICENSE", "licenses/*.txt"]
-dependencies = ["jsonschema>=4.23,<5", "referencing>=0.35,<1", "rfc3339-validator>=0.1.4,<1", "markdown-it-py>=4,<5", "question-research-poc @ git+https://github.com/lightcoloror/question-research-poc-oss.git@a370c88444fb545ee1e98d06321355ae62f61f8e"]
+dependencies = ["jsonschema>=4.23,<5", "referencing>=0.35,<1", "rfc3339-validator>=0.1.4,<1", "markdown-it-py>=4,<5", "filelock>=3.12,<4", "question-research-poc @ git+https://github.com/lightcoloror/question-research-poc-oss.git@646b3871257b0861446615e7c96390f5dc714bde"]
 
 [project.optional-dependencies]
-test = ["pytest>=8,<10"]
+test = ["pytest>=8,<10", "question-research-poc[topic] @ git+https://github.com/lightcoloror/question-research-poc-oss.git@646b3871257b0861446615e7c96390f5dc714bde", "web-content-fetcher @ git+https://github.com/lightcoloror/web-content-fetcher-oss.git@c9432cd98bafa69523722e3ab8e081f373fcb7fb"]
+capture = ["question-research-poc[topic] @ git+https://github.com/lightcoloror/question-research-poc-oss.git@646b3871257b0861446615e7c96390f5dc714bde"]
 gateway = ["model-provider-gateway @ git+https://github.com/lightcoloror/model-provider-gateway-oss.git@6e69689d02dc97bc2cd3e476518ac7571e310461"]
 
 [project.scripts]
+content-studio-saved-candidate = "saved_research_candidate:main"
+content-studio-capture = "capture_research_candidate:main"
+content-studio-context = "context_manifest_consumer:main"
 content-studio-research = "research_output_adapter:main"
 content-studio-candidate = "qrp_candidate_adapter:main"
 content-studio-visual = "article_visual_pipeline:main"
@@ -26,7 +30,7 @@ content-studio-final-cut = "final_cut_compliance_gate:main"
 
 [tool.setuptools]
 package-dir = {"" = "scripts"}
-py-modules = ["article_visual_pipeline", "case_video_script_adapter", "final_cut_compliance_gate", "human_voice_gate", "initial_draft_quality_gate", "model_provider_gateway_adapter", "narrative_realization", "qrp_candidate_adapter", "research_output_adapter", "run_case_video_script_e2e", "article_visual_validation", "studio_paths"]
+py-modules = ["article_visual_pipeline", "case_video_script_adapter", "final_cut_compliance_gate", "human_voice_gate", "initial_draft_quality_gate", "model_provider_gateway_adapter", "narrative_realization", "qrp_candidate_adapter", "research_output_adapter", "run_case_video_script_e2e", "article_visual_validation", "studio_paths", "saved_research_candidate", "capture_research_candidate", "reference_intake", "selected_delivery", "context_manifest_consumer", "registered_self_media", "qrp_owner_binding"]
 
 [tool.setuptools.packages.find]
 where = ["scripts"]

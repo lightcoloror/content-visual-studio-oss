@@ -1,0 +1,109 @@
+{
+  "edition": "0.1.1",
+  "source_baseline": "10ede0534b4282eea8ff13216a0585449cc956c2",
+  "working_source_cutoff_utc": "2026-11-07T06:29:08.898174+00:00",
+  "sources": [
+    {
+      "project": "content-visual-studio",
+      "path": "scripts/context_manifest_consumer.py",
+      "sha256": "69b5cc69d787f19f3e53c1b85daa139650a36c0fd044b2a8ff14daa1f641c759",
+      "bytes": 1092,
+      "baseline_commit": "10ede0534b4282eea8ff13216a0585449cc956c2",
+      "tracked_at_baseline": true,
+      "differs_from_baseline": false
+    },
+    {
+      "project": "content-visual-studio",
+      "path": "scripts/selected_delivery.py",
+      "sha256": "3bed6e4eb543048fcd13cb21c38559a44e8795add450b240924eafd6482e5b89",
+      "bytes": 1528,
+      "baseline_commit": "10ede0534b4282eea8ff13216a0585449cc956c2",
+      "tracked_at_baseline": false,
+      "differs_from_baseline": true
+    },
+    {
+      "project": "content-visual-studio",
+      "path": "scripts/saved_research_candidate.py",
+      "sha256": "1cef9bd6cfce6ffe1c7854289e9e2776f2a2a6d661789e295aa755a5b8cfa4f1",
+      "bytes": 11593,
+      "baseline_commit": "10ede0534b4282eea8ff13216a0585449cc956c2",
+      "tracked_at_baseline": false,
+      "differs_from_baseline": true
+    },
+    {
+      "project": "content-visual-studio",
+      "path": "scripts/capture_research_candidate.py",
+      "sha256": "758ac719f96af6ea5abf6208dffac83cf73d5a939fd7f9430a2724edd04822f8",
+      "bytes": 5641,
+      "baseline_commit": "10ede0534b4282eea8ff13216a0585449cc956c2",
+      "tracked_at_baseline": false,
+      "differs_from_baseline": true
+    },
+    {
+      "project": "content-visual-studio",
+      "path": "scripts/reference_intake.py",
+      "sha256": "331b1ff71881588aac02c237d804e7dfbbeefbafee2f5f8bdfd2e1e0ed1e2edb",
+      "bytes": 7103,
+      "baseline_commit": "10ede0534b4282eea8ff13216a0585449cc956c2",
+      "tracked_at_baseline": false,
+      "differs_from_baseline": true
+    },
+    {
+      "project": "content-visual-studio",
+      "path": "tests/test_context_manifest_consumer.py",
+      "sha256": "ab426799320b391a75403c697e2a8ae9c9549388d6aa2100648df9cd642654b5",
+      "bytes": 5557,
+      "baseline_commit": "10ede0534b4282eea8ff13216a0585449cc956c2",
+      "tracked_at_baseline": true,
+      "differs_from_baseline": false
+    },
+    {
+      "project": "content-visual-studio",
+      "path": "tests/test_saved_research_candidate.py",
+      "sha256": "cf6301b845270a2928f64fd2631bce88c14237851b101a9e9fdb08e77202b615",
+      "bytes": 5673,
+      "baseline_commit": "10ede0534b4282eea8ff13216a0585449cc956c2",
+      "tracked_at_baseline": false,
+      "differs_from_baseline": true
+    },
+    {
+      "project": "content-visual-studio",
+      "path": "tests/test_capture_research_candidate.py",
+      "sha256": "174008b331f1f953a2665aaff7b1fe9f2d788a811affe88e84fe42848d8b28a8",
+      "bytes": 8197,
+      "baseline_commit": "10ede0534b4282eea8ff13216a0585449cc956c2",
+      "tracked_at_baseline": false,
+      "differs_from_baseline": true
+    },
+    {
+      "project": "content-visual-studio",
+      "path": "tests/test_reference_intake.py",
+      "sha256": "f53f34e167aa48930879d9be235927798ea13fe367162512c82521cc837aa9a0",
+      "bytes": 10263,
+      "baseline_commit": "10ede0534b4282eea8ff13216a0585449cc956c2",
+      "tracked_at_baseline": false,
+      "differs_from_baseline": true
+    },
+    {
+      "project": "shared-first-party-workspace",
+      "path": "scripts/registered_self_media.py",
+      "sha256": "e3305550827e127b9ccbcbd82865e84baa7247adaa1b8c422938577c6083992a",
+      "bytes": 1290,
+      "baseline_commit": null,
+      "source_kind": "shared auxiliary working snapshot; not attributed to project HEAD"
+    }
+  ],
+  "public_qrp_commit": "646b3871257b0861446615e7c96390f5dc714bde",
+  "new_first_party_glue": [
+    "scripts/qrp_owner_binding.py"
+  ],
+  "adaptations": [
+    "Explicit public registry location; original equality/mixed-module checks retained",
+    "Source or installed QRP binding with exact source/resource equality; no silent mixed-root fallback",
+    "Source/installed schema resolution and exact public dependency pin",
+    "Test UTF-8 and transport/inspection boundaries clarified; no fake verified predecessor chain"
+  ],
+  "first_party_license": "Apache-2.0",
+  "upstream_skill_or_media_content_bundled": false,
+  "original_worktree_modified": false
+}
