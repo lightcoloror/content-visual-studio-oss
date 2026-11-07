@@ -99,3 +99,24 @@ checkout; rejection tests run without it. Test seeds are wholly fictional.
 
 For the source tests only, `RYAN_WECHAT_PUBLISHER_SOURCE` locates an already
 supplied external checkout. Runtime CLI calls use `--source-root`.
+
+## Additional offline source utilities (0.1.3 candidate)
+
+The existing first-party hallmark-report adapter, media-QA receipt validator,
+social-card input guards, typography collector and insurance-clause explanation
+validator are exposed without a new renderer or workflow. The clause validator
+still requires an explicitly supplied `--schema`; this package does not invent
+or bundle the private canonical insurance contract. No browser bridge, font,
+model, audio or CMS binary is added. A mock DOM test is not browser QA.
+
+`python -m build_human_voice_fixture --output-root EXISTING_EMPTY_DIRECTORY`
+regenerates only the bundled fictional case JSON. It is a synthetic text/editing
+contract fixture, not voice cloning, TTS, real author confirmation or publication.
+Its published synthetic inputs are also included in the installed package.
+An explicitly configured human-voice resource directory takes precedence.
+
+The typography collector is included at
+`studio_assets/scripts/typography_gate_collector.mjs` for explicit local use.
+Its real browser bridges and canonical policy must be supplied and reviewed
+separately. The media-QA registry is a receipt-level contract; passing it does
+not establish that actual media or clinical/insurance statements are correct.

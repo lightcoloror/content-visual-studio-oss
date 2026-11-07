@@ -1,0 +1,193 @@
+{
+  "content_goal": "education",
+  "content_id": "research-5d27168fe364979b2baf1886",
+  "decision": "approved_for_voice_pipeline",
+  "gates": {
+    "cta_product": {
+      "evidence": [
+        "content_goal=education。"
+      ],
+      "findings": [
+        "本 fixture 的 content_goal 是 education，不承担咨询或转化。"
+      ],
+      "remediation": [],
+      "reviewed_check_ids": [
+        "cta-matches-proven-capability",
+        "paid-and-included-service-boundary-clear",
+        "next-step-is-minimum-necessary",
+        "no-sudden-hard-sell"
+      ],
+      "status": "not_applicable"
+    },
+    "distribution_compliance": {
+      "evidence": [
+        "synthetic_only fixture 只做离线候选验证；不得把教育内容、私域或合成测试视为真实发布豁免。"
+      ],
+      "findings": [],
+      "remediation": [],
+      "reviewed_check_ids": [
+        "content-classification-recorded",
+        "current-and-future-rules-separated",
+        "institution-review-route-recorded",
+        "authorized-person-and-account-route-recorded",
+        "advertising-and-ai-label-assessed",
+        "no-education-or-private-domain-exemption-assumed"
+      ],
+      "status": "pass"
+    },
+    "fact_evidence": {
+      "evidence": [
+        "完全虚构 fixture 的 fact card、research graph 与逐段 evidence refs。"
+      ],
+      "findings": [],
+      "remediation": [],
+      "reviewed_check_ids": [
+        "timeline-and-causality-supported",
+        "numbers-dates-and-counts-supported",
+        "fact-memory-judgment-and-unknown-separated",
+        "canonical-fact-revision-bound",
+        "script-claims-mapped-to-fact-ids",
+        "latest-corrections-applied",
+        "ambiguous-actions-not-upgraded-or-conflated",
+        "no-invented-quote-or-story-smoothing",
+        "ai-output-not-promoted-to-fact"
+      ],
+      "status": "pass"
+    },
+    "interview_integrity": {
+      "evidence": [
+        "采访槽仍为 planned，只保留问题、选用标准和无授权 fallback，不含虚构原声。"
+      ],
+      "findings": [],
+      "remediation": [],
+      "reviewed_check_ids": [
+        "quote-reheard-and-timecoded",
+        "prompt-context-preserved",
+        "no-spliced-praise",
+        "quote-proves-only-lived-experience",
+        "objective-facts-use-records"
+      ],
+      "status": "pass"
+    },
+    "medical_insurance": {
+      "evidence": [
+        "service_capability.boundary 与 forbidden_expressions 保留医疗、保险和服务范围边界。"
+      ],
+      "findings": [],
+      "remediation": [],
+      "reviewed_check_ids": [
+        "no-medical-decision-substitution",
+        "no-treatment-superiority-generalization",
+        "policy-specific-boundary",
+        "no-unconfirmed-claim-promise",
+        "service-scope-not-implied-free-or-universal"
+      ],
+      "status": "pass"
+    },
+    "privacy_authorization": {
+      "evidence": [
+        "fixture 为 synthetic_only，采访授权未完成时使用 fallback，不含真实身份或媒体。"
+      ],
+      "findings": [],
+      "remediation": [],
+      "reviewed_check_ids": [
+        "service-data-publication-consent-separated",
+        "subject-and-patient-authorization-separated",
+        "face-voice-health-claim-and-platform-scope-recorded",
+        "reidentification-risk-reviewed",
+        "screens-and-identifiers-redacted",
+        "final-cut-approval-required",
+        "withdrawal-route-recorded"
+      ],
+      "status": "pass"
+    },
+    "production_series": {
+      "evidence": [
+        "单条 synthetic fixture；视觉候选、时长与单一 hook 变量已登记。"
+      ],
+      "findings": [],
+      "remediation": [],
+      "reviewed_check_ids": [
+        "standalone-comprehensible",
+        "neighbor-episode-overlap-reviewed",
+        "audio-and-visual-role-defined",
+        "length-and-cut-order-feasible",
+        "single-test-variable"
+      ],
+      "status": "pass"
+    },
+    "service_causality": {
+      "evidence": [
+        "segment-03 明确列出核对合同责任、医院范围和材料清单的服务动作。"
+      ],
+      "findings": [],
+      "remediation": [],
+      "reviewed_check_ids": [
+        "customer-pressure-is-hook",
+        "creator-action-changes-process",
+        "customer-quote-supports-not-substitutes",
+        "normal-process-not-claimed-as-creator-credit",
+        "viewer-can-name-service-action-and-boundary"
+      ],
+      "status": "pass"
+    },
+    "single_task": {
+      "evidence": [
+        "single_question 与 service_capability 各自只有一个主任务。"
+      ],
+      "findings": [],
+      "remediation": [],
+      "reviewed_check_ids": [
+        "one-primary-audience",
+        "one-primary-question",
+        "one-service-capability",
+        "nonessential-content-removed-or-visual-only"
+      ],
+      "status": "pass"
+    },
+    "title_opening_alignment": {
+      "evidence": [
+        "标题、single_question 和正文都回答保险服务与医疗决定的边界。"
+      ],
+      "findings": [],
+      "remediation": [],
+      "reviewed_check_ids": [
+        "title-opening-body-cta-same-promise",
+        "first-five-seconds-concrete",
+        "no-fear-bait-or-hidden-condition",
+        "body-can-fulfill-hook"
+      ],
+      "status": "pass"
+    },
+    "voice_ai_trace": {
+      "evidence": [
+        "本门只确认已识别初稿的口吻问题并可进入既有 dbs 与 human voice 改写阶段。"
+      ],
+      "findings": [],
+      "remediation": [],
+      "reviewed_check_ids": [
+        "preliminary-spoken-language-pass-complete",
+        "no-stagey-turn-or-neat-moral",
+        "no-repetitive-contrast-or-symmetry",
+        "concrete-actions-over-abstract-praise",
+        "natural-rhythm-not-uniform"
+      ],
+      "status": "pass"
+    }
+  },
+  "input_body_sha256": "bbed772fa20e89b8461d139582e9627b0f62a8876c41bd2881d1b0f8954330d0",
+  "input_fact_card_ref": {
+    "artifact_id": "fact-card-synthetic-case-001",
+    "schema_version": "content-fact-card.v0",
+    "sha256": "1f39b914495b1eee90ce0381c68298bfc850bb70d8a6bb99d2c797ddfd5496ec"
+  },
+  "publication_boundary": "manual-only",
+  "review_id": "initial-draft-review-e2f46691498a739014c3",
+  "review_mode": "synthetic-fixture-review",
+  "reviewed_at": "2026-08-14T19:10:00+08:00",
+  "reviewer": "synthetic-fixture-reviewer",
+  "schema_version": "case-video-initial-draft-review.v1",
+  "script_id": "case-script-synthetic-insurance-001",
+  "stage": "post-storycraft-pre-voice",
+  "synthetic_only": true
+}

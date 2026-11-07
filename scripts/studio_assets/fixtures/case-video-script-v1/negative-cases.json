@@ -1,0 +1,207 @@
+{
+  "base_fixture": "fixtures/case-video-script-v1/synthetic-case-video-script.v1.json",
+  "cases": [
+    {
+      "expected_error": "artifact_hash_drift",
+      "id": "research_hash_drift",
+      "mutation": "research_hash_drift"
+    },
+    {
+      "expected_error": "artifact_hash_drift",
+      "id": "content_item_hash_drift",
+      "mutation": "content_item_hash_drift"
+    },
+    {
+      "expected_error": "artifact_version_drift",
+      "id": "artifact_version_drift",
+      "mutation": "artifact_version_drift"
+    },
+    {
+      "expected_error": "unverified_case_evidence_ref",
+      "id": "unverified_evidence_ref",
+      "mutation": "unverified_evidence_ref"
+    },
+    {
+      "expected_error": "candidate_evidence_not_reviewed",
+      "id": "candidate_evidence",
+      "mutation": "candidate_evidence"
+    },
+    {
+      "expected_error": "sensitive_content_blocked",
+      "id": "sensitive_phone",
+      "mutation": "sensitive_phone"
+    },
+    {
+      "expected_error": "sensitive_content_blocked",
+      "id": "named_person_timeline",
+      "mutation": "named_person_timeline"
+    },
+    {
+      "expected_error": "sensitive_content_blocked",
+      "id": "named_person_timeline_variant",
+      "mutation": "named_person_timeline_variant"
+    },
+    {
+      "expected_error": "medical_insurance_claim_blocked",
+      "id": "medical_treatment_choice",
+      "mutation": "medical_treatment_choice"
+    },
+    {
+      "expected_error": "medical_insurance_claim_blocked",
+      "id": "guaranteed_claim_in_negation",
+      "mutation": "guaranteed_claim_in_negation"
+    },
+    {
+      "expected_error": "medical_insurance_claim_blocked",
+      "id": "universal_treatment_claim",
+      "mutation": "universal_treatment_claim"
+    },
+    {
+      "expected_error": "medical_insurance_claim_blocked",
+      "id": "unsupported_treatment_comparison",
+      "mutation": "unsupported_treatment_comparison"
+    },
+    {
+      "expected_error": "medical_insurance_claim_blocked",
+      "id": "unsupported_survival_claim",
+      "mutation": "unsupported_survival_claim"
+    },
+    {
+      "expected_error": "medical_insurance_claim_blocked",
+      "id": "unsupported_insurance_scope",
+      "mutation": "unsupported_insurance_scope"
+    },
+    {
+      "expected_error": "unrecorded_interview_has_quote",
+      "id": "unrecorded_interview_quote",
+      "mutation": "unrecorded_interview_quote"
+    },
+    {
+      "expected_error": "interview_receipt_set_drift",
+      "id": "recorded_fake_artifacts",
+      "mutation": "recorded_fake_artifacts"
+    },
+    {
+      "expected_error": "schema_validation_failed",
+      "id": "hook_before_body_stable",
+      "mutation": "hook_before_body_stable"
+    },
+    {
+      "expected_error": "hook_adds_number",
+      "id": "hook_adds_number",
+      "mutation": "hook_adds_number"
+    },
+    {
+      "expected_error": "hook_adds_claim",
+      "id": "hook_adds_evidence_outside_body",
+      "mutation": "hook_adds_evidence_outside_body"
+    },
+    {
+      "expected_error": "visual_rights_evidence_missing",
+      "id": "visual_rights_unknown",
+      "mutation": "visual_rights_unknown"
+    },
+    {
+      "expected_error": "visual_rights_evidence_missing",
+      "id": "visual_rights_self_asserted",
+      "mutation": "visual_rights_self_asserted"
+    },
+    {
+      "expected_error": "schema_validation_failed",
+      "id": "visual_missing_evidence",
+      "mutation": "visual_missing_evidence"
+    },
+    {
+      "expected_error": "visual_real_record_disguised",
+      "id": "visual_real_record_disguised",
+      "mutation": "visual_real_record_disguised"
+    },
+    {
+      "expected_error": "upstream_fact_gate_blocked",
+      "id": "fact_gate_blocked",
+      "mutation": "fact_gate_blocked"
+    },
+    {
+      "expected_error": "upstream_content_gate_blocked",
+      "id": "content_gate_blocked",
+      "mutation": "content_gate_blocked"
+    },
+    {
+      "expected_error": "forbidden_expression_used",
+      "id": "fact_forbidden_expression_used",
+      "mutation": "fact_forbidden_expression_used"
+    },
+    {
+      "expected_error": "skill_route_drift",
+      "id": "skill_order_drift",
+      "mutation": "skill_order_drift"
+    },
+    {
+      "expected_error": "skill_receipt_classification_drift",
+      "id": "skill_receipt_classification_drift",
+      "mutation": "skill_receipt_classification_drift"
+    },
+    {
+      "expected_error": "duplicate_identifier",
+      "id": "duplicate_segment_id",
+      "mutation": "duplicate_segment_id"
+    },
+    {
+      "expected_error": "route_question_drift",
+      "id": "route_question_drift",
+      "mutation": "route_question_drift"
+    },
+    {
+      "expected_error": "content_id_drift",
+      "id": "fact_card_content_id_drift",
+      "mutation": "fact_card_content_id_drift"
+    },
+    {
+      "expected_error": "forbidden_expression_used",
+      "id": "synthetic_claimed_as_real",
+      "mutation": "synthetic_claimed_as_real"
+    },
+    {
+      "expected_error": "data_classification_drift",
+      "id": "synthetic_boolean_downgrade",
+      "mutation": "synthetic_boolean_downgrade"
+    },
+    {
+      "expected_error": "schema_validation_failed",
+      "id": "full_synthetic_downgrade",
+      "mutation": "full_synthetic_downgrade"
+    },
+    {
+      "expected_error": "unbound_attributed_quote",
+      "id": "title_attributed_quote",
+      "mutation": "title_attributed_quote"
+    },
+    {
+      "expected_error": "unbound_attributed_quote",
+      "id": "segment_attributed_quote_variant",
+      "mutation": "segment_attributed_quote_variant"
+    },
+    {
+      "expected_error": "review_subject_hash_drift",
+      "id": "review_subject_stale",
+      "mutation": "review_subject_stale"
+    },
+    {
+      "expected_error": "review_receipt_hash_drift",
+      "id": "review_input_hash_drift",
+      "mutation": "review_input_hash_drift"
+    },
+    {
+      "expected_error": "schema_validation_failed",
+      "id": "required_review_removed",
+      "mutation": "required_review_removed"
+    },
+    {
+      "expected_error": "schema_validation_failed",
+      "id": "review_gate_removed",
+      "mutation": "review_gate_removed"
+    }
+  ],
+  "schema_version": "case-video-script-negative-cases.v1",
+  "synthetic_only": true
+}

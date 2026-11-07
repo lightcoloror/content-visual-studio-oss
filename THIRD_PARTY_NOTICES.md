@@ -30,3 +30,10 @@ The new bundled article and content-item seed are wholly synthetic first-party
 test inputs, not the original private case-derived test seed.
 
 External formatter metadata source: https://github.com/RyanChen1997/ryan-wechat-publisher/blob/561e3e736ef8d161247c70c30e694814e898ef59/package.json . The first-party wrapper imports the external implementation at runtime; the external implementation, preset payloads and dependency license grants are outside this Apache-2.0 source distribution.
+
+The six additional utilities and media-QA profiles are owner-authorized
+first-party source under Apache-2.0. Existing third-party notices are retained.
+The extra packaged voice/case documents are the same explicitly fictional
+first-party fixtures already in the public repository. They contain no audio,
+private Skill source, real author approval, customer or health records.
+No fonts, AntV/browser bridge, upstream renderer or model payload is added.

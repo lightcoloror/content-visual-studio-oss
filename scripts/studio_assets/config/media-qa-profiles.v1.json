@@ -1,0 +1,144 @@
+{
+  "schema_version": "media-qa-profiles.v1",
+  "updated_at": "2026-08-26T12:46:19+08:00",
+  "updated_by": "Codex (GPT-5.6 Terra)",
+  "policy": {
+    "hard_check_pass_rate": 1.0,
+    "max_needs_review": 1,
+    "fail_blocks_approval": true,
+    "max_automatic_retries": 2,
+    "retryable_categories": ["font", "overflow", "screenshot", "blank-output", "dimensions"],
+    "non_retryable_categories": ["fact", "rights", "privacy", "ai-authorization"]
+  },
+  "common_required_hard_checks": [
+    "file-exists",
+    "non-empty-output",
+    "input-files-exist",
+    "fact-gate",
+    "rights-gate",
+    "privacy-gate"
+  ],
+  "global_visual_required_hard_checks": [
+    "global-visual-context",
+    "chinese-typography-rendered"
+  ],
+  "profiles": {
+    "social-card-raster.v1": {
+      "media_adapters": ["social-card"],
+      "formats": ["png", "jpg"],
+      "required_hard_checks": ["pixel-dimensions", "nonblank-pixels"]
+    },
+    "social-card-html.v1": {
+      "media_adapters": ["social-card"],
+      "formats": ["html"],
+      "required_hard_checks": ["utf8-readable", "html-document"]
+    },
+    "article-html.v1": {
+      "media_adapters": ["article"],
+      "formats": ["html"],
+      "required_hard_checks": ["utf8-readable", "html-document", "responsive-viewport", "alt-text-complete"]
+    },
+    "article-markdown.v1": {
+      "media_adapters": ["article"],
+      "formats": ["md"],
+      "required_hard_checks": ["utf8-readable", "markdown-readable"]
+    },
+    "web-html.v1": {
+      "media_adapters": ["web"],
+      "formats": ["html"],
+      "required_hard_checks": ["utf8-readable", "html-document", "responsive-viewport"]
+    },
+    "web-raster.v1": {
+      "media_adapters": ["web"],
+      "formats": ["png", "jpg"],
+      "required_hard_checks": ["pixel-dimensions", "nonblank-pixels"]
+    },
+    "preview-package.v1": {
+      "media_adapters": ["web"],
+      "formats": ["zip"],
+      "required_hard_checks": ["zip-readable"]
+    },
+    "infographic-raster.v1": {
+      "media_adapters": ["infographic"],
+      "formats": ["png", "jpg"],
+      "required_hard_checks": ["pixel-dimensions", "nonblank-pixels"]
+    },
+    "infographic-svg.v1": {
+      "media_adapters": ["infographic"],
+      "formats": ["svg"],
+      "required_hard_checks": ["utf8-readable", "svg-root"]
+    },
+    "infographic-pdf.v1": {
+      "media_adapters": ["infographic"],
+      "formats": ["pdf"],
+      "required_hard_checks": ["pdf-signature"]
+    },
+    "slide-raster.v1": {
+      "media_adapters": ["pptx"],
+      "formats": ["png", "jpg"],
+      "required_hard_checks": ["pixel-dimensions", "nonblank-pixels"]
+    },
+    "slide-pdf.v1": {
+      "media_adapters": ["pptx"],
+      "formats": ["pdf"],
+      "required_hard_checks": ["pdf-signature"]
+    },
+    "slide-pptx.v1": {
+      "media_adapters": ["pptx"],
+      "formats": ["pptx"],
+      "required_hard_checks": ["zip-readable"]
+    }
+  },
+  "renderer_required_hard_checks": {
+    "social-card": ["script-free-html", "local-assets-only", "social-card-dom-qa", "card-overflow", "font-size-gate"],
+    "html-playwright": ["font-size-gate"],
+    "lieflat-charts": ["data-spec-valid", "canonical-fallback"],
+    "antv-infographic": ["svg-root", "slot-budget", "no-remote-font-stylesheet", "local-cjk-font"],
+    "marp": ["text-budget", "background-rights", "safe-crop-metadata", "local-assets-only"],
+    "baoyu-md": ["local-assets-only", "wikilinks-resolved", "cjk-text-preserved", "mermaid-cache-deterministic", "static-antv-blocks"],
+    "obsidian-infographic-preview": ["package-manifest", "package-checksum", "license-metadata-recorded", "no-install-side-effect"],
+    "ppt-master": [
+      "manifest-fresh",
+      "ppt-master-protocol-pinned",
+      "source-commit-pinned",
+      "native-drawingml",
+      "structural-validation",
+      "render-preview",
+      "overflow",
+      "external-provider-disabled"
+    ],
+    "imagegen": ["ai-generation-authorized"]
+  },
+  "renderer_operation_required_hard_checks": {
+    "ppt-master": {
+      "generate": [
+        "text-fidelity",
+        "semantic-page-roles",
+        "semantic-logical-groups",
+        "svg-quality",
+        "postflight",
+        "delivery-check"
+      ],
+      "template-fill": [
+        "fill-plan-confirmed",
+        "fill-plan-capacity",
+        "upstream-readback",
+        "planned-targets-only",
+        "template-structure-preserved"
+      ],
+      "data-native": [
+        "data-spec-hash-match",
+        "fallback-fresh",
+        "native-projection-validated",
+        "native-chart-present",
+        "native-data-exact",
+        "native-zero-baseline",
+        "native-labels-exact",
+        "text-fidelity",
+        "svg-quality",
+        "postflight",
+        "delivery-check"
+      ]
+    }
+  }
+}

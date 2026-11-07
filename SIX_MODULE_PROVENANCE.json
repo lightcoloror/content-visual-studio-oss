@@ -1,0 +1,292 @@
+{
+  "edition": "0.1.3",
+  "parent_public_commit": "2b09061f3a250bb50a0492509b83302cc4aa5c57",
+  "workbuddy_proposal_baseline": "430e7e2f53171d9dadcc9b9071a7739032fd6286",
+  "source_rows": [
+    {
+      "path": "config/media-qa-profiles.v1.json",
+      "sha256": "9226ec1e97616bc55db519a01ad89a44572e7b6f79aa86460cc2204dc015f7f6",
+      "bytes": 4813,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new",
+      "baseline_sha256": null,
+      "origin": "inputs/aux/config/media-qa-profiles.v1.json (first-party shared working resource)",
+      "aux_source_sha256": "9226ec1e97616bc55db519a01ad89a44572e7b6f79aa86460cc2204dc015f7f6",
+      "aux_bytes_preserved": true,
+      "note": "Exact bytes of the supplied first-party shared working resource."
+    },
+    {
+      "path": "docs/candidate-adaptations.md",
+      "sha256": "60e136d6fa52ea99c17c5a1cf08f6dd208f569cca4606bbf7917f8336c1c0944",
+      "bytes": 7880,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new",
+      "baseline_sha256": null,
+      "origin": "new first-party documentation / synthetic targeted unit tests"
+    },
+    {
+      "path": "docs/candidate-tests.md",
+      "sha256": "0daee7b205aada52c9d75590c77abf08a7ac846dd6a83740babba32f2284c9f2",
+      "bytes": 1717,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new",
+      "baseline_sha256": null,
+      "origin": "new first-party documentation / synthetic targeted unit tests"
+    },
+    {
+      "path": "scripts/build_human_voice_fixture.py",
+      "sha256": "7405a48df0e9217ee0b45963eed07c7c11c586ecb0aaa343f9cac4a5e3797060",
+      "bytes": 10952,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new_frozen_source_adapted",
+      "baseline_sha256": null,
+      "origin": "inputs/source/scripts (frozen working snapshot)",
+      "frozen_source_sha256": "307a29bc845497b834455ff71659f40276c7de07743dc457ad8520b9eb7f89ca",
+      "frozen_bytes_preserved": false,
+      "note": "Adapted frozen source. Reads only published explicitly fictional JSON fixtures; no TTS, model, provider or network."
+    },
+    {
+      "path": "scripts/hallmark_report_adapter.py",
+      "sha256": "951f23655c05d987045638d9d1fd43cf3ae6ab066a183d0d70f0eebe0446f15e",
+      "bytes": 8182,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [
+        "markdown-it-py (MIT; pyproject.toml + THIRD_PARTY_NOTICES.md)"
+      ],
+      "change_type": "new_frozen_source_unchanged",
+      "baseline_sha256": null,
+      "origin": "inputs/source/scripts (frozen working snapshot)",
+      "frozen_source_sha256": "951f23655c05d987045638d9d1fd43cf3ae6ab066a183d0d70f0eebe0446f15e",
+      "frozen_bytes_preserved": true
+    },
+    {
+      "path": "scripts/media_qa_validation.py",
+      "sha256": "c3ae47f1f2f0d6039b2aee0ecccbfee7e00fd0554e1b3308a545e4302826e30a",
+      "bytes": 5805,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new_frozen_source_adapted",
+      "baseline_sha256": null,
+      "origin": "inputs/source/scripts (frozen working snapshot)",
+      "frozen_source_sha256": "2775296d29c50d6bb19121cf3f1e67c376dc6cfbfd4653eff7f8a4f1f75b863f",
+      "frozen_bytes_preserved": false,
+      "note": "Adapted frozen source. Shipped registry retains first-party historical attribution (updated_by/updated_at)."
+    },
+    {
+      "path": "scripts/social_card_runtime.py",
+      "sha256": "c2aa1530dc6d6ebf5abdc0145d87d871586e637fd01df398cd52028007bbe5a9",
+      "bytes": 5149,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new_frozen_source_adapted",
+      "baseline_sha256": null,
+      "origin": "inputs/source/scripts (frozen working snapshot)",
+      "frozen_source_sha256": "07b794458a4ed90bf19f63aaf118b99957aecf30e2ee33421faa91e41a2ec037",
+      "frozen_bytes_preserved": false,
+      "note": "Adapted frozen source. Optional allowed_root confinement added; all original guards preserved."
+    },
+    {
+      "path": "scripts/studio_assets/config/media-qa-profiles.v1.json",
+      "sha256": "9226ec1e97616bc55db519a01ad89a44572e7b6f79aa86460cc2204dc015f7f6",
+      "bytes": 4813,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new",
+      "baseline_sha256": null,
+      "origin": "inputs/aux/config/media-qa-profiles.v1.json (first-party shared working resource)",
+      "aux_source_sha256": "9226ec1e97616bc55db519a01ad89a44572e7b6f79aa86460cc2204dc015f7f6",
+      "aux_bytes_preserved": true,
+      "note": "Exact bytes of the same resource, placed under the existing config/*.json package-data rule for installed layout (installation not tested)."
+    },
+    {
+      "path": "scripts/typography_gate_collector.mjs",
+      "sha256": "72d4221f05268f56e8bda808c452ea0c934026986f438d53245c62efbfcd62d7",
+      "bytes": 9940,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new_frozen_source_unchanged",
+      "baseline_sha256": null,
+      "origin": "inputs/source/scripts (frozen working snapshot)",
+      "frozen_source_sha256": "72d4221f05268f56e8bda808c452ea0c934026986f438d53245c62efbfcd62d7",
+      "frozen_bytes_preserved": true,
+      "note": "Node stdlib imports only; the Playwright/Puppeteer note is an interface comment, not vendored third-party code. Real browser/bridge integration unverified."
+    },
+    {
+      "path": "scripts/validate_insurance_clause_explanations.py",
+      "sha256": "0435f9b6c278d4e21e7f105e0d8eef832329a5cdfde0f8fe543e6c15d52b515b",
+      "bytes": 8868,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [
+        "jsonschema (MIT; pyproject.toml + THIRD_PARTY_NOTICES.md)"
+      ],
+      "change_type": "new_frozen_source_unchanged",
+      "baseline_sha256": null,
+      "origin": "inputs/source/scripts (frozen working snapshot)",
+      "frozen_source_sha256": "0435f9b6c278d4e21e7f105e0d8eef832329a5cdfde0f8fe543e6c15d52b515b",
+      "frozen_bytes_preserved": true,
+      "note": "Frozen bytes. --schema remains required; no canonical insurance schema is shipped or defaulted."
+    },
+    {
+      "path": "tests/test_build_human_voice_fixture.py",
+      "sha256": "d836f926e286827bac28d44ab88380cd386225756ef4fb8478d4913ecb935c2a",
+      "bytes": 7465,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new",
+      "baseline_sha256": null,
+      "origin": "new first-party documentation / synthetic targeted unit tests",
+      "runtime_code": false,
+      "note": "Synthetic offline unit test source; not public runtime code."
+    },
+    {
+      "path": "tests/test_hallmark_report_adapter.py",
+      "sha256": "0d65402c759d2543b81efb4be523c3aca1c58a16f445c62d0dc3644ab720c336",
+      "bytes": 6204,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new",
+      "baseline_sha256": null,
+      "origin": "new first-party documentation / synthetic targeted unit tests",
+      "runtime_code": false,
+      "note": "Synthetic offline unit test source; not public runtime code."
+    },
+    {
+      "path": "tests/test_media_qa_validation.py",
+      "sha256": "a7e13024afe89a538e86a1477419d6606659013790594fd1ecd9e8d296ec927c",
+      "bytes": 10020,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new",
+      "baseline_sha256": null,
+      "origin": "new first-party documentation / synthetic targeted unit tests",
+      "runtime_code": false,
+      "note": "Synthetic offline unit test source; not public runtime code."
+    },
+    {
+      "path": "tests/test_social_card_runtime.py",
+      "sha256": "f8d1f86d0707ddd203887870e08b0a4e0e84505421ad42481d37e09d773c3149",
+      "bytes": 7641,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new",
+      "baseline_sha256": null,
+      "origin": "new first-party documentation / synthetic targeted unit tests",
+      "runtime_code": false,
+      "note": "Synthetic offline unit test source; not public runtime code."
+    },
+    {
+      "path": "tests/test_typography_gate_collector.mjs",
+      "sha256": "3e24b64ffeffeee3196ce68b7d8bde4a727354b02d2fc6e9ea1722e4af5b13ee",
+      "bytes": 14067,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new",
+      "baseline_sha256": null,
+      "origin": "new first-party documentation / synthetic targeted unit tests",
+      "runtime_code": false,
+      "note": "Synthetic offline unit test source; not public runtime code."
+    },
+    {
+      "path": "tests/test_validate_insurance_clause_explanations.py",
+      "sha256": "b7b0f9a382da70f60698625b114127e982c10f1d70501fbc9c864e11961a1721",
+      "bytes": 11797,
+      "license_or_origin": "Apache-2.0 (owner-authorized first-party public edition; baseline LICENSE)",
+      "third_party_dependencies": [],
+      "change_type": "new",
+      "baseline_sha256": null,
+      "origin": "new first-party documentation / synthetic targeted unit tests",
+      "runtime_code": false,
+      "note": "Synthetic offline unit test source; not public runtime code."
+    }
+  ],
+  "source_modules_preserved_from_verified_proposal": 6,
+  "additional_packaging_resources": [
+    {
+      "source": "fixtures/case-video-script-v1/negative-cases.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/negative-cases.json",
+      "sha256": "d6c10ffd9e1df2fcab7981db9d981b287f79caf7b8236b8d0483ff0b674b1171"
+    },
+    {
+      "source": "fixtures/case-video-script-v1/synthetic-case-source.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/synthetic-case-source.json",
+      "sha256": "d149cd1337df8471a4fb8487b875fccb0b842b534ab0d1989d6939943e409714"
+    },
+    {
+      "source": "fixtures/case-video-script-v1/synthetic-case-video-review-receipt.v1.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/synthetic-case-video-review-receipt.v1.json",
+      "sha256": "939d7b89ca1524b90fc309995aeddb16e80dfadaab9d40140e78855163b36e86"
+    },
+    {
+      "source": "fixtures/case-video-script-v1/synthetic-case-video-script.pre-voice.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/synthetic-case-video-script.pre-voice.json",
+      "sha256": "c4c7c7a320982ace0d7ef66c8d436c21af045949282590ec2a896d8ea9296e01"
+    },
+    {
+      "source": "fixtures/case-video-script-v1/synthetic-case-video-script.v1.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/synthetic-case-video-script.v1.json",
+      "sha256": "3d7a2268c8eacda5809d279958753c2f21a90aa32629b0adc6a92c1d9b58a21b"
+    },
+    {
+      "source": "fixtures/case-video-script-v1/synthetic-deidentified-interview-receipt.v1.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/synthetic-deidentified-interview-receipt.v1.json",
+      "sha256": "cc382ff8689e499554659966aef88639de514a1c6db291b05a59e47429826380"
+    },
+    {
+      "source": "fixtures/case-video-script-v1/synthetic-fact-card.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/synthetic-fact-card.json",
+      "sha256": "28633e90873834924e660b95398ebddf5c98d97f2aa87eca70116db1c8f82187"
+    },
+    {
+      "source": "fixtures/case-video-script-v1/synthetic-human-voice-receipt.v1.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/synthetic-human-voice-receipt.v1.json",
+      "sha256": "189959cde94dfceb16b70e3806bed2b4cee9a3f0c72164558ad9fd7c94cfd5d8"
+    },
+    {
+      "source": "fixtures/case-video-script-v1/synthetic-human-voice-rewrite-request.v1.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/synthetic-human-voice-rewrite-request.v1.json",
+      "sha256": "59e43a126bedc1e333018597a9e05efdea0fe755ffbcbb64242d99ab592a131e"
+    },
+    {
+      "source": "fixtures/case-video-script-v1/synthetic-initial-draft-review.v1.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/synthetic-initial-draft-review.v1.json",
+      "sha256": "5b3de44505f48d3e13be9378e9a8b450030b6d18a04b939fdf570b85fae30240"
+    },
+    {
+      "source": "fixtures/case-video-script-v1/synthetic-research-output.v1.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/synthetic-research-output.v1.json",
+      "sha256": "24a52c4336ad4aa1662e790659191b24a441f441d160a856639a669f92ddf8fc"
+    },
+    {
+      "source": "fixtures/case-video-script-v1/synthetic-route-card.json",
+      "packaged": "scripts/studio_assets/fixtures/case-video-script-v1/synthetic-route-card.json",
+      "sha256": "03aacd6ff2113a06a9012c466c678c7bd3b084308657c819b000678b15cb8650"
+    },
+    {
+      "source": "fixtures/synthetic-voice/references/rulebook.md",
+      "packaged": "scripts/studio_assets/fixtures/synthetic-voice/references/rulebook.md",
+      "sha256": "e25fcef8f972070a20ac3508d0866d49314215aed231d6cbdf4d3dafe5fe1f0c"
+    },
+    {
+      "source": "fixtures/synthetic-voice/SKILL.md",
+      "packaged": "scripts/studio_assets/fixtures/synthetic-voice/SKILL.md",
+      "sha256": "9c430f09b6ded2c8c484f8e8053b37ce8c7ffdb8ac91af3002832d12bfdbc1e3"
+    }
+  ],
+  "first_party_license": "Apache-2.0",
+  "upstream_code_or_fonts_or_models_added": false,
+  "real_voice_or_customer_data_added": false,
+  "installed_and_full_regression": {
+    "source_passed": 198,
+    "source_skipped": 7,
+    "subtests": 62,
+    "source_exit_code": 0,
+    "installed_checks": 11,
+    "node_mock_dom_passed": 17,
+    "node_mock_dom_skipped": 1
+  },
+  "formal_full_project_review_complete": false
+}

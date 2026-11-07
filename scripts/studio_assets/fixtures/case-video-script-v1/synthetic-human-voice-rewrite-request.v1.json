@@ -1,0 +1,116 @@
+{
+  "author_confirmation": {
+    "body_sha256": "ecee3ac3b98a599ba3859ffd8c246e8a3e57cc0fecd4eeb83991c897f6525a8d",
+    "confirmed_at": "2026-08-11T20:31:00+08:00",
+    "facts_preserved": true,
+    "performed_by": "synthetic-fixture-author",
+    "status": "confirmed",
+    "voice_match": true
+  },
+  "boundaries": {
+    "external_service_called": false,
+    "local_only": true,
+    "raw_sensitive_media_included": false,
+    "would_publish": false
+  },
+  "content_id": "research-5d27168fe364979b2baf1886",
+  "dbs_ai_check_diagnosis": {
+    "issue_codes": [
+      "ai-trace"
+    ],
+    "note": "合成诊断发现整齐节奏、过度解释和抽象表达；不上传任何材料。",
+    "status": "passed_to_local_rewrite"
+  },
+  "dbs_content_diagnosis": {
+    "issue_codes": [
+      "symmetric-slogan",
+      "uniform-cta",
+      "over-explained",
+      "translation-register",
+      "abstract-service-language"
+    ],
+    "note": "合成诊断只用于验证 Content Studio 本地门禁，不代表真实 Skill 运行。",
+    "status": "passed_to_local_rewrite"
+  },
+  "hook_input_body_sha256": "ecee3ac3b98a599ba3859ffd8c246e8a3e57cc0fecd4eeb83991c897f6525a8d",
+  "initial_draft_review_ref": {
+    "artifact_id": "initial-draft-review-e2f46691498a739014c3",
+    "schema_version": "case-video-initial-draft-review.v1",
+    "sha256": "08d75867ea30fb31187d577c3635c3b29963c4fbf084328713d9f9e454d5c134"
+  },
+  "post_freeze_hooks": [
+    {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_service_boundary",
+          "ref_type": "claim"
+        },
+        {
+          "ref_id": "evidence_synthetic_medical_boundary",
+          "ref_type": "evidence"
+        }
+      ],
+      "hook_id": "hook-01",
+      "risk_status": "pass",
+      "status": "candidate",
+      "text": "一次癌症诊治里，保险顾问最不该做的，可能就是替医生回答。"
+    },
+    {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_service_boundary",
+          "ref_type": "claim"
+        },
+        {
+          "ref_id": "evidence_synthetic_service_action",
+          "ref_type": "evidence"
+        }
+      ],
+      "hook_id": "hook-02",
+      "risk_status": "pass",
+      "status": "candidate",
+      "text": "治疗方案定下来以后，保险服务才真正进入它该在的位置。"
+    }
+  ],
+  "post_freeze_selected_hook_id": "hook-01",
+  "read_aloud": {
+    "body_sha256": "ecee3ac3b98a599ba3859ffd8c246e8a3e57cc0fecd4eeb83991c897f6525a8d",
+    "completed_at": "2026-08-11T20:30:00+08:00",
+    "notes": [
+      "合成朗读回执；未使用真实作者录音。",
+      "逐段读完，无阻碍口语表达。"
+    ],
+    "performed_by": "synthetic-fixture-author",
+    "status": "completed"
+  },
+  "request_id": "voice-request-synthetic-case-001",
+  "rewrite_operations": [
+    {
+      "before_text_sha256": "8b0cb70e630bccc98c4bd49e4b8daa3f2e523daba075585aa69d9d54cb4a03b3",
+      "reason": "移除对称口号、统一 CTA、解释过满、翻译腔和抽象服务话术，恢复本人可朗读口吻。",
+      "replacement_text": "家里突然要面对癌症诊治时，摆在面前的不只是怎么治，还会冒出医院范围、保单责任和材料怎么准备这些问题。",
+      "segment_id": "segment-01"
+    },
+    {
+      "before_text_sha256": "00e961cc71b121ab2e43b018169bffe3c7d2fd49a70348d6a7ab40a19bf46ee3",
+      "reason": "移除对称口号、统一 CTA、解释过满、翻译腔和抽象服务话术，恢复本人可朗读口吻。",
+      "replacement_text": "最容易说错的，是把保险能不能用和治疗该怎么选混成一件事。治疗方案由医生和家庭决定，保险顾问不能替他们作医疗判断。",
+      "segment_id": "segment-02"
+    },
+    {
+      "before_text_sha256": "cbc36c20b1593a7b03434be9e4ad6031dfa913977399bc152a2909d10fdcce04",
+      "reason": "移除对称口号、统一 CTA、解释过满、翻译腔和抽象服务话术，恢复本人可朗读口吻。",
+      "replacement_text": "能做的，是在安排确定以后，把合同责任、医院范围和材料清单一项项核对，哪些已经确认，哪些还要继续问，都写清楚。",
+      "segment_id": "segment-03"
+    },
+    {
+      "before_text_sha256": "0c8a4a32321ab2c4ed30abeb0f8fade1b3558bf2a43ecfa0aa74cff48240e071",
+      "reason": "移除对称口号、统一 CTA、解释过满、翻译腔和抽象服务话术，恢复本人可朗读口吻。",
+      "replacement_text": "这些动作能减少信息混乱，但个案结果不能外推，虚构经历也不能包装成真实客户故事。",
+      "segment_id": "segment-04"
+    }
+  ],
+  "schema_version": "case-video-human-voice-request.v1",
+  "script_id": "case-script-synthetic-insurance-001",
+  "synthetic_only": true
+}

@@ -1,0 +1,339 @@
+{
+  "audience": "想了解保险顾问服务边界的普通家庭",
+  "body_status": "stable",
+  "content_id": "research-5d27168fe364979b2baf1886",
+  "experiment": {
+    "constants": [
+      "正文",
+      "时长",
+      "字幕层级",
+      "视觉候选",
+      "发布边界"
+    ],
+    "no_signal_meaning": "content_no_signal_is_observation_only",
+    "variable_to_change": "selected_hook_id"
+  },
+  "forbidden_expressions": [
+    "这是一个真实客户案例",
+    "这种治疗更好",
+    "一定能赔",
+    "保证理赔",
+    "客户亲口告诉我"
+  ],
+  "hook_candidates": [
+    {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_service_boundary",
+          "ref_type": "claim"
+        },
+        {
+          "ref_id": "evidence_synthetic_medical_boundary",
+          "ref_type": "evidence"
+        }
+      ],
+      "hook_id": "hook-01",
+      "risk_status": "pass",
+      "status": "candidate",
+      "text": "一次癌症诊治里，保险顾问最不该做的，可能就是替医生回答。"
+    },
+    {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_service_boundary",
+          "ref_type": "claim"
+        },
+        {
+          "ref_id": "evidence_synthetic_service_action",
+          "ref_type": "evidence"
+        }
+      ],
+      "hook_id": "hook-02",
+      "risk_status": "pass",
+      "status": "candidate",
+      "text": "治疗方案定下来以后，保险服务才真正进入它该在的位置。"
+    }
+  ],
+  "human_review": {
+    "publication_boundary": "manual-only",
+    "required_reviews": [
+      "fact",
+      "privacy",
+      "medical-insurance",
+      "authorization",
+      "rights",
+      "voice",
+      "video-production"
+    ],
+    "status": "required"
+  },
+  "inputs": {
+    "content_item_ref": {
+      "artifact_id": "research-5d27168fe364979b2baf1886",
+      "schema_version": "0.2",
+      "sha256": "221f275d69e1c86f52967c89558e9c8264901a95d58b9de4a3058670b0a274e8"
+    },
+    "fact_card_ref": {
+      "artifact_id": "fact-card-synthetic-case-001",
+      "schema_version": "content-fact-card.v0",
+      "sha256": "1f39b914495b1eee90ce0381c68298bfc850bb70d8a6bb99d2c797ddfd5496ec"
+    },
+    "research_output_ref": {
+      "artifact_id": "research_synthetic_case_video_001",
+      "schema_version": "1.0.0",
+      "sha256": "9abc8068867fe949d5c86cf8b7071fc1801b06e6b8d511a1f56550edaf2f440c"
+    },
+    "route_card_ref": {
+      "artifact_id": "route-card-synthetic-case-001",
+      "schema_version": "content-route-card.v0",
+      "sha256": "840528448e23c878ce9052ba42b1d1039d0047a079a3babaeb052614a7bcaafd"
+    }
+  },
+  "interview_slots": [
+    {
+      "consent_status": "pending",
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_interview_boundary",
+          "ref_type": "claim"
+        },
+        {
+          "ref_id": "evidence_synthetic_interview_boundary",
+          "ref_type": "evidence"
+        }
+      ],
+      "fallback_edit": "未取得录音与范围授权时，整段不进旁白、不生成客户回答，直接由 segment-02 衔接 segment-03。",
+      "privacy_status": "pass",
+      "question": "回头看这段过程，哪一步最容易让你分不清该问医生还是问保险顾问？",
+      "rights_status": "needs-review",
+      "selection_criteria": [
+        "只选具体行动或感受",
+        "不出现病情细节、金额、机构或可识别时间线"
+      ],
+      "slot_id": "interview-01",
+      "state": "planned",
+      "story_segment_ref": "segment-02"
+    }
+  ],
+  "mode": "draft_only",
+  "provenance": {
+    "adapter": "case-video-script-sidecar",
+    "adapter_version": "pre-voice-fixture",
+    "external_api_called": false,
+    "generated_at": "2026-08-09T08:30:00+08:00",
+    "model_memory_used_as_evidence": false,
+    "offline_only": true
+  },
+  "schema_version": "case-video-script.v1",
+  "script_id": "case-script-synthetic-insurance-001",
+  "segments": [
+    {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_service_boundary",
+          "ref_type": "claim"
+        },
+        {
+          "ref_id": "source_synthetic_case_record",
+          "ref_type": "source"
+        }
+      ],
+      "purpose": "交代家庭同时面对医疗和保单问题的场景",
+      "role": "context",
+      "segment_id": "segment-01",
+      "spoken_text": "这不是一张保单，而是一份家庭安全感。也就是说，真正重要的不是产品，而是底层逻辑。如果你也认同，欢迎收藏。",
+      "subtitle_candidates": [
+        "医疗决定和保单问题会同时出现"
+      ],
+      "visual_candidates": [
+        {
+          "description": "合成流程卡：医疗决定与保单核对分成两条轨道",
+          "evidence_refs": [
+            {
+              "ref_id": "source_synthetic_case_record",
+              "ref_type": "source"
+            }
+          ],
+          "evidence_role": "explanatory",
+          "rights_note": "仅使用本地生成的文字和几何图形，不含真实病历、保单或人物影像。",
+          "rights_status": "synthetic",
+          "status": "candidate",
+          "visual_id": "visual-context-flow"
+        }
+      ]
+    },
+    {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_service_boundary",
+          "ref_type": "claim"
+        },
+        {
+          "ref_id": "evidence_synthetic_medical_boundary",
+          "ref_type": "evidence"
+        }
+      ],
+      "purpose": "明确最容易越界的地方",
+      "role": "conflict",
+      "segment_id": "segment-02",
+      "spoken_text": "保险不只是合同，更是陪伴式服务。这说明专业价值决定了最后的结果。如果你也认同，欢迎收藏。",
+      "subtitle_candidates": [
+        "治疗方案由医生和家庭决定",
+        "保险顾问不能替医生判断"
+      ],
+      "visual_candidates": []
+    },
+    {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_service_boundary",
+          "ref_type": "claim"
+        },
+        {
+          "ref_id": "evidence_synthetic_service_action",
+          "ref_type": "evidence"
+        }
+      ],
+      "purpose": "用动作体现服务能力",
+      "role": "service-action",
+      "segment_id": "segment-03",
+      "spoken_text": "与此同时，我们进一步形成服务闭环。此外，我们用全生命周期方案赋能家庭，由此可见，这是一套完整的方法论。",
+      "subtitle_candidates": [
+        "把责任、医院和材料一项项核对"
+      ],
+      "visual_candidates": [
+        {
+          "description": "合成清单卡：合同责任、医院范围、材料准备、待确认项",
+          "evidence_refs": [
+            {
+              "ref_id": "evidence_synthetic_service_action",
+              "ref_type": "evidence"
+            }
+          ],
+          "evidence_role": "explanatory",
+          "rights_note": "本地合成清单，不使用真实合同、发票、病历或保险公司界面。",
+          "rights_status": "synthetic",
+          "status": "candidate",
+          "visual_id": "visual-service-checklist"
+        }
+      ]
+    },
+    {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_service_boundary",
+          "ref_type": "claim"
+        },
+        {
+          "ref_id": "claim_synthetic_interview_boundary",
+          "ref_type": "claim"
+        }
+      ],
+      "purpose": "收束到可验证边界",
+      "role": "boundary",
+      "segment_id": "segment-04",
+      "spoken_text": "本质上，风险管理抓手体现的是价值交付。总结来说，这就是专业价值，这就是我们想说的。",
+      "subtitle_candidates": [
+        "讲清服务动作，不承诺结果"
+      ],
+      "visual_candidates": []
+    }
+  ],
+  "selected_hook_id": "hook-01",
+  "service_capability": {
+    "action_evidence_refs": [
+      {
+        "ref_id": "claim_synthetic_service_boundary",
+        "ref_type": "claim"
+      },
+      {
+        "ref_id": "evidence_synthetic_service_action",
+        "ref_type": "evidence"
+      }
+    ],
+    "boundary": "不替医生选择治疗方案，不承诺承保、理赔结果或处理时效。",
+    "statement": "在医疗决定之外，把合同责任、医院范围和材料准备逐项核清。"
+  },
+  "single_question": "一次癌症诊治中，保险服务怎样与医疗决定保持边界？",
+  "skill_stage_receipts": [],
+  "story": {
+    "choice_or_action": {
+      "evidence_refs": [
+        {
+          "ref_id": "evidence_synthetic_service_action",
+          "ref_type": "evidence"
+        }
+      ],
+      "text": "在医生与家庭确定安排后，再逐项核对合同责任、医院范围和材料清单。"
+    },
+    "conflict": {
+      "evidence_refs": [
+        {
+          "ref_id": "evidence_synthetic_medical_boundary",
+          "ref_type": "evidence"
+        }
+      ],
+      "text": "如果把这些问题混在一起，保险顾问很容易被写成替医生作判断的人。"
+    },
+    "constraint": {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_interview_boundary",
+          "ref_type": "claim"
+        }
+      ],
+      "text": "这是完全虚构的离线测试案例，没有真实金额、真实赔付结果或客户采访。"
+    },
+    "main_judgment": {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_service_boundary",
+          "ref_type": "claim"
+        },
+        {
+          "ref_id": "evidence_synthetic_service_action",
+          "ref_type": "evidence"
+        }
+      ],
+      "text": "保险服务的价值不是替家庭作医疗决定，而是把医疗决定之外的合同和办事问题核清。"
+    },
+    "pressure": {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_service_boundary",
+          "ref_type": "claim"
+        }
+      ],
+      "text": "家里突然要面对诊疗安排时，医疗决定、费用和保单问题会同时出现。"
+    },
+    "result_or_current_state": {
+      "evidence_refs": [
+        {
+          "ref_id": "claim_synthetic_service_boundary",
+          "ref_type": "claim"
+        }
+      ],
+      "text": "服务动作被拆清楚，但所有诊疗判断和理赔结论仍保留给各自的责任主体。"
+    }
+  },
+  "synthetic_only": true,
+  "target_duration_seconds": 90,
+  "title": "一次癌症诊治中，保险服务到底在做什么",
+  "title_evidence_refs": [
+    {
+      "ref_id": "claim_synthetic_service_boundary",
+      "ref_type": "claim"
+    },
+    {
+      "ref_id": "evidence_synthetic_service_action",
+      "ref_type": "evidence"
+    }
+  ],
+  "unknowns": [
+    {
+      "handling": "exclude-from-narration",
+      "text": "客户采访尚未录制和授权，任何客户原声都必须从旁白中排除。",
+      "unknown_id": "unknown-interview-not-recorded"
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "audience": "想了解保险顾问服务边界的普通家庭",
+  "claims": [
+    {
+      "claim_id": "claim_synthetic_service_boundary",
+      "claim_status": "open",
+      "context_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "evidence_ids": [
+        "evidence_synthetic_medical_boundary",
+        "evidence_synthetic_service_action"
+      ],
+      "evidence_status": "verified",
+      "review_status": "verified",
+      "source_ids": [
+        "source_synthetic_case_record"
+      ],
+      "supporting_evidence_ids": [
+        "evidence_synthetic_medical_boundary",
+        "evidence_synthetic_service_action"
+      ],
+      "text": "案例只能把有脱敏记录支持的服务动作讲清楚，不能替医生判断治疗方案，也不能承诺理赔结果。"
+    },
+    {
+      "claim_id": "claim_synthetic_interview_boundary",
+      "claim_status": "open",
+      "context_evidence_ids": [],
+      "contradicting_evidence_ids": [],
+      "evidence_ids": [
+        "evidence_synthetic_interview_boundary"
+      ],
+      "evidence_status": "verified",
+      "review_status": "verified",
+      "source_ids": [
+        "source_synthetic_case_record"
+      ],
+      "supporting_evidence_ids": [
+        "evidence_synthetic_interview_boundary"
+      ],
+      "text": "没有已录制且授权的客户原声时，只能保留采访问题或删除该段，不能代写客户回答。"
+    }
+  ],
+  "completeness": {
+    "blocking_gates": [],
+    "coverage": {
+      "interview_authorization": "covered",
+      "synthetic_case": "covered"
+    },
+    "ready_for_answer": true,
+    "warnings": [
+      "完全虚构 fixture 不能被描述为真实客户案例。"
+    ]
+  },
+  "contradictions": [],
+  "created_at": "2026-08-09T08:15:00+08:00",
+  "evidence": [
+    {
+      "ai_synthesis": false,
+      "artifact_sha256": "bd6561119b35cbf00fe25f02efdd34fef5b5c5f30af24632906c134a75e63d4c",
+      "claim_id": "claim_synthetic_service_boundary",
+      "confidence": "high",
+      "evidence_id": "evidence_synthetic_medical_boundary",
+      "evidence_status": "verified",
+      "excerpt": "诊疗安排由医生与家庭决定；顾问不替医生判断治疗方案。",
+      "observed_at": "2026-08-09T08:00:00+08:00",
+      "relation": "supports",
+      "review_status": "reviewed",
+      "source_id": "source_synthetic_case_record",
+      "source_path": "fixtures/case-video-script-v1/synthetic-case-source.json"
+    },
+    {
+      "ai_synthesis": false,
+      "artifact_sha256": "bd6561119b35cbf00fe25f02efdd34fef5b5c5f30af24632906c134a75e63d4c",
+      "claim_id": "claim_synthetic_service_boundary",
+      "confidence": "high",
+      "evidence_id": "evidence_synthetic_service_action",
+      "evidence_status": "verified",
+      "excerpt": "顾问核对合同责任、医院范围和材料清单，不承诺理赔结果。",
+      "observed_at": "2026-08-09T08:00:00+08:00",
+      "relation": "supports",
+      "review_status": "reviewed",
+      "source_id": "source_synthetic_case_record",
+      "source_path": "fixtures/case-video-script-v1/synthetic-case-source.json"
+    },
+    {
+      "ai_synthesis": false,
+      "artifact_sha256": "bd6561119b35cbf00fe25f02efdd34fef5b5c5f30af24632906c134a75e63d4c",
+      "claim_id": "claim_synthetic_interview_boundary",
+      "confidence": "high",
+      "evidence_id": "evidence_synthetic_interview_boundary",
+      "evidence_status": "verified",
+      "excerpt": "尚未接受采访；不得出现客户原声，只能保留采访问题或删除该段。",
+      "observed_at": "2026-08-09T08:00:00+08:00",
+      "relation": "supports",
+      "review_status": "reviewed",
+      "source_id": "source_synthetic_case_record",
+      "source_path": "fixtures/case-video-script-v1/synthetic-case-source.json"
+    }
+  ],
+  "evidence_links": [
+    {
+      "claim_id": "claim_synthetic_service_boundary",
+      "evidence_id": "evidence_synthetic_medical_boundary",
+      "evidence_status": "verified",
+      "relation": "supports",
+      "source_id": "source_synthetic_case_record"
+    },
+    {
+      "claim_id": "claim_synthetic_service_boundary",
+      "evidence_id": "evidence_synthetic_service_action",
+      "evidence_status": "verified",
+      "relation": "supports",
+      "source_id": "source_synthetic_case_record"
+    },
+    {
+      "claim_id": "claim_synthetic_interview_boundary",
+      "evidence_id": "evidence_synthetic_interview_boundary",
+      "evidence_status": "verified",
+      "relation": "supports",
+      "source_id": "source_synthetic_case_record"
+    }
+  ],
+  "evidence_status": {
+    "counts": {
+      "candidate": 0,
+      "contradictions": 0,
+      "rejected": 0,
+      "verified": 3
+    },
+    "overall": "verified"
+  },
+  "generator": {
+    "component": "research_output",
+    "name": "question-research-poc",
+    "version": "research-output.v1"
+  },
+  "guarded_final_answer": {
+    "answer": "案例视频应只呈现有记录支持的服务动作，并明确医疗决定与理赔结果的边界；没有授权原声时删除该段。",
+    "blocking_gates": [],
+    "claim_ids": [
+      "claim_synthetic_service_boundary",
+      "claim_synthetic_interview_boundary"
+    ],
+    "evidence_ids": [
+      "evidence_synthetic_medical_boundary",
+      "evidence_synthetic_service_action",
+      "evidence_synthetic_interview_boundary"
+    ],
+    "guardrail": "不得替医生作诊疗判断，不得保证承保或理赔，不得把虚构案例写成真实经历。",
+    "ready": true,
+    "source_ids": [
+      "source_synthetic_case_record"
+    ],
+    "status": "verified",
+    "warnings": [
+      "不得把虚构情节发布为真实案例。"
+    ]
+  },
+  "media_refs": [],
+  "provenance": {
+    "external_api_called": false,
+    "input_files": [
+      {
+        "path": "fixtures/case-video-script-v1/synthetic-case-source.json",
+        "sha256": "bd6561119b35cbf00fe25f02efdd34fef5b5c5f30af24632906c134a75e63d4c",
+        "status": "present"
+      }
+    ],
+    "model_memory_used_as_evidence": false,
+    "offline_only": true,
+    "source_systems": [
+      "synthetic-fixture"
+    ]
+  },
+  "question": "一次虚构癌症诊治案例中，保险服务怎样与医疗决定保持边界？",
+  "quotable_facts": [],
+  "requested_outputs": [
+    "article",
+    "content-video-brief.v1"
+  ],
+  "research_id": "research_synthetic_case_video_001",
+  "review_status": {
+    "events": [
+      {
+        "decision": "verified synthetic fixture",
+        "kind": "source",
+        "reviewed_at": "2026-08-09T08:10:00+08:00",
+        "reviewer": "fixture-reviewer",
+        "target_id": "source_synthetic_case_record"
+      },
+      {
+        "decision": "verified",
+        "kind": "evidence",
+        "reviewed_at": "2026-08-09T08:10:00+08:00",
+        "reviewer": "fixture-reviewer",
+        "target_id": "evidence_synthetic_medical_boundary"
+      },
+      {
+        "decision": "verified",
+        "kind": "evidence",
+        "reviewed_at": "2026-08-09T08:10:00+08:00",
+        "reviewer": "fixture-reviewer",
+        "target_id": "evidence_synthetic_service_action"
+      },
+      {
+        "decision": "verified",
+        "kind": "evidence",
+        "reviewed_at": "2026-08-09T08:10:00+08:00",
+        "reviewer": "fixture-reviewer",
+        "target_id": "evidence_synthetic_interview_boundary"
+      }
+    ],
+    "human_review_required": true,
+    "overall": "verified"
+  },
+  "schema": "research-output.v1",
+  "schema_version": "1.0.0",
+  "scope": {
+    "constraints": [
+      "synthetic-only",
+      "offline-only",
+      "no-external-api",
+      "no-publication"
+    ],
+    "statement": "只验证完全虚构案例的视频脚本证据边界。"
+  },
+  "sources": [
+    {
+      "archive_path": "fixtures/case-video-script-v1/synthetic-case-source.json",
+      "fetched_at": "2026-08-09T08:00:00+08:00",
+      "freshness": "not_applicable",
+      "hash": {
+        "algorithm": "sha256",
+        "status": "verified",
+        "value": "bd6561119b35cbf00fe25f02efdd34fef5b5c5f30af24632906c134a75e63d4c"
+      },
+      "provenance": {
+        "created_at": "2026-08-09T08:00:00+08:00",
+        "note_fields": {
+          "data_classification": "synthetic_only"
+        },
+        "review_refs": [
+          "synthetic-review-001"
+        ]
+      },
+      "publisher": "content-studio-poc",
+      "quality": "good",
+      "ref_status": "resolved",
+      "review_status": "reviewed",
+      "source_id": "source_synthetic_case_record",
+      "source_type": "local_fixture",
+      "title": "Synthetic de-identified case record",
+      "url": null
+    }
+  ],
+  "unknowns": [],
+  "visual_leads": [
+    {
+      "kind": "diagram",
+      "ref": "候选：用三段流程卡表示医生与家庭决定、顾问核对合同、人工复核；不得使用真实病历或保单截图。",
+      "source_id": "source_synthetic_case_record",
+      "status": "reviewed"
+    }
+  ]
+}
