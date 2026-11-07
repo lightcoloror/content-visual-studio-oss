@@ -1,0 +1,44 @@
+{
+  "first_party_public_license": "Apache-2.0",
+  "source_kind": "working snapshots distinct from the private HEAD baseline",
+  "source_files": [
+    {
+      "path": "scripts/wechat_article_format_adapter.py",
+      "source_sha256": "33b9cb68abdd27b36ab31d480aad0e17b2093099354865b1d8d842f5f89f4d76",
+      "source_bytes": 21334,
+      "source_kind": "working snapshot; not attributed as HEAD bytes"
+    },
+    {
+      "path": "scripts/wechat_public_review.cjs",
+      "source_sha256": "aad7b22ff10b1a5063add8e52173108e64fc910a1b551f1f872ff60255a5b1e0",
+      "source_bytes": 3507,
+      "source_kind": "working snapshot; not attributed as HEAD bytes"
+    },
+    {
+      "path": "tests/test_wechat_article_format_adapter.py",
+      "source_sha256": "632d570fd6fea8c726df1ce5aaaa50987e2609975c2b17596ef21329c973c0b1",
+      "source_bytes": 12917,
+      "source_kind": "working snapshot; not attributed as HEAD bytes"
+    }
+  ],
+  "adapter_function_changes": [
+    "render"
+  ],
+  "external_owner": {
+    "repository": "https://github.com/RyanChen1997/ryan-wechat-publisher",
+    "commit": "561e3e736ef8d161247c70c30e694814e898ef59",
+    "package_license_declared": "ISC",
+    "standalone_LICENSE_present": false,
+    "upstream_code_assets_dependencies_distributed": false,
+    "distribution_review": "Publish owner-authorized first-party orchestration only; external runtime source/presets/dependencies remain separately supplied and are not relicensed or redistributed.",
+    "rights_not_granted": [
+      "upstream transitive dependency redistribution rights",
+      "browser/platform behavior",
+      "rights to external fonts/assets"
+    ]
+  },
+  "test_seed": "wholly fictional Echo Garden; no actual case, author approval or publication",
+  "formal_full_project_review_complete": false,
+  "reviewed_wrapper_sha256": "aad7b22ff10b1a5063add8e52173108e64fc910a1b551f1f872ff60255a5b1e0",
+  "license_review_scope": "First-party glue versus separately supplied pinned external runtime; no assurance over upstream transitive redistribution"
+}

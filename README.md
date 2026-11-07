@@ -76,3 +76,26 @@ response are not implied by an HTML file or a passing contract.
 ## Saved capture handoff 0.1.1
 
 [Capture, selected delivery and registry boundaries](docs/saved-capture-handoff.md). No new acquisition, source verification or publication authority is granted.
+
+## Optional local WeChat format adapter
+
+`content-studio-wechat-format render --help` exposes the existing synthetic and
+explicit-public-review modes. Supply a separate, clean Ryan WeChat Publisher
+checkout through the explicit `--source-root` option; its exact
+commit and origin are checked. No checkout, installation, upload, platform draft
+or publishing is performed. The upstream package declares ISC, but its code and
+dependencies are not distributed here; review their notices independently.
+
+Public-review mode requires an exact Markdown hash and the existing explicit
+public-material/privacy/blocked-state checks. It produces body, preview and dark
+preview HTML plus native render receipts. Author review stays required and
+unresolved content gates stay unresolved. A technical render is not permission
+to publish, actual device review, or platform-paste acceptance.
+
+The local JS wrapper is bundled both for source and installed use. It preserves
+the existing external renderer and validation scripts; no second renderer is
+introduced. Two actual-render tests require the explicitly supplied external
+checkout; rejection tests run without it. Test seeds are wholly fictional.
+
+For the source tests only, `RYAN_WECHAT_PUBLISHER_SOURCE` locates an already
+supplied external checkout. Runtime CLI calls use `--source-root`.

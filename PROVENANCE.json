@@ -1,5 +1,5 @@
 {
-  "edition": "0.1.1",
+  "edition": "0.1.2",
   "source_HEAD": "10ede0534b4282eea8ff13216a0585449cc956c2",
   "source_branch": "feat/global-visual-language-v1",
   "working_snapshot_cutoff_utc": "2026-11-07T04:32:45.942303+00:00",
@@ -1351,5 +1351,7 @@
   },
   "scope": "Current reviewed evidence/content/case core; remaining workbench modules and owner integrations are still under release review",
   "core_edition_provenance": "0.1.0 retained; frozen_source_files describe the original core only",
-  "capture_increment_provenance": "CAPTURE_PROVENANCE.json"
+  "capture_increment_provenance": "CAPTURE_PROVENANCE.json",
+  "previous_public_commit": "430e7e2f53171d9dadcc9b9071a7739032fd6286",
+  "formatter_increment_provenance": "FORMATTER-PROVENANCE.json"
 }

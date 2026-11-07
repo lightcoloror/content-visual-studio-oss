@@ -1,0 +1,132 @@
+{
+  "schema_version": "0.2",
+  "content_id": "synthetic-echo-garden-001",
+  "title": "虚构回归：回声花园的观察卡",
+  "primary_format": "graphic-note",
+  "status": "feedback",
+  "owner_thread": null,
+  "provenance": {
+    "sources": [],
+    "verified_facts": [],
+    "uncertainties": [
+      "本内容完全虚构，仅用于合同回归。"
+    ],
+    "forbidden_claims": [
+      "不得被解释为真实发布、真实账号表现或客户反馈。"
+    ]
+  },
+  "gates": {
+    "fact": {
+      "status": "pass",
+      "reason": "明确是合成 fixture。"
+    },
+    "privacy": {
+      "status": "pass",
+      "reason": "不含真实个人或客户信息。"
+    },
+    "compliance": {
+      "status": "pass",
+      "reason": "不提供医疗、保险或投资建议。"
+    },
+    "rights": {
+      "status": "pass",
+      "reason": "不含外部媒体。"
+    }
+  },
+  "intent": {
+    "topic": "虚构的回声花园观察卡",
+    "speaker_role": "合同回归夹具",
+    "audience": "自动化测试",
+    "content_object": "一条没有真实受众的虚构图文",
+    "desired_action": "验证对象关系，不诱导任何外部行为。",
+    "risk_boundary": "不得推断真实客户结论或平台推荐机制。"
+  },
+  "composition": {
+    "expression_mode": "fixture",
+    "voice_profile": "voice/synthetic-contract-regression",
+    "voice_profile_version": "1",
+    "semantic_reversibility": {
+      "status": "pass"
+    },
+    "retention_mode": "summary-only",
+    "canonical_summary": "虚构的回声花园观察卡，用于验证经营数据合同。"
+  },
+  "channels": {
+    "wechat_article": {
+      "status": "draft",
+      "title": "Synthetic formatting seed",
+      "body_ref": "article.md"
+    }
+  },
+  "visual": {
+    "visual_profile": "visual/synthetic-contract-regression",
+    "visual_profile_version": "1",
+    "route": "none",
+    "cognitive_anchors": [],
+    "assets": [],
+    "render_recipe": {
+      "renderer": "none",
+      "output_format": "none",
+      "output_refs": []
+    }
+  },
+  "qa": {
+    "deterministic": [],
+    "promptfoo": {
+      "status": "not-run"
+    },
+    "human_review": {
+      "status": "required",
+      "reviewer": null,
+      "reviewed_at": null
+    }
+  },
+  "publication": {
+    "boundary": "manual-only",
+    "receipts": []
+  },
+  "feedback": {
+    "signal_status": "no_signal",
+    "platform_signals": {},
+    "business_signals": {},
+    "qualitative_feedback": [],
+    "learning_decision": "insufficient-evidence",
+    "content_signal_status": "content_no_signal",
+    "business_signal_status": "not-observed",
+    "measurement_layers": {
+      "admission": [
+        {
+          "name": "synthetic_contract_admitted",
+          "value": "yes",
+          "source": "fixture"
+        }
+      ],
+      "attraction": [],
+      "consumption": [],
+      "value": [],
+      "negative_feedback": [],
+      "business": []
+    }
+  },
+  "operating_plan": {
+    "production_unit": "real-problem-or-service-action",
+    "origin_kind": "research-synthesis",
+    "private_validation": {
+      "channel": "private_conversation",
+      "status": "feedback-recorded",
+      "note": "仅模拟时序，不代表发布。"
+    }
+  },
+  "operating_refs": {
+    "account_ids": [
+      "acct_01J8Z8R0E7X7K7Q8M6D3C2B1A0"
+    ],
+    "topic_ids": [
+      "topic_01J8Z8R0E7X7K7Q8M6D3C2B1A1"
+    ],
+    "publication_ids": [
+      "pub_01J8Z8R0E7X7K7Q8M6D3C2B1A2"
+    ]
+  },
+  "tags": []
+}
