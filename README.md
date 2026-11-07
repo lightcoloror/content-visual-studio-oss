@@ -215,3 +215,23 @@ cleanup; there is no production quarantine/purge command.
 combinations using packaged first-party contracts; it does not classify content
 or judge visual quality. No new rendering, research or routing engine is added.
 See SYNTHESIS-PROVENANCE.json and SYNTHESIS-ACCEPTANCE.md for scope and evidence.
+
+## Synthetic feedback and bounded preview (0.1.6)
+
+Use `content-studio-feedback --help` or `content-studio-preview --help`; neither
+starts a service. Install the optional `feedback` dependencies for native metric
+intake/live resource monitoring. The Main Owner is separate, explicit and loaded
+through its existing registry contract; no private sibling is guessed.
+
+For feedback preparation supply `--workspace-root` and optionally `--tool-registry`,
+and set `CONTENT_STUDIO_REVIEW_WORKSPACE` to the explicit permitted review output
+root. `prepare` accepts only synthetic candidate bundles and named synthetic CSV
+templates. It writes immutable candidate review records, never publication/CRM/
+outcome ledgers. Unknown effort remains unknown; account-day data is not assigned
+to a content item.
+
+Starting `serve-synthetic` is an explicit finite loopback service action. The
+standalone preview likewise requires `--root` pointing to the generated synthetic
+site, never a whole checkout. Do not treat the supplied handler tests as a live
+service/browser or production-account acceptance. See FEEDBACK-PROVENANCE.json
+and FEEDBACK-ACCEPTANCE.md for scope and unverified parts.

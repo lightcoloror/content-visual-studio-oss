@@ -1,0 +1,48 @@
+{
+  "schema": "content-studio.feedback-public-provenance.v1",
+  "edition": "0.1.6",
+  "license": "Apache-2.0 first-party edition",
+  "public_base": "89c6efb868dbc0d755538258e262d136f0dcaa80",
+  "main_owner": {
+    "repository": "https://github.com/lightcoloror/self-media-creation-system-oss",
+    "commit": "3b494d927521b8d0787a11177f5cdaf51327f9b9",
+    "bundled": false
+  },
+  "source_files": [
+    {
+      "path": "scripts/feedback_intake.py",
+      "source_sha256": "3339c72aec3b03f7bd89422ce6999a2819f27fd49d8b50a85899f1d0e840c040",
+      "distributed_sha256": "fc3f4ed78c3debd34181dd1d1efb4541791aed217ff1743fc6e76a4135aa700e",
+      "source_kind": "frozen working first-party bytes; no clean private HEAD claim"
+    },
+    {
+      "path": "scripts/serve.py",
+      "source_sha256": "77661cd7c5b30e0b053fcf734feda8d6aba097f0ad073c648b9d361ac87edaf5",
+      "distributed_sha256": "8e560cb2896a0ed9352bf61bdc6d2390917f4fbfc65ccc11ec79a43097060dbb",
+      "source_kind": "frozen working first-party bytes; no clean private HEAD claim"
+    }
+  ],
+  "reference_test_sha256": "745a25427388a4167562e1c4f034453638235b71586120298199c761e5dcf1d6",
+  "fixture_projection": "Explicit fictional IDs; no verified facts; generic conceptual anchor. Never real customer/account data.",
+  "adaptations": [
+    "Existing registered_self_media native Owner loader and explicit common workspace; lazy imports for help",
+    "Existing review output-root check before writes; immutable native candidate-only feedback retained",
+    "Import template status rechecked; no synthetic CSV content attribution or publication ledger writes",
+    "Original stdlib static server restricted to generated synthetic review root and finite loopback lifetime; no repository listing",
+    "Feedback server reuses bounded static handler; Host/Origin/token/body-size/resource checks retained"
+  ],
+  "source_tests": {
+    "pass": 41,
+    "skip": 0,
+    "socket_bind_connect_blocked_in_host_test_process": true,
+    "native_main_feedback_and_metric_apis": true,
+    "http_handlers": "real code, simulated socket/process objects",
+    "actual_server_or_browser_started": false
+  },
+  "excludes": [
+    "private histories/paths/task receipts",
+    "real data/account/health/manuscript/voice/media",
+    "CMS bundle/browser or binary assets",
+    "local-rough-cut P1"
+  ]
+}

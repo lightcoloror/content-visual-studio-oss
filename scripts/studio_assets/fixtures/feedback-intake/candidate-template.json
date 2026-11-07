@@ -1,0 +1,176 @@
+{
+  "channels": {
+    "article": {
+      "adapter_version": "0.2.0",
+      "platform_metadata": {
+        "outcome_feedback_binding": {
+          "closure_run_id": "synthetic-feedback-low-friction-v1"
+        }
+      },
+      "status": "draft",
+      "summary": "虚构样例",
+      "title": "虚构 · 资料整理"
+    }
+  },
+  "composition": {
+    "canonical_body": "资料哈可以按项目整理。\n",
+    "canonical_summary": "资料整理虚构样例",
+    "expression_mode": "evidence-led-synthesis",
+    "retention_mode": "full-text",
+    "semantic_reversibility": {
+      "meaning_drift": [],
+      "reverse_paraphrase": "资料整理虚构样例",
+      "status": "needs-review"
+    },
+    "voice_profile": "voice/source-preserved",
+    "voice_profile_version": "1.0"
+  },
+  "content_id": "synthetic-feedback-library",
+  "created_at": "2026-08-05T12:00:00+08:00",
+  "feedback": {
+    "business_signal_status": "not-observed",
+    "business_signals": {},
+    "content_signal_status": "not-observed",
+    "learning_decision": "none",
+    "next_test": "Synthetic publication fixtures are evaluated separately; this draft remains draft_only.",
+    "platform_signals": {},
+    "signal_status": "not-observed"
+  },
+  "gates": {
+    "compliance": {
+      "reason": "渠道、行业和表达合规需由发布者人工确认。",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "status": "needs-review"
+    },
+    "fact": {
+      "reason": "只纳入 guarded_final_answer 已验证且具备 verified support 的 claims；成稿仍需人工事实复核。",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "status": "needs-review"
+    },
+    "privacy": {
+      "reason": "research-output.v1 不替代发布前的隐私与脱敏复核。",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "status": "needs-review"
+    },
+    "rights": {
+      "reason": "引用总量已通过适配器上限检查；视觉线索和最终素材版权仍需人工核验。",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "status": "needs-review"
+    }
+  },
+  "intent": {
+    "audience": "虚构工程读者",
+    "content_object": "虚构文稿",
+    "desired_action": "帮助读者理解已核验证据、已知边界和仍待确认的问题",
+    "main_angle": "资料整理虚构样例",
+    "platform_intent": "draft_only；平台适配与发布均需人工完成",
+    "risk_boundary": "Only synthetic, reviewed, non-synthesis fixture evidence is included; no real-world frequency or suitability conclusion is implied.",
+    "speaker_role": "证据型综合稿编辑",
+    "topic": "虚构 · 资料整理"
+  },
+  "operating_plan": {
+    "origin_kind": "research-synthesis",
+    "private_validation": {
+      "channel": "private_conversation",
+      "note": "完成事实、隐私、合规和声纹人工复核后才可进入发布判断。",
+      "status": "blocked"
+    },
+    "production_unit": "real-problem-or-service-action"
+  },
+  "operating_refs": {
+    "account_ids": [
+      "acct_00000000000000000000000001"
+    ],
+    "topic_ids": [
+      "topic_00000000000000000000000001"
+    ]
+  },
+  "owner_thread": null,
+  "primary_format": "longform",
+  "provenance": {
+    "forbidden_claims": [
+      "Only synthetic, reviewed, non-synthesis fixture evidence is included; no real-world frequency or suitability conclusion is implied.",
+      "不得把 candidate、reviewed 或 AI synthesis 升级为 verified fact。",
+      "不得把候选视觉线索描述成已经拍摄或已经取得的素材。"
+    ],
+    "sources": [],
+    "uncertainties": [
+      "synthetic-only fixture; the frequency count and content do not describe real users or markets"
+    ],
+    "verified_facts": []
+  },
+  "publication": {
+    "boundary": "manual-only",
+    "receipts": []
+  },
+  "qa": {
+    "deterministic": [],
+    "human_review": {
+      "note": "复核事实、隐私、合规、版权、本人声纹和渠道适配。",
+      "reviewed_at": null,
+      "reviewer": null,
+      "status": "required"
+    },
+    "promptfoo": {
+      "status": "not-run",
+      "suite": "research-output-adapter"
+    }
+  },
+  "schema_version": "0.2",
+  "status": "candidate",
+  "tags": [
+    "draft-only",
+    "manual-only",
+    "research-synthesis",
+    "synthetic-only"
+  ],
+  "title": "虚构 · 资料整理",
+  "updated_at": "2026-08-05T12:00:00+08:00",
+  "visual": {
+    "article_visual_plan": {
+      "ai_generation_policy": "explicit-opt-in-only",
+      "article_ref": "research-9af53d1845bc537784dd42b4.article.md",
+      "slots": [
+        {
+          "anchor": {
+            "kind": "heading",
+            "occurrence": 1,
+            "value": "证据结论 1"
+          },
+          "caption": "结构图候选；不代表已经存在镜头或素材。",
+          "layout": "full-width",
+          "media_role": "explanatory",
+          "purpose": "把证据关系整理成解释性结构图；具体素材和版式待人工确认",
+          "route": "diagram",
+          "slot_id": "research-visual-01",
+          "status": "planned"
+        }
+      ],
+      "visual_mode": "diagram-led",
+      "workflow": "human-in-the-loop"
+    },
+    "assets": [],
+    "cognitive_anchors": [
+      "Fictional draft; no measured outcome is asserted."
+    ],
+    "render_recipe": {
+      "height": null,
+      "output_format": "html",
+      "output_refs": [
+        "research-9af53d1845bc537784dd42b4.article.html"
+      ],
+      "renderer": "html-playwright",
+      "renderer_version": "article_visual_pipeline.render_article_html",
+      "width": 1200
+    },
+    "route": "none",
+    "template": "article-visual-plan-candidate-only",
+    "theme": "evidence-led-synthesis",
+    "visual_profile": "visual/evidence-led-article",
+    "visual_profile_version": "0.1"
+  }
+}
