@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.lightcolor/case-video-final-cut-compliance-review.v1.schema.json",
+  "title": "Case video exact final-cut compliance review",
+  "description": "绑定最终视频、字幕、封面、发布文案、账号、机构审批和客户最终确认的发布前人工回执。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "review_id", "script_id", "content_id", "synthetic_only", "stage",
+    "inputs", "publication_instance", "gates", "subject_sha256", "review_mode", "reviewer",
+    "reviewed_at", "decision", "publication_boundary"
+  ],
+  "properties": {
+    "schema_version": { "const": "case-video-final-cut-compliance-review.v1" },
+    "review_id": { "type": "string", "pattern": "^final-cut-review-[a-z0-9][a-z0-9-]{5,63}$" },
+    "script_id": { "type": "string", "pattern": "^case-script-[a-z0-9][a-z0-9-]{7,63}$" },
+    "content_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{5,79}$" },
+    "synthetic_only": { "type": "boolean" },
+    "stage": { "const": "exact-platform-preview-pre-publication" },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["script_review", "final_video", "subtitles", "cover", "customer_final_confirmation", "institution_content_approval", "publishing_account_authorization", "rights_manifest", "archive_withdrawal_plan"],
+      "properties": {
+        "script_review": { "$ref": "#/$defs/artifactRef" },
+        "final_video": { "$ref": "#/$defs/artifactRef" },
+        "subtitles": { "$ref": "#/$defs/artifactRef" },
+        "cover": { "$ref": "#/$defs/artifactRef" },
+        "customer_final_confirmation": { "$ref": "#/$defs/artifactRef" },
+        "institution_content_approval": { "$ref": "#/$defs/artifactRef" },
+        "publishing_account_authorization": { "$ref": "#/$defs/artifactRef" },
+        "rights_manifest": { "$ref": "#/$defs/artifactRef" },
+        "archive_withdrawal_plan": { "$ref": "#/$defs/artifactRef" }
+      }
+    },
+    "publication_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["platform", "account_id_hash", "audience_scope", "region", "planned_at", "title", "caption", "cta", "links", "comment_prompt", "advertising_label", "ai_generated_label"],
+      "properties": {
+        "platform": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "account_id_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "audience_scope": { "enum": ["public-feed", "private-group", "point-to-point", "synthetic-dry-run"] },
+        "region": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "planned_at": { "type": "string", "format": "date-time" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "caption": { "type": "string", "maxLength": 3000 },
+        "cta": { "type": "string", "maxLength": 500 },
+        "links": { "type": "array", "uniqueItems": true, "items": { "type": "string", "maxLength": 500 } },
+        "comment_prompt": { "type": "string", "maxLength": 500 },
+        "advertising_label": { "enum": ["not-applicable-documented", "required-and-applied", "blocked"] },
+        "ai_generated_label": { "enum": ["not-applicable-documented", "required-and-applied", "blocked"] }
+      }
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exact_artifact_binding", "institution_account", "consent_privacy", "disclosure_labels", "rights", "platform_preview", "archive_withdrawal"],
+      "properties": {
+        "exact_artifact_binding": { "$ref": "#/$defs/gateDecision" },
+        "institution_account": { "$ref": "#/$defs/gateDecision" },
+        "consent_privacy": { "$ref": "#/$defs/gateDecision" },
+        "disclosure_labels": { "$ref": "#/$defs/gateDecision" },
+        "rights": { "$ref": "#/$defs/gateDecision" },
+        "platform_preview": { "$ref": "#/$defs/gateDecision" },
+        "archive_withdrawal": { "$ref": "#/$defs/gateDecision" }
+      }
+    },
+    "subject_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "review_mode": { "enum": ["synthetic-fixture-review", "human-local-prepublication-review"] },
+    "reviewer": { "type": "string", "pattern": "^(synthetic-fixture-reviewer|local-reviewer-[a-z0-9-]{4,48})$" },
+    "reviewed_at": { "type": "string", "format": "date-time" },
+    "decision": { "enum": ["verified_synthetic_dry_run", "approved_for_manual_publication"] },
+    "publication_boundary": { "const": "manual-only" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "synthetic_only": { "const": true } }, "required": ["synthetic_only"] },
+      "then": {
+        "properties": {
+          "review_mode": { "const": "synthetic-fixture-review" },
+          "reviewer": { "const": "synthetic-fixture-reviewer" },
+          "decision": { "const": "verified_synthetic_dry_run" }
+        }
+      },
+      "else": {
+        "properties": {
+          "review_mode": { "const": "human-local-prepublication-review" },
+          "reviewer": { "pattern": "^local-reviewer-[a-z0-9-]{4,48}$" },
+          "decision": { "const": "approved_for_manual_publication" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "schema_version", "sha256"],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "schema_version": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "gateDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reviewed_check_ids", "reasons", "evidence"],
+      "properties": {
+        "status": { "const": "pass" },
+        "reviewed_check_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,79}$" } },
+        "reasons": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1, "maxLength": 500 } },
+        "evidence": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1, "maxLength": 500 } }
+      }
+    }
+  }
+}

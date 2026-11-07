@@ -1,0 +1,394 @@
+{
+  "schema": "research-output.v1",
+  "schema_version": "1.0.0",
+  "research_id": "public-installed-projection",
+  "question": "Should a fictional training team use one morning grip reading alone to decide the day's training load?",
+  "scope": {
+    "statement": "Offline bounded evidence-to-brief acceptance run.",
+    "constraints": [
+      "candidate-only",
+      "no-external-api",
+      "no-model-memory",
+      "synthetic-or-deidentified-fixture"
+    ]
+  },
+  "audience": "coaches evaluating a synthetic monitoring protocol",
+  "requested_outputs": [
+    "article",
+    "review-packet.v1"
+  ],
+  "sources": [
+    {
+      "source_id": "src-opinion",
+      "title": "Synthetic opinion note",
+      "url": null,
+      "archive_path": "fixture://synthetic-readiness/opinion",
+      "source_type": "synthetic_opinion",
+      "publisher": "Synthetic Fixture Publisher",
+      "fetched_at": "2026-08-27T00:00:00+08:00",
+      "freshness": "not_applicable",
+      "hash": {
+        "algorithm": "sha256",
+        "value": "1766388a5b8b5c89288a1195c695beb4e31e01b704f74a47602c174b48ebd5ef",
+        "status": "verified"
+      },
+      "quality": "mixed",
+      "review_status": "reviewed",
+      "ref_status": "resolved",
+      "provenance": {
+        "created_at": "2026-08-27T00:00:00+08:00",
+        "review_refs": [
+          "fixture-source-review:src-opinion"
+        ],
+        "note_fields": {
+          "canonical_ref": "fixture://synthetic-readiness/opinion",
+          "artifact_sha256": "1766388a5b8b5c89288a1195c695beb4e31e01b704f74a47602c174b48ebd5ef",
+          "archive_contract": "inline_fixture.v1"
+        }
+      }
+    },
+    {
+      "source_id": "src-pilot",
+      "title": "Synthetic measurement pilot",
+      "url": null,
+      "archive_path": "fixture://synthetic-readiness/pilot",
+      "source_type": "synthetic_report",
+      "publisher": "Synthetic Fixture Publisher",
+      "fetched_at": "2026-08-27T00:00:00+08:00",
+      "freshness": "not_applicable",
+      "hash": {
+        "algorithm": "sha256",
+        "value": "710e3e85c612e3cf73c96a95695ddfc128163754e714d9c61fbf0e647cfcde67",
+        "status": "verified"
+      },
+      "quality": "good",
+      "review_status": "reviewed",
+      "ref_status": "resolved",
+      "provenance": {
+        "created_at": "2026-08-27T00:00:00+08:00",
+        "review_refs": [
+          "fixture-source-review:src-pilot"
+        ],
+        "note_fields": {
+          "canonical_ref": "fixture://synthetic-readiness/pilot",
+          "artifact_sha256": "710e3e85c612e3cf73c96a95695ddfc128163754e714d9c61fbf0e647cfcde67",
+          "archive_contract": "inline_fixture.v1"
+        }
+      }
+    },
+    {
+      "source_id": "src-protocol",
+      "title": "Synthetic readiness protocol",
+      "url": null,
+      "archive_path": "fixture://synthetic-readiness/protocol",
+      "source_type": "synthetic_protocol",
+      "publisher": "Synthetic Fixture Publisher",
+      "fetched_at": "2026-08-27T00:00:00+08:00",
+      "freshness": "not_applicable",
+      "hash": {
+        "algorithm": "sha256",
+        "value": "b05c17041e18f591983749c55fe30e528b7a4ba5082cff566b9b03d318765c6f",
+        "status": "verified"
+      },
+      "quality": "good",
+      "review_status": "reviewed",
+      "ref_status": "resolved",
+      "provenance": {
+        "created_at": "2026-08-27T00:00:00+08:00",
+        "review_refs": [
+          "fixture-source-review:src-protocol"
+        ],
+        "note_fields": {
+          "canonical_ref": "fixture://synthetic-readiness/protocol",
+          "artifact_sha256": "b05c17041e18f591983749c55fe30e528b7a4ba5082cff566b9b03d318765c6f",
+          "archive_contract": "inline_fixture.v1"
+        }
+      }
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim-protocol",
+      "text": "The synthetic protocol requires a trend and a second signal before changing load.",
+      "claim_status": "open",
+      "review_status": "candidate",
+      "evidence_status": "candidate",
+      "evidence_ids": [
+        "ev-protocol-fact"
+      ],
+      "supporting_evidence_ids": [
+        "ev-protocol-fact"
+      ],
+      "contradicting_evidence_ids": [],
+      "context_evidence_ids": [],
+      "source_ids": [
+        "src-protocol"
+      ]
+    },
+    {
+      "claim_id": "claim-variation",
+      "text": "The synthetic pilot reports day-to-day variation under unchanged workload.",
+      "claim_status": "open",
+      "review_status": "candidate",
+      "evidence_status": "candidate",
+      "evidence_ids": [
+        "ev-pilot-fact"
+      ],
+      "supporting_evidence_ids": [
+        "ev-pilot-fact"
+      ],
+      "contradicting_evidence_ids": [],
+      "context_evidence_ids": [],
+      "source_ids": [
+        "src-pilot"
+      ]
+    },
+    {
+      "claim_id": "claim-cause",
+      "text": "The variation was caused by neural recruitment alone.",
+      "claim_status": "open",
+      "review_status": "candidate",
+      "evidence_status": "missing",
+      "evidence_ids": [
+        "ev-cause-inference"
+      ],
+      "supporting_evidence_ids": [
+        "ev-cause-inference"
+      ],
+      "contradicting_evidence_ids": [],
+      "context_evidence_ids": [],
+      "source_ids": [
+        "src-pilot"
+      ]
+    },
+    {
+      "claim_id": "claim-single-sufficient",
+      "text": "One morning grip reading is sufficient for every training decision.",
+      "claim_status": "open",
+      "review_status": "candidate",
+      "evidence_status": "contradicted",
+      "evidence_ids": [
+        "ev-opinion-claim",
+        "ev-pilot-contradiction"
+      ],
+      "supporting_evidence_ids": [
+        "ev-opinion-claim"
+      ],
+      "contradicting_evidence_ids": [
+        "ev-pilot-contradiction"
+      ],
+      "context_evidence_ids": [],
+      "source_ids": [
+        "src-opinion",
+        "src-pilot"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev-protocol-fact",
+      "claim_id": "claim-protocol",
+      "source_id": "src-protocol",
+      "relation": "supports",
+      "evidence_status": "verified",
+      "review_status": "reviewed",
+      "confidence": "high",
+      "excerpt": "The protocol text explicitly requires repeated measures and a second signal.",
+      "observed_at": "2026-08-27T00:00:00+08:00",
+      "source_path": "fixture://synthetic-readiness/protocol",
+      "artifact_sha256": "b05c17041e18f591983749c55fe30e528b7a4ba5082cff566b9b03d318765c6f",
+      "ai_synthesis": false
+    },
+    {
+      "evidence_id": "ev-pilot-fact",
+      "claim_id": "claim-variation",
+      "source_id": "src-pilot",
+      "relation": "supports",
+      "evidence_status": "verified",
+      "review_status": "reviewed",
+      "confidence": "high",
+      "excerpt": "The synthetic pilot records variation under unchanged workload.",
+      "observed_at": "2026-08-27T00:00:00+08:00",
+      "source_path": "fixture://synthetic-readiness/pilot",
+      "artifact_sha256": "710e3e85c612e3cf73c96a95695ddfc128163754e714d9c61fbf0e647cfcde67",
+      "ai_synthesis": false
+    },
+    {
+      "evidence_id": "ev-cause-inference",
+      "claim_id": "claim-cause",
+      "source_id": "src-pilot",
+      "relation": "supports",
+      "evidence_status": "candidate",
+      "review_status": "candidate",
+      "confidence": "unknown",
+      "excerpt": "The fixture does not identify a causal mechanism.",
+      "observed_at": "2026-08-27T00:00:00+08:00",
+      "source_path": "fixture://synthetic-readiness/pilot",
+      "artifact_sha256": "710e3e85c612e3cf73c96a95695ddfc128163754e714d9c61fbf0e647cfcde67",
+      "ai_synthesis": true
+    },
+    {
+      "evidence_id": "ev-opinion-claim",
+      "claim_id": "claim-single-sufficient",
+      "source_id": "src-opinion",
+      "relation": "supports",
+      "evidence_status": "candidate",
+      "review_status": "reviewed",
+      "confidence": "unknown",
+      "excerpt": "The opinion note asserts sufficiency but does not establish it as a source fact.",
+      "observed_at": "2026-08-27T00:00:00+08:00",
+      "source_path": "fixture://synthetic-readiness/opinion",
+      "artifact_sha256": "1766388a5b8b5c89288a1195c695beb4e31e01b704f74a47602c174b48ebd5ef",
+      "ai_synthesis": false
+    },
+    {
+      "evidence_id": "ev-pilot-contradiction",
+      "claim_id": "claim-single-sufficient",
+      "source_id": "src-pilot",
+      "relation": "contradicts",
+      "evidence_status": "verified",
+      "review_status": "reviewed",
+      "confidence": "high",
+      "excerpt": "The pilot states that single readings were not decision-grade.",
+      "observed_at": "2026-08-27T00:00:00+08:00",
+      "source_path": "fixture://synthetic-readiness/pilot",
+      "artifact_sha256": "710e3e85c612e3cf73c96a95695ddfc128163754e714d9c61fbf0e647cfcde67",
+      "ai_synthesis": false
+    }
+  ],
+  "evidence_links": [
+    {
+      "evidence_id": "ev-protocol-fact",
+      "claim_id": "claim-protocol",
+      "source_id": "src-protocol",
+      "relation": "supports",
+      "evidence_status": "verified"
+    },
+    {
+      "evidence_id": "ev-pilot-fact",
+      "claim_id": "claim-variation",
+      "source_id": "src-pilot",
+      "relation": "supports",
+      "evidence_status": "verified"
+    },
+    {
+      "evidence_id": "ev-cause-inference",
+      "claim_id": "claim-cause",
+      "source_id": "src-pilot",
+      "relation": "supports",
+      "evidence_status": "candidate"
+    },
+    {
+      "evidence_id": "ev-opinion-claim",
+      "claim_id": "claim-single-sufficient",
+      "source_id": "src-opinion",
+      "relation": "supports",
+      "evidence_status": "candidate"
+    },
+    {
+      "evidence_id": "ev-pilot-contradiction",
+      "claim_id": "claim-single-sufficient",
+      "source_id": "src-pilot",
+      "relation": "contradicts",
+      "evidence_status": "verified"
+    }
+  ],
+  "contradictions": [
+    {
+      "claim_id": "claim-single-sufficient",
+      "evidence_id": "ev-pilot-contradiction",
+      "source_id": "src-pilot",
+      "evidence_status": "verified",
+      "resolution_status": "unresolved"
+    }
+  ],
+  "unknowns": [
+    {
+      "code": "evidence_gap:claim-cause",
+      "severity": "blocker",
+      "message": "no_reviewed_source_fact_support",
+      "claim_id": "claim-cause",
+      "source_id": null,
+      "evidence_id": null
+    }
+  ],
+  "review_status": {
+    "overall": "candidate",
+    "human_review_required": true,
+    "events": []
+  },
+  "evidence_status": {
+    "overall": "contradicted",
+    "counts": {
+      "candidate": 2,
+      "verified": 3,
+      "rejected": 0,
+      "contradictions": 1
+    }
+  },
+  "completeness": {
+    "ready_for_answer": false,
+    "blocking_gates": [
+      "candidate_evidence:ev-cause-inference",
+      "candidate_evidence:ev-opinion-claim",
+      "evidence_gap:claim-cause",
+      "human_review_required",
+      "unresolved_contradiction:claim-single-sufficient"
+    ],
+    "warnings": [
+      "Synthetic or deidentified fixture evidence is not real-world usage proof."
+    ],
+    "coverage": {
+      "source_count": 3,
+      "claim_count": 4,
+      "claims_with_evidence": 4,
+      "candidate_evidence": 2,
+      "unresolved_contradictions": 1,
+      "unknown_count": 1
+    }
+  },
+  "guarded_final_answer": {
+    "status": "blocked",
+    "ready": false,
+    "answer": null,
+    "claim_ids": [],
+    "evidence_ids": [],
+    "source_ids": [],
+    "blocking_gates": [
+      "candidate_evidence:ev-cause-inference",
+      "candidate_evidence:ev-opinion-claim",
+      "evidence_gap:claim-cause",
+      "human_review_required",
+      "unresolved_contradiction:claim-single-sufficient"
+    ],
+    "warnings": [
+      "Use the guarded synthesis only as a candidate for human review."
+    ],
+    "guardrail": "Candidate evidence and synthetic review state cannot be promoted to a verified final answer."
+  },
+  "media_refs": [],
+  "visual_leads": [],
+  "quotable_facts": [],
+  "provenance": {
+    "input_files": [
+      {
+        "path": "fixture.json",
+        "sha256": "35bee6c7b56cdb1c0692f2959b35b3f2f12a389c0dfc9540f65a125c203cb38e",
+        "status": "present"
+      }
+    ],
+    "source_systems": [
+      "question-research-poc",
+      "web-content-fetcher-archive-contract"
+    ],
+    "offline_only": true,
+    "external_api_called": false,
+    "model_memory_used_as_evidence": false
+  },
+  "generator": {
+    "name": "question-research-poc",
+    "component": "research_output",
+    "version": "research-output.v1"
+  },
+  "created_at": "2026-08-27T00:00:00+08:00"
+}

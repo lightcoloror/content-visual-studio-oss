@@ -1,0 +1,48 @@
+{
+  "schema_version": "review-packet.v1",
+  "facade_contract": "review-packet.v1",
+  "native_contract": "question-research-offline-review-packet.v1",
+  "producer": "question-research-poc",
+  "closure_run_id": "public-installed-projection",
+  "input_sha256": "35bee6c7b56cdb1c0692f2959b35b3f2f12a389c0dfc9540f65a125c203cb38e",
+  "status": "pending_human_review",
+  "evidence_status": "candidate",
+  "suggested_points": [
+    "Review every admitted source hash and freshness field.",
+    "Resolve contradictions and unknowns before any final-answer request.",
+    "Keep the content brief draft-only and preserve claim/evidence/source references."
+  ],
+  "blocking_gates": [
+    "contradiction:claim-single-sufficient",
+    "unknown:claim-cause"
+  ],
+  "contradictions": [
+    {
+      "claim_id": "claim-single-sufficient",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [
+        "ev-pilot-contradiction"
+      ],
+      "resolution_status": "human_review_required"
+    }
+  ],
+  "unknowns": [
+    {
+      "claim_id": "claim-cause",
+      "reason": "no_reviewed_source_fact_support"
+    }
+  ],
+  "evidence_refs": [
+    "sha256:e7e347509493cdf9d3390de962994774ad2fbd49996acf1617acd38a8c6474e3#claim_graph",
+    "sha256:60a82e6cea4ba107a7cd4e3daa25b4260bedc39f004926249f839a23669e3eed#content_brief",
+    "sha256:4f594cd5aac1c6061289952c56365774b9fba9dd5f7aa634c42442dec9bb978b#evidence_bundle",
+    "sha256:c5a1de0bd837056afc7e97ed5d3435f36c20e82ccaeeda9263ba604a9d74afd9#gap_review"
+  ],
+  "decision_question": "Should this candidate-only offline pack proceed to explicit human review?",
+  "authority": {
+    "execution_authorized": false,
+    "publish_authorized": false,
+    "upload_authorized": false,
+    "evidence_promotion_authorized": false
+  }
+}

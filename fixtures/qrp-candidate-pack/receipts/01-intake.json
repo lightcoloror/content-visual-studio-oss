@@ -1,0 +1,19 @@
+{
+  "schema": "question-research-bounded-deep-loop-stage-receipt.v1",
+  "contract_version": "1.0.0",
+  "closure_run_id": "public-installed-projection",
+  "stage_id": "intake",
+  "stage_index": 1,
+  "input_sha256": "35bee6c7b56cdb1c0692f2959b35b3f2f12a389c0dfc9540f65a125c203cb38e",
+  "previous_receipt_sha256": null,
+  "artifact": {
+    "path": "artifacts/01-intake.json",
+    "sha256": "6679c135f345007df4b8b5e13ea09e650f155fde9319dd26fea8aa52cf10c098"
+  },
+  "execution_status": "complete",
+  "research_state": "candidate_only",
+  "network_called": false,
+  "provider_called": false,
+  "external_write_performed": false,
+  "recorded_at": "2026-08-27T00:00:00+08:00"
+}

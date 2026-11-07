@@ -1,0 +1,234 @@
+{
+  "schema_version": "0.1",
+  "updated_at": "2026-11-07T00:00:00+00:00",
+  "updated_by": "Codex public-edition source audit",
+  "policy": {
+    "candidate_is_not_clearance": true,
+    "selected_stock_requires_original_page": true,
+    "selected_stock_requires_commercial_scope": true,
+    "selected_stock_requires_license_record": true,
+    "aggregator_cannot_be_final_source": true
+  },
+  "sources": {
+    "local-library": {
+      "name": "Local rights-cleared library",
+      "homepage": "local://visual-library",
+      "tier": "default",
+      "source_type": "local",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "per-asset",
+      "selection_policy": "direct-with-record",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "pexels": {
+      "name": "Pexels",
+      "homepage": "https://www.pexels.com/",
+      "tier": "default",
+      "source_type": "provider",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "not-required",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "pixabay": {
+      "name": "Pixabay",
+      "homepage": "https://pixabay.com/",
+      "tier": "default",
+      "source_type": "provider",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "not-required",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "unsplash": {
+      "name": "Unsplash",
+      "homepage": "https://unsplash.com/",
+      "tier": "default",
+      "source_type": "provider",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "not-required",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "stocksnap": {
+      "name": "StockSnap",
+      "homepage": "https://stocksnap.io/",
+      "tier": "default",
+      "source_type": "provider",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "not-required",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "burst-shopify": {
+      "name": "Burst by Shopify",
+      "homepage": "https://www.shopify.com/stock-photos",
+      "tier": "secondary",
+      "source_type": "provider",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "per-asset",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "kaboompics": {
+      "name": "Kaboompics",
+      "homepage": "https://kaboompics.com/",
+      "tier": "secondary",
+      "source_type": "provider",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "per-asset",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "picjumbo": {
+      "name": "Picjumbo",
+      "homepage": "https://picjumbo.com/",
+      "tier": "secondary",
+      "source_type": "provider",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "not-required",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "gratisography": {
+      "name": "Gratisography",
+      "homepage": "https://gratisography.com/",
+      "tier": "secondary",
+      "source_type": "provider",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "not-required",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "openverse": {
+      "name": "Openverse",
+      "homepage": "https://openverse.org/",
+      "tier": "candidate-only",
+      "source_type": "aggregator",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "per-asset",
+      "selection_policy": "original-source-required",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "flickr": {
+      "name": "Flickr",
+      "homepage": "https://www.flickr.com/",
+      "tier": "secondary",
+      "source_type": "provider",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "per-asset",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "wikimedia-commons": {
+      "name": "Wikimedia Commons",
+      "homepage": "https://commons.wikimedia.org/",
+      "tier": "specialist",
+      "source_type": "repository",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "per-asset",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "cdc-phil": {
+      "name": "CDC Public Health Image Library",
+      "homepage": "https://phil.cdc.gov/",
+      "tier": "medical-specialist",
+      "source_type": "institutional-repository",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "required",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "nci-visuals-online": {
+      "name": "NCI Visuals Online",
+      "homepage": "https://visualsonline.cancer.gov/",
+      "tier": "medical-specialist",
+      "source_type": "institutional-repository",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "per-asset",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "servier-medical-art": {
+      "name": "Servier Medical Art",
+      "homepage": "https://smart.servier.com/",
+      "tier": "medical-specialist",
+      "source_type": "illustration-library",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "required",
+      "selection_policy": "direct-with-record",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "wellcome-collection": {
+      "name": "Wellcome Collection",
+      "homepage": "https://wellcomecollection.org/works",
+      "tier": "medical-specialist",
+      "source_type": "institutional-repository",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "per-asset",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "freepik": {
+      "name": "Freepik",
+      "homepage": "https://www.freepik.com/",
+      "tier": "secondary",
+      "source_type": "asset-library",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "per-asset",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "flaticon": {
+      "name": "Flaticon",
+      "homepage": "https://www.flaticon.com/",
+      "tier": "secondary",
+      "source_type": "asset-library",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "per-asset",
+      "selection_policy": "direct-with-original-page-review",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "undraw": {
+      "name": "unDraw",
+      "homepage": "https://undraw.co/illustrations",
+      "tier": "secondary",
+      "source_type": "illustration-library",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "not-required",
+      "selection_policy": "direct-with-record",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    },
+    "iconify": {
+      "name": "Iconify",
+      "homepage": "https://iconify.design/",
+      "tier": "candidate-only",
+      "source_type": "aggregator",
+      "license_mode": "per-asset-review",
+      "commercial_use": "not-assessed",
+      "attribution_policy": "per-asset",
+      "selection_policy": "original-source-required",
+      "note": "Discovery metadata only. Retain and review the actual asset rights; this registry is not current license clearance."
+    }
+  }
+}

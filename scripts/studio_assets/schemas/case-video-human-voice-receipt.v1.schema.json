@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.lightcolor/case-video-human-voice-receipt.v1.schema.json",
+  "title": "Case video human voice gate receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "script_id",
+    "content_id",
+    "synthetic_only",
+    "source",
+    "initial_draft_review_ref",
+    "input_body_sha256",
+    "dbs_content_diagnosis_sha256",
+    "dbs_ai_check_diagnosis_sha256",
+    "rewritten_body_sha256",
+    "rewrite_operations_sha256",
+    "diagnostics_before",
+    "diagnostics_after",
+    "read_aloud",
+    "author_confirmation",
+    "hook_gate",
+    "fact_boundary",
+    "boundaries"
+  ],
+  "properties": {
+    "schema_version": { "const": "case-video-human-voice-receipt.v1" },
+    "receipt_id": { "type": "string", "pattern": "^voice-receipt-[a-z0-9][a-z0-9-]{7,63}$" },
+    "script_id": { "type": "string", "pattern": "^case-script-[a-z0-9][a-z0-9-]{7,63}$" },
+    "content_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{5,79}$" },
+    "synthetic_only": { "type": "boolean" },
+    "editing_outcome": {"enum": ["rewritten", "reviewed_unchanged"]},
+    "semantic_review_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+    "assessment_scope": {"const": "artifact-and-review-validation; not proof of human authorship, actual Skill invocation, or audience response"},
+    "initial_draft_review_ref": { "$ref": "#/$defs/artifactRef" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["skill_id", "skill_path", "skill_sha256", "rulebook_sha256", "governance_status", "execution_mode"],
+      "properties": {
+        "skill_id": { "const": "human-voice-editor" },
+        "skill_path": { "const": "skills/human-voice-editor/SKILL.md" },
+        "skill_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "rulebook_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "governance_status": { "const": "workspace-draft-uninstalled" },
+        "execution_mode": { "const": "local-deterministic-adapter" }
+      }
+    },
+    "input_body_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "dbs_content_diagnosis_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "dbs_ai_check_diagnosis_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "rewritten_body_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "rewrite_operations_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "diagnostics_before": { "$ref": "#/$defs/diagnostics" },
+    "diagnostics_after": { "$ref": "#/$defs/diagnostics" },
+    "read_aloud": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "performed_by", "body_sha256", "completed_at", "notes", "receipt_sha256"],
+      "properties": {
+        "status": { "const": "completed" },
+        "performed_by": { "enum": ["author", "synthetic-fixture-author"] },
+        "body_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "completed_at": { "type": "string", "format": "date-time" },
+        "notes": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "receipt_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "author_confirmation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "performed_by", "body_sha256", "read_aloud_receipt_sha256", "confirmed_at", "voice_match", "facts_preserved", "receipt_sha256"],
+      "properties": {
+        "status": { "const": "confirmed" },
+        "performed_by": { "enum": ["author", "synthetic-fixture-author"] },
+        "body_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "read_aloud_receipt_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "confirmed_at": { "type": "string", "format": "date-time" },
+        "voice_match": { "const": true },
+        "facts_preserved": { "const": true },
+        "receipt_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "hook_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["previous_hooks_invalidated", "generated_after_author_confirmation", "input_body_sha256", "bundle_sha256"],
+      "properties": {
+        "previous_hooks_invalidated": { "const": true },
+        "generated_after_author_confirmation": { "const": true },
+        "input_body_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "bundle_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "fact_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_refs_unchanged", "numeric_tokens_unchanged", "medical_insurance_gate_passed"],
+      "properties": {
+        "evidence_refs_unchanged": { "const": true },
+        "numeric_tokens_unchanged": { "const": true },
+        "medical_insurance_gate_passed": { "const": true }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["local_only", "external_service_called", "raw_sensitive_media_included", "draft_only", "manual_only", "would_publish"],
+      "properties": {
+        "local_only": { "const": true },
+        "external_service_called": { "const": false },
+        "raw_sensitive_media_included": { "const": false },
+        "draft_only": { "const": true },
+        "manual_only": { "const": true },
+        "would_publish": { "const": false }
+      }
+    }
+  },
+  "$defs": {
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "schema_version", "sha256"],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "schema_version": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["symmetric_slogan", "uniform_cta", "over_explained", "even_rhythm", "translation_register", "abstract_service_language", "issue_codes"],
+      "properties": {
+        "symmetric_slogan": { "type": "integer", "minimum": 0 },
+        "uniform_cta": { "type": "integer", "minimum": 0 },
+        "over_explained": { "type": "integer", "minimum": 0 },
+        "even_rhythm": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "translation_register": { "type": "integer", "minimum": 0 },
+        "abstract_service_language": { "type": "integer", "minimum": 0 },
+        "issue_codes": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "question-research-article-brief-candidate.v1",
+  "schema_version": "1.0.0",
+  "mode": "draft_only",
+  "title": "Should a fictional training team use one morning grip reading alone to decide the day's training load?",
+  "audience": "coaches evaluating a synthetic monitoring protocol",
+  "angle": "Explain what the admitted evidence supports, what it contradicts, and why the loop stopped.",
+  "sections": [
+    {
+      "section_id": "section-01",
+      "heading": "The synthetic protocol requires a trend and a second signal before changing load.",
+      "claim_id": "claim-protocol",
+      "evidence_ids": [
+        "ev-protocol-fact"
+      ],
+      "source_ids": [
+        "src-protocol"
+      ],
+      "draft_instruction": "Present as evidence-bounded synthetic finding; preserve qualification."
+    },
+    {
+      "section_id": "section-02",
+      "heading": "The synthetic pilot reports day-to-day variation under unchanged workload.",
+      "claim_id": "claim-variation",
+      "evidence_ids": [
+        "ev-pilot-fact"
+      ],
+      "source_ids": [
+        "src-pilot"
+      ],
+      "draft_instruction": "Present as evidence-bounded synthetic finding; preserve qualification."
+    }
+  ],
+  "contradictions": [
+    {
+      "claim_id": "claim-single-sufficient",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [
+        "ev-pilot-contradiction"
+      ],
+      "resolution_status": "human_review_required"
+    }
+  ],
+  "unknowns": [
+    {
+      "claim_id": "claim-cause",
+      "reason": "no_reviewed_source_fact_support"
+    }
+  ],
+  "search_stop_reason": "marginal_returns_reached",
+  "review_packet": {
+    "status": "pending_human_review",
+    "blocking_gates": [
+      "contradiction:claim-single-sufficient",
+      "unknown:claim-cause"
+    ],
+    "human_confirmation_required": true
+  },
+  "authority": {
+    "execution_authorized": false,
+    "publish_authorized": false,
+    "external_write_authorized": false
+  },
+  "source_material": "synthetic_fixture_only"
+}

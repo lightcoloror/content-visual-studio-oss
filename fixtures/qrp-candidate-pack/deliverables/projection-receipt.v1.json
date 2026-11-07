@@ -1,0 +1,45 @@
+{
+  "schema": "question-research-offline-projection-receipt.v1",
+  "schema_version": "1.0.0",
+  "closure_run_id": "public-installed-projection",
+  "input_sha256": "35bee6c7b56cdb1c0692f2959b35b3f2f12a389c0dfc9540f65a125c203cb38e",
+  "core_manifest_sha256": "d0272edb9d5f9e0bf4d165cd94e470730256091ea0d9da2d66c871453d87c844",
+  "core_receipt_chain_sha256": "8113ef12bbd6f52e8311e07f9d01f10a38f90aa72c93492621faf222e7083594",
+  "artifacts": [
+    {
+      "name": "research-plan.v1.json",
+      "path": "deliverables/research-plan.v1.json",
+      "sha256": "84c3f431eada0a6a8fb664e3ccfc0d8ce2e6d932042d97698fce7787d9afdc78"
+    },
+    {
+      "name": "evidence-bundle.v1.json",
+      "path": "deliverables/evidence-bundle.v1.json",
+      "sha256": "4f594cd5aac1c6061289952c56365774b9fba9dd5f7aa634c42442dec9bb978b"
+    },
+    {
+      "name": "claim-graph.v1.json",
+      "path": "deliverables/claim-graph.v1.json",
+      "sha256": "e7e347509493cdf9d3390de962994774ad2fbd49996acf1617acd38a8c6474e3"
+    },
+    {
+      "name": "gap-review.v1.json",
+      "path": "deliverables/gap-review.v1.json",
+      "sha256": "c5a1de0bd837056afc7e97ed5d3435f36c20e82ccaeeda9263ba604a9d74afd9"
+    },
+    {
+      "name": "content-brief.v1.json",
+      "path": "deliverables/content-brief.v1.json",
+      "sha256": "60a82e6cea4ba107a7cd4e3daa25b4260bedc39f004926249f839a23669e3eed"
+    },
+    {
+      "name": "review-packet.v1.json",
+      "path": "deliverables/review-packet.v1.json",
+      "sha256": "6dfad91b5f1b323994b041fd05c8da946c4b9a4acbeb2c14055da72eee23abda"
+    }
+  ],
+  "status": "candidate_only",
+  "network_called": false,
+  "provider_called": false,
+  "external_write_performed": false,
+  "recorded_at": "2026-08-27T00:00:00+08:00"
+}

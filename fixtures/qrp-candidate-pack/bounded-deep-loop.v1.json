@@ -1,0 +1,178 @@
+{
+  "schema": "question-research-bounded-deep-loop.v1",
+  "schema_version": "1.0.0",
+  "closure_run_id": "public-installed-projection",
+  "fixture_id": "synthetic-readiness-question-001",
+  "input_sha256": "35bee6c7b56cdb1c0692f2959b35b3f2f12a389c0dfc9540f65a125c203cb38e",
+  "question": "Should a fictional training team use one morning grip reading alone to decide the day's training load?",
+  "execution_status": "complete",
+  "research_status": "candidate_for_human_review",
+  "search_stop_reason": "marginal_returns_reached",
+  "stage_receipts": [
+    {
+      "stage_id": "intake",
+      "stage_index": 1,
+      "path": "receipts/01-intake.json",
+      "receipt_sha256": "9d1973118348e4538af4c47ad5f90eaa1ee1fe1812d11260b0c21f8c02bea67c",
+      "artifact_path": "artifacts/01-intake.json",
+      "artifact_sha256": "6679c135f345007df4b8b5e13ea09e650f155fde9319dd26fea8aa52cf10c098"
+    },
+    {
+      "stage_id": "source_admission",
+      "stage_index": 2,
+      "path": "receipts/02-source_admission.json",
+      "receipt_sha256": "04fff0ff3934d9b4011210d05063fc76ad1922dbf9da42c2201a49fdf0535e7d",
+      "artifact_path": "artifacts/02-source_admission.json",
+      "artifact_sha256": "6b3938216455338db1cafdf8d1b6c8793324e6e9c6e97a8f3d3e4ffefae9b492"
+    },
+    {
+      "stage_id": "evidence_analysis",
+      "stage_index": 3,
+      "path": "receipts/03-evidence_analysis.json",
+      "receipt_sha256": "d0d336948ddc82549cfc68a32d6e84b5043548897222ce44f9b4dd4e7723305f",
+      "artifact_path": "artifacts/03-evidence_analysis.json",
+      "artifact_sha256": "f30c5b8cd9b5d52e09de72cabb4f1322d75ddd8d5fa61fe646f84e5ea1659967"
+    },
+    {
+      "stage_id": "guarded_synthesis",
+      "stage_index": 4,
+      "path": "receipts/04-guarded_synthesis.json",
+      "receipt_sha256": "8169917d26a26f6c3da4424c646294ef7b1ada2a7db88ed80598cb0e438f8c04",
+      "artifact_path": "artifacts/04-guarded_synthesis.json",
+      "artifact_sha256": "c9971cec4d0d1e9fd45c4d3997ae824a705dd5a711a90e715072ee3d854384dd"
+    },
+    {
+      "stage_id": "article_brief",
+      "stage_index": 5,
+      "path": "receipts/05-article_brief.json",
+      "receipt_sha256": "a1d869a31a5efa01943dffdb8e6b7ca56e1a811c2f8a005a3e11f4a5057791bd",
+      "artifact_path": "artifacts/05-article_brief.json",
+      "artifact_sha256": "94f7ebf945eb61326ae2beeb5afe87689f34eb17bdc9d70c99e6e2ce9947693d"
+    }
+  ],
+  "guarded_synthesis": {
+    "schema": "question-research-guarded-synthesis.v1",
+    "question": "Should a fictional training team use one morning grip reading alone to decide the day's training load?",
+    "status": "candidate_for_human_review",
+    "statements": [
+      {
+        "claim_id": "claim-protocol",
+        "text": "The synthetic protocol requires a trend and a second signal before changing load.",
+        "qualification": "supported_by_reviewed_synthetic_source_fact",
+        "evidence_ids": [
+          "ev-protocol-fact"
+        ],
+        "source_ids": [
+          "src-protocol"
+        ]
+      },
+      {
+        "claim_id": "claim-variation",
+        "text": "The synthetic pilot reports day-to-day variation under unchanged workload.",
+        "qualification": "supported_by_reviewed_synthetic_source_fact",
+        "evidence_ids": [
+          "ev-pilot-fact"
+        ],
+        "source_ids": [
+          "src-pilot"
+        ]
+      }
+    ],
+    "blocking_gates": [
+      "contradiction:claim-single-sufficient",
+      "unknown:claim-cause"
+    ],
+    "warnings": [
+      "Synthetic fixture evidence is not real-world evidence and cannot establish real usage or current truth."
+    ],
+    "stop_reason": "marginal_returns_reached",
+    "human_review_required": true,
+    "finalization_authorized": false,
+    "model_memory_used_as_evidence": false
+  },
+  "article_brief": {
+    "schema": "question-research-article-brief-candidate.v1",
+    "schema_version": "1.0.0",
+    "mode": "draft_only",
+    "title": "Should a fictional training team use one morning grip reading alone to decide the day's training load?",
+    "audience": "coaches evaluating a synthetic monitoring protocol",
+    "angle": "Explain what the admitted evidence supports, what it contradicts, and why the loop stopped.",
+    "sections": [
+      {
+        "section_id": "section-01",
+        "heading": "The synthetic protocol requires a trend and a second signal before changing load.",
+        "claim_id": "claim-protocol",
+        "evidence_ids": [
+          "ev-protocol-fact"
+        ],
+        "source_ids": [
+          "src-protocol"
+        ],
+        "draft_instruction": "Present as evidence-bounded synthetic finding; preserve qualification."
+      },
+      {
+        "section_id": "section-02",
+        "heading": "The synthetic pilot reports day-to-day variation under unchanged workload.",
+        "claim_id": "claim-variation",
+        "evidence_ids": [
+          "ev-pilot-fact"
+        ],
+        "source_ids": [
+          "src-pilot"
+        ],
+        "draft_instruction": "Present as evidence-bounded synthetic finding; preserve qualification."
+      }
+    ],
+    "contradictions": [
+      {
+        "claim_id": "claim-single-sufficient",
+        "supporting_evidence_ids": [],
+        "contradicting_evidence_ids": [
+          "ev-pilot-contradiction"
+        ],
+        "resolution_status": "human_review_required"
+      }
+    ],
+    "unknowns": [
+      {
+        "claim_id": "claim-cause",
+        "reason": "no_reviewed_source_fact_support"
+      }
+    ],
+    "search_stop_reason": "marginal_returns_reached",
+    "review_packet": {
+      "status": "pending_human_review",
+      "blocking_gates": [
+        "contradiction:claim-single-sufficient",
+        "unknown:claim-cause"
+      ],
+      "human_confirmation_required": true
+    },
+    "authority": {
+      "execution_authorized": false,
+      "publish_authorized": false,
+      "external_write_authorized": false
+    },
+    "source_material": "synthetic_fixture_only"
+  },
+  "resume_from": null,
+  "finalization_authorized": false,
+  "truth_dimensions": {
+    "contract_ready": true,
+    "runtime_ready": true,
+    "fresh_e2e_pass": true,
+    "real_usage_proof": false,
+    "current_online": false
+  },
+  "boundaries": {
+    "synthetic_or_public_only": true,
+    "network_called": false,
+    "provider_called": false,
+    "service_started": false,
+    "external_write_performed": false,
+    "publication_performed": false,
+    "silent_fallback_used": false,
+    "model_memory_used_as_evidence": false
+  },
+  "created_at": "2026-08-27T00:00:00+08:00"
+}

@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/content-studio/model-provider-gateway-content-assist-receipt.v1.schema.json",
+  "title": "Content Studio model assist receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "ok", "status", "consumer_id", "task", "request_id",
+    "request_fingerprint", "receipt_payload_sha256", "gateway_provenance", "source_context",
+    "execution_result", "candidate", "truth_boundary", "execution_boundary"
+  ],
+  "properties": {
+    "schema": {"const": "content_studio.model_assist_receipt.v1"},
+    "ok": {"type": "boolean"},
+    "status": {"enum": ["draft_only", "candidate_only", "blocked"]},
+    "consumer_id": {"const": "content_studio"},
+    "task": {"enum": ["draft_only", "rewrite", "vision_candidate"]},
+    "request_id": {"type": "string", "minLength": 1},
+    "request_fingerprint": {"$ref": "#/$defs/sha256"},
+    "receipt_payload_sha256": {"$ref": "#/$defs/sha256"},
+    "gateway_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_execution_commit", "runtime_checkout_commit", "package_version",
+        "capability_matrix_revision", "semantic_contract", "adapter_schema", "request_schema", "result_schema",
+        "execution_request_schema_sha256", "execution_result_schema_sha256",
+        "consumer_adapter_sha256", "receipt_schema_sha256",
+        "gateway_component_sha256"
+      ],
+      "properties": {
+        "canonical_execution_commit": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "runtime_checkout_commit": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "package_version": {"type": "string", "minLength": 1},
+        "capability_matrix_revision": {"$ref": "#/$defs/sha256"},
+        "semantic_contract": {"$ref": "#/$defs/semanticContract"},
+        "adapter_schema": {"const": "model_provider_gateway.adapter_contract.v2"},
+        "request_schema": {"const": "model_provider_gateway.execution_request.v1"},
+        "result_schema": {"const": "model_provider_gateway.execution_result.v1"},
+        "execution_request_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "execution_result_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "consumer_adapter_sha256": {"$ref": "#/$defs/sha256"},
+        "receipt_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "gateway_component_sha256": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["package", "adapters", "coverage", "execution", "consent", "runtime"],
+          "properties": {
+            "package": {"$ref": "#/$defs/sha256"},
+            "adapters": {"$ref": "#/$defs/sha256"},
+            "coverage": {"$ref": "#/$defs/sha256"},
+            "execution": {"$ref": "#/$defs/sha256"},
+            "consent": {"$ref": "#/$defs/sha256"},
+            "runtime": {"$ref": "#/$defs/sha256"}
+          }
+        },
+        "profile_id": {"type": ["string", "null"]},
+        "profile_revision": {"type": ["string", "null"]},
+        "route_id": {"type": ["string", "null"]},
+        "route_revision": {"type": ["string", "null"]},
+        "consent_hash": {"type": ["string", "null"]},
+        "input_manifest_hash": {"type": ["string", "null"]}
+      }
+    },
+    "source_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_kind", "artifact_id", "artifact_sha256", "canonical_schema_id",
+        "canonical_schema_sha256", "evidence_refs", "verified_claim_texts",
+        "guarded_verified_answer", "guarded_answer_claim_refs",
+        "unknowns", "contradictions", "risk_review_state", "local_context_uploaded"
+      ],
+      "properties": {
+        "artifact_kind": {"enum": ["research-output.v1", "content-item.v0.2"]},
+        "artifact_id": {"type": "string", "minLength": 1},
+        "artifact_sha256": {"$ref": "#/$defs/sha256"},
+        "canonical_schema_id": {"enum": ["research-output.v1@1.0.0", "content-item.v0.2"]},
+        "canonical_schema_sha256": {"$ref": "#/$defs/sha256"},
+        "evidence_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "verified_claim_texts": {
+          "type": "object",
+          "additionalProperties": {"type": "string", "minLength": 1}
+        },
+        "guarded_verified_answer": {"type": ["string", "null"]},
+        "guarded_answer_claim_refs": {
+          "type": "array", "items": {"type": "string"}, "uniqueItems": true
+        },
+        "unknowns": {"type": "array"},
+        "contradictions": {"type": "array"},
+        "risk_review_state": {"type": "object"},
+        "local_context_uploaded": {"const": false}
+      }
+    },
+    "execution_result": {
+      "anyOf": [
+        {"type": "null"},
+        {"type": "object"}
+      ]
+    },
+    "candidate": {
+      "anyOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["text", "text_sha256", "acceptance_status", "claim_refs", "new_fact_count"],
+          "properties": {
+            "text": {"type": "string", "minLength": 1},
+            "text_sha256": {"$ref": "#/$defs/sha256"},
+            "acceptance_status": {"enum": ["draft_only", "candidate_only"]},
+            "claim_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+            "new_fact_count": {"const": 0}
+          }
+        }
+      ]
+    },
+    "error_class": {"type": "string"},
+    "error_message": {"const": "Content Studio model assist failed closed"},
+    "truth_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "may_add_verified_facts", "source_refs_preserved", "unknowns_preserved",
+        "contradictions_preserved", "risk_review_state_preserved", "human_review_required"
+      ],
+      "properties": {
+        "may_add_verified_facts": {"const": false},
+        "source_refs_preserved": {"const": true},
+        "unknowns_preserved": {"const": true},
+        "contradictions_preserved": {"const": true},
+        "risk_review_state_preserved": {"const": true},
+        "human_review_required": {"const": true}
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "loopback_stub", "real_provider_called", "real_secret_read",
+        "uploaded_source_context", "automatic_retry_used", "automatic_fallback_used",
+        "publication_authorized", "published"
+      ],
+      "properties": {
+        "loopback_stub": {"type": "boolean"},
+        "real_provider_called": {"const": false},
+        "real_secret_read": {"const": false},
+        "uploaded_source_context": {"const": false},
+        "automatic_retry_used": {"const": false},
+        "automatic_fallback_used": {"const": false},
+        "publication_authorized": {"const": false},
+        "published": {"const": false}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"enum": ["draft_only", "candidate_only"]}}},
+      "then": {
+        "properties": {
+          "ok": {"const": true},
+          "execution_result": {"type": "object"},
+          "candidate": {"type": "object"},
+          "execution_boundary": {"properties": {"loopback_stub": {"const": true}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "blocked"}}},
+      "then": {
+        "required": ["error_class", "error_message"],
+        "properties": {"ok": {"const": false}, "candidate": {"type": "null"}}
+      }
+    }
+  ],
+  "$defs": {
+    "semanticContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision", "http_api_schema", "adapter_schema", "request_schema",
+        "result_schema", "consent_schema", "required_capabilities",
+        "no_silent_fallback", "no_automatic_retry", "loopback_only", "error_fields"
+      ],
+      "properties": {
+        "revision": {"const": "content_studio.gateway_semantic_compat.v1"},
+        "http_api_schema": {"const": "model_provider_gateway.http.v1"},
+        "adapter_schema": {"const": "model_provider_gateway.adapter_contract.v2"},
+        "request_schema": {"const": "model_provider_gateway.execution_request.v1"},
+        "result_schema": {"const": "model_provider_gateway.execution_result.v1"},
+        "consent_schema": {"const": "model_provider_gateway.consent_manifest.v2"},
+        "required_capabilities": {"const": ["text", "vision"]},
+        "no_silent_fallback": {"const": true},
+        "no_automatic_retry": {"const": true},
+        "loopback_only": {"const": true},
+        "error_fields": {"const": ["error_class", "retryable", "status"]}
+      }
+    },
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

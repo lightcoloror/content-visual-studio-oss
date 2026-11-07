@@ -1,0 +1,43 @@
+{
+  "content_id": "research-5d27168fe364979b2baf1886",
+  "fact_card_id": "fact-card-synthetic-case-001",
+  "facts": [
+    {
+      "evidence_refs": [
+        {
+          "ref_id": "evidence_synthetic_medical_boundary",
+          "ref_type": "evidence"
+        }
+      ],
+      "fact_id": "fact-01",
+      "text": "诊疗安排由虚构医生与虚构家庭决定。"
+    },
+    {
+      "evidence_refs": [
+        {
+          "ref_id": "evidence_synthetic_service_action",
+          "ref_type": "evidence"
+        }
+      ],
+      "fact_id": "fact-02",
+      "text": "虚构顾问完成的是合同责任、医院范围和材料清单核对。"
+    }
+  ],
+  "forbidden_claims": [
+    "替医生作诊疗判断",
+    "保证承保或理赔",
+    "把虚构个案说成普遍结果"
+  ],
+  "gates": {
+    "authorization": "pass",
+    "fact": "pass",
+    "medical_insurance": "pass",
+    "privacy": "pass",
+    "rights": "pass"
+  },
+  "schema_version": "content-fact-card.v0",
+  "synthetic_only": true,
+  "unknowns": [
+    "没有可用且已授权的客户采访原声。"
+  ]
+}

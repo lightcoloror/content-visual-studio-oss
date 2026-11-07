@@ -1,0 +1,141 @@
+{
+  "schema": "question-research-evidence-analysis.v1",
+  "claims": [
+    {
+      "claim_id": "claim-protocol",
+      "subquestion_id": "sq-measurement-policy",
+      "text": "The synthetic protocol requires a trend and a second signal before changing load.",
+      "claim_origin": "source_claim",
+      "evidence_status": "supported",
+      "evidence_ids": [
+        "ev-protocol-fact"
+      ],
+      "source_ids": [
+        "src-protocol"
+      ]
+    },
+    {
+      "claim_id": "claim-variation",
+      "subquestion_id": "sq-measurement-noise",
+      "text": "The synthetic pilot reports day-to-day variation under unchanged workload.",
+      "claim_origin": "source_claim",
+      "evidence_status": "supported",
+      "evidence_ids": [
+        "ev-pilot-fact"
+      ],
+      "source_ids": [
+        "src-pilot"
+      ]
+    },
+    {
+      "claim_id": "claim-cause",
+      "subquestion_id": "sq-measurement-noise",
+      "text": "The variation was caused by neural recruitment alone.",
+      "claim_origin": "agent_inference",
+      "evidence_status": "unknown",
+      "evidence_ids": [
+        "ev-cause-inference"
+      ],
+      "source_ids": [
+        "src-pilot"
+      ]
+    },
+    {
+      "claim_id": "claim-single-sufficient",
+      "subquestion_id": "sq-single-reading",
+      "text": "One morning grip reading is sufficient for every training decision.",
+      "claim_origin": "source_claim",
+      "evidence_status": "contradicted",
+      "evidence_ids": [
+        "ev-opinion-claim",
+        "ev-pilot-contradiction"
+      ],
+      "source_ids": [
+        "src-opinion",
+        "src-pilot"
+      ]
+    }
+  ],
+  "evidence_records": [
+    {
+      "evidence_id": "ev-protocol-fact",
+      "claim_id": "claim-protocol",
+      "source_id": "src-protocol",
+      "evidence_type": "source_fact",
+      "relation": "supports",
+      "status": "verified",
+      "review_status": "reviewed",
+      "text": "The protocol text explicitly requires repeated measures and a second signal.",
+      "usable_as_source_fact": true
+    },
+    {
+      "evidence_id": "ev-pilot-fact",
+      "claim_id": "claim-variation",
+      "source_id": "src-pilot",
+      "evidence_type": "source_fact",
+      "relation": "supports",
+      "status": "verified",
+      "review_status": "reviewed",
+      "text": "The synthetic pilot records variation under unchanged workload.",
+      "usable_as_source_fact": true
+    },
+    {
+      "evidence_id": "ev-cause-inference",
+      "claim_id": "claim-cause",
+      "source_id": "src-pilot",
+      "evidence_type": "agent_inference",
+      "relation": "supports",
+      "status": "candidate",
+      "review_status": "candidate",
+      "text": "The fixture does not identify a causal mechanism.",
+      "usable_as_source_fact": false
+    },
+    {
+      "evidence_id": "ev-opinion-claim",
+      "claim_id": "claim-single-sufficient",
+      "source_id": "src-opinion",
+      "evidence_type": "source_claim",
+      "relation": "supports",
+      "status": "verified",
+      "review_status": "reviewed",
+      "text": "The opinion note asserts sufficiency but does not establish it as a source fact.",
+      "usable_as_source_fact": false
+    },
+    {
+      "evidence_id": "ev-pilot-contradiction",
+      "claim_id": "claim-single-sufficient",
+      "source_id": "src-pilot",
+      "evidence_type": "source_fact",
+      "relation": "contradicts",
+      "status": "verified",
+      "review_status": "reviewed",
+      "text": "The pilot states that single readings were not decision-grade.",
+      "usable_as_source_fact": true
+    }
+  ],
+  "contradictions": [
+    {
+      "claim_id": "claim-single-sufficient",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [
+        "ev-pilot-contradiction"
+      ],
+      "resolution_status": "human_review_required"
+    }
+  ],
+  "unknowns": [
+    {
+      "claim_id": "claim-cause",
+      "reason": "no_reviewed_source_fact_support"
+    }
+  ],
+  "classification_counts": {
+    "source_fact": 3,
+    "source_claim": 1,
+    "agent_inference": 1,
+    "unknown": 1,
+    "contradicted": 1
+  },
+  "stop_reason": "marginal_returns_reached",
+  "search_continuation_authorized": false
+}

@@ -1,0 +1,146 @@
+{
+  "schema": "question-research-offline-evidence-brief.v1",
+  "schema_version": "1.0.0",
+  "closure_run_id": "public-installed-projection",
+  "input_sha256": "35bee6c7b56cdb1c0692f2959b35b3f2f12a389c0dfc9540f65a125c203cb38e",
+  "question": "Should a fictional training team use one morning grip reading alone to decide the day's training load?",
+  "status": "candidate_for_human_review",
+  "artifact_state": "candidate_only",
+  "core": {
+    "contract": "question-research-bounded-deep-loop.v1",
+    "contract_version": "1.0.0",
+    "manifest_path": "bounded-deep-loop.v1.json",
+    "manifest_sha256": "d0272edb9d5f9e0bf4d165cd94e470730256091ea0d9da2d66c871453d87c844",
+    "stage_receipts": [
+      {
+        "stage_id": "intake",
+        "stage_index": 1,
+        "path": "receipts/01-intake.json",
+        "receipt_sha256": "9d1973118348e4538af4c47ad5f90eaa1ee1fe1812d11260b0c21f8c02bea67c",
+        "artifact_path": "artifacts/01-intake.json",
+        "artifact_sha256": "6679c135f345007df4b8b5e13ea09e650f155fde9319dd26fea8aa52cf10c098"
+      },
+      {
+        "stage_id": "source_admission",
+        "stage_index": 2,
+        "path": "receipts/02-source_admission.json",
+        "receipt_sha256": "04fff0ff3934d9b4011210d05063fc76ad1922dbf9da42c2201a49fdf0535e7d",
+        "artifact_path": "artifacts/02-source_admission.json",
+        "artifact_sha256": "6b3938216455338db1cafdf8d1b6c8793324e6e9c6e97a8f3d3e4ffefae9b492"
+      },
+      {
+        "stage_id": "evidence_analysis",
+        "stage_index": 3,
+        "path": "receipts/03-evidence_analysis.json",
+        "receipt_sha256": "d0d336948ddc82549cfc68a32d6e84b5043548897222ce44f9b4dd4e7723305f",
+        "artifact_path": "artifacts/03-evidence_analysis.json",
+        "artifact_sha256": "f30c5b8cd9b5d52e09de72cabb4f1322d75ddd8d5fa61fe646f84e5ea1659967"
+      },
+      {
+        "stage_id": "guarded_synthesis",
+        "stage_index": 4,
+        "path": "receipts/04-guarded_synthesis.json",
+        "receipt_sha256": "8169917d26a26f6c3da4424c646294ef7b1ada2a7db88ed80598cb0e438f8c04",
+        "artifact_path": "artifacts/04-guarded_synthesis.json",
+        "artifact_sha256": "c9971cec4d0d1e9fd45c4d3997ae824a705dd5a711a90e715072ee3d854384dd"
+      },
+      {
+        "stage_id": "article_brief",
+        "stage_index": 5,
+        "path": "receipts/05-article_brief.json",
+        "receipt_sha256": "a1d869a31a5efa01943dffdb8e6b7ca56e1a811c2f8a005a3e11f4a5057791bd",
+        "artifact_path": "artifacts/05-article_brief.json",
+        "artifact_sha256": "94f7ebf945eb61326ae2beeb5afe87689f34eb17bdc9d70c99e6e2ce9947693d"
+      }
+    ]
+  },
+  "input_contract_migration": {
+    "applied": true,
+    "from": "unversioned-legacy-fixture",
+    "to": "1.0.0",
+    "semantic_change": false
+  },
+  "deliverables": [
+    {
+      "name": "research-plan.v1.json",
+      "path": "deliverables/research-plan.v1.json",
+      "sha256": "84c3f431eada0a6a8fb664e3ccfc0d8ce2e6d932042d97698fce7787d9afdc78"
+    },
+    {
+      "name": "evidence-bundle.v1.json",
+      "path": "deliverables/evidence-bundle.v1.json",
+      "sha256": "4f594cd5aac1c6061289952c56365774b9fba9dd5f7aa634c42442dec9bb978b"
+    },
+    {
+      "name": "claim-graph.v1.json",
+      "path": "deliverables/claim-graph.v1.json",
+      "sha256": "e7e347509493cdf9d3390de962994774ad2fbd49996acf1617acd38a8c6474e3"
+    },
+    {
+      "name": "gap-review.v1.json",
+      "path": "deliverables/gap-review.v1.json",
+      "sha256": "c5a1de0bd837056afc7e97ed5d3435f36c20e82ccaeeda9263ba604a9d74afd9"
+    },
+    {
+      "name": "content-brief.v1.json",
+      "path": "deliverables/content-brief.v1.json",
+      "sha256": "60a82e6cea4ba107a7cd4e3daa25b4260bedc39f004926249f839a23669e3eed"
+    },
+    {
+      "name": "review-packet.v1.json",
+      "path": "deliverables/review-packet.v1.json",
+      "sha256": "6dfad91b5f1b323994b041fd05c8da946c4b9a4acbeb2c14055da72eee23abda"
+    }
+  ],
+  "projection_receipt": {
+    "path": "deliverables/projection-receipt.v1.json",
+    "sha256": "e217a080dd65c5eada1a6c4d01a6c36160107810314540d5778928ca6f50edbd"
+  },
+  "resume_from": null,
+  "review_required": true,
+  "finalization_authorized": false,
+  "source_reuse": [
+    {
+      "owner": "question-research-poc",
+      "contract": "research-output.v1",
+      "module": "schemas/research-output.v1.schema.json",
+      "effect": "canonical_candidate_projection"
+    },
+    {
+      "owner": "ai-research-workflow",
+      "contract": "evidence-bundle.v1",
+      "module": "src/research_workflow/evidence_bundle_reference.py",
+      "effect": "reference_validation_only_not_executed"
+    },
+    {
+      "owner": "web-content-fetcher",
+      "contract": "evidence_archive",
+      "module": "web_content_fetcher/archive.py",
+      "effect": "hash_bound_archive_metadata_only"
+    },
+    {
+      "owner": "research-content-production",
+      "contract": "content-brief.v1/review-packet.v1",
+      "module": "docs/local-tools/contracts/linkage-contract-catalog.v1.json",
+      "effect": "candidate_facade_projection_only"
+    }
+  ],
+  "truth_dimensions": {
+    "contract_ready": true,
+    "runtime_ready": true,
+    "fresh_e2e_pass": true,
+    "real_usage_proof": false,
+    "current_online": false
+  },
+  "boundaries": {
+    "synthetic_or_public_only": true,
+    "network_called": false,
+    "provider_called": false,
+    "service_started": false,
+    "external_write_performed": false,
+    "publication_performed": false,
+    "silent_fallback_used": false,
+    "model_memory_used_as_evidence": false
+  },
+  "created_at": "2026-08-27T00:00:00+08:00"
+}

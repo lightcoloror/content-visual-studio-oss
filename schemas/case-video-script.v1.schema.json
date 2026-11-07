@@ -1,0 +1,319 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.lightcolor/case-video-script.v1.schema.json",
+  "title": "保险与医疗案例短视频脚本 sidecar",
+  "description": "绑定既有 content-item 与 research-output 的 draft_only 案例口播中间契约；不拥有发布或视频制作状态。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "script_id",
+    "content_id",
+    "mode",
+    "synthetic_only",
+    "title",
+    "title_evidence_refs",
+    "audience",
+    "target_duration_seconds",
+    "inputs",
+    "single_question",
+    "service_capability",
+    "story",
+    "body_status",
+    "segments",
+    "selected_hook_id",
+    "hook_candidates",
+    "interview_slots",
+    "forbidden_expressions",
+    "unknowns",
+    "skill_stage_receipts",
+    "human_review",
+    "experiment",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": { "const": "case-video-script.v1" },
+    "script_id": { "type": "string", "pattern": "^case-script-[a-z0-9][a-z0-9-]{7,63}$" },
+    "content_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{5,79}$" },
+    "mode": { "const": "draft_only" },
+    "structure_route": {"enum": ["story-arc", "direct-answer"], "description": "Current creation decision; required by new prerecording story execution."},
+    "synthetic_only": { "type": "boolean" },
+    "pre_voice": { "type": "boolean", "description": "Draft awaiting voice review; never production-ready." },
+    "editorial_plan": {
+      "type": "object", "additionalProperties": false,
+      "required": ["audience_entry", "section_advances", "service_scope", "abandonment_risk", "response"],
+      "properties": {
+        "audience_entry": {"type": "string", "minLength": 8},
+        "service_scope": {"type": "string", "minLength": 8},
+        "abandonment_risk": {"type": "string", "minLength": 8},
+        "response": {"type": "string", "minLength": 8},
+        "section_advances": {"type": "array", "minItems": 1, "items": {
+          "type": "object", "additionalProperties": false,
+          "required": ["segment_id", "spoken_span", "new_information"],
+          "properties": {
+            "segment_id": {"type": "string"}, "spoken_span": {"type": "string", "minLength": 4},
+            "new_information": {"type": "string", "minLength": 8}
+          }
+        }}
+      }
+    },
+    "title": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "title_evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/evidenceRef" }
+    },
+    "audience": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "target_duration_seconds": { "type": "integer", "minimum": 15, "maximum": 600 },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fact_card_ref"],
+      "properties": {
+        "research_output_ref": { "$ref": "#/$defs/artifactRef" },
+        "content_item_ref": { "$ref": "#/$defs/artifactRef" },
+        "fact_card_ref": { "$ref": "#/$defs/artifactRef" },
+        "route_card_ref": { "$ref": "#/$defs/artifactRef" },
+        "human_voice_receipt_ref": { "$ref": "#/$defs/artifactRef" }
+      }
+    },
+    "single_question": { "type": "string", "minLength": 1, "maxLength": 240 },
+    "service_capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statement", "action_evidence_refs", "boundary"],
+      "properties": {
+        "statement": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "action_evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/evidenceRef" }
+        },
+        "boundary": { "type": "string", "minLength": 1, "maxLength": 400 }
+      }
+    },
+    "story": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pressure", "conflict", "choice_or_action", "constraint", "result_or_current_state", "main_judgment"],
+      "properties": {
+        "pressure": { "$ref": "#/$defs/textWithEvidence" },
+        "conflict": { "$ref": "#/$defs/textWithEvidence" },
+        "choice_or_action": { "$ref": "#/$defs/textWithEvidence" },
+        "constraint": { "$ref": "#/$defs/textWithEvidence" },
+        "result_or_current_state": { "$ref": "#/$defs/textWithEvidence" },
+        "main_judgment": { "$ref": "#/$defs/textWithEvidence" }
+      }
+    },
+    "body_status": { "const": "stable" },
+    "segments": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/segment" } },
+    "selected_hook_id": { "type": ["string", "null"], "pattern": "^hook-[0-9]{2}$" },
+    "hook_candidates": { "type": "array", "items": { "$ref": "#/$defs/hookCandidate" } },
+    "interview_slots": { "type": "array", "items": { "$ref": "#/$defs/interviewSlot" } },
+    "forbidden_expressions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "unknowns": { "type": "array", "items": { "$ref": "#/$defs/unknown" } },
+    "skill_stage_receipts": { "type": "array", "maxItems": 8, "items": { "$ref": "#/$defs/skillReceipt" } },
+    "human_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "required_reviews", "publication_boundary"],
+      "properties": {
+        "status": { "const": "required" },
+        "required_reviews": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "uniqueItems": true,
+          "items": { "enum": ["fact", "privacy", "medical-insurance", "authorization", "rights", "voice", "video-production"] }
+        },
+        "publication_boundary": { "const": "manual-only" }
+      }
+    },
+    "experiment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["variable_to_change", "constants", "no_signal_meaning"],
+      "properties": {
+        "variable_to_change": { "const": "selected_hook_id" },
+        "constants": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "no_signal_meaning": { "const": "content_no_signal_is_observation_only" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adapter", "adapter_version", "generated_at", "offline_only", "external_api_called", "model_memory_used_as_evidence"],
+      "properties": {
+        "adapter": { "const": "case-video-script-sidecar" },
+        "adapter_version": { "type": "string", "minLength": 1 },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "offline_only": { "const": true },
+        "external_api_called": { "const": false },
+        "model_memory_used_as_evidence": { "const": false }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"required": ["pre_voice"], "properties": {"pre_voice": {"const": true}}},
+      "then": {"required": ["editorial_plan"], "properties": {
+        "selected_hook_id": {"type": "null"},
+        "hook_candidates": {"maxItems": 0},
+        "skill_stage_receipts": {"maxItems": 0},
+        "inputs": {"not": {"required": ["human_voice_receipt_ref"]}},
+        "interview_slots": {"maxItems": 0}
+      }},
+      "else": {"properties": {
+        "inputs": {"required": ["research_output_ref", "content_item_ref", "route_card_ref", "human_voice_receipt_ref"]},
+        "selected_hook_id": {"type": "string"},
+        "hook_candidates": {"minItems": 1},
+        "skill_stage_receipts": {"minItems": 8}
+      }}
+    }
+  ],
+  "$defs": {
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "schema_version", "sha256"],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "schema_version": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref_type", "ref_id"],
+      "properties": {
+        "ref_type": { "enum": ["claim", "evidence", "source", "contradiction", "unknown"] },
+        "ref_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "textWithEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "evidence_refs"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/evidenceRef" }
+        }
+      }
+    },
+    "visualCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["visual_id", "description", "status", "evidence_role", "evidence_refs", "rights_status", "rights_note"],
+      "properties": {
+        "visual_id": { "type": "string", "pattern": "^visual-[a-z0-9][a-z0-9-]{2,47}$" },
+        "description": { "type": "string", "minLength": 1 },
+        "status": { "const": "candidate" },
+        "evidence_role": { "enum": ["contextual", "explanatory", "data", "quotation", "none"] },
+        "evidence_refs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/evidenceRef" } },
+        "rights_status": { "enum": ["synthetic", "reviewed-cleared", "unknown", "blocked"] },
+        "rights_note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "segment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segment_id", "role", "purpose", "spoken_text", "evidence_refs", "subtitle_candidates", "visual_candidates"],
+      "properties": {
+        "segment_id": { "type": "string", "pattern": "^segment-[0-9]{2}$" },
+        "role": { "enum": ["context", "conflict", "service-action", "result", "boundary", "cta"] },
+        "purpose": { "type": "string", "minLength": 1 },
+        "spoken_text": { "type": "string", "minLength": 1 },
+        "fact_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "evidence_refs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/evidenceRef" } },
+        "subtitle_candidates": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "visual_candidates": { "type": "array", "items": { "$ref": "#/$defs/visualCandidate" } }
+      }
+    },
+    "hookCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hook_id", "text", "evidence_refs", "status", "risk_status"],
+      "properties": {
+        "hook_id": { "type": "string", "pattern": "^hook-[0-9]{2}$" },
+        "text": { "type": "string", "minLength": 1, "maxLength": 240 },
+        "evidence_refs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/evidenceRef" } },
+        "status": { "const": "candidate" },
+        "risk_status": { "enum": ["pass", "blocked"] }
+      }
+    },
+    "interviewSlot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slot_id", "state", "question", "selection_criteria", "story_segment_ref", "evidence_refs", "consent_status", "privacy_status", "rights_status", "fallback_edit"],
+      "properties": {
+        "slot_id": { "type": "string", "pattern": "^interview-[0-9]{2}$" },
+        "state": { "enum": ["planned", "recorded", "excluded"] },
+        "question": { "type": "string", "minLength": 1 },
+        "selection_criteria": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "story_segment_ref": { "type": "string", "pattern": "^segment-[0-9]{2}$" },
+        "evidence_refs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/evidenceRef" } },
+        "quote_text": { "type": "string", "minLength": 1 },
+        "recording_artifact_ref": { "$ref": "#/$defs/artifactRef" },
+        "consent_artifact_ref": { "$ref": "#/$defs/artifactRef" },
+        "consent_status": { "enum": ["not-required", "pending", "granted", "denied"] },
+        "privacy_status": { "enum": ["pass", "needs-review", "blocked"] },
+        "rights_status": { "enum": ["pass", "needs-review", "blocked"] },
+        "fallback_edit": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "state": { "const": "recorded" } }, "required": ["state"] },
+          "then": {
+            "required": ["quote_text", "recording_artifact_ref", "consent_artifact_ref"],
+            "properties": {
+              "consent_status": { "const": "granted" },
+              "privacy_status": { "const": "pass" },
+              "rights_status": { "const": "pass" }
+            }
+          }
+        }
+      ]
+    },
+    "unknown": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unknown_id", "text", "handling"],
+      "properties": {
+        "unknown_id": { "type": "string", "minLength": 1 },
+        "text": { "type": "string", "minLength": 1 },
+        "handling": { "enum": ["exclude-from-narration", "label-as-unknown", "requires-review"] }
+      }
+    },
+    "skillReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sequence", "skill_id", "role", "input_sha256", "output_sha256", "status", "synthetic_stub"],
+      "properties": {
+        "sequence": { "type": "integer", "minimum": 1 },
+        "skill_id": { "enum": ["content-fact-card", "insurance-content-storycraft", "dbs-content", "dbs-ai-check", "human-voice-editor", "read-aloud", "author-voice-confirmation", "dbs-hook"] },
+        "role": { "enum": ["hard-gate", "story-method", "diagnosis", "ai-trace-diagnosis", "local-rewrite", "manual-read-aloud", "manual-author-confirmation", "post-freeze-hook-candidates"] },
+        "input_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "output_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "status": { "enum": ["passed", "needs-review", "blocked", "skipped"] },
+        "synthetic_stub": { "type": "boolean" }
+      }
+    }
+  }
+}

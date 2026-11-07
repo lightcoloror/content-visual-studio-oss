@@ -1,0 +1,11 @@
+{
+  "facts": [
+    "虚构家庭在医生与家属确定诊疗安排后，向虚构顾问询问保单责任、医院范围和材料准备。",
+    "虚构顾问只核对合同和办事步骤，不替医生判断治疗方案，也不承诺理赔结果。",
+    "虚构家庭尚未接受采访，因此成片不得出现客户原声，只能保留采访问题或删除该段。"
+  ],
+  "privacy_note": "所有人物、机构、日期、金额和保单信息均为虚构；不对应真实客户或真实产品。",
+  "schema_version": "synthetic-case-source.v1",
+  "source_id": "source_synthetic_case_record",
+  "synthetic_only": true
+}

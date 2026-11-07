@@ -1,0 +1,19 @@
+{
+  "schema": "question-research-bounded-deep-loop-stage-receipt.v1",
+  "contract_version": "1.0.0",
+  "closure_run_id": "public-installed-projection",
+  "stage_id": "evidence_analysis",
+  "stage_index": 3,
+  "input_sha256": "35bee6c7b56cdb1c0692f2959b35b3f2f12a389c0dfc9540f65a125c203cb38e",
+  "previous_receipt_sha256": "04fff0ff3934d9b4011210d05063fc76ad1922dbf9da42c2201a49fdf0535e7d",
+  "artifact": {
+    "path": "artifacts/03-evidence_analysis.json",
+    "sha256": "f30c5b8cd9b5d52e09de72cabb4f1322d75ddd8d5fa61fe646f84e5ea1659967"
+  },
+  "execution_status": "complete",
+  "research_state": "candidate_only",
+  "network_called": false,
+  "provider_called": false,
+  "external_write_performed": false,
+  "recorded_at": "2026-08-27T00:00:00+08:00"
+}

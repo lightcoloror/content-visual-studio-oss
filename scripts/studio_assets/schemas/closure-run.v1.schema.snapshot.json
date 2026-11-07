@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "local://agentcard-taskhandoff/contracts/closure-run.v1.schema.json",
+  "title": "Metadata-only cross-tool closure run v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "closure_run_id", "parent_run_id", "causation", "profile",
+    "contract_versions", "input_refs", "authority_refs", "stages", "truth",
+    "final_review_packet_ref", "final_receipt_ref", "execution_authorized"
+  ],
+  "properties": {
+    "schema_version": {"const": "closure-run.v1"},
+    "closure_run_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,79}$"},
+    "parent_run_id": {"type": ["string", "null"]},
+    "causation": {"type": "object", "additionalProperties": false, "required": ["dispatch_ref", "cause_type"], "properties": {"dispatch_ref": {"type": "string", "minLength": 1}, "cause_type": {"enum": ["synthetic_fixture", "metadata_reconciliation", "manual_review"]}}},
+    "profile": {"type": "string", "minLength": 1},
+    "contract_versions": {"type": "object", "additionalProperties": false, "required": ["closure_run", "local_tool_closure", "closure_truth", "dispatch", "receipt"], "properties": {"closure_run": {"const": "closure-run.v1"}, "local_tool_closure": {"const": "local-tool-closure-run.v2"}, "closure_truth": {"const": "closure-truth.v1"}, "dispatch": {"const": "codex-agent-dispatch-card.v0.1"}, "receipt": {"const": "codex-thread-receipt.v0.1"}}},
+    "input_refs": {"type": "object", "additionalProperties": false, "required": ["material_manifest", "evidence_bundle", "content_brief", "review_packet", "service_profile"], "properties": {"material_manifest": {"$ref": "#/$defs/inputRef"}, "evidence_bundle": {"$ref": "#/$defs/inputRef"}, "content_brief": {"$ref": "#/$defs/inputRef"}, "review_packet": {"$ref": "#/$defs/inputRef"}, "service_profile": {"$ref": "#/$defs/inputRef"}}},
+    "authority_refs": {"type": "object", "additionalProperties": false, "required": ["source_inventory", "owner_routing", "tool_registry"], "properties": {"source_inventory": {"$ref": "#/$defs/metadataRef"}, "owner_routing": {"$ref": "#/$defs/metadataRef"}, "tool_registry": {"$ref": "#/$defs/metadataRef"}}},
+    "stages": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/stage"}},
+    "truth": {"$ref": "#/$defs/truth"},
+    "final_review_packet_ref": {"$ref": "#/$defs/inputRef"},
+    "final_receipt_ref": {"$ref": "#/$defs/inputRef"},
+    "execution_authorized": {"const": false}
+  },
+  "$defs": {
+    "inputRef": {"type": "object", "additionalProperties": false, "required": ["path", "sha256", "contract", "schema_version"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "contract": {"type": "string", "minLength": 1}, "schema_version": {"type": "string", "minLength": 1}}},
+    "metadataRef": {"type": "object", "additionalProperties": false, "required": ["path", "sha256", "contract", "schema_version", "metadata_only", "grants_execution"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "contract": {"type": "string", "minLength": 1}, "schema_version": {"type": "string", "minLength": 1}, "metadata_only": {"const": true}, "grants_execution": {"const": false}}},
+    "stage": {"type": "object", "additionalProperties": false, "required": ["name", "status", "receipt_ref", "evidence_status", "checked_at", "failure_point", "error_class", "retryable", "resume_entry"], "properties": {"name": {"enum": ["intake", "linkage", "review", "closure"]}, "status": {"enum": ["passed", "failed", "resumed"]}, "receipt_ref": {"$ref": "#/$defs/inputRef"}, "evidence_status": {"enum": ["fresh", "historical", "partial", "missing"]}, "checked_at": {"type": "string", "format": "date-time"}, "failure_point": {"type": ["string", "null"]}, "error_class": {"type": ["string", "null"]}, "retryable": {"type": "boolean"}, "resume_entry": {"type": ["string", "null"]}}},
+    "truthDimension": {"type": "object", "additionalProperties": false, "required": ["value", "state", "reason_codes"], "properties": {"value": {"type": ["boolean", "null"]}, "state": {"type": "string", "minLength": 1}, "reason_codes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}}},
+    "truth": {"type": "object", "additionalProperties": false, "required": ["contract_ready", "runtime_ready", "fresh_e2e_pass", "real_usage_proof", "current_online", "verified_available_requires", "verified_available"], "properties": {"contract_ready": {"$ref": "#/$defs/truthDimension"}, "runtime_ready": {"$ref": "#/$defs/truthDimension"}, "fresh_e2e_pass": {"$ref": "#/$defs/truthDimension"}, "real_usage_proof": {"$ref": "#/$defs/truthDimension"}, "current_online": {"$ref": "#/$defs/truthDimension"}, "verified_available_requires": {"const": ["contract_ready", "runtime_ready", "fresh_e2e_pass", "real_usage_proof"]}, "verified_available": {"type": "boolean"}}}
+  }
+}

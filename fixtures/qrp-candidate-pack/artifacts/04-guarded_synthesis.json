@@ -1,0 +1,40 @@
+{
+  "schema": "question-research-guarded-synthesis.v1",
+  "question": "Should a fictional training team use one morning grip reading alone to decide the day's training load?",
+  "status": "candidate_for_human_review",
+  "statements": [
+    {
+      "claim_id": "claim-protocol",
+      "text": "The synthetic protocol requires a trend and a second signal before changing load.",
+      "qualification": "supported_by_reviewed_synthetic_source_fact",
+      "evidence_ids": [
+        "ev-protocol-fact"
+      ],
+      "source_ids": [
+        "src-protocol"
+      ]
+    },
+    {
+      "claim_id": "claim-variation",
+      "text": "The synthetic pilot reports day-to-day variation under unchanged workload.",
+      "qualification": "supported_by_reviewed_synthetic_source_fact",
+      "evidence_ids": [
+        "ev-pilot-fact"
+      ],
+      "source_ids": [
+        "src-pilot"
+      ]
+    }
+  ],
+  "blocking_gates": [
+    "contradiction:claim-single-sufficient",
+    "unknown:claim-cause"
+  ],
+  "warnings": [
+    "Synthetic fixture evidence is not real-world evidence and cannot establish real usage or current truth."
+  ],
+  "stop_reason": "marginal_returns_reached",
+  "human_review_required": true,
+  "finalization_authorized": false,
+  "model_memory_used_as_evidence": false
+}

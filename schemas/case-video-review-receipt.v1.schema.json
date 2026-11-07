@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.lightcolor/case-video-review-receipt.v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "review_id", "script_id", "content_id", "synthetic_only", "risk_profile", "subject_sha256", "inputs", "compliance_context", "compliance_gates", "gates", "required_reviews", "review_mode", "reviewer", "reviewed_at", "decision", "publication_boundary"],
+  "properties": {
+    "schema_version": { "const": "case-video-review-receipt.v1" },
+    "review_id": { "type": "string", "pattern": "^case-review-[a-z0-9][a-z0-9-]{5,63}$" },
+    "script_id": { "type": "string", "pattern": "^case-script-[a-z0-9][a-z0-9-]{7,63}$" },
+    "content_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{5,79}$" },
+    "synthetic_only": { "type": "boolean" },
+    "risk_profile": { "const": "insurance-health-case" },
+    "subject_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_video_script", "research_output", "content_item", "fact_card", "route_card", "human_voice_receipt", "interview_receipts"],
+      "properties": {
+        "case_video_script": { "$ref": "#/$defs/artifactRef" },
+        "research_output": { "$ref": "#/$defs/artifactRef" },
+        "content_item": { "$ref": "#/$defs/artifactRef" },
+        "fact_card": { "$ref": "#/$defs/artifactRef" },
+        "route_card": { "$ref": "#/$defs/artifactRef" },
+        "human_voice_receipt": { "$ref": "#/$defs/artifactRef" },
+        "interview_receipts": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/artifactRef" } }
+      }
+    },
+    "compliance_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_classification",
+        "distribution_scope",
+        "acquisition_cta_present",
+        "insurance_product_or_service_information_present",
+        "case_subject_data_present",
+        "rules_snapshot",
+        "institutional_review_status",
+        "publishing_account_status",
+        "customer_publication_consent_status",
+        "final_cut_review_required"
+      ],
+      "properties": {
+        "content_classification": {
+          "enum": ["pure-education", "brand-or-service-introduction", "product-or-clause", "customer-service-case", "sales-consultation", "synthetic-no-distribution"]
+        },
+        "distribution_scope": { "enum": ["public-feed", "private-group", "point-to-point", "internal-only", "synthetic-no-distribution"] },
+        "acquisition_cta_present": { "type": "boolean" },
+        "insurance_product_or_service_information_present": { "type": "boolean" },
+        "case_subject_data_present": { "type": "boolean" },
+        "rules_snapshot": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["checked_at", "sources"],
+          "properties": {
+            "checked_at": { "type": "string", "format": "date-time" },
+            "sources": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/complianceSource" } }
+          }
+        },
+        "institutional_review_status": { "enum": ["not-required-synthetic", "route-recorded-pending-exact-content", "approved-exact-script", "blocked"] },
+        "publishing_account_status": { "enum": ["not-required-synthetic", "route-recorded-pending-publication-instance", "authorized-for-planned-scope", "blocked"] },
+        "customer_publication_consent_status": { "enum": ["not-required-synthetic", "pending-final-cut-confirmation", "granted-for-script-scope", "blocked"] },
+        "final_cut_review_required": { "const": true }
+      }
+    },
+    "compliance_gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity_account_authorization", "content_basis_accuracy", "suitability", "key_matters_disclosure", "customer_autonomy_privacy", "traceability_human_confirmation"],
+      "properties": {
+        "identity_account_authorization": { "$ref": "#/$defs/complianceGateDecision" },
+        "content_basis_accuracy": { "$ref": "#/$defs/complianceGateDecision" },
+        "suitability": { "$ref": "#/$defs/complianceGateDecision" },
+        "key_matters_disclosure": { "$ref": "#/$defs/complianceGateDecision" },
+        "customer_autonomy_privacy": { "$ref": "#/$defs/complianceGateDecision" },
+        "traceability_human_confirmation": { "$ref": "#/$defs/complianceGateDecision" }
+      }
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fact", "privacy", "medical_insurance", "authorization", "rights", "voice", "video_production"],
+      "properties": {
+        "fact": { "$ref": "#/$defs/gateDecision" },
+        "privacy": { "$ref": "#/$defs/gateDecision" },
+        "medical_insurance": { "$ref": "#/$defs/gateDecision" },
+        "authorization": { "$ref": "#/$defs/gateDecision" },
+        "rights": { "$ref": "#/$defs/gateDecision" },
+        "voice": { "$ref": "#/$defs/gateDecision" },
+        "video_production": { "$ref": "#/$defs/gateDecision" }
+      }
+    },
+    "required_reviews": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": { "enum": ["fact", "privacy", "medical-insurance", "authorization", "rights", "voice", "video-production"] }
+    },
+    "review_mode": { "enum": ["synthetic-fixture-review", "human-local-high-stakes-review"] },
+    "reviewer": { "type": "string", "pattern": "^(synthetic-fixture-reviewer|local-reviewer-[a-z0-9-]{4,48})$" },
+    "reviewer_artifact_ref": { "$ref": "#/$defs/artifactRef" },
+    "reviewed_at": { "type": "string", "format": "date-time" },
+    "decision": { "const": "approved_for_candidate_projection" },
+    "publication_boundary": { "const": "manual-only" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "synthetic_only": { "const": true } }, "required": ["synthetic_only"] },
+      "then": {
+        "properties": {
+          "review_mode": { "const": "synthetic-fixture-review" },
+          "reviewer": { "const": "synthetic-fixture-reviewer" }
+        }
+      },
+      "else": {
+        "required": ["reviewer_artifact_ref"],
+        "properties": {
+          "review_mode": { "const": "human-local-high-stakes-review" },
+          "reviewer": { "pattern": "^local-reviewer-[a-z0-9-]{4,48}$" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "schema_version", "sha256"],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "schema_version": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "gateDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reasons"],
+      "properties": {
+        "status": { "const": "pass" },
+        "reasons": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "complianceGateDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reviewed_check_ids", "reasons", "evidence"],
+      "properties": {
+        "status": { "const": "pass" },
+        "reviewed_check_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,79}$" }
+        },
+        "reasons": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1, "maxLength": 500 } },
+        "evidence": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1, "maxLength": 500 } }
+      }
+    },
+    "complianceSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "authority", "effective_status", "locator"],
+      "properties": {
+        "source_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,79}$" },
+        "authority": { "enum": ["official-rule", "company-internal", "customer-consent", "synthetic-fixture"] },
+        "effective_status": { "enum": ["current", "future", "pending-internal-verification", "not-applicable-synthetic"] },
+        "locator": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "effective_at": { "type": "string", "format": "date-time" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "effective_status": { "const": "future" } }, "required": ["effective_status"] },
+          "then": { "required": ["effective_at"] }
+        }
+      ]
+    }
+  }
+}

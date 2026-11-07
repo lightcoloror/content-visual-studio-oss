@@ -1,0 +1,25 @@
+{
+  "scope": "public-edition machine contract integrity, not author approval or Skill installation",
+  "contracts": [
+    {
+      "contract_id": "content-fact-card.v0",
+      "relative_path": "schemas/content-fact-card.v0.schema.json",
+      "sha256": "039423a2c8192284e8a2e594d105e31675ff0284c407455014919599a79ea648"
+    },
+    {
+      "contract_id": "case-video-initial-draft-review.v1",
+      "relative_path": "schemas/case-video-initial-draft-review.v1.schema.json",
+      "sha256": "784464d090be838758c0a43a797a085d656be56bdaabc338564f624673963019"
+    },
+    {
+      "contract_id": "initial-draft-quality-gate-validator",
+      "relative_path": "scripts/initial_draft_quality_gate.py",
+      "sha256": "ae89b4e6f8fb1568b46105e36c6d785dad6f6a25df1cadba6bf9729c10506961"
+    },
+    {
+      "contract_id": "narrative-realization-validator",
+      "relative_path": "scripts/narrative_realization.py",
+      "sha256": "014fff750ed87215900becb084b9880bf4ab9ca7b25a4f33378050d078a1118e"
+    }
+  ]
+}

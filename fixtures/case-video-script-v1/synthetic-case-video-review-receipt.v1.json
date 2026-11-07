@@ -1,0 +1,214 @@
+{
+  "compliance_context": {
+    "acquisition_cta_present": false,
+    "case_subject_data_present": false,
+    "content_classification": "synthetic-no-distribution",
+    "customer_publication_consent_status": "not-required-synthetic",
+    "distribution_scope": "synthetic-no-distribution",
+    "final_cut_review_required": true,
+    "institutional_review_status": "not-required-synthetic",
+    "insurance_product_or_service_information_present": true,
+    "publishing_account_status": "not-required-synthetic",
+    "rules_snapshot": {
+      "checked_at": "2026-08-14T19:30:00+08:00",
+      "sources": [
+        {
+          "authority": "synthetic-fixture",
+          "effective_status": "not-applicable-synthetic",
+          "locator": "离线合成回归，不对应真实账号、机构、客户或发布行为。",
+          "source_id": "synthetic-offline-boundary"
+        }
+      ]
+    }
+  },
+  "compliance_gates": {
+    "content_basis_accuracy": {
+      "evidence": [
+        "合成事实卡、研究图和脚本哈希。"
+      ],
+      "reasons": [
+        "已检查来源层级；fixture 不把未来规则或 AI 草稿写成现行事实。"
+      ],
+      "reviewed_check_ids": [
+        "official-current-rule-source-recorded",
+        "future-rule-effective-date-separated",
+        "product-version-or-not-applicable-recorded",
+        "case-claims-traceable-to-evidence"
+      ],
+      "status": "pass"
+    },
+    "customer_autonomy_privacy": {
+      "evidence": [
+        "synthetic_only=true，采访槽未录制，真实客户资料未进入。"
+      ],
+      "reasons": [
+        "已检查服务资料与发布授权分离；真实成片仍必须另做授权和最终确认。"
+      ],
+      "reviewed_check_ids": [
+        "service-data-and-publication-consent-separated",
+        "subject-patient-third-party-consent-separated",
+        "face-voice-health-claim-scope-recorded",
+        "reidentification-withdrawal-and-deletion-addressed"
+      ],
+      "status": "pass"
+    },
+    "identity_account_authorization": {
+      "evidence": [
+        "distribution_scope=synthetic-no-distribution。"
+      ],
+      "reasons": [
+        "离线 fixture 不使用真实从业人员、机构账号或平台发布；不得据此推导真实账号获准。"
+      ],
+      "reviewed_check_ids": [
+        "person-role-recorded",
+        "publishing-account-recorded",
+        "institution-review-status-recorded",
+        "no-education-or-private-domain-exemption-assumed"
+      ],
+      "status": "pass"
+    },
+    "key_matters_disclosure": {
+      "evidence": [
+        "脚本服务边界、禁用声称和人工发布边界。"
+      ],
+      "reasons": [
+        "已检查限制条件、身份披露占位以及广告和 AI 标识的后续评估要求。"
+      ],
+      "reviewed_check_ids": [
+        "identity-and-institution-disclosure-planned",
+        "policy-limitations-and-conditions-visible",
+        "no-material-condition-omitted",
+        "advertising-and-ai-label-assessed"
+      ],
+      "status": "pass"
+    },
+    "suitability": {
+      "evidence": [
+        "single_question、service_capability.boundary 与 CTA 状态。"
+      ],
+      "reasons": [
+        "合成内容不向个人推荐治疗或保险产品，也不使用恐惧、催促或平台规避。"
+      ],
+      "reviewed_check_ids": [
+        "public-content-not-personal-recommendation",
+        "specific-product-fit-boundary-recorded",
+        "no-pressure-or-platform-circumvention",
+        "cta-does-not-bypass-needed-assessment"
+      ],
+      "status": "pass"
+    },
+    "traceability_human_confirmation": {
+      "evidence": [
+        "subject_sha256、reviewer、reviewed_at 与 manual-only。"
+      ],
+      "reasons": [
+        "审核只绑定候选脚本；成片、平台预览、撤回和归档必须在发布前另行完成。"
+      ],
+      "reviewed_check_ids": [
+        "exact-script-hash-bound",
+        "sources-reviewer-and-time-recorded",
+        "final-cut-review-mandatory",
+        "correction-withdrawal-and-archive-route-recorded"
+      ],
+      "status": "pass"
+    }
+  },
+  "content_id": "research-5d27168fe364979b2baf1886",
+  "decision": "approved_for_candidate_projection",
+  "gates": {
+    "authorization": {
+      "reasons": [
+        "采访仅为 planned 槽位，未生成客户回答或原声。"
+      ],
+      "status": "pass"
+    },
+    "fact": {
+      "reasons": [
+        "旁白、标题、故事字段与 verified synthetic evidence refs 一并审核。"
+      ],
+      "status": "pass"
+    },
+    "medical_insurance": {
+      "reasons": [
+        "医疗决定与保险服务边界分开，未作疗效、承保或理赔承诺。"
+      ],
+      "status": "pass"
+    },
+    "privacy": {
+      "reasons": [
+        "完全虚构 fixture 不含真实人物、机构、日期、保单或健康资料。"
+      ],
+      "status": "pass"
+    },
+    "rights": {
+      "reasons": [
+        "视觉只使用本地合成文字与几何图形候选。"
+      ],
+      "status": "pass"
+    },
+    "video_production": {
+      "reasons": [
+        "只允许生成 candidate video brief 和 dry-run plan。"
+      ],
+      "status": "pass"
+    },
+    "voice": {
+      "reasons": [
+        "仅验证虚构口播结构，不宣称完成真实声纹审核。"
+      ],
+      "status": "pass"
+    }
+  },
+  "inputs": {
+    "case_video_script": {
+      "artifact_id": "case-script-synthetic-insurance-001",
+      "schema_version": "case-video-script.v1",
+      "sha256": "d9e792bcadccfb356177e073998b0559d0ad5f12f7c7a98dac22515fbd67d11f"
+    },
+    "content_item": {
+      "artifact_id": "research-5d27168fe364979b2baf1886",
+      "schema_version": "0.2",
+      "sha256": "221f275d69e1c86f52967c89558e9c8264901a95d58b9de4a3058670b0a274e8"
+    },
+    "fact_card": {
+      "artifact_id": "fact-card-synthetic-case-001",
+      "schema_version": "content-fact-card.v0",
+      "sha256": "1f39b914495b1eee90ce0381c68298bfc850bb70d8a6bb99d2c797ddfd5496ec"
+    },
+    "human_voice_receipt": {
+      "artifact_id": "voice-receipt-946570f5d025feca5ebc",
+      "schema_version": "case-video-human-voice-receipt.v1",
+      "sha256": "1b446bbf59a44602bc87b57bd2d1533a225d095c913fbe7a02b391564db2ed51"
+    },
+    "interview_receipts": [],
+    "research_output": {
+      "artifact_id": "research_synthetic_case_video_001",
+      "schema_version": "1.0.0",
+      "sha256": "9abc8068867fe949d5c86cf8b7071fc1801b06e6b8d511a1f56550edaf2f440c"
+    },
+    "route_card": {
+      "artifact_id": "route-card-synthetic-case-001",
+      "schema_version": "content-route-card.v0",
+      "sha256": "840528448e23c878ce9052ba42b1d1039d0047a079a3babaeb052614a7bcaafd"
+    }
+  },
+  "publication_boundary": "manual-only",
+  "required_reviews": [
+    "fact",
+    "privacy",
+    "medical-insurance",
+    "authorization",
+    "rights",
+    "voice",
+    "video-production"
+  ],
+  "review_id": "case-review-synthetic-case-001",
+  "review_mode": "synthetic-fixture-review",
+  "reviewed_at": "2026-08-09T08:40:00+08:00",
+  "reviewer": "synthetic-fixture-reviewer",
+  "risk_profile": "insurance-health-case",
+  "schema_version": "case-video-review-receipt.v1",
+  "script_id": "case-script-synthetic-insurance-001",
+  "subject_sha256": "ae88d387dfc653c170194da5051c5913ddb5fe97fc4c0cfc28b7429de38b9453",
+  "synthetic_only": true
+}

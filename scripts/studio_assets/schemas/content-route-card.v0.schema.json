@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.lightcolor/content-route-card.v0.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "route_card_id", "content_id", "synthetic_only", "account", "content_job", "format", "platform", "primary_goal", "single_question", "one_variable", "publication_boundary"],
+  "properties": {
+    "schema_version": { "const": "content-route-card.v0" },
+    "route_card_id": { "type": "string", "pattern": "^route-card-[a-z0-9][a-z0-9-]{5,63}$" },
+    "content_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{5,79}$" },
+    "synthetic_only": { "type": "boolean" },
+    "account": { "type": "string", "minLength": 1 },
+    "content_job": { "const": "case-review" },
+    "format": { "const": "short-video-narration" },
+    "platform": { "type": "string", "minLength": 1 },
+    "primary_goal": { "type": "string", "minLength": 1 },
+    "single_question": { "type": "string", "minLength": 1 },
+    "narrative_order": { "enum": ["chronological", "editorial_nonchronological"] },
+    "nonchronological_reason": { "type": "string", "minLength": 1 },
+    "one_variable": { "const": "selected_hook_id" },
+    "publication_boundary": { "const": "manual-only" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "narrative_order": { "const": "editorial_nonchronological" } },
+        "required": ["narrative_order"]
+      },
+      "then": { "required": ["nonchronological_reason"] }
+    }
+  ]
+}

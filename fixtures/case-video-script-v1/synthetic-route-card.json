@@ -1,0 +1,14 @@
+{
+  "account": "synthetic-demo-ip",
+  "content_id": "research-5d27168fe364979b2baf1886",
+  "content_job": "case-review",
+  "format": "short-video-narration",
+  "one_variable": "selected_hook_id",
+  "platform": "offline-fixture",
+  "primary_goal": "用一个虚构案例解释保险顾问能做和不能做的事",
+  "publication_boundary": "manual-only",
+  "route_card_id": "route-card-synthetic-case-001",
+  "schema_version": "content-route-card.v0",
+  "single_question": "一次癌症诊治中，保险服务怎样与医疗决定保持边界？",
+  "synthetic_only": true
+}

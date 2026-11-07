@@ -1,0 +1,59 @@
+{
+  "schema": "question-research-source-admission.v1",
+  "selected_claim_ids": [
+    "claim-cause",
+    "claim-protocol",
+    "claim-single-sufficient",
+    "claim-variation"
+  ],
+  "admitted_sources": [
+    {
+      "source_id": "src-protocol",
+      "title": "Synthetic readiness protocol",
+      "canonical_ref": "fixture://synthetic-readiness/protocol",
+      "source_type": "synthetic_protocol",
+      "quality": "good",
+      "review_status": "reviewed",
+      "freshness": "not_applicable",
+      "content_sha256": "b05c17041e18f591983749c55fe30e528b7a4ba5082cff566b9b03d318765c6f",
+      "token_cost": 100
+    },
+    {
+      "source_id": "src-pilot",
+      "title": "Synthetic measurement pilot",
+      "canonical_ref": "fixture://synthetic-readiness/pilot",
+      "source_type": "synthetic_report",
+      "quality": "good",
+      "review_status": "reviewed",
+      "freshness": "not_applicable",
+      "content_sha256": "710e3e85c612e3cf73c96a95695ddfc128163754e714d9c61fbf0e647cfcde67",
+      "token_cost": 120
+    },
+    {
+      "source_id": "src-opinion",
+      "title": "Synthetic opinion note",
+      "canonical_ref": "fixture://synthetic-readiness/opinion",
+      "source_type": "synthetic_opinion",
+      "quality": "mixed",
+      "review_status": "reviewed",
+      "freshness": "not_applicable",
+      "content_sha256": "1766388a5b8b5c89288a1195c695beb4e31e01b704f74a47602c174b48ebd5ef",
+      "token_cost": 80
+    }
+  ],
+  "duplicate_sources": [
+    {
+      "source_id": "src-protocol-duplicate",
+      "duplicate_of": "src-protocol"
+    }
+  ],
+  "excluded_sources": [],
+  "blockers": [],
+  "budget_usage": {
+    "sources": 3,
+    "tokens": 480,
+    "source_limit": 3,
+    "token_limit": 900
+  },
+  "new_evidence_source_count": 3
+}

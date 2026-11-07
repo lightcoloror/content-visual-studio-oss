@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.lightcolor/case-video-script-handoff.v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "adapter", "adapter_version", "handoff_id", "script_id", "content_id", "brief_id", "synthetic_only", "inputs", "output", "brief_projection_sha256", "selected_hook_id", "selected_hook_binding", "interview_slots", "experiment", "boundaries"],
+  "properties": {
+    "schema_version": { "const": "case-video-script-handoff.v1" },
+    "status": { "const": "generated_draft_only" },
+    "adapter": { "const": "case-video-script-sidecar" },
+    "adapter_version": { "type": "string", "minLength": 1 },
+    "handoff_id": { "type": "string", "pattern": "^case-handoff-[a-z0-9][a-z0-9-]{5,63}$" },
+    "script_id": { "type": "string", "minLength": 1 },
+    "content_id": { "type": "string", "minLength": 1 },
+    "brief_id": { "type": "string", "minLength": 1 },
+    "synthetic_only": { "type": "boolean" },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_video_script", "research_output", "content_item", "fact_card", "route_card", "review_receipt"],
+      "properties": {
+        "case_video_script": { "$ref": "#/$defs/artifactRef" },
+        "research_output": { "$ref": "#/$defs/artifactRef" },
+        "content_item": { "$ref": "#/$defs/artifactRef" },
+        "fact_card": { "$ref": "#/$defs/artifactRef" },
+        "route_card": { "$ref": "#/$defs/artifactRef" },
+        "review_receipt": { "$ref": "#/$defs/artifactRef" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "brief_id", "schema_version", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "brief_id": { "type": "string", "minLength": 1 },
+        "schema_version": { "const": "content-video-brief.v1" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "brief_projection_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "selected_hook_id": { "type": "string", "pattern": "^hook-[0-9]{2}$" },
+    "selected_hook_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hook_id", "text_sha256", "evidence_refs_sha256"],
+      "properties": {
+        "hook_id": { "type": "string", "pattern": "^hook-[0-9]{2}$" },
+        "text_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "evidence_refs_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "interview_slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slot_id", "state", "story_segment_ref", "fallback_edit"],
+        "properties": {
+          "slot_id": { "type": "string" },
+          "state": { "enum": ["planned", "recorded", "excluded"] },
+          "story_segment_ref": { "type": "string" },
+          "fallback_edit": { "type": "string" }
+        }
+      }
+    },
+    "experiment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["variable_to_change", "constants", "no_signal_meaning"],
+      "properties": {
+        "variable_to_change": { "type": "string", "minLength": 1 },
+        "constants": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "no_signal_meaning": { "const": "content_no_signal_is_observation_only" }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["draft_only", "manual_only", "candidate_visuals_only", "external_api_called", "would_publish"],
+      "properties": {
+        "draft_only": { "const": true },
+        "manual_only": { "const": true },
+        "candidate_visuals_only": { "const": true },
+        "external_api_called": { "const": false },
+        "would_publish": { "const": false }
+      }
+    }
+  },
+  "$defs": {
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "schema_version", "sha256"],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "schema_version": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    }
+  }
+}

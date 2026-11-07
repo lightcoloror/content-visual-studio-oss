@@ -1,0 +1,100 @@
+{
+  "schema": "question-research-claim-graph-candidate.v1",
+  "closure_run_id": "public-installed-projection",
+  "input_sha256": "35bee6c7b56cdb1c0692f2959b35b3f2f12a389c0dfc9540f65a125c203cb38e",
+  "status": "candidate_only",
+  "nodes": [
+    {
+      "node_id": "claim-protocol",
+      "kind": "claim",
+      "text": "The synthetic protocol requires a trend and a second signal before changing load.",
+      "status": "supported"
+    },
+    {
+      "node_id": "claim-variation",
+      "kind": "claim",
+      "text": "The synthetic pilot reports day-to-day variation under unchanged workload.",
+      "status": "supported"
+    },
+    {
+      "node_id": "claim-cause",
+      "kind": "claim",
+      "text": "The variation was caused by neural recruitment alone.",
+      "status": "unknown"
+    },
+    {
+      "node_id": "claim-single-sufficient",
+      "kind": "claim",
+      "text": "One morning grip reading is sufficient for every training decision.",
+      "status": "contradicted"
+    },
+    {
+      "node_id": "ev-protocol-fact",
+      "kind": "evidence",
+      "text": "The protocol text explicitly requires repeated measures and a second signal.",
+      "status": "candidate_only"
+    },
+    {
+      "node_id": "ev-pilot-fact",
+      "kind": "evidence",
+      "text": "The synthetic pilot records variation under unchanged workload.",
+      "status": "candidate_only"
+    },
+    {
+      "node_id": "ev-cause-inference",
+      "kind": "evidence",
+      "text": "The fixture does not identify a causal mechanism.",
+      "status": "candidate_only"
+    },
+    {
+      "node_id": "ev-opinion-claim",
+      "kind": "evidence",
+      "text": "The opinion note asserts sufficiency but does not establish it as a source fact.",
+      "status": "candidate_only"
+    },
+    {
+      "node_id": "ev-pilot-contradiction",
+      "kind": "evidence",
+      "text": "The pilot states that single readings were not decision-grade.",
+      "status": "candidate_only"
+    }
+  ],
+  "edges": [
+    {
+      "from_id": "ev-protocol-fact",
+      "to_id": "claim-protocol",
+      "relation": "supports",
+      "source_id": "src-protocol",
+      "status": "candidate_only"
+    },
+    {
+      "from_id": "ev-pilot-fact",
+      "to_id": "claim-variation",
+      "relation": "supports",
+      "source_id": "src-pilot",
+      "status": "candidate_only"
+    },
+    {
+      "from_id": "ev-cause-inference",
+      "to_id": "claim-cause",
+      "relation": "supports",
+      "source_id": "src-pilot",
+      "status": "candidate_only"
+    },
+    {
+      "from_id": "ev-opinion-claim",
+      "to_id": "claim-single-sufficient",
+      "relation": "supports",
+      "source_id": "src-opinion",
+      "status": "candidate_only"
+    },
+    {
+      "from_id": "ev-pilot-contradiction",
+      "to_id": "claim-single-sufficient",
+      "relation": "contradicts",
+      "source_id": "src-pilot",
+      "status": "candidate_only"
+    }
+  ],
+  "human_review_required": true
+}

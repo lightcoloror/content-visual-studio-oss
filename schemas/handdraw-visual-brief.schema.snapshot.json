@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metaphor",
+    "composition",
+    "central_action",
+    "max_labels"
+  ],
+  "properties": {
+    "metaphor": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "composition": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "central_action": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "max_labels": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "x-source-reference": "content-item.schema.json#/$defs/visualBrief",
+  "x-source-sha256": "202b827b10c448594a37810fd307831d8410344df8d17f62896a2064f09885ad"
+}

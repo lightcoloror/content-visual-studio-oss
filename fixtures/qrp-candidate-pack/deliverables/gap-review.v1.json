@@ -1,0 +1,35 @@
+{
+  "schema": "question-research-gap-review.v1",
+  "closure_run_id": "public-installed-projection",
+  "input_sha256": "35bee6c7b56cdb1c0692f2959b35b3f2f12a389c0dfc9540f65a125c203cb38e",
+  "status": "candidate_only",
+  "unknowns": [
+    {
+      "claim_id": "claim-cause",
+      "reason": "no_reviewed_source_fact_support"
+    }
+  ],
+  "contradictions": [
+    {
+      "claim_id": "claim-single-sufficient",
+      "supporting_evidence_ids": [],
+      "contradicting_evidence_ids": [
+        "ev-pilot-contradiction"
+      ],
+      "resolution_status": "human_review_required"
+    }
+  ],
+  "deferred_subquestions": [
+    {
+      "subquestion_id": "sq-wording-preference",
+      "reason": "depth_limit"
+    }
+  ],
+  "source_blockers": [],
+  "search_stop_reason": "marginal_returns_reached",
+  "online_followup": {
+    "status": "blocked_by_design",
+    "execution_authorized": false
+  },
+  "resume_from": null
+}

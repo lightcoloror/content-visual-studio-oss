@@ -1,0 +1,46 @@
+{
+  "boundaries": {
+    "absolute_path_included": false,
+    "external_service_called": false,
+    "local_only": true,
+    "raw_media_embedded": false,
+    "would_publish": false
+  },
+  "consent": {
+    "scope": "deidentified-case-video-quote",
+    "scope_sha256": "e929dd9953e870d0e74d1ba1b46b260757e30d0eda6a1aee7fa47d9ee1b45306",
+    "status": "granted"
+  },
+  "consent_artifact_ref": {
+    "artifact_id": "consent-synthetic-interview-01",
+    "schema_version": "local-consent-artifact.v1",
+    "sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+  },
+  "content_id": "research-5d27168fe364979b2baf1886",
+  "human_verification": {
+    "reviewed_at": "2026-08-11T20:32:00+08:00",
+    "reviewer": "synthetic-fixture-reviewer",
+    "status": "pass"
+  },
+  "privacy": {
+    "direct_identifiers_removed": true,
+    "reidentification_risk": "low",
+    "status": "pass"
+  },
+  "quote_sha256": "4f74a405de6a8a62e28605512d4612ae62413489563468fa626c467e3023c414",
+  "quote_text": "刚开始最怕的是不知道该先问什么，后来把问题分开列出来，心里清楚多了。",
+  "receipt_id": "interview-receipt-synthetic-01",
+  "recording_artifact_ref": {
+    "artifact_id": "recording-synthetic-interview-01",
+    "schema_version": "local-recording-artifact.v1",
+    "sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "rights": {
+    "allowed_use": "candidate-video-script",
+    "status": "pass"
+  },
+  "schema_version": "case-video-deidentified-interview-receipt.v1",
+  "script_id": "case-script-synthetic-insurance-001",
+  "slot_id": "interview-01",
+  "synthetic_only": true
+}

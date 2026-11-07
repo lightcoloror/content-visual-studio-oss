@@ -1,0 +1,48 @@
+{
+  "schema": "question-research-bounded-intake.v1",
+  "question": "Should a fictional training team use one morning grip reading alone to decide the day's training load?",
+  "audience": "coaches evaluating a synthetic monitoring protocol",
+  "budgets": {
+    "max_subquestions": 3,
+    "max_depth": 2,
+    "max_sources": 3,
+    "max_tokens": 900,
+    "max_expansions_per_round": 3,
+    "minimum_gap_score": 0.2
+  },
+  "round": 1,
+  "selected_subquestions": [
+    {
+      "subquestion_id": "sq-measurement-policy",
+      "text": "What does the synthetic protocol require before changing load?",
+      "depth": 1,
+      "priority": "P0",
+      "gap_score": 0.95,
+      "token_cost": 60
+    },
+    {
+      "subquestion_id": "sq-measurement-noise",
+      "text": "Does the synthetic pilot show day-to-day measurement variation?",
+      "depth": 1,
+      "priority": "P1",
+      "gap_score": 0.85,
+      "token_cost": 60
+    },
+    {
+      "subquestion_id": "sq-single-reading",
+      "text": "Is a single reading sufficient for every decision?",
+      "depth": 2,
+      "priority": "P1",
+      "gap_score": 0.75,
+      "token_cost": 60
+    }
+  ],
+  "deferred_subquestions": [
+    {
+      "subquestion_id": "sq-wording-preference",
+      "reason": "depth_limit"
+    }
+  ],
+  "selection_policy": "highest_evidence_gap_then_priority_with_depth_and_count_caps",
+  "open_ended_expansion": false
+}

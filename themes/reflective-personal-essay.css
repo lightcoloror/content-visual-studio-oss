@@ -1,0 +1,212 @@
+/*
+ * Reflective personal-essay composition layer.
+ * Keeps the selected Profile's palette and uses only local CJK font stacks.
+ */
+
+body[data-design-direction="reflective-personal-essay"] {
+  --essay-ink: var(--ioa-ink, #243238);
+  --essay-brand: var(--ioa-brand-teal, #245b5a);
+  --essay-accent: var(--ioa-human-accent, #ad4e3d);
+  --essay-paper: var(--ioa-paper, #f7f8f5);
+  --essay-mist: var(--ioa-mist, #ddebe9);
+  --essay-muted: var(--ioa-muted-ink, #52615f);
+  --essay-dark: color-mix(in srgb, var(--essay-ink) 88%, black);
+  --essay-line: color-mix(in srgb, var(--essay-brand) 20%, var(--essay-paper));
+  --essay-serif: "Songti SC", STSong, "Noto Serif CJK SC", SimSun, serif;
+  --essay-sans: "Microsoft YaHei", "Noto Sans CJK SC", "PingFang SC", Arial, sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--essay-paper);
+  color: var(--essay-ink);
+}
+
+.essay-article {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--essay-serif);
+  font-size: 17px;
+  line-height: 2;
+  counter-reset: essay-section;
+}
+
+.essay-shell {
+  width: min(100% - 48px, 860px);
+  margin-inline: auto;
+}
+
+.essay-hero {
+  min-height: 58vh;
+  display: grid;
+  align-items: end;
+  padding: 72px 0 84px;
+  border-bottom: 1px solid color-mix(in srgb, var(--essay-accent) 36%, transparent);
+  background: var(--essay-dark);
+  color: var(--essay-paper);
+}
+
+.essay-hero::before {
+  content: "PERSONAL ESSAY";
+  width: min(100% - 48px, 860px);
+  margin: 0 auto 20px;
+  color: color-mix(in srgb, var(--essay-paper) 54%, transparent);
+  font-family: var(--essay-sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+}
+
+.essay-hero h1 {
+  max-width: 760px;
+  margin: 0 0 26px;
+  color: var(--essay-paper);
+  font-family: var(--essay-serif);
+  font-size: clamp(38px, 6vw, 64px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.essay-hero h1::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 2px;
+  margin-top: 28px;
+  background: var(--essay-accent);
+}
+
+.essay-hero p {
+  max-width: 620px;
+  margin: 0;
+  color: color-mix(in srgb, var(--essay-paper) 72%, transparent);
+  font-size: 17px;
+}
+
+.essay-section {
+  counter-increment: essay-section;
+  min-height: 520px;
+  padding: 76px 0 88px;
+  border-bottom: 1px solid var(--essay-line);
+  background: var(--essay-paper);
+  color: var(--essay-ink);
+}
+
+.essay-section[data-tone="mist"] {
+  background: color-mix(in srgb, var(--essay-mist) 42%, var(--essay-paper));
+}
+
+.essay-section[data-tone="dark"] {
+  --essay-line: color-mix(in srgb, var(--essay-paper) 14%, transparent);
+  background: var(--essay-dark);
+  color: color-mix(in srgb, var(--essay-paper) 88%, transparent);
+}
+
+.essay-section[data-tone="resolve"] {
+  background: color-mix(in srgb, var(--essay-paper) 82%, var(--essay-mist));
+}
+
+.essay-section h2 {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  max-width: 760px;
+  margin: 0 0 34px;
+  padding: 0 0 24px;
+  border-bottom: 1px solid var(--essay-line);
+  color: inherit;
+  font-family: var(--essay-serif);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+.essay-section h2::before {
+  content: counter(essay-section, decimal-leading-zero);
+  padding-top: 8px;
+  color: var(--essay-accent);
+  font-family: var(--essay-sans);
+  font-size: 11px;
+  line-height: 1;
+}
+
+.essay-section p,
+.essay-section ul,
+.essay-section ol,
+.essay-section blockquote,
+.essay-section .article-visual {
+  max-width: 720px;
+}
+
+.essay-section p {
+  margin: 0 0 20px;
+}
+
+.essay-section strong {
+  color: var(--essay-brand);
+  font-weight: 600;
+}
+
+.essay-section[data-tone="dark"] strong {
+  color: color-mix(in srgb, var(--essay-accent) 72%, var(--essay-paper));
+}
+
+.essay-section blockquote {
+  margin: 30px 0;
+  padding: 18px 0 18px 24px;
+  border: 0;
+  border-left: 3px solid var(--essay-accent);
+  background: transparent;
+  color: var(--essay-muted);
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+.essay-section[data-tone="dark"] blockquote {
+  color: color-mix(in srgb, var(--essay-paper) 76%, transparent);
+}
+
+.essay-section[data-tone="resolve"] blockquote:last-child {
+  margin-top: 54px;
+  padding: 24px 28px;
+  border-left-width: 3px;
+  background: color-mix(in srgb, var(--essay-accent) 8%, var(--essay-paper));
+  color: var(--essay-ink);
+}
+
+.essay-section .article-visual {
+  margin: 32px 0;
+}
+
+.essay-section .article-visual img {
+  border-radius: 4px;
+}
+
+@media (max-width: 720px) {
+  .essay-shell,
+  .essay-hero::before {
+    width: min(100% - 28px, 860px);
+  }
+
+  .essay-hero {
+    min-height: 520px;
+    padding: 54px 0 62px;
+  }
+
+  .essay-hero h1 {
+    font-size: 40px;
+  }
+
+  .essay-section {
+    min-height: 0;
+    padding: 54px 0 64px;
+  }
+
+  .essay-section h2 {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 10px;
+    font-size: 29px;
+  }
+}

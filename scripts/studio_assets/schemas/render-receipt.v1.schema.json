@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.lightcolor/render-receipt.v1.schema.json",
+  "title": "Render artifact receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "artifact_id",
+    "content_id",
+    "renderer",
+    "renderer_version",
+    "created_at",
+    "inputs",
+    "output",
+    "qa",
+    "policy"
+  ],
+  "properties": {
+    "schema_version": { "const": "render-receipt.v1" },
+    "receipt_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$" },
+    "artifact_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,95}$" },
+    "content_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{5,79}$" },
+    "renderer": {
+      "enum": [
+        "social-card",
+        "material-illustration",
+        "html-playwright",
+        "lieflat-charts",
+        "echarts",
+        "mermaid",
+        "pptxgenjs",
+        "ppt-master",
+        "imagegen",
+        "antv-infographic",
+        "marp",
+        "baoyu-md",
+        "wechat-inline-html",
+        "obsidian-infographic-preview",
+        "manual",
+        "none"
+      ]
+    },
+    "renderer_version": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "checked_at": { "type": "string", "format": "date-time" },
+    "contract_versions": {
+      "type": "object",
+      "minProperties": 2,
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["evidence_id", "ref", "evidence_status", "label"],
+        "properties": {
+          "evidence_id": { "type": "string", "minLength": 1 },
+          "ref": { "type": "string", "minLength": 1 },
+          "evidence_status": { "type": "string", "minLength": 1 },
+          "label": { "type": "string" }
+        }
+      }
+    },
+    "manual_only": { "type": "boolean" },
+    "candidate_only": { "type": "boolean" },
+    "visual_conformance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "schema_version", "sha256", "result"],
+      "properties": {
+        "ref": { "type": "string", "minLength": 1 },
+        "schema_version": { "const": "visual-conformance-receipt.v1" },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "result": { "enum": ["pass", "fail", "review-required"] }
+      }
+    },
+    "font_gate": {
+      "type": "object",
+      "required": ["passed"],
+      "properties": {
+        "passed": { "type": "boolean" },
+        "policy_id": { "type": "string" },
+        "profile_id": { "type": "string" },
+        "policy_path": { "type": "string" },
+        "policy_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "expected_policy_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "policy_hash_matches": { "type": "boolean" },
+        "report_ref": { "type": "string" },
+        "report_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "failures": { "type": "array", "items": { "type": "string" } },
+        "desktop": { "$ref": "#/$defs/fontGateViewport" },
+        "mobile": { "$ref": "#/$defs/fontGateViewport" }
+      },
+      "additionalProperties": true
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "repository": { "type": "string" },
+        "commit": { "type": "string" },
+        "license": { "type": "string" },
+        "local_path": { "type": "string" },
+        "patch_ref": { "type": "string" }
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ref", "sha256"],
+        "properties": {
+          "ref": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "format", "sha256", "bytes"],
+      "properties": {
+        "ref": { "type": "string", "minLength": 1 },
+        "format": { "enum": ["png", "jpg", "svg", "pdf", "pptx", "html", "md", "zip", "none"] },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "nonblank_ratio": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "qa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile_id", "hard_checks", "needs_review_count", "result", "retry_count"],
+      "properties": {
+        "profile_id": { "type": "string", "minLength": 1 },
+        "hard_checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "status"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "status": { "enum": ["pass", "fail"] },
+              "details": { "type": "string" }
+            }
+          }
+        },
+        "review_checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "status"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "status": { "enum": ["pass", "needs-review"] },
+              "details": { "type": "string" }
+            }
+          }
+        },
+        "needs_review_count": { "type": "integer", "minimum": 0 },
+        "result": { "enum": ["pass", "fail", "review-required"] },
+        "retry_count": { "type": "integer", "minimum": 0, "maximum": 2 }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rights_verified", "privacy_verified", "ai_generation_authorized", "remote_downloads_enabled"],
+      "properties": {
+        "rights_verified": { "type": "boolean" },
+        "privacy_verified": { "type": "boolean" },
+        "ai_generation_authorized": { "type": "boolean" },
+        "remote_downloads_enabled": { "type": "boolean" }
+      }
+    },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "fontGateViewport": {
+      "type": "object",
+      "required": ["passed"],
+      "properties": {
+        "passed": { "type": "boolean" },
+        "profile_id": { "type": "string" },
+        "policy_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "expected_policy_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "failures": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    }
+  }
+}

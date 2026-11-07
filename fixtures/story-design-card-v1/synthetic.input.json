@@ -1,0 +1,194 @@
+{
+  "schema_version": "story-design-card-input.v1",
+  "generated_at": "2026-09-03T15:00:00+08:00",
+  "content_id": "synthetic-family-policy-check",
+  "risk_class": "insurance-health",
+  "structure_route": "story-arc",
+  "fact_binding": {
+    "fact_card_ref": "fixtures/story-design-card-v1/synthetic-fact-card.json",
+    "fact_revision_id": "rev-synthetic-001",
+    "fact_card_sha256": "3c94bcf2f513c5923c88e665517814ecec7d367ab6bbabd9b043d3c6a3b105d0",
+    "allowed_fact_ids": ["fact-01", "fact-02", "fact-03", "fact-04", "fact-05"]
+  },
+  "story_source": {
+    "mode": "documented-case",
+    "authorization_status": "not-required",
+    "identity_treatment": "synthetic",
+    "quote_treatment": "none",
+    "fact_refs": ["fact-01", "fact-02", "fact-03", "fact-04", "fact-05"]
+  },
+  "story_category": "case-moment",
+  "story_purpose": "Show why a household starts by finding existing policies before discussing a new purchase.",
+  "format_design": {
+    "format_id": "short-video-narration",
+    "standalone": true,
+    "central_change_count": 1,
+    "scene_meaning_alternation": "not-applicable",
+    "interview_action_meaning_layers": "not-applicable"
+  },
+  "production_strategy": {
+    "current_mode": "single-master-synchronized",
+    "platform_specific_variants": "deferred-capacity",
+    "single_variable_experiment": "deferred-capacity",
+    "distribution_rule": "same-frozen-master-manual-multi-platform",
+    "release_freeze_contract": "publication-version-freeze.v1",
+    "future_trigger": "Enable platform variants or controlled experiments only after publication capacity increases."
+  },
+  "timing_design": {
+    "profile_basis": "current-operating-hypothesis",
+    "target_duration_seconds": 60,
+    "audience_stake_visible_by_second": 2,
+    "reason_to_continue_visible_by_second": 5,
+    "first_information_advance_by_second": 12,
+    "maximum_gap_between_advances_seconds": 12,
+    "main_payoff_by_completion_ratio": 0.65,
+    "heuristic_not_platform_fact": true
+  },
+  "continuity_value": {
+    "current_item_value": "Show the first practical step for making scattered policy records visible.",
+    "future_value_promise": "Continue using evidence-bound everyday cases to explain how families can check treatment, expenses and insurance decisions without starting from product promotion.",
+    "target_audience": "Households that have insurance records but cannot yet explain what they own or how to use it.",
+    "surface_mode": "profile-consistency",
+    "mechanical_follow_request_prohibited": true,
+    "promise_status": "author-position"
+  },
+  "protagonist": {
+    "role": "fictional household member",
+    "immediate_goal": "work out what insurance the family already has",
+    "goal_fact_refs": ["fact-01"],
+    "internal_state_status": "not-used",
+    "internal_state_fact_refs": []
+  },
+  "audience_bridge": {
+    "shared_situation": "Important documents are scattered across several family members and devices.",
+    "recognition_basis": "agent-hypothesis",
+    "validation_status": "needs-validation"
+  },
+  "scene_anchor": {
+    "beat_id": "scene",
+    "detail_type": "record",
+    "observable_detail": "The fictional family cannot produce one complete list of the policies already held.",
+    "fact_refs": ["fact-01", "fact-02"]
+  },
+  "inciting_incident": {
+    "beat_id": "trigger",
+    "event": "A fictional family asks whether it should add another policy but cannot list its existing coverage.",
+    "fact_refs": ["fact-01"]
+  },
+  "expectation_gap": {
+    "beat_id": "gap",
+    "expected_outcome": "compare a new product immediately",
+    "actual_outcome": "pause the comparison and inventory existing documents first",
+    "fact_refs": ["fact-01", "fact-02"]
+  },
+  "attempt_and_feedback": {
+    "beat_id": "attempt",
+    "first_action": "They begin by trying to compare another product.",
+    "expected_feedback": "The comparison will immediately identify what to buy.",
+    "actual_feedback": "The missing inventory makes a responsible comparison premature.",
+    "fact_refs": ["fact-01", "fact-02", "fact-03"]
+  },
+  "pressure": [
+    {
+      "beat_id": "pressure",
+      "type": "resource",
+      "description": "The family has incomplete records and does not know which person holds each document.",
+      "fact_refs": ["fact-02"]
+    }
+  ],
+  "choice_under_pressure": {
+    "beat_id": "choice",
+    "options": ["continue comparing a new product", "first inventory the existing policies"],
+    "chosen_action": "first inventory the existing policies",
+    "cost_or_tradeoff": "the purchase discussion is delayed while documents are collected",
+    "fact_refs": ["fact-02", "fact-03"]
+  },
+  "turning_points": [
+    {
+      "beat_id": "turn-one",
+      "function": "decision",
+      "before_value": "ready to compare",
+      "event": "They decide to stop comparing until the existing policies are listed.",
+      "after_value": "ready to inventory",
+      "fact_refs": ["fact-03"]
+    },
+    {
+      "beat_id": "turn-two",
+      "function": "revelation",
+      "before_value": "coverage assumed known",
+      "event": "The inventory reveals that several documents were held in different places.",
+      "after_value": "coverage gaps and overlaps can now be checked",
+      "fact_refs": ["fact-04"]
+    }
+  ],
+  "climax": {
+    "beat_id": "climax",
+    "action_or_revelation": "The decision shifts from buying first to understanding the current situation first.",
+    "value_shift": "unclear holdings -> reviewable inventory",
+    "fact_refs": ["fact-03", "fact-04"]
+  },
+  "resolution": {
+    "new_state": "The fictional household has a list that can support a later decision.",
+    "remaining_uncertainty": "The example does not determine whether any new policy is suitable.",
+    "fact_refs": ["fact-04", "fact-05"]
+  },
+  "emotional_design": {
+    "engagement_target": ["interest", "identification"],
+    "emotion_beats": [
+      {
+        "beat_ref": "gap",
+        "intended_response": "recognition",
+        "intensity": "low",
+        "eliciting_appraisal": "The viewer recognizes the ordinary mess of scattered documents.",
+        "evidence_mode": "observable-cue",
+        "fact_refs": ["fact-01", "fact-02"]
+      },
+      {
+        "beat_ref": "turn-two",
+        "intended_response": "relief",
+        "intensity": "moderate",
+        "eliciting_appraisal": "A previously vague situation becomes something the family can inspect.",
+        "evidence_mode": "observable-cue",
+        "fact_refs": ["fact-04"]
+      }
+    ],
+    "aftertaste": "Relief comes from clarity, not from a product promise.",
+    "prohibited_methods": ["fear-escalation", "shame", "outrage-targeting", "trauma-exploitation", "false-suspense", "affected-person-as-humor-target"]
+  },
+  "explanation_bridge": {
+    "main_claim": "Before considering an additional policy, make the existing situation visible.",
+    "boundary": "This fictional story illustrates a workflow and is not individual advice or proof that purchasing should be delayed.",
+    "story_role": "illustration-not-population-proof",
+    "sentence_budget": 3
+  },
+  "editorial_diagnostics": {
+    "causal_link_status": "causal-order-clear",
+    "stickiness": {
+      "simple": "supported",
+      "unexpected": "supported",
+      "concrete": "supported",
+      "credible": "supported",
+      "emotional": "supported",
+      "story": "supported"
+    },
+    "causal_trim_status": "passed"
+  },
+  "publication_learning_plan": {
+    "experiment_status": "deferred-capacity",
+    "primary_variable": "none",
+    "one_variable_only": true,
+    "observation_windows": ["early-48-72h", "d7"],
+    "metric_keys": ["retention_10s_rate", "major_dropoff_second", "completion_rate", "story_recall_comments"],
+    "content_signal_only": true,
+    "causal_claim_prohibited": true
+  },
+  "review": {
+    "causal_not_chronological": true,
+    "choice_reveals_character": true,
+    "emotion_is_evidence_bound": true,
+    "audience_bridge_is_honest": true,
+    "climax_changes_value": true,
+    "story_and_explanation_separated": true,
+    "decision": "passed"
+  }
+}

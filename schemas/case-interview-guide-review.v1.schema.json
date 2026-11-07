@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Author review of planned questions; not recording or publication authorization",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "guide_id", "guide_sha256", "synthetic_only", "reviewer", "reviewed_at", "decision", "checks", "authority"],
+  "properties": {
+    "schema_version": {"const": "case-interview-guide-review.v1"},
+    "guide_id": {"type": "string"},
+    "guide_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "synthetic_only": {"type": "boolean"},
+    "reviewer": {"enum": ["author", "synthetic-fixture-author"]},
+    "reviewed_at": {"type": "string", "format": "date-time"},
+    "decision": {"enum": ["approved_questions_only", "return_for_revision"]},
+    "checks": {"type": "array", "minItems": 4,
+      "allOf": [
+        {"contains": {"type": "object", "required": ["check_id"], "properties": {"check_id": {"const": "non_leading_questions"}}}},
+        {"contains": {"type": "object", "required": ["check_id"], "properties": {"check_id": {"const": "privacy"}}}},
+        {"contains": {"type": "object", "required": ["check_id"], "properties": {"check_id": {"const": "fact_premises"}}}},
+        {"contains": {"type": "object", "required": ["check_id"], "properties": {"check_id": {"const": "spoken_clarity"}}}}
+      ], "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["check_id", "question_id", "question_span", "status", "reason"],
+      "properties": {
+        "check_id": {"enum": ["non_leading_questions", "privacy", "fact_premises", "spoken_clarity"]},
+        "question_id": {"type": "string"}, "question_span": {"type": "string", "minLength": 4},
+        "status": {"enum": ["clear", "blocked"]}, "reason": {"type": "string", "minLength": 12}
+      }
+    }},
+    "authority": {"const": "questions_only_no_recording_or_publication_authority"}
+  }
+}
