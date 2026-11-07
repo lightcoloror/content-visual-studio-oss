@@ -16,7 +16,7 @@ privacy, manual-publication and blocked-state checks remain in force.
   remain unverified; this is not a full-project or production acceptance claim.
 
 The existing separately supplied formatter was tested at fixed commit
-561e3e736ef8d161247c70c30e694814e898ef59 with Node 22.22.2 and Python 3.13.5.
+561e3e736ef8d161247c70c30e694814e898ef59 with Node 22.17.1 and Python 3.13.5.
 No external renderer source, presets, assets, node_modules or binaries are bundled.
 Its package metadata declares ISC and has no standalone LICENSE; this edition
 does not grant rights over that runtime or its transitive dependencies.
@@ -31,3 +31,8 @@ The first installed-test harness invocation used the wrong Python main signature
 and failed before business execution. Correcting the harness produced the stated
 results; the original failure is retained privately. No runtime assertion was
 weakened to obtain a pass.
+
+Documentation erratum: the original v0.1.2 tag accidentally carried an older
+Node version label (22.22.2). The current acceptance environment resolves
+Node 22.17.1. This documentation-only correction preserves the original
+tag and test logs; no runtime source or assertion changed.
