@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex"><meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; media-src 'self'; object-src 'none'; base-uri 'none'">
+  <title>内容审核 · Content Studio</title><link rel="stylesheet" href="review.css">
+</head>
+<body>
+<main>
+  <header><p class="eyebrow">Content Studio · 内容审核</p><h1>先看需要你判断的地方</h1>
+    <p id="scope">正在读取审核材料…</p></header>
+  <div class="toolbar"><label for="candidate-filter">查看内容</label><select id="candidate-filter"><option value="all">全部</option></select><span id="count"></span></div>
+  <p id="message" role="status" aria-live="polite"></p>
+  <section id="choices" aria-label="优先审核选择"></section>
+  <details id="more"><summary id="more-label">展开其他待核项</summary><div id="other-choices"></div></details>
+  <section class="materials"><h2>候选与来源</h2><div id="materials"></div></section>
+  <section id="feedback-panel" class="materials" hidden aria-label="采用反馈">
+    <h2>这份候选用上了吗？</h2>
+    <p>虚构样例。只生成本地待审反馈；尚未发布，不安排观察。</p>
+    <label for="feedback-candidate">反馈对象</label><select id="feedback-candidate"></select>
+    <p id="feedback-version" class="meta"></p>
+    <label for="feedback-reason">返工或弃用原因（修改时必填）</label><textarea id="feedback-reason" maxlength="1000"></textarea>
+    <div class="toolbar"><label for="feedback-minutes">人工修改分钟数（选填）</label><input id="feedback-minutes" type="number" min="0" max="1440" step="0.1" placeholder="不填即未知"></div>
+    <details><summary>有可比较的人工基线时再填写</summary><label for="feedback-baseline">同等工作手工完成的基线分钟数</label><input id="feedback-baseline" type="number" min="0" max="1440" step="0.1" placeholder="不填即未知"><p class="meta">差值只表示本次人工报告的对比，不代表整体效率。</p></details>
+    <div class="actions"><button id="feedback-adopt" type="button">采用</button><button id="feedback-edit" type="button">修改后采用</button><button id="feedback-reject" type="button">弃用</button></div>
+    <p id="feedback-status" role="status" aria-live="polite"></p><div id="feedback-history"></div>
+    <h3>导入一次平台记录</h3><p>公众号：仅支持明确的本地模板（template_only），尚未验证官方导出格式。账户日数据不会分配到这篇候选。</p>
+    <label for="feedback-file">已指定的本地虚构 CSV</label><select id="feedback-file"></select><button id="feedback-import" type="button">导入本地记录</button>
+    <p id="feedback-import-status" role="status" aria-live="polite"></p><pre id="feedback-metrics" class="body-preview"></pre>
+  </section>
+  <footer><span id="save-state">尚无选择</span><div class="actions"><button id="undo" type="button" disabled>撤销上一项</button><button id="redo" type="button" disabled>恢复上一项</button><button id="save" type="button" disabled>保存选择草稿</button><button id="export" type="button" disabled>导出草稿</button></div></footer>
+</main>
+<!-- REVIEW_BUNDLE -->
+<script src="review.js"></script>
+<script src="feedback.js"></script>
+</body></html>

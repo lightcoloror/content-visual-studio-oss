@@ -1,0 +1,69 @@
+{
+  "schema": "content_studio.review_chain_public_provenance.v1",
+  "edition": "0.1.4",
+  "license": "Apache-2.0",
+  "first_party_scope": "Four working-source adapters plus existing first-party review assets and explicitly fictional review fixtures; no private history, operational receipts or real materials.",
+  "source_files": [
+    {
+      "path": "scripts/human_voice_review.py",
+      "source_kind": "frozen first-party working bytes, not attributed to private HEAD",
+      "source_sha256": "7beee90ff7b4f610c1f5d41fd542d84765ec14789b6e5d217db50765cd925c07",
+      "distributed_sha256": "4ee3869777f81b0094ff9e39c8550a8cb61beed7696b835abaf9d0f26c1ccc81",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "scripts/cue_review.py",
+      "source_kind": "frozen first-party working bytes, not attributed to private HEAD",
+      "source_sha256": "34a0fecf3db8e75dc9ce8f4b878910578d0bb24c5fe9cd6860496df24c144875",
+      "distributed_sha256": "0edd2f68b2bda70e8bcbaa1869c8fd90db3cc5546de5966a34f11a8b9442c2f4",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "scripts/cue_timeline_adapter.py",
+      "source_kind": "frozen first-party working bytes, not attributed to private HEAD",
+      "source_sha256": "5b9f656289bca99f270a5f28795f4f2633cf878ab963554c10cb41f44b8b7815",
+      "distributed_sha256": "14781ba082203b678527345479b20f6f5dee6cb4c81f16ba049c4f15a8c2c8e9",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "scripts/video_timeline_dependency.py",
+      "source_kind": "frozen first-party working bytes, not attributed to private HEAD",
+      "source_sha256": "43a32c5319b10516dc5589a4ff537ebf83c2c9a2019913ae76108416c432ec38",
+      "distributed_sha256": "c320d9c1a4b23f2a9bc0fe5862073c8a4e11117860ea4edef7a9effd8adbaea4",
+      "license": "Apache-2.0"
+    }
+  ],
+  "adaptations": [
+    "Explicit bounded review output workspace for source/installed layouts",
+    "Existing studio_paths resource locator for packaged lock/admin assets",
+    "Exact complete public MVP runtime lock rebound from reviewed actual source bytes; no vendored runtime or implicit fallback"
+  ],
+  "video_dependency": {
+    "repository": "https://github.com/lightcoloror/mvp-video-pipeline-oss",
+    "commit": "9f55b12864df642f08fcbd96df15acb0f97652d5",
+    "license": "Apache-2.0",
+    "files_bound": 182,
+    "bundled": false
+  },
+  "evidence": {
+    "host_python_pass": 66,
+    "host_python_skip": 0,
+    "peer_node_pure_logic_pass": 20,
+    "native_synthetic": {
+      "duration_s": 2,
+      "width": 320,
+      "height": 180,
+      "decoded_frames": 20,
+      "receipt_hashes_verified": 3,
+      "subtitles": "ASS; no SRT emitted or claimed"
+    },
+    "browser_or_human_or_platform_acceptance": false
+  },
+  "excluded": [
+    "real voice/footage/manuscripts/customer or health data",
+    "private task IDs/paths/logs/receipts",
+    "FFmpeg/browser/font/model binaries",
+    "feedback server/backend",
+    "local-rough-cut P1"
+  ]
+}

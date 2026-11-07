@@ -1,0 +1,85 @@
+{
+  "artifacts": {
+    "track.json": {
+      "body_sha256": "0e7586b84a3edf03ceb2776f0619f1e15e9d62843577655537076a2a6f6c6978",
+      "candidate_id": "fixture",
+      "source_ref": {
+        "path": "fixtures/minimal-cue-review/track.json",
+        "sha256": "0e7586b84a3edf03ceb2776f0619f1e15e9d62843577655537076a2a6f6c6978"
+      },
+      "text": "{\n  \"cues\": [\n    {\n      \"cue_id\": \"c1\",\n      \"end_ms\": 900,\n      \"scene_id\": \"s1\",\n      \"start_ms\": 0,\n      \"text\": \"Collect sources\"\n    },\n    {\n      \"cue_id\": \"c2\",\n      \"end_ms\": 2000,\n      \"scene_id\": \"s1\",\n      \"start_ms\": 1000,\n      \"text\": \"Check sources\"\n    },\n    {\n      \"cue_id\": \"c3\",\n      \"end_ms\": 4000,\n      \"scene_id\": \"s2\",\n      \"start_ms\": 3000,\n      \"text\": \"Save revision\"\n    }\n  ],\n  \"scenes\": [\n    {\n      \"end_ms\": 2000,\n      \"scene_id\": \"s1\",\n      \"start_ms\": 0\n    },\n    {\n      \"end_ms\": 4000,\n      \"scene_id\": \"s2\",\n      \"start_ms\": 2000\n    }\n  ],\n  \"schema_version\": \"content-cue-track.v1\",\n  \"synthetic_only\": true\n}\n"
+    }
+  },
+  "candidates": {
+    "fixture": {
+      "read_only": false,
+      "source_refs": [
+        {
+          "path": "fixtures/minimal-cue-review/track.json",
+          "sha256": "0e7586b84a3edf03ceb2776f0619f1e15e9d62843577655537076a2a6f6c6978"
+        }
+      ],
+      "synthetic_only": true,
+      "title": "Synthetic cue timeline fixture",
+      "version": "1"
+    }
+  },
+  "choices": [
+    {
+      "before_cue": {
+        "cue_id": "c1",
+        "end_ms": 900,
+        "scene_id": "s1",
+        "start_ms": 0,
+        "text": "Collect sources"
+      },
+      "candidate_id": "fixture",
+      "cue_id": "c1",
+      "id": "edit-c1",
+      "kind": "cue",
+      "targets": [
+        "track.json"
+      ]
+    },
+    {
+      "before_cue": {
+        "cue_id": "c2",
+        "end_ms": 2000,
+        "scene_id": "s1",
+        "start_ms": 1000,
+        "text": "Check sources"
+      },
+      "candidate_id": "fixture",
+      "cue_id": "c2",
+      "id": "edit-c2",
+      "kind": "cue",
+      "targets": [
+        "track.json"
+      ]
+    },
+    {
+      "before_cue": {
+        "cue_id": "c3",
+        "end_ms": 4000,
+        "scene_id": "s2",
+        "start_ms": 3000,
+        "text": "Save revision"
+      },
+      "candidate_id": "fixture",
+      "cue_id": "c3",
+      "id": "edit-c3",
+      "kind": "cue",
+      "targets": [
+        "track.json"
+      ]
+    }
+  ],
+  "media": [],
+  "review_id": "synthetic-cue-review-v1",
+  "sources": [
+    {
+      "path": "fixtures/minimal-cue-review/track.json",
+      "sha256": "0e7586b84a3edf03ceb2776f0619f1e15e9d62843577655537076a2a6f6c6978"
+    }
+  ]
+}

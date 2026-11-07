@@ -1,0 +1,260 @@
+{
+  "artifacts": {
+    "a-article.md": {
+      "body_sha256": "63c5255fe0c21a481e455b43741ad26152c1bcc15b99135202c345467ba13321",
+      "candidate_id": "fiction-a",
+      "label": "a-article.md",
+      "source_ref": {
+        "path": "fixtures/minimal-review/a-article.md",
+        "sha256": "63c5255fe0c21a481e455b43741ad26152c1bcc15b99135202c345467ba13321"
+      },
+      "text": "资料哈可以按项目整理。\n检索时间减少一半。\n先给三个文件命名。\n"
+    },
+    "a-oral.md": {
+      "body_sha256": "5d793410d33e501a84d063521570db88728cfd0536d52ce14e0041622e7c1310",
+      "candidate_id": "fiction-a",
+      "label": "a-oral.md",
+      "source_ref": {
+        "path": "fixtures/minimal-review/a-oral.md",
+        "sha256": "5d793410d33e501a84d063521570db88728cfd0536d52ce14e0041622e7c1310"
+      },
+      "text": "今天演示资料哈。\n检索时间减少一半。\n"
+    },
+    "asr.json": {
+      "body_sha256": "efd8ac89152119695c1e8f38bf3d2794677af82b8f071e706a7a471f6fb756a1",
+      "candidate_id": "fiction-upstream",
+      "label": "asr.json",
+      "source_ref": {
+        "path": "fixtures/minimal-review/asr.json",
+        "sha256": "efd8ac89152119695c1e8f38bf3d2794677af82b8f071e706a7a471f6fb756a1"
+      },
+      "text": "{\"synthetic_only\":true,\"transcript\":\"unchanged\"}\n"
+    },
+    "b-article.md": {
+      "body_sha256": "100860d2edef7f38ffc08e276e64b9ff95b638ac8f141df85d7daeef00060359",
+      "candidate_id": "fiction-b",
+      "label": "b-article.md",
+      "source_ref": {
+        "path": "fixtures/minimal-review/b-article.md",
+        "sha256": "100860d2edef7f38ffc08e276e64b9ff95b638ac8f141df85d7daeef00060359"
+      },
+      "text": "字幕起点需要校验。\n错位都来自播放器。\n"
+    },
+    "research.json": {
+      "body_sha256": "479782fd4f86a8420612aba64685a07f347ff20ebbfb50f27cbe0cf862b2a4cc",
+      "candidate_id": "fiction-upstream",
+      "label": "research.json",
+      "source_ref": {
+        "path": "fixtures/minimal-review/research.json",
+        "sha256": "479782fd4f86a8420612aba64685a07f347ff20ebbfb50f27cbe0cf862b2a4cc"
+      },
+      "text": "{\"synthetic_only\":true,\"evidence\":\"unchanged\"}\n"
+    },
+    "video-notes.md": {
+      "body_sha256": "b38780d5936dbad3d6db2c52fb9686c78a5faf1bab7be1c44219d894a68c3e37",
+      "candidate_id": "fiction-video",
+      "label": "video-notes.md",
+      "source_ref": {
+        "path": "fixtures/minimal-review/video-notes.md",
+        "sha256": "b38780d5936dbad3d6db2c52fb9686c78a5faf1bab7be1c44219d894a68c3e37"
+      },
+      "text": "0.50–1.20：保留重复句。\n2.00–2.60：保留语气停顿。\n"
+    }
+  },
+  "candidates": {
+    "fiction-a": {
+      "read_only": false,
+      "source_refs": [
+        {
+          "path": "fixtures/minimal-review/a-article.md",
+          "sha256": "63c5255fe0c21a481e455b43741ad26152c1bcc15b99135202c345467ba13321"
+        },
+        {
+          "path": "fixtures/minimal-review/a-oral.md",
+          "sha256": "5d793410d33e501a84d063521570db88728cfd0536d52ce14e0041622e7c1310"
+        }
+      ],
+      "status_note": "仅用于交互验证，不代表用户选择。",
+      "synthetic_only": true,
+      "title": "虚构 · 资料整理",
+      "unknowns": [],
+      "version": "1"
+    },
+    "fiction-b": {
+      "read_only": false,
+      "source_refs": [
+        {
+          "path": "fixtures/minimal-review/b-article.md",
+          "sha256": "100860d2edef7f38ffc08e276e64b9ff95b638ac8f141df85d7daeef00060359"
+        }
+      ],
+      "status_note": "仅用于交互验证，不代表用户选择。",
+      "synthetic_only": true,
+      "title": "虚构 · 字幕校验",
+      "unknowns": [],
+      "version": "1"
+    },
+    "fiction-upstream": {
+      "read_only": false,
+      "source_refs": [
+        {
+          "path": "fixtures/minimal-review/research.json",
+          "sha256": "479782fd4f86a8420612aba64685a07f347ff20ebbfb50f27cbe0cf862b2a4cc"
+        },
+        {
+          "path": "fixtures/minimal-review/asr.json",
+          "sha256": "efd8ac89152119695c1e8f38bf3d2794677af82b8f071e706a7a471f6fb756a1"
+        }
+      ],
+      "status_note": "仅用于交互验证，不代表用户选择。",
+      "synthetic_only": true,
+      "title": "虚构 · 上游保留材料",
+      "unknowns": [],
+      "version": "1"
+    },
+    "fiction-video": {
+      "read_only": false,
+      "source_refs": [
+        {
+          "path": "fixtures/minimal-review/video-notes.md",
+          "sha256": "b38780d5936dbad3d6db2c52fb9686c78a5faf1bab7be1c44219d894a68c3e37"
+        }
+      ],
+      "status_note": "仅用于交互验证，不代表用户选择。",
+      "synthetic_only": true,
+      "title": "虚构 · 视频建议",
+      "unknowns": [],
+      "version": "1"
+    }
+  },
+  "choices": [
+    {
+      "after": "资料夹",
+      "before": "资料哈",
+      "candidate_id": "fiction-a",
+      "id": "word",
+      "priority": 100,
+      "reason": "虚构样例，仅验证局部选择与恢复。",
+      "source_label": "虚构 fixture",
+      "targets": [
+        "a-article.md",
+        "a-oral.md"
+      ],
+      "timecode": "",
+      "title": "疑似词：资料哈"
+    },
+    {
+      "after": "检索时间的变化尚未测量。",
+      "before": "检索时间减少一半。",
+      "candidate_id": "fiction-a",
+      "id": "claim",
+      "priority": 90,
+      "reason": "虚构样例，仅验证局部选择与恢复。",
+      "source_label": "虚构 fixture",
+      "targets": [
+        "a-article.md",
+        "a-oral.md"
+      ],
+      "timecode": "",
+      "title": "缺证据：检索时间"
+    },
+    {
+      "after": "错位原因需要结合时间轴逐项核对。",
+      "before": "错位都来自播放器。",
+      "candidate_id": "fiction-b",
+      "id": "subtitle",
+      "priority": 80,
+      "reason": "虚构样例，仅验证局部选择与恢复。",
+      "source_label": "虚构 fixture",
+      "targets": [
+        "b-article.md"
+      ],
+      "timecode": "",
+      "title": "缺证据：错位原因"
+    },
+    {
+      "after": "0.50–1.20：建议省略重复句（待审）。",
+      "before": "0.50–1.20：保留重复句。",
+      "candidate_id": "fiction-video",
+      "id": "video-repeat",
+      "priority": 70,
+      "reason": "虚构样例，仅验证局部选择与恢复。",
+      "source_label": "虚构 fixture",
+      "targets": [
+        "video-notes.md"
+      ],
+      "timecode": "0.50–1.20 秒",
+      "title": "视频建议：重复句"
+    },
+    {
+      "after": "2.00–2.60：继续保留语气停顿。",
+      "before": "2.00–2.60：保留语气停顿。",
+      "candidate_id": "fiction-video",
+      "id": "video-pause",
+      "priority": 60,
+      "reason": "虚构样例，仅验证局部选择与恢复。",
+      "source_label": "虚构 fixture",
+      "targets": [
+        "video-notes.md"
+      ],
+      "timecode": "",
+      "title": "视频建议：语气停顿"
+    },
+    {
+      "after": "先给示例文件命名。",
+      "before": "先给三个文件命名。",
+      "candidate_id": "fiction-a",
+      "id": "name",
+      "priority": 50,
+      "reason": "虚构样例，仅验证局部选择与恢复。",
+      "source_label": "虚构 fixture",
+      "targets": [
+        "a-article.md"
+      ],
+      "timecode": "",
+      "title": "表述：先命名"
+    },
+    {
+      "after": "先核对字幕的起点。",
+      "before": "字幕起点需要校验。",
+      "candidate_id": "fiction-b",
+      "id": "start",
+      "priority": 40,
+      "reason": "虚构样例，仅验证局部选择与恢复。",
+      "source_label": "虚构 fixture",
+      "targets": [
+        "b-article.md"
+      ],
+      "timecode": "",
+      "title": "表述：字幕起点"
+    }
+  ],
+  "media": [],
+  "review_id": "synthetic-minimal-review-v1",
+  "sources": [
+    {
+      "path": "fixtures/minimal-review/a-article.md",
+      "sha256": "63c5255fe0c21a481e455b43741ad26152c1bcc15b99135202c345467ba13321"
+    },
+    {
+      "path": "fixtures/minimal-review/a-oral.md",
+      "sha256": "5d793410d33e501a84d063521570db88728cfd0536d52ce14e0041622e7c1310"
+    },
+    {
+      "path": "fixtures/minimal-review/b-article.md",
+      "sha256": "100860d2edef7f38ffc08e276e64b9ff95b638ac8f141df85d7daeef00060359"
+    },
+    {
+      "path": "fixtures/minimal-review/video-notes.md",
+      "sha256": "b38780d5936dbad3d6db2c52fb9686c78a5faf1bab7be1c44219d894a68c3e37"
+    },
+    {
+      "path": "fixtures/minimal-review/research.json",
+      "sha256": "479782fd4f86a8420612aba64685a07f347ff20ebbfb50f27cbe0cf862b2a4cc"
+    },
+    {
+      "path": "fixtures/minimal-review/asr.json",
+      "sha256": "efd8ac89152119695c1e8f38bf3d2794677af82b8f071e706a7a471f6fb756a1"
+    }
+  ]
+}

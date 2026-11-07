@@ -1,0 +1,12 @@
+# Preserve all default rules. The fixed public MVP source SHA below is not a token.
+[extend]
+useDefault = true
+
+[[rules]]
+id = "sentry-access-token"
+    [[rules.allowlists]]
+    description = "Exact public MVP source SHA in the two runtime-lock copies only"
+    condition = "AND"
+    regexTarget = "secret"
+    regexes = ['''^7d050266c57661f7bf3bc8413fa2571565c3ae07f66e080117f3576c417d449b$''']
+    paths = ['''(?:^|[/\\])(?:config|scripts[/\\]studio_assets[/\\]config)[/\\]video-timeline-runtime\.v1\.lock\.json$''']

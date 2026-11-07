@@ -120,3 +120,62 @@ The typography collector is included at
 Its real browser bridges and canonical policy must be supplied and reviewed
 separately. The media-QA registry is a receipt-level contract; passing it does
 not establish that actual media or clinical/insurance statements are correct.
+
+## Local review drafts and cue decisions (candidate 0.1.3)
+
+`content-studio-review` projects the existing `human_voice_gate` contract into a
+local, draft-only review bundle and captures cue decisions as an append-only
+event history:
+
+```sh
+content-studio-review build --request fixtures/minimal-review/request.json \
+  --allowed-root . --output review-work/page
+content-studio-review apply --bundle review-work/page/bundle.json --draft draft.json \
+  --allowed-root . --output review-work
+content-studio-review decide --bundle review-work/page/bundle.json --event event.json \
+  --allowed-root . --output review-work
+content-studio-review render-cues --bundle review-work/page/bundle.json \
+  --decisions review-work --track track.json --cache review-work/cache \
+  --output review-work/render --video-source /explicit/video/project/root
+```
+
+All writes stay inside the review work root: set
+`CONTENT_STUDIO_REVIEW_WORKSPACE` to a writable directory. In the installed
+package the default would point at `studio_assets`, so it is refused; no review
+artifact, revision, draft or render is ever written into site-packages. The
+source checkout keeps its historical default. Sources remain constrained by the
+explicit `--allowed-root`, and every artifact, body, media, timeline and
+dependency input is bound by SHA-256 before use.
+
+The packaged `admin/review.html`, `review.css`, `review.js` and `feedback.js`
+assets are the existing local review page. A built page is
+`built_pending_browser_validation`: no browser, DOM or human acceptance is
+claimed, and the optional `feedback.js` backend is not part of this package.
+The browser page only creates local draft state; the decision history and cue
+rendering above remain the reviewed source of truth.
+
+`render-cues` delegates rendering to the unchanged Video Owner
+`audio_timeline.compose` API. There is no implicit checkout, installed-package
+or "same version" fallback: an explicit `--video-source` root is required and its
+`pyproject.toml` plus complete runtime package must match the reviewed
+`config/video-timeline-runtime.v1.lock.json` byte-for-byte. That lock binds the
+fixed public `video-creation-pipeline` 0.8.1 source; the Video code is not
+vendored or copied into this package. `ffmpeg`/`ffprobe` are required only when
+an actual synthetic render is requested. Real materials stay read-only, and no
+publication or human approval is created by any command.
+
+Targeted tests are stdlib `unittest` / pure Node scripts; see
+`docs/candidate-review-tests.md`. The real public-Video byte binding test is an
+explicit skip unless `CONTENT_STUDIO_PUBLIC_VIDEO_ROOT` points at the supplied
+fixed public source.
+
+## Review/cue adapters (0.1.4)
+
+This release packages the existing draft review and immutable cue-decision
+adapters with source/installed static resources. `content-studio-review --help`
+describes the entry point. Set `CONTENT_STUDIO_REVIEW_WORKSPACE` to an explicit
+local output root when using the installed package; `--allowed-root` still
+bounds input reads. The required Video source is explicit and byte-locked to
+the separate public MVP owner. No Video runtime or external binary is bundled.
+See `REVIEW-CHAIN-PROVENANCE.json` and `REVIEW-CHAIN-ACCEPTANCE.md` for actual
+synthetic/native checks and the pending browser/backend/human boundaries.

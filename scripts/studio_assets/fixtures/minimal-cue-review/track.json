@@ -1,0 +1,39 @@
+{
+  "cues": [
+    {
+      "cue_id": "c1",
+      "end_ms": 900,
+      "scene_id": "s1",
+      "start_ms": 0,
+      "text": "Collect sources"
+    },
+    {
+      "cue_id": "c2",
+      "end_ms": 2000,
+      "scene_id": "s1",
+      "start_ms": 1000,
+      "text": "Check sources"
+    },
+    {
+      "cue_id": "c3",
+      "end_ms": 4000,
+      "scene_id": "s2",
+      "start_ms": 3000,
+      "text": "Save revision"
+    }
+  ],
+  "scenes": [
+    {
+      "end_ms": 2000,
+      "scene_id": "s1",
+      "start_ms": 0
+    },
+    {
+      "end_ms": 4000,
+      "scene_id": "s2",
+      "start_ms": 2000
+    }
+  ],
+  "schema_version": "content-cue-track.v1",
+  "synthetic_only": true
+}
