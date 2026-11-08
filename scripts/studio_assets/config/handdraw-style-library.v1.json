@@ -1,0 +1,12 @@
+{
+  "schema_version": "handdraw-style-library.v1",
+  "repository": "https://github.com/yang0/handraw-style",
+  "commit": "39a602d82df93e3321ad71aad4d2cd15adc27c3a",
+  "local_path": null,
+  "manifest_sha256": "0d599ff9d78409ead1ad181fb662c2c12168e689b1f99878d4b20a9ebfb2b12a",
+  "attribution": "yang0 — https://github.com/yang0/handraw-style",
+  "license": "MIT License (with Attribution Requirement); see pinned LICENSE",
+  "manifest_path": "config/handdraw-library-source-manifest.v1.json",
+  "license_status": "verified-pinned-custom-license-with-attribution",
+  "asset_rights_status": "unverified-for-redistribution"
+}

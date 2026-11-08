@@ -49,3 +49,26 @@ The AntV inspector is first-party glue calling the separately supplied
 `@antv/infographic` parser, version 0.2.11 tested, MIT (copyright 2025 AntV).
 No AntV implementation, font, renderer, browser or npm package is included.
 PyYAML is a separately installed optional MIT dependency, not vendored source.
+
+The handdraw adapters are owner-authorized first-party glue. Their separately
+supplied upstream dependency is yang0's handraw-style:
+https://github.com/yang0/handraw-style , pinned to
+39a602d82df93e3321ad71aad4d2cd15adc27c3a. It uses "MIT License (with Attribution
+Requirement)", not an assertion of plain SPDX MIT. The complete exact license
+notice is retained at `licenses/yang0-handraw-style-attribution.txt`; clear yang0
+and repository credit is retained in the documentation and generated local
+gallery overlay. This Apache-2.0 license does not replace the upstream terms.
+
+No upstream resolver/layout implementation, gallery HTML, style index, image,
+font, model, or personal Skill source is distributed. The two source manifests
+contain relative filenames and hashes only. They support binding an operator's
+own separately obtained trusted checkout; their presence is neither a download
+nor execution authorization. Operator-supplied source modules are executable
+code, even when their path/hash agrees with supplied metadata.
+
+The legacy style-index reference remains pinned to
+70bf51d6b4c301805dd6c083355a2ad18db1023b. Its LICENSE URL returned404 at review;
+legacy redistribution/asset rights remain unverified. That index is not bundled.
+The optional brief records not-declared/unverified rights, uses no upstream
+image and grants no generation/rendering/publication authority. A hash record
+does not grant rights over the referenced asset or validate real evidence.

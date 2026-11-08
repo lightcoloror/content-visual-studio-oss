@@ -241,3 +241,12 @@ and FEEDBACK-ACCEPTANCE.md for scope and unverified parts.
 The optional CMS command and explicit-runtime AntV syntax/budget adapters are
 documented in [offline contracts](docs/OFFLINE_CONTRACTS.md). These are structural
 checks; they do not start a CMS/browser or grant publication approval.
+
+## Optional handdraw style planning
+
+`content-studio-handdraw --help` exposes the existing style-brief/catalog/prompt/
+local-gallery interface. Supply a trusted pinned upstream root explicitly;
+there is no bundled upstream asset, automatic download, provider call or image
+generation. [Adapter guide](docs/HANDDRAW_ADAPTERS.md). Upstream credit:
+[yang0 / handraw-style](https://github.com/yang0/handraw-style), under its actual
+attribution license; the older index's rights remain unverified.

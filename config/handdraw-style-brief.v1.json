@@ -1,0 +1,68 @@
+{
+  "schema_version": "handdraw-style-brief.v1",
+  "selection_policy": "explicit-item-and-style-only",
+  "status": "candidate-only",
+  "source": {
+    "repository": "https://github.com/yang0/handraw-style",
+    "commit": "70bf51d6b4c301805dd6c083355a2ad18db1023b",
+    "local_path": null,
+    "index_ref": "styles.json",
+    "index_sha256": "d4c6382a6aa3f8f52910f611932e7f0f9a065710e9b87df6310fe5bf5f71686a",
+    "license_status": "not-declared",
+    "asset_rights_status": "unverified",
+    "manifest_ref": "source-manifest.json",
+    "manifest_sha256": "ba9cb51f1c5198663c64bf83e259b59b52a0b94c8c3ebb316dc6d0dc52501651",
+    "manifest_path": "config/handdraw-legacy-source-manifest.v1.json"
+  },
+  "boundaries": {
+    "copy_upstream_code": false,
+    "use_upstream_images": false,
+    "include_creator_names_in_brief": false,
+    "generate_image": false,
+    "automatic_renderer_selection": false,
+    "automatic_publication": false,
+    "manual_review_required": true
+  },
+  "styles": {
+    "conceptual-line": {
+      "source_number": "157",
+      "source_generation_name": "Conceptual Line Drawing",
+      "composition_guidance": "Use sparse conceptual linework and generous negative space; keep the factual subject distinct from the visual metaphor.",
+      "allowed_targets": [
+        "editorial-field-guide/article",
+        "editorial-field-guide/web",
+        "reflective-personal-essay/article",
+        "reflective-personal-essay/social-card"
+      ]
+    },
+    "ink-spot-color": {
+      "source_number": "175",
+      "source_generation_name": "Ink with Flat Spot Color",
+      "composition_guidance": "Use restrained ink contours and one approved brand accent; let the action and object carry meaning without extra labels.",
+      "allowed_targets": [
+        "editorial-field-guide/article",
+        "editorial-field-guide/web",
+        "reflective-personal-essay/article",
+        "reflective-personal-essay/social-card"
+      ]
+    },
+    "colored-pencil-notes": {
+      "source_number": "169",
+      "source_generation_name": "Colored Pencil Diary",
+      "composition_guidance": "Use light pencil marks and subtle paper texture for a lived-in observation, without inventing a real person or event.",
+      "allowed_targets": [
+        "reflective-personal-essay/article",
+        "reflective-personal-essay/social-card"
+      ]
+    },
+    "two-color-riso": {
+      "source_number": "167",
+      "source_generation_name": "Two-Color Risograph Drawing",
+      "composition_guidance": "Use restrained two-color print texture and slight registration variation; keep the message readable and avoid evidence-like claims.",
+      "allowed_targets": [
+        "reflective-personal-essay/article",
+        "reflective-personal-essay/social-card"
+      ]
+    }
+  }
+}

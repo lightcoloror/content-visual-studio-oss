@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "content-visual-studio"
-version = "0.1.7"
+version = "0.1.8"
 description = "Offline evidence-to-content and hash-bound case review contracts"
 requires-python = ">=3.11"
 license = "Apache-2.0"
@@ -19,6 +19,7 @@ capture = ["question-research-poc[topic] @ git+https://github.com/lightcoloror/q
 gateway = ["model-provider-gateway @ git+https://github.com/lightcoloror/model-provider-gateway-oss.git@6e69689d02dc97bc2cd3e476518ac7571e310461"]
 
 [project.scripts]
+content-studio-handdraw = "handdraw_style_brief:main"
 content-studio-cms = "validate_sveltia_config:main"
 content-studio-feedback = "feedback_intake:main"
 content-studio-preview = "serve:main"
@@ -39,7 +40,7 @@ content-studio-artifacts = "document_render_artifact_lifecycle:main"
 
 [tool.setuptools]
 package-dir = {"" = "scripts"}
-py-modules = ["article_visual_pipeline", "case_video_script_adapter", "final_cut_compliance_gate", "human_voice_gate", "initial_draft_quality_gate", "model_provider_gateway_adapter", "narrative_realization", "qrp_candidate_adapter", "research_output_adapter", "run_case_video_script_e2e", "article_visual_validation", "studio_paths", "saved_research_candidate", "capture_research_candidate", "reference_intake", "selected_delivery", "context_manifest_consumer", "registered_self_media", "qrp_owner_binding", "wechat_article_format_adapter", "build_human_voice_fixture", "hallmark_report_adapter", "media_qa_validation", "social_card_runtime", "validate_insurance_clause_explanations", "human_voice_review", "cue_review", "cue_timeline_adapter", "video_timeline_dependency", "original_synthesis_adapter", "document_render_artifact_lifecycle", "design_direction_validation", "feedback_intake", "serve", "validate_sveltia_config", "slot_budget_validation"]
+py-modules = ["article_visual_pipeline", "case_video_script_adapter", "final_cut_compliance_gate", "human_voice_gate", "initial_draft_quality_gate", "model_provider_gateway_adapter", "narrative_realization", "qrp_candidate_adapter", "research_output_adapter", "run_case_video_script_e2e", "article_visual_validation", "studio_paths", "saved_research_candidate", "capture_research_candidate", "reference_intake", "selected_delivery", "context_manifest_consumer", "registered_self_media", "qrp_owner_binding", "wechat_article_format_adapter", "build_human_voice_fixture", "hallmark_report_adapter", "media_qa_validation", "social_card_runtime", "validate_insurance_clause_explanations", "human_voice_review", "cue_review", "cue_timeline_adapter", "video_timeline_dependency", "original_synthesis_adapter", "document_render_artifact_lifecycle", "design_direction_validation", "feedback_intake", "serve", "validate_sveltia_config", "slot_budget_validation", "handdraw_style_brief", "handdraw_style_library", "handdraw_gallery_adapter"]
 
 [tool.setuptools.packages.find]
 where = ["scripts"]

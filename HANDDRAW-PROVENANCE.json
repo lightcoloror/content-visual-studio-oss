@@ -1,0 +1,40 @@
+{
+  "version": "0.1.8",
+  "base_public_commit": "0466bf5c3c4e2469987e2a70fe5506b1d3466fab",
+  "first_party_sources": [
+    {
+      "path": "scripts/handdraw_style_brief.py",
+      "sha256": "c2ec822bfbed4b256c9837e8f71b22689612461f9583d7a1e0fc4ef9813cb8a1",
+      "bytes": 11313
+    },
+    {
+      "path": "scripts/handdraw_style_library.py",
+      "sha256": "a2bd83a404b87ee5fde45795ceb44cba8c4d6a1dabd875a4fa154327a412d33a",
+      "bytes": 11656
+    },
+    {
+      "path": "scripts/handdraw_gallery_adapter.py",
+      "sha256": "5e8359c3611240db8272f44c875fbfbab00ec2490cc4a3d8d41142328f44669e",
+      "bytes": 4272
+    }
+  ],
+  "external_dependency": {
+    "repository": "https://github.com/yang0/handraw-style",
+    "commit": "39a602d82df93e3321ad71aad4d2cd15adc27c3a",
+    "license_title": "MIT License (with Attribution Requirement)",
+    "plain_spdx_MIT_claimed": false,
+    "license_sha256": "862952d06929d716be7a62733550eaa11ac4765c2567657e0e75b7a0fde48897",
+    "upstream_implementation_galleries_images_style_index_distributed": false
+  },
+  "legacy_index": {
+    "commit": "70bf51d6b4c301805dd6c083355a2ad18db1023b",
+    "redistribution_rights": "unverified",
+    "index_distributed": false
+  },
+  "hash_manifests": {
+    "handdraw-library-source-manifest.v1.json": "0d599ff9d78409ead1ad181fb662c2c12168e689b1f99878d4b20a9ebfb2b12a",
+    "handdraw-legacy-source-manifest.v1.json": "ba9cb51f1c5198663c64bf83e259b59b52a0b94c8c3ebb316dc6d0dc52501651"
+  },
+  "synthetic_test_fixtures": "first-party invented only",
+  "original_private_sources_modified": false
+}
