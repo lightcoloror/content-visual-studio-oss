@@ -1,0 +1,11 @@
+infographic sequence-circular-simple
+data
+  title Fictional steps
+  desc Synthetic parser fixture
+  items
+    - label Step 1
+      desc Invented item 1
+    - label Step 2
+      desc Invented item 2
+    - label Step 3
+      desc Invented item 3

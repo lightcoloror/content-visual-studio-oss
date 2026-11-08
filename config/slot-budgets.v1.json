@@ -1,0 +1,122 @@
+{
+  "schema_version": "slot-budgets.v1",
+  "updated_at": "2026-08-08T13:23:41+08:00",
+  "updated_by": "Codex (GPT-5)",
+  "antv": {
+    "global": {
+      "title_max_chars": 18,
+      "description_max_chars": 30,
+      "label_max_chars": 10
+    },
+    "templates": {
+      "sequence-steps-simple": {
+        "layout_intent": "sequence",
+        "item_count": {
+          "min": 3,
+          "max": 6,
+          "scope": "top-level"
+        }
+      },
+      "sequence-timeline-simple": {
+        "layout_intent": "timeline",
+        "item_count": {
+          "min": 3,
+          "max": 6,
+          "scope": "top-level"
+        }
+      },
+      "compare-binary-horizontal-simple-vs": {
+        "layout_intent": "comparison",
+        "item_count": {
+          "exact": 2,
+          "scope": "top-level"
+        }
+      },
+      "hierarchy-tree-curved-line-rounded-rect-node": {
+        "layout_intent": "hierarchy",
+        "item_count": {
+          "min": 3,
+          "max": 7,
+          "scope": "all-nodes"
+        },
+        "max_depth": 3
+      },
+      "relation-dagre-flow-tb-compact-card": {
+        "layout_intent": "process",
+        "item_count": {
+          "min": 3,
+          "max": 7,
+          "scope": "all-nodes"
+        },
+        "max_depth": 3
+      },
+      "sequence-circular-simple": {
+        "layout_intent": "cycle",
+        "item_count": {
+          "min": 3,
+          "max": 5,
+          "scope": "top-level"
+        }
+      },
+      "compare-quadrant-quarter-simple-card": {
+        "layout_intent": "matrix",
+        "item_count": {
+          "exact": 4,
+          "scope": "top-level"
+        }
+      },
+      "list-grid-simple": {
+        "layout_intent": "list",
+        "item_count": {
+          "min": 3,
+          "max": 6,
+          "scope": "top-level"
+        }
+      }
+    }
+  },
+  "marp": {
+    "title_max_chars": 22,
+    "supporting_copy_max_chars": 60,
+    "source_max_chars": 40
+  },
+  "pptx_extracted": {
+    "source_ref": "operator-supplied-ppt-brief-validator",
+    "source_sha256": "ab2161bb8111c7dee32330f902a54afb504706865daf62992c83e815db1b85f3",
+    "limits": {
+      "deck_title_max_chars": 24,
+      "deck_subtitle_max_chars": 36,
+      "footer_max_chars": 40,
+      "slide_title_max_chars": 32,
+      "text_paragraph_count": {
+        "min": 1,
+        "max": 5
+      },
+      "text_paragraph_max_chars": 180,
+      "text_paragraph_total_max_chars": 520,
+      "callout_max_chars": 48,
+      "table_columns": {
+        "min": 2,
+        "max": 5
+      },
+      "table_column_header_max_chars": 14,
+      "table_rows": {
+        "min": 1,
+        "max": 6
+      },
+      "table_cell_max_chars": 18,
+      "chart_labels": {
+        "min": 2,
+        "max": 7
+      },
+      "chart_label_max_chars": 10,
+      "chart_unit_max_chars": 8,
+      "slides": {
+        "min": 1,
+        "max": 6
+      }
+    },
+    "decision": "Reference the existing validator as the runtime authority; this registry is a hash-bound discovery mirror.",
+    "availability": "metadata-only; validator is not distributed in this edition"
+  }
+}

@@ -235,3 +235,9 @@ standalone preview likewise requires `--root` pointing to the generated syntheti
 site, never a whole checkout. Do not treat the supplied handler tests as a live
 service/browser or production-account acceptance. See FEEDBACK-PROVENANCE.json
 and FEEDBACK-ACCEPTANCE.md for scope and unverified parts.
+
+## Local CMS and diagram contracts
+
+The optional CMS command and explicit-runtime AntV syntax/budget adapters are
+documented in [offline contracts](docs/OFFLINE_CONTRACTS.md). These are structural
+checks; they do not start a CMS/browser or grant publication approval.

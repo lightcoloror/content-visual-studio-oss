@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "content-visual-studio"
-version = "0.1.6"
+version = "0.1.7"
 description = "Offline evidence-to-content and hash-bound case review contracts"
 requires-python = ">=3.11"
 license = "Apache-2.0"
@@ -12,12 +12,14 @@ license-files = ["LICENSE", "licenses/*.txt"]
 dependencies = ["jsonschema>=4.23,<5", "referencing>=0.35,<1", "rfc3339-validator>=0.1.4,<1", "markdown-it-py>=4,<5", "filelock>=3.12,<4", "question-research-poc @ git+https://github.com/lightcoloror/question-research-poc-oss.git@646b3871257b0861446615e7c96390f5dc714bde"]
 
 [project.optional-dependencies]
+cms = ["PyYAML>=6.0.3,<7"]
 feedback = ["openpyxl>=3.1,<4", "psutil>=7,<8"]
 test = ["pytest>=8,<10", "question-research-poc[topic] @ git+https://github.com/lightcoloror/question-research-poc-oss.git@646b3871257b0861446615e7c96390f5dc714bde", "web-content-fetcher @ git+https://github.com/lightcoloror/web-content-fetcher-oss.git@c9432cd98bafa69523722e3ab8e081f373fcb7fb"]
 capture = ["question-research-poc[topic] @ git+https://github.com/lightcoloror/question-research-poc-oss.git@646b3871257b0861446615e7c96390f5dc714bde"]
 gateway = ["model-provider-gateway @ git+https://github.com/lightcoloror/model-provider-gateway-oss.git@6e69689d02dc97bc2cd3e476518ac7571e310461"]
 
 [project.scripts]
+content-studio-cms = "validate_sveltia_config:main"
 content-studio-feedback = "feedback_intake:main"
 content-studio-preview = "serve:main"
 content-studio-wechat-format = "wechat_article_format_adapter:main"
@@ -37,7 +39,7 @@ content-studio-artifacts = "document_render_artifact_lifecycle:main"
 
 [tool.setuptools]
 package-dir = {"" = "scripts"}
-py-modules = ["article_visual_pipeline", "case_video_script_adapter", "final_cut_compliance_gate", "human_voice_gate", "initial_draft_quality_gate", "model_provider_gateway_adapter", "narrative_realization", "qrp_candidate_adapter", "research_output_adapter", "run_case_video_script_e2e", "article_visual_validation", "studio_paths", "saved_research_candidate", "capture_research_candidate", "reference_intake", "selected_delivery", "context_manifest_consumer", "registered_self_media", "qrp_owner_binding", "wechat_article_format_adapter", "build_human_voice_fixture", "hallmark_report_adapter", "media_qa_validation", "social_card_runtime", "validate_insurance_clause_explanations", "human_voice_review", "cue_review", "cue_timeline_adapter", "video_timeline_dependency", "original_synthesis_adapter", "document_render_artifact_lifecycle", "design_direction_validation", "feedback_intake", "serve"]
+py-modules = ["article_visual_pipeline", "case_video_script_adapter", "final_cut_compliance_gate", "human_voice_gate", "initial_draft_quality_gate", "model_provider_gateway_adapter", "narrative_realization", "qrp_candidate_adapter", "research_output_adapter", "run_case_video_script_e2e", "article_visual_validation", "studio_paths", "saved_research_candidate", "capture_research_candidate", "reference_intake", "selected_delivery", "context_manifest_consumer", "registered_self_media", "qrp_owner_binding", "wechat_article_format_adapter", "build_human_voice_fixture", "hallmark_report_adapter", "media_qa_validation", "social_card_runtime", "validate_insurance_clause_explanations", "human_voice_review", "cue_review", "cue_timeline_adapter", "video_timeline_dependency", "original_synthesis_adapter", "document_render_artifact_lifecycle", "design_direction_validation", "feedback_intake", "serve", "validate_sveltia_config", "slot_budget_validation"]
 
 [tool.setuptools.packages.find]
 where = ["scripts"]
@@ -45,4 +47,4 @@ include = ["studio_assets*"]
 namespaces = true
 
 [tool.setuptools.package-data]
-studio_assets = ["schemas/*.json", "themes/*.css", "config/*.json", "contracts/*.json", "scripts/*.cjs", "scripts/*.mjs", "admin/*.html", "admin/*.js", "admin/*.css", "fixtures/case-video-script-v1/*.json", "fixtures/synthetic-voice/*.md", "fixtures/synthetic-voice/references/*.md", "fixtures/minimal-review/*", "fixtures/minimal-cue-review/*", "fixtures/artifact-lifecycle/synthetic-render-root/*.json", "fixtures/artifact-lifecycle/synthetic-render-root/.content-studio-synthetic-artifact-root.v1.json", "fixtures/artifact-lifecycle/synthetic-render-root/candidate/*.html", "fixtures/artifact-lifecycle/synthetic-render-root/final/*.html", "fixtures/feedback-intake/*.json", "fixtures/feedback-intake/*.csv", "fixtures/synthesis-lifecycle/*.json", "fixtures/synthesis-lifecycle/upstream/*.json", "fixtures/synthesis-lifecycle/upstream/archives/*.json"]
+studio_assets = ["schemas/*.json", "themes/*.css", "config/*.json", "contracts/*.json", "scripts/*.cjs", "scripts/*.mjs", "admin/*.yml", "admin/*.html", "admin/*.js", "admin/*.css", "fixtures/case-video-script-v1/*.json", "fixtures/synthetic-voice/*.md", "fixtures/synthetic-voice/references/*.md", "fixtures/minimal-review/*", "fixtures/minimal-cue-review/*", "fixtures/artifact-lifecycle/synthetic-render-root/*.json", "fixtures/artifact-lifecycle/synthetic-render-root/.content-studio-synthetic-artifact-root.v1.json", "fixtures/artifact-lifecycle/synthetic-render-root/candidate/*.html", "fixtures/artifact-lifecycle/synthetic-render-root/final/*.html", "fixtures/offline-contracts/antv/*.ifgc", "fixtures/feedback-intake/*.json", "fixtures/feedback-intake/*.csv", "fixtures/synthesis-lifecycle/*.json", "fixtures/synthesis-lifecycle/upstream/*.json", "fixtures/synthesis-lifecycle/upstream/archives/*.json"]

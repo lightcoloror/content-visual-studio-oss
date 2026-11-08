@@ -1,0 +1,806 @@
+# yaml-language-server: $schema=../schemas/sveltia-cms-0.172.4.json
+
+backend:
+  name: github
+  repo: example-owner/example-content-repository
+  branch: main
+
+media_folder: static/uploads
+public_folder: /uploads
+
+collections:
+  - name: content_items
+    label: 内容对象
+    label_singular: 内容对象
+    folder: content/items
+    format: json
+    create: true
+    identifier_field: content_id
+    slug: "{{fields.content_id}}"
+    summary: "{{title}} · {{primary_format}} · {{status}}"
+    sortable_fields: [title, primary_format, status, updated_at]
+    view_groups:
+      - { label: 主形态, field: primary_format }
+      - { label: 状态, field: status }
+    fields:
+      - { name: schema_version, widget: hidden, default: "0.2" }
+      - { name: content_id, label: 内容 ID, widget: string, hint: "稳定且只使用小写字母、数字、点、下划线和连字符" }
+      - { name: title, label: 标题, widget: string }
+      - name: primary_format
+        label: 主形态
+        widget: select
+        options:
+          - { label: 朋友圈, value: moments }
+          - { label: 图文笔记, value: graphic-note }
+          - { label: 长文, value: longform }
+          - { label: 视频脚本, value: video-script }
+          - { label: 多渠道, value: multi-channel }
+      - name: status
+        label: 资产状态
+        widget: select
+        options: [candidate, evidence, outline, draft, review, publish-ready, published, feedback, archived]
+      - { name: owner_thread, label: Owner 任务 ID, widget: string, required: false }
+      - { name: created_at, label: 创建时间, widget: string, required: false }
+      - { name: updated_at, label: 更新时间, widget: string, required: false }
+      - name: tags
+        label: 标签
+        widget: list
+        required: false
+        field: { name: value, label: 标签, widget: string }
+
+      - name: provenance
+        label: 来源与证据
+        widget: object
+        collapsed: true
+        fields:
+          - name: sources
+            label: 来源
+            widget: list
+            required: false
+            summary: "{{source_type}} · {{evidence_status}} · {{ref}}"
+            fields:
+              - name: source_type
+                label: 来源类型
+                widget: select
+                options: [logseq-fact, obsidian-synthesis, workspace-file, official-web, open-source-code, user-confirmed, ai-draft, candidate-evidence]
+              - { name: ref, label: 路径或 URL, widget: string }
+              - name: evidence_status
+                label: 证据状态
+                widget: select
+                options: [verified, partially-verified, unverified, historical, user-confirmed]
+              - { name: note, label: 说明, widget: text, required: false }
+          - name: verified_facts
+            label: 已核实事实
+            widget: list
+            required: false
+            field: { name: value, label: 事实, widget: text }
+          - name: uncertainties
+            label: 不确定项
+            widget: list
+            required: false
+            field: { name: value, label: 不确定项, widget: text }
+          - name: forbidden_claims
+            label: 禁止声称
+            widget: list
+            required: false
+            field: { name: value, label: 禁止声称, widget: text }
+
+      - name: gates
+        label: 风险门
+        widget: object
+        collapsed: false
+        fields:
+          - name: fact
+            label: 事实门
+            widget: object
+            collapsed: true
+            fields: &gate_fields
+              - { name: status, label: 状态, widget: select, options: [not-checked, pass, needs-review, blocked] }
+              - { name: reason, label: 原因, widget: text, required: false }
+              - { name: reviewed_by, label: 复核人, widget: string, required: false }
+              - { name: reviewed_at, label: 复核时间, widget: string, required: false }
+          - name: privacy
+            label: 隐私门
+            widget: object
+            collapsed: true
+            fields: *gate_fields
+          - name: compliance
+            label: 合规门
+            widget: object
+            collapsed: true
+            fields: *gate_fields
+          - name: rights
+            label: 权利门
+            widget: object
+            collapsed: true
+            fields: *gate_fields
+
+      - name: intent
+        label: 创作意图
+        widget: object
+        collapsed: true
+        fields:
+          - { name: topic, label: 主题, widget: string }
+          - { name: speaker_role, label: 发言者角色, widget: string }
+          - { name: audience, label: 目标读者, widget: text }
+          - { name: content_object, label: 处理对象, widget: text }
+          - { name: desired_action, label: 期望动作, widget: text }
+          - { name: risk_boundary, label: 风险边界, widget: text }
+          - { name: platform_intent, label: 平台意图, widget: text, required: false }
+          - { name: main_angle, label: 主角度, widget: text, required: false }
+          - { name: common_person_moment, label: 普通人瞬间, widget: text, required: false }
+          - { name: blocked_fallback_angle, label: 禁止回退角度, widget: text, required: false }
+          - { name: allowed_insurance_connection, label: 允许的保险连接, widget: text, required: false }
+
+      - name: operating_plan
+        label: 生产顺序与渠道选择
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { name: production_unit, label: 生产单位, widget: select, options: [real-problem-or-service-action] }
+          - { name: origin_kind, label: 起点类型, widget: select, options: [real-question, service-action, personal-experience, research-synthesis] }
+          - name: private_validation
+            label: 私域验证
+            widget: object
+            fields:
+              - { name: channel, label: 渠道, widget: select, options: [wechat_moments, private_conversation] }
+              - { name: status, label: 状态, widget: select, options: [candidate, draft, published, feedback-recorded, blocked] }
+              - { name: note, label: 验证说明, widget: text, required: false }
+          - name: public_adaptations
+            label: 公域适配（最多两条）
+            widget: object
+            required: false
+            fields:
+              - name: primary
+                label: 主适配
+                widget: object
+                required: false
+                fields: &public_adaptation_fields
+                  - { name: platform, label: 平台, widget: select, options: [wechat_video, wechat_article, xiaohongshu, bilibili, douyin] }
+                  - { name: role, label: 渠道角色, widget: select, options: [trusted-distribution-and-full-explanation, search-discovery-checklist, deep-professional-trust, short-expression-hook-test] }
+                  - { name: status, label: 状态, widget: select, options: [not-started, draft, review, ready, published, blocked] }
+                  - { name: content_variant, label: 对应渠道版本, widget: string, required: false }
+                  - { name: selection_reason, label: 选择理由, widget: text, required: false }
+              - name: secondary
+                label: 次适配
+                widget: object
+                required: false
+                fields: *public_adaptation_fields
+
+      - name: composition
+        label: 主稿与语气
+        widget: object
+        collapsed: true
+        fields:
+          - name: retention_mode
+            label: 正文留存模式
+            widget: select
+            options:
+              - { label: 全文, value: full-text }
+              - { label: 只存摘要, value: summary-only }
+              - { label: 只存引用, value: reference-only }
+          - { name: canonical_summary, label: 母稿摘要, widget: text, required: false }
+          - { name: canonical_body, label: 母稿正文, widget: text, required: false }
+          - { name: canonical_body_ref, label: 母稿正文引用, widget: string, required: false }
+          - { name: expression_mode, label: 表达模式, widget: string }
+          - { name: target_length, label: 目标长度, widget: number, value_type: int, required: false }
+          - name: voice_profile
+            label: 语气 Profile
+            widget: select
+            options:
+              - { label: 保留来源语气, value: voice/source-preserved }
+              - { label: 朋友圈个人表达 0.1 Review, value: voice/moments-personal-expression }
+          - { name: voice_profile_version, label: 语气 Profile 版本, widget: string }
+          - name: semantic_reversibility
+            label: 语义可逆检查
+            widget: object
+            collapsed: true
+            fields:
+              - { name: status, label: 状态, widget: select, options: [not-checked, pass, needs-review, fail] }
+              - { name: reverse_paraphrase, label: 反向释义, widget: text, required: false }
+              - name: meaning_drift
+                label: 语义漂移
+                widget: list
+                required: false
+                field: { name: value, label: 漂移, widget: text }
+
+      - name: channels
+        label: 渠道版本
+        widget: object
+        collapsed: true
+        fields:
+          - name: wechat_moments
+            label: 朋友圈
+            widget: object
+            required: false
+            collapsed: true
+            fields: &channel_fields
+              - { name: status, label: 状态, widget: select, options: [not-started, draft, review, ready, published] }
+              - { name: title, label: 标题, widget: string, required: false }
+              - { name: hook, label: 开头, widget: text, required: false }
+              - { name: body, label: 正文, widget: text, required: false }
+              - { name: summary, label: 摘要, widget: text, required: false }
+              - { name: body_ref, label: 正文引用, widget: string, required: false }
+              - { name: cta, label: CTA, widget: text, required: false }
+              - { name: target_length, label: 目标长度, widget: number, value_type: int, required: false }
+              - { name: adapter_version, label: 适配器版本, widget: string, required: false }
+              - name: platform_metadata
+                label: 平台元数据
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - { name: publish_date, label: 发布日期, widget: string, required: false }
+                  - { name: target_layer, label: 目标层, widget: string, required: false }
+                  - { name: cta_type, label: CTA 类型, widget: string, required: false }
+                  - { name: page_count, label: 页数, widget: number, value_type: int, required: false }
+                  - { name: aspect_ratio, label: 画幅比例, widget: string, required: false }
+          - name: xiaohongshu
+            label: 小红书
+            widget: object
+            required: false
+            collapsed: true
+            fields: *channel_fields
+          - name: wechat_article
+            label: 公众号/长文
+            widget: object
+            required: false
+            collapsed: true
+            fields: *channel_fields
+          - name: video_script
+            label: 视频脚本
+            widget: object
+            required: false
+            collapsed: true
+            fields: *channel_fields
+          - name: knowledge_planet
+            label: 知识星球
+            widget: object
+            required: false
+            collapsed: true
+            fields: *channel_fields
+
+      - name: visual
+        label: 视觉与渲染
+        widget: object
+        collapsed: true
+        fields:
+          - name: design_system
+            label: 共享设计上下文
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+              - { name: principles_version, widget: hidden, default: shared-design-principles.v1 }
+              - name: media_adapter
+                label: 媒介适配器
+                widget: select
+                options:
+                  - { label: 社交图卡, value: social-card }
+                  - { label: 文章图文, value: article }
+                  - { label: 网页, value: web }
+                  - { label: 信息图, value: infographic }
+                  - { label: PPT, value: pptx }
+              - name: design_direction
+                label: 设计方向
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - name: direction_id
+                    label: 方向
+                    widget: select
+                    options:
+                      - { label: 编辑型实用指南, value: editorial-field-guide }
+                      - { label: 反思型个人叙事, value: reflective-personal-essay }
+                  - { name: version, widget: hidden, default: 1.0.0 }
+              - name: communication_job
+                label: 沟通任务
+                widget: object
+                fields:
+                  - { name: audience, label: 这页给谁看, widget: text }
+                  - { name: outcome, label: 看完应理解或采取什么动作, widget: text }
+                  - { name: central_takeaway, label: 中心结论, widget: text }
+              - name: global_visual
+                label: 全局视觉上下文
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - { name: schema_version, widget: hidden, default: global-visual-context.v1 }
+                  - name: ruleset
+                    label: 共享规则集（只读）
+                    widget: object
+                    collapsed: true
+                    fields:
+                      - { name: ref, label: 规则路径, widget: string, readonly: true, default: "operator-supplied/guidelines.v1.json" }
+                      - { name: version, label: 规则版本, widget: string, readonly: true, default: 1.0.0 }
+                      - { name: sha256, label: 规则哈希, widget: string, readonly: true, default: 9bc76885794fce14256c100c819fca872a149bc4ee9e1fbeb0f82f906e2731ed }
+                  - { name: locale, label: 中文区域, widget: select, options: [zh-Hans, zh-Hant], default: zh-Hans }
+                  - { name: writing_mode, widget: hidden, default: horizontal-tb }
+                  - { name: conformance_profile, label: 媒介符合性 Profile, widget: select, options: [article.v1, social-card.v1, infographic.v1, pptx.v1, web.v1] }
+                  - { name: authority_scope, label: 权威范围, widget: select, options: [global-only, brand-bound], default: global-only }
+                  - name: brand_authority
+                    label: 品牌权威（只读）
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { name: profile_id, label: Profile ID, widget: string, readonly: true }
+                      - { name: profile_version, label: Profile 版本, widget: string, readonly: true }
+                      - { name: repository_ref, label: 权威仓库, widget: string, readonly: true }
+                      - { name: authority_version, label: 权威版本, widget: string, readonly: true }
+                      - { name: profile_ref, label: Profile 路径, widget: string, readonly: true }
+                      - { name: tokens_ref, label: Token 路径, widget: string, readonly: true }
+                      - { name: projection_sha256, label: 投影哈希, widget: string, readonly: true }
+                      - { name: qa_receipt_ref, label: 权威 QA 回执, widget: string, readonly: true }
+                      - { name: qa_receipt_sha256, label: 权威 QA 哈希, widget: string, readonly: true }
+                  - name: enforcement
+                    label: 分级执行（只读）
+                    widget: object
+                    collapsed: true
+                    fields:
+                      - { name: p0, widget: hidden, default: blocking }
+                      - { name: p1, widget: hidden, default: report-only }
+                      - { name: p2, widget: hidden, default: explicit-only }
+                  - name: motion
+                    label: Web 动效
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { name: mode, label: 模式, widget: select, options: [none, explicit], default: none }
+                      - { name: purpose, label: 动效目的, widget: text, required: false }
+                      - { name: static_fallback_ref, label: 静态回退, widget: string, required: false }
+                  - name: exceptions
+                    label: 规则例外
+                    widget: list
+                    required: false
+                    summary: "{{rule_id}} · {{expires_at}}"
+                    fields:
+                      - { name: rule_id, label: 规则 ID, widget: string }
+                      - { name: reason, label: 理由, widget: text }
+                      - { name: reviewer, label: 复核人, widget: string }
+                      - { name: expires_at, label: 到期时间, widget: datetime }
+          - name: brand_spec
+            label: 品牌资产规格
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+              - { name: schema_version, widget: hidden, default: brand-spec.v1 }
+              - { name: subject, label: 品牌或主体, widget: string }
+              - { name: status, label: 资产状态, widget: select, options: [not-needed, draft, assets-needed, ready, blocked] }
+              - name: official_source_refs
+                label: 官方来源
+                widget: list
+                required: false
+                field: { name: value, label: 来源, widget: string }
+              - name: asset_refs
+                label: 已登记素材引用
+                widget: object
+                fields:
+                  - { name: logos, label: Logo 素材 ID, widget: list, required: false, field: { name: value, label: 素材 ID, widget: string } }
+                  - { name: product_images, label: 产品图素材 ID, widget: list, required: false, field: { name: value, label: 素材 ID, widget: string } }
+                  - { name: ui_screenshots, label: UI 截图素材 ID, widget: list, required: false, field: { name: value, label: 素材 ID, widget: string } }
+              - { name: palette_source, label: 色板来源, widget: string, required: false }
+              - { name: typography, label: 字体, widget: list, required: false, field: { name: value, label: 字体, widget: string } }
+              - { name: signature_details, label: 识别细节, widget: list, required: false, field: { name: value, label: 细节, widget: string } }
+              - { name: forbidden_patterns, label: 视觉禁区, widget: list, required: false, field: { name: value, label: 禁区, widget: string } }
+              - { name: mood_keywords, label: 气质关键词, widget: list, required: false, field: { name: value, label: 关键词, widget: string } }
+              - { name: missing_assets, label: 缺失资产, widget: list, required: false, field: { name: value, label: 缺失项, widget: string } }
+              - { name: review_note, label: 复核说明, widget: text, required: false }
+          - name: design_exploration
+            label: 可视设计方向探索
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+              - { name: schema_version, widget: hidden, default: design-exploration.v1 }
+              - { name: mode, label: 模式, widget: select, options: ["off", optional, requested] }
+              - { name: trigger, label: 触发原因, widget: select, options: [none, ambiguous-direction, missing-design-context, explicit-user-request] }
+              - { name: status, label: 状态, widget: select, options: [not-needed, planned, rendered, selected, blocked] }
+              - name: directions
+                label: 可视方向
+                widget: list
+                required: false
+                max: 3
+                summary: "{{direction_id}} · {{status}}"
+                fields:
+                  - { name: direction_id, label: 方向 ID, widget: string }
+                  - { name: rationale, label: 设计理由, widget: text }
+                  - { name: reference_basis, label: 参考依据, widget: text, required: false }
+                  - { name: artifact_ref, label: 可视产物引用, widget: string }
+                  - { name: status, label: 状态, widget: select, options: [candidate, selected, rejected] }
+                  - { name: user_note, label: 用户反馈, widget: text, required: false }
+              - { name: selected_direction_id, label: 已选方向 ID, widget: string, required: false }
+          - name: visual_profile
+            label: 视觉 Profile
+            widget: select
+            options:
+              - { label: 保留来源视觉, value: visual/source-preserved }
+              - { label: 个人 IP 专业信任 0.1.1, value: visual/personal-ip-professional-trust }
+              - { label: 保险观察型顾问 0.2.0, value: visual/insurance-observational-advisor }
+          - { name: visual_profile_version, label: 视觉 Profile 版本, widget: string }
+          - name: route
+            label: 视觉路线
+            widget: select
+            options: [personal_photo, work_detail_photo, redacted_service_asset, text_card, explanatory_illustration, data_visualization, none]
+          - { name: theme, label: 主题, widget: string, required: false }
+          - { name: template, label: 模板, widget: string, required: false }
+          - name: cognitive_anchors
+            label: 认知锚点
+            widget: list
+            required: false
+            max: 4
+            field: { name: value, label: 认知锚点, widget: string }
+          - name: article_visual_plan
+            label: 文章配图计划
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+              - { name: article_ref, label: Markdown 文章路径, widget: string }
+              - { name: workflow, widget: hidden, default: human-in-the-loop }
+              - { name: ai_generation_policy, widget: hidden, default: explicit-opt-in-only }
+              - { name: visual_mode, label: 文章视觉模式, widget: select, required: false, options: [editorial-photo-mix, diagram-led, icon-led] }
+              - name: slots
+                label: 配图位
+                widget: list
+                summary: "{{slot_id}} · {{route}} · {{status}}"
+                fields:
+                  - { name: slot_id, label: 配图位 ID, widget: string }
+                  - name: anchor
+                    label: 插入锚点
+                    widget: object
+                    fields:
+                      - { name: kind, label: 锚点类型, widget: select, options: [heading, paragraph, explicit-marker] }
+                      - { name: value, label: 标题或段落文本, widget: text }
+                      - { name: occurrence, label: 第几次出现, widget: number, value_type: int, default: 1 }
+                  - { name: purpose, label: 认知作用, widget: text }
+                  - { name: media_role, label: 图片职责, widget: select, options: [evidence, explanatory, contextual, decorative] }
+                  - { name: route, label: 素材路线, widget: select, options: [personal-photo, work-detail-photo, stock-photo, icon, diagram, chart, generated-image] }
+                  - { name: status, label: 状态, widget: select, options: [planned, candidates-ready, selected, inserted, blocked, skipped] }
+                  - { name: layout, label: 混排版式, widget: select, options: [full-width, inline, text-left, text-right, two-up, icon-row] }
+                  - name: visual_brief
+                    label: 视觉简报
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { name: metaphor, label: 核心隐喻, widget: string }
+                      - { name: composition, label: 构图说明, widget: text }
+                      - { name: central_action, label: 中心动作, widget: string }
+                      - { name: max_labels, label: 图内短标签上限, widget: number, value_type: int, min: 0, max: 3 }
+                  - name: search
+                    label: 检索意图
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { name: query_zh, label: 中文检索词, widget: string }
+                      - { name: query_en, label: 英文检索词, widget: string, required: false }
+                      - name: negative_terms
+                        label: 排除词
+                        widget: list
+                        required: false
+                        field: { name: value, label: 排除词, widget: string }
+                      - name: preferred_sources
+                        label: 素材来源
+                        widget: list
+                        field: { name: value, label: 来源, widget: select, options: [local-library, pexels, pixabay, unsplash, stocksnap, burst-shopify, kaboompics, picjumbo, gratisography, openverse, wikimedia-commons, cdc-phil, nci-visuals-online, servier-medical-art, wellcome-collection, freepik, flaticon, undraw, iconify] }
+                  - { name: selected_asset_ref, label: 已选素材引用, widget: string, required: false }
+                  - { name: alt_text, label: 替代文本, widget: text, required: false }
+                  - { name: caption, label: 图注, widget: text, required: false }
+          - name: ai_image_generation
+            label: AI 生图建议与授权
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+              - { name: policy, widget: hidden, default: explicit-opt-in-only }
+              - { name: recommendation_status, label: 建议状态, widget: select, options: [not-assessed, not-recommended, recommended], default: not-assessed }
+              - { name: recommendation_reason, label: 建议理由, widget: text, required: false }
+              - { name: explicit_user_request, label: 用户原话已明确包含“模型生成图片”或“AI 生图”, widget: boolean, default: false }
+              - { name: request_text, label: 用户原话, widget: text, required: false }
+              - { name: matched_trigger, label: 命中许可短语, widget: select, options: [模型生成图片, AI 生图], required: false }
+          - name: semantic_visual_map
+            label: 语义视觉映射
+            widget: list
+            required: false
+            summary: "{{variant_id}} · {{output_ref}}"
+            fields:
+              - { name: variant_id, label: 版本 ID, widget: string }
+              - { name: output_ref, label: HTML 输出, widget: string }
+              - name: bindings
+                label: 语义绑定
+                widget: list
+                summary: "{{semantic_id}} · {{role}} · {{placement}}"
+                fields:
+                  - { name: semantic_id, label: 语义 ID, widget: string }
+                  - { name: meaning, label: 表达含义, widget: string }
+                  - { name: copy_anchor, label: 文案锚点, widget: string }
+                  - { name: visual_ref, label: 视觉素材, widget: string }
+                  - { name: role, label: 视觉角色, widget: select, options: [explanatory, contextual, decorative] }
+                  - { name: placement, label: 共置方式, widget: select, options: [inline-with-copy, adjacent-to-copy, annotated-on-subject, data-mark, background] }
+                  - { name: anchor_index, label: 认知锚点序号, widget: number, value_type: int, required: false }
+          - name: assets
+            label: 素材
+            widget: list
+            required: false
+            summary: "{{asset_type}} · {{rights_status}} · {{ref}}"
+            fields:
+              - { name: ref, label: 素材引用, widget: string }
+              - name: asset_type
+                label: 素材类型
+                widget: select
+                options: [personal-photo, work-detail-photo, service-asset, stock-photo, generated-image, chart, illustration, other]
+              - { name: rights_status, label: 权利状态, widget: select, options: [verified, needs-review, blocked] }
+              - { name: privacy_status, label: 隐私状态, widget: select, required: false, options: [not-applicable, verified, needs-review, blocked] }
+              - { name: source_note, label: 来源说明, widget: text, required: false }
+              - { name: source_id, label: 来源 ID, widget: select, required: false, options: [local-library, pexels, pixabay, unsplash, stocksnap, burst-shopify, kaboompics, picjumbo, gratisography, openverse, wikimedia-commons, cdc-phil, nci-visuals-online, servier-medical-art, wellcome-collection, freepik, flaticon, undraw, iconify] }
+              - { name: usage_scope, label: 使用范围, widget: select, required: false, options: [commercial, editorial-only, unknown, not-applicable] }
+              - { name: attribution_required, label: 必须署名, widget: boolean, required: false }
+              - { name: release_status, label: 肖像/场地授权, widget: select, required: false, options: [verified, not-guaranteed, not-applicable, needs-review, blocked] }
+              - { name: asset_id, label: 素材 ID, widget: string, required: false }
+              - { name: landing_page_url, label: 原始页面, widget: string, required: false }
+              - { name: creator, label: 作者, widget: string, required: false }
+              - { name: creator_url, label: 作者页面, widget: string, required: false }
+              - { name: license, label: 许可证, widget: string, required: false }
+              - { name: license_url, label: 许可证页面, widget: string, required: false }
+              - { name: attribution, label: 署名文本, widget: text, required: false }
+              - { name: retrieved_at, label: 获取时间, widget: string, required: false }
+              - { name: width, label: 原始宽度, widget: number, value_type: int, required: false }
+              - { name: height, label: 原始高度, widget: number, value_type: int, required: false }
+              - { name: visual_role, label: 视觉角色, widget: select, required: false, options: [evidence-photo, documentary-photo, explanatory-illustration, diagram, decoration] }
+              - { name: evidence_status, label: 证据状态, widget: select, required: false, options: [verified, user-confirmed, illustrative-only, needs-review, unknown] }
+              - { name: treatment, label: 图片处理, widget: select, required: false, options: [natural, documentary, annotated, muted-support, none] }
+              - { name: text_overlay_policy, label: 文字叠加策略, widget: select, required: false, options: [none, safe-area-only, explicit-approved] }
+              - { name: fit_strategy, label: 适配方式, widget: select, required: false, options: [contain, cover, focal-cover, none] }
+              - name: focal_point
+                label: 焦点（0–1）
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - { name: x, label: X, widget: number, value_type: float, min: 0, max: 1 }
+                  - { name: y, label: Y, widget: number, value_type: float, min: 0, max: 1 }
+              - name: safe_crop
+                label: 安全裁切框（0–1）
+                widget: object
+                required: false
+                collapsed: true
+                fields: &normalized_box_fields
+                  - { name: x, label: X, widget: number, value_type: float, min: 0, max: 1 }
+                  - { name: y, label: Y, widget: number, value_type: float, min: 0, max: 1 }
+                  - { name: width, label: 宽, widget: number, value_type: float, min: 0.001, max: 1 }
+                  - { name: height, label: 高, widget: number, value_type: float, min: 0.001, max: 1 }
+              - name: subject_bounds
+                label: 主体边界（0–1）
+                widget: object
+                required: false
+                collapsed: true
+                fields: *normalized_box_fields
+              - { name: transform_note, label: 裁切与修改记录, widget: text, required: false }
+              - { name: alt_text, label: 替代文本, widget: text, required: false }
+          - name: render_artifacts
+            label: 渲染成品（新管线）
+            widget: list
+            required: false
+            summary: "{{artifact_id}} · {{renderer}} · {{format}} · {{status}}"
+            fields:
+              - { name: artifact_id, label: Artifact ID, widget: string }
+              - { name: output_family, label: 输出族, widget: select, options: [social-card, article, infographic, data-chart, slide, web, document-preview] }
+              - { name: media_adapter, label: 媒介适配器, widget: select, options: [social-card, article, web, infographic, pptx] }
+              - { name: layout_intent, label: 布局意图, widget: select, options: [sequence, timeline, comparison, hierarchy, process, cycle, matrix, list, data-chart, quote-hero] }
+              - { name: renderer, label: 渲染器, widget: select, options: [social-card, material-illustration, html-playwright, lieflat-charts, echarts, mermaid, pptxgenjs, ppt-master, imagegen, antv-infographic, marp, baoyu-md, obsidian-infographic-preview, manual, none] }
+              - { name: renderer_version, label: 渲染器版本, widget: string, required: false }
+              - { name: format, label: 成品格式, widget: select, options: [png, jpg, svg, pdf, pptx, html, md, zip, none] }
+              - { name: status, label: 成品状态, widget: select, options: [planned, rendered, qa-failed, review-required, approved, blocked, superseded] }
+              - { name: template, label: 模板, widget: string, required: false }
+              - { name: theme, label: 主题, widget: string, required: false }
+              - name: dimensions
+                label: 输出尺寸
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - { name: width, label: 宽度, widget: number, value_type: int, min: 1 }
+                  - { name: height, label: 高度, widget: number, value_type: int, min: 1 }
+              - { name: input_refs, label: 输入引用, widget: list, required: false, field: { name: value, label: 输入路径, widget: string } }
+              - { name: depends_on_artifact_ids, label: 依赖 Artifact ID, widget: list, required: false, field: { name: value, label: Artifact ID, widget: string } }
+              - { name: asset_ids, label: 素材 ID, widget: list, required: false, field: { name: value, label: 素材 ID, widget: string } }
+              - { name: font_refs, label: 字体引用, widget: list, required: false, field: { name: value, label: 字体, widget: string } }
+              - { name: ref, label: 输出路径, widget: string, required: false }
+              - { name: receipt_ref, label: 渲染回执路径, widget: string, required: false }
+              - { name: conformance_receipt_ref, label: 视觉符合性回执, widget: string, required: false, readonly: true }
+              - { name: qa_profile, label: QA Profile, widget: string, required: false }
+              - { name: retry_count, label: 自动重试次数, widget: number, value_type: int, min: 0, max: 2, required: false }
+              - name: renderer_options
+                label: 渲染器选项
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - { name: explicit_adapter, label: 明确启用默认关闭适配器, widget: boolean, default: false, required: false }
+                  - { name: global_visual_v1, label: 启用全局视觉合同, widget: boolean, default: false, required: false }
+                  - { name: operation, label: PPT Master 操作, widget: select, options: [generate, template-fill, data-native], default: generate, required: false }
+                  - { name: ppt_master_protocol, label: PPT Master 固定协议, widget: select, options: [v4.5], required: false }
+                  - { name: template_fill_plan_confirmed, label: 模板填充计划已人工确认, widget: boolean, default: false, required: false }
+                  - { name: fallback_artifact_id, label: 原生数据图 SVG 回退 Artifact ID, widget: string, required: false }
+                  - { name: layout_candidate, label: 候选布局（仅显式预览）, widget: select, options: [report_core, xiaohongshu_post], required: false }
+                  - { name: background, label: 背景色, widget: string, required: false }
+                  - { name: background_asset_id, label: Marp 底图素材 ID, widget: string, required: false }
+                  - name: copy
+                    label: Marp 文案预算字段
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { name: title, label: 标题, widget: string }
+                      - { name: supporting_copy, label: 支持文案, widget: text }
+                      - { name: source, label: 来源短注, widget: string }
+              - name: human_review
+                label: 成品人工复核
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - { name: status, label: 状态, widget: select, options: [required, approved, changes-requested, blocked] }
+                  - { name: reviewer, label: 复核人, widget: string, required: false }
+                  - { name: reviewed_at, label: 复核时间, widget: string, required: false }
+                  - { name: note, label: 说明, widget: text, required: false }
+          - name: render_recipe
+            label: 渲染配方（旧对象兼容区）
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+              - { name: renderer, label: 渲染器, widget: select, options: [social-card, material-illustration, html-playwright, lieflat-charts, echarts, mermaid, pptxgenjs, ppt-master, imagegen, antv-infographic, marp, baoyu-md, obsidian-infographic-preview, manual, none] }
+              - { name: renderer_version, label: 渲染器版本, widget: string, required: false }
+              - { name: width, label: 宽度, widget: number, value_type: int, required: false }
+              - { name: height, label: 高度, widget: number, value_type: int, required: false }
+              - { name: output_format, label: 输出格式, widget: select, options: [png, jpg, svg, pdf, pptx, html, none] }
+              - name: output_refs
+                label: 输出引用
+                widget: list
+                required: false
+                field: { name: value, label: 输出路径, widget: string }
+
+      - name: qa
+        label: 质检
+        widget: object
+        collapsed: true
+        fields:
+          - name: deterministic
+            label: 确定性检查
+            widget: list
+            required: false
+            summary: "{{name}} · {{status}}"
+            fields:
+              - { name: name, label: 检查名, widget: string }
+              - { name: status, label: 状态, widget: select, options: [pass, fail, needs-review, not-run] }
+              - { name: details, label: 详情, widget: text, required: false }
+          - name: promptfoo
+            label: Promptfoo
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+              - { name: status, label: 状态, widget: select, options: [pass, fail, needs-review, not-run] }
+              - { name: suite, label: Suite, widget: string, required: false }
+              - { name: suite_version, label: Suite 版本, widget: string, required: false }
+              - { name: result_ref, label: 结果引用, widget: string, required: false }
+          - name: human_review
+            label: 人工复核
+            widget: object
+            collapsed: true
+            fields:
+              - { name: status, label: 状态, widget: select, options: [required, approved, changes-requested, blocked] }
+              - { name: reviewer, label: 复核人, widget: string, required: false }
+              - { name: reviewed_at, label: 复核时间, widget: string, required: false }
+              - { name: note, label: 说明, widget: text, required: false }
+          - name: design_review
+            label: 五维视觉评审
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+              - { name: schema_version, widget: hidden, default: huashu-derived-design-review.v1 }
+              - { name: status, label: 评审状态, widget: select, options: [not-run, pass, changes-requested, blocked] }
+              - { name: artifact_refs, label: 被评审产物, widget: list, field: { name: value, label: 产物路径, widget: string } }
+              - name: dimensions
+                label: 五维证据评分
+                widget: object
+                fields:
+                  - name: philosophy_alignment
+                    label: 哲学一致性
+                    widget: object
+                    fields: &design_review_score_fields
+                      - { name: score, label: 分数, widget: number, value_type: float, min: 1, max: 10 }
+                      - { name: evidence, label: 观察证据, widget: text }
+                  - { name: visual_hierarchy, label: 视觉层级, widget: object, fields: *design_review_score_fields }
+                  - { name: craft_quality, label: 细节执行, widget: object, fields: *design_review_score_fields }
+                  - { name: functionality, label: 功能性, widget: object, fields: *design_review_score_fields }
+                  - { name: originality, label: 创新性, widget: object, fields: *design_review_score_fields }
+              - { name: keep, label: 保留, widget: list, required: false, field: { name: value, label: 保留项, widget: text } }
+              - { name: fix, label: 修正, widget: list, required: false, field: { name: value, label: 修正项, widget: text } }
+              - { name: quick_wins, label: 快速改进, widget: list, required: false, field: { name: value, label: 改进项, widget: text } }
+              - { name: reviewer, label: 评审者, widget: string, required: false }
+              - { name: reviewed_at, label: 评审时间, widget: string, required: false }
+              - { name: note, label: 评审说明, widget: text, required: false }
+
+      - name: publication
+        label: 发布
+        widget: object
+        collapsed: true
+        fields:
+          - { name: boundary, label: 发布边界, widget: select, options: [manual-only] }
+          - name: receipts
+            label: 发布回执
+            widget: list
+            required: false
+            summary: "{{channel}} · {{published_at}}"
+            fields:
+              - { name: channel, label: 渠道, widget: string }
+              - { name: published_at, label: 发布时间, widget: string }
+              - { name: url_or_id, label: URL 或 ID, widget: string, required: false }
+              - { name: published_by, label: 发布人, widget: string, required: false }
+
+      - name: feedback
+        label: 反馈与学习
+        widget: object
+        collapsed: true
+        fields:
+          - { name: signal_status, label: 信号状态, widget: select, options: [not-observed, no_signal, observed] }
+          - { name: content_signal_status, label: 内容信号状态, widget: select, required: false, options: [not-observed, content_no_signal, observed] }
+          - { name: business_signal_status, label: 业务信号状态, widget: select, required: false, options: [not-observed, customer_no_response_observed, observed] }
+          - name: platform_signals
+            label: 平台信号
+            widget: object
+            collapsed: true
+            fields:
+              - { name: impressions, label: 展现, widget: number, value_type: int, required: false }
+              - { name: views, label: 浏览/播放, widget: number, value_type: int, required: false }
+              - { name: likes, label: 点赞, widget: number, value_type: int, required: false }
+              - { name: comments, label: 评论, widget: number, value_type: int, required: false }
+              - { name: shares, label: 分享, widget: number, value_type: int, required: false }
+              - { name: saves, label: 收藏, widget: number, value_type: int, required: false }
+              - { name: follows, label: 关注, widget: number, value_type: int, required: false }
+          - name: business_signals
+            label: 业务信号
+            widget: object
+            collapsed: true
+            fields:
+              - { name: effective_questions, label: 有效问题, widget: number, value_type: int, required: false }
+              - { name: continued_conversations, label: 后续沟通, widget: number, value_type: int, required: false }
+              - { name: document_willingness, label: 愿意提供必要资料, widget: number, value_type: int, required: false }
+              - { name: appointments, label: 下一步预约, widget: number, value_type: int, required: false }
+          - name: measurement_layers
+            label: 分层反馈
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+              - name: admission
+                label: 准入
+                widget: list
+                required: false
+                fields: &signal_observation_fields
+                  - { name: name, label: 指标, widget: string }
+                  - { name: value, label: 值, widget: string, required: false }
+                  - { name: source, label: 来源, widget: string, required: false }
+                  - { name: note, label: 说明, widget: text, required: false }
+              - { name: attraction, label: 吸引, widget: list, required: false, fields: *signal_observation_fields }
+              - { name: consumption, label: 消费, widget: list, required: false, fields: *signal_observation_fields }
+              - { name: value, label: 价值, widget: list, required: false, fields: *signal_observation_fields }
+              - { name: negative_feedback, label: 负反馈, widget: list, required: false, fields: *signal_observation_fields }
+              - { name: business, label: 业务, widget: list, required: false, fields: *signal_observation_fields }
+          - name: qualitative_feedback
+            label: 定性反馈
+            widget: list
+            required: false
+            field: { name: value, label: 反馈, widget: text }
+          - { name: learning_decision, label: 学习结论, widget: select, options: [none, retain, modify, retire, insufficient-evidence] }
+          - { name: next_test, label: 下一次只改什么, widget: text, required: false }

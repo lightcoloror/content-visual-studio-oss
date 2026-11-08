@@ -1,0 +1,16 @@
+{
+  "schema_version": "renderer-registry.v1",
+  "policy": {
+    "remote_asset_downloads": false,
+    "automatic_publication": false
+  },
+  "renderers": {
+    "antv-infographic": {
+      "repository": "https://github.com/antvis/Infographic",
+      "license": "MIT",
+      "integration": "operator-supplied-parser-no-code-copy",
+      "runtime_root_env": "CONTENT_STUDIO_ANTV_MODULE_ROOT",
+      "local_path": null
+    }
+  }
+}

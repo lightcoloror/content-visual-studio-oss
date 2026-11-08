@@ -37,3 +37,15 @@ The extra packaged voice/case documents are the same explicitly fictional
 first-party fixtures already in the public repository. They contain no audio,
 private Skill source, real author approval, customer or health records.
 No fonts, AntV/browser bridge, upstream renderer or model payload is added.
+
+Sveltia CMS 0.172.4's JSON Schema is the only added upstream payload. It is MIT,
+copyright 2026 Kohei Yoshino. The complete license is retained at
+`licenses/sveltia-cms-MIT.txt`. The schema and license were byte-matched to the
+local npm archive and fixed source commit
+`d4b633b85d883e00ae84b9b0582211d2f2966489`; no new upstream network authentication
+is claimed. No CMS bundle, account data or source checkout is distributed.
+
+The AntV inspector is first-party glue calling the separately supplied
+`@antv/infographic` parser, version 0.2.11 tested, MIT (copyright 2025 AntV).
+No AntV implementation, font, renderer, browser or npm package is included.
+PyYAML is a separately installed optional MIT dependency, not vendored source.

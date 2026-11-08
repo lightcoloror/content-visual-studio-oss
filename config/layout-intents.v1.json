@@ -1,0 +1,118 @@
+{
+  "schema_version": "layout-intents.v1",
+  "updated_at": "2026-08-08T13:23:41+08:00",
+  "updated_by": "Codex (GPT-5)",
+  "intents": {
+    "sequence": {
+      "communication_job": "ordered steps with a clear start and finish",
+      "preferred_renderers": [
+        "antv-infographic",
+        "html-playwright",
+        "pptxgenjs"
+      ],
+      "antv_templates": [
+        "sequence-steps-simple"
+      ]
+    },
+    "timeline": {
+      "communication_job": "events or stages whose order in time matters",
+      "preferred_renderers": [
+        "antv-infographic",
+        "echarts",
+        "html-playwright"
+      ],
+      "antv_templates": [
+        "sequence-timeline-simple"
+      ]
+    },
+    "comparison": {
+      "communication_job": "two alternatives or states compared on the same criteria",
+      "preferred_renderers": [
+        "antv-infographic",
+        "html-playwright",
+        "pptxgenjs"
+      ],
+      "antv_templates": [
+        "compare-binary-horizontal-simple-vs"
+      ]
+    },
+    "hierarchy": {
+      "communication_job": "parent-child structure or nested responsibility",
+      "preferred_renderers": [
+        "antv-infographic",
+        "mermaid",
+        "html-playwright"
+      ],
+      "antv_templates": [
+        "hierarchy-tree-curved-line-rounded-rect-node"
+      ]
+    },
+    "process": {
+      "communication_job": "directed flow with dependencies or decisions",
+      "preferred_renderers": [
+        "antv-infographic",
+        "mermaid",
+        "html-playwright"
+      ],
+      "antv_templates": [
+        "relation-dagre-flow-tb-compact-card"
+      ]
+    },
+    "cycle": {
+      "communication_job": "repeating stages without a single terminal state",
+      "preferred_renderers": [
+        "antv-infographic",
+        "html-playwright",
+        "pptxgenjs"
+      ],
+      "antv_templates": [
+        "sequence-circular-simple"
+      ]
+    },
+    "matrix": {
+      "communication_job": "four-area classification across two axes",
+      "preferred_renderers": [
+        "antv-infographic",
+        "html-playwright",
+        "pptxgenjs"
+      ],
+      "antv_templates": [
+        "compare-quadrant-quarter-simple-card"
+      ]
+    },
+    "list": {
+      "communication_job": "peer items scanned without a required path",
+      "preferred_renderers": [
+        "antv-infographic",
+        "html-playwright",
+        "pptxgenjs"
+      ],
+      "antv_templates": [
+        "list-grid-simple"
+      ]
+    },
+    "data-chart": {
+      "communication_job": "exact quantitative trend, share, distribution, or denominator",
+      "preferred_renderers": [
+        "echarts",
+        "lieflat-charts",
+        "antv-infographic"
+      ],
+      "antv_templates": []
+    },
+    "quote-hero": {
+      "communication_job": "one central claim supported by a short explanation or source",
+      "preferred_renderers": [
+        "html-playwright",
+        "marp",
+        "pptxgenjs"
+      ],
+      "antv_templates": []
+    }
+  },
+  "routing_policy": {
+    "data_exactness_first": true,
+    "explicit_item_only_renderers_are_never_auto_selected": true,
+    "unregistered_layout_intent_fails_closed": true
+  }
+}

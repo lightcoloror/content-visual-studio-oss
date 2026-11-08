@@ -1,0 +1,32 @@
+{
+  "version": "0.1.7",
+  "base_public_commit": "7f0c518845e2baa14977f547e83d597b8b8dad5d",
+  "first_party_adapters": [
+    {
+      "path": "scripts/validate_sveltia_config.py",
+      "sha256": "ea884f7e60b2d2f6247c26aeb225ae49cf904ae644887d3c7b64b7251f222fe0"
+    },
+    {
+      "path": "scripts/inspect_antv_input.mjs",
+      "sha256": "98fd8d5cda54795c7e21dfeb5bb19b8e5be63c544db6d7326730a3ff75283dfe"
+    },
+    {
+      "path": "scripts/slot_budget_validation.py",
+      "sha256": "e86847f28984e563c740d5372506a5dcc90dba5bfc6d66b81d1f8346251c508e"
+    }
+  ],
+  "cms_schema": {
+    "sha256": "7774cb6d1763e9f3287010cf7729f35e2b19a57716ca1b0eced078c7acc84e3d",
+    "bytes": 289021,
+    "local_npm_archive_sha256": "2e9bc8d715019de035d3231cc67485bf5564a31045cbbdbead4f90490fe69922",
+    "schema_matches_archive": true,
+    "external_refs": [],
+    "source_commit": "d4b633b85d883e00ae84b9b0582211d2f2966489",
+    "license_sha256": "dcbe3c626d85741f6fabefed0b34d07a2e92c032f63aa21c0279062363859c32",
+    "license_matches_git_and_npm": true
+  },
+  "third_party_payload": "Sveltia JSON Schema and full MIT notice only",
+  "external_runtime": "operator-supplied @antv/infographic0.2.11 parser tested; no upstream JS/assets distributed",
+  "fixtures": "eight invented first-party diagram inputs, not real content",
+  "original_private_source_modified": false
+}

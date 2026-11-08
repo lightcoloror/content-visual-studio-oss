@@ -1,0 +1,19 @@
+{
+  "schema_version": "sveltia-runtime.v1",
+  "package": "@sveltia/cms",
+  "version": "0.172.4",
+  "schema_url": "https://unpkg.com/@sveltia/cms@0.172.4/schema/sveltia-cms.json",
+  "local_schema_ref": "schemas/sveltia-cms-0.172.4.json",
+  "schema_sha256": "7774cb6d1763e9f3287010cf7729f35e2b19a57716ca1b0eced078c7acc84e3d",
+  "source": {
+    "repository": "https://github.com/sveltia/sveltia-cms.git",
+    "commit": "d4b633b85d883e00ae84b9b0582211d2f2966489",
+    "license": "MIT"
+  },
+  "boundary": {
+    "schema_validation_only": true,
+    "bundle_distributed": false,
+    "automatic_network_fetch": false,
+    "automatic_publication": false
+  }
+}
