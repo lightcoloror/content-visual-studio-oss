@@ -1,0 +1,43 @@
+{
+  "schema_version": "icon-registry.v1",
+  "version": "1.0.0",
+  "source": {
+    "project": "lucide",
+    "repository": "https://github.com/lucide-icons/lucide",
+    "commit": "33a44aa8b0b43d9b0ed14eb08860a1b5550a1573",
+    "license": "ISC-with-listed-Feather-icons-MIT",
+    "canvas": 24,
+    "stroke_width": 2,
+    "linecap": "round",
+    "linejoin": "round"
+  },
+  "policy": {
+    "registered_only": true,
+    "visible_label_required": true,
+    "accessible_name_required": true,
+    "color_only_meaning_forbidden": true,
+    "full_library_vendoring": false
+  },
+  "icons": [
+    { "semantic_id": "dressing-wet", "lucide_name": "droplets", "status": "active", "contexts": ["medical-observation"] },
+    { "semantic_id": "dressing-leak", "lucide_name": "waves", "status": "active", "contexts": ["medical-observation"] },
+    { "semantic_id": "dressing-loose", "lucide_name": "unlink", "status": "active", "contexts": ["medical-observation"] },
+    { "semantic_id": "dressing-saturated", "lucide_name": "circle-gauge", "status": "active", "contexts": ["medical-observation"] },
+    { "semantic_id": "systemic-fever", "lucide_name": "thermometer", "status": "active", "contexts": ["medical-observation"] },
+    { "semantic_id": "wound-red-hot", "lucide_name": "flame", "status": "active-with-label", "contexts": ["medical-observation"] },
+    { "semantic_id": "wound-discharge-odor", "lucide_name": "triangle-alert", "status": "active-with-label", "contexts": ["medical-observation"] },
+    { "semantic_id": "wound-bleeding", "lucide_name": "scan-search", "status": "active-with-label", "contexts": ["medical-observation"] },
+    { "semantic_id": "observe-without-opening", "lucide_name": "eye", "status": "active", "contexts": ["medical-observation"] },
+    { "semantic_id": "contact-caregiver", "lucide_name": "phone-call", "status": "active", "contexts": ["action"] },
+    { "semantic_id": "scheduled-check", "lucide_name": "clock-3", "status": "active", "contexts": ["time"] },
+    { "semantic_id": "stable-keep-closed", "lucide_name": "shield-check", "status": "forbidden-brand-metaphor", "contexts": [], "reason": "The personal brand authority forbids shield metaphors." },
+    { "semantic_id": "generic-risk-shield", "lucide_name": "shield-alert", "status": "forbidden-brand-metaphor", "contexts": [], "reason": "Shield imagery can imply guaranteed protection." }
+  ],
+  "diagnostics": {
+    "unregistered": "GVL-ICON-001",
+    "forbidden": "GVL-ICON-002",
+    "missing_visible_label": "GVL-ICON-003",
+    "missing_accessible_name": "GVL-ICON-004",
+    "color_only": "GVL-ICON-005"
+  }
+}

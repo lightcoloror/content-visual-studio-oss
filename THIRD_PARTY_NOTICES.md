@@ -72,3 +72,18 @@ legacy redistribution/asset rights remain unverified. That index is not bundled.
 The optional brief records not-declared/unverified rights, uses no upstream
 image and grants no generation/rendering/publication authority. A hash record
 does not grant rights over the referenced asset or validate real evidence.
+
+The9 generic shared visual contracts are owner-authorized first-party JSON,
+already present in the original ContentStudio vendored projection. The public
+copy genericizes3 symbolic schema IDs; the public lock records actual copied
+hashes, not a claim of the private upstream commit or remote authority. Empty
+authority-registry data is clearly synthetic and carries no brand approval.
+No private brand registry, tokens, logos, font, image, browser or runtime is
+distributed. Existing standard/document references in the contracts are source
+pointers, not copies of the referenced standards or third-party assets.
+
+The recorded AI opt-in helper is the existing first-party code with clarified
+documentation only (logic unchanged). It checks caller-provided record fields,
+not the authenticity of a native user message or permission to invoke tools.
+jsonschema/referencing remain separately installed MIT dependencies; there is
+no implicit network schema retrieval or bundled Playwright implementation.

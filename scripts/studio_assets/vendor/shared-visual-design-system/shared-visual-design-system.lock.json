@@ -1,0 +1,46 @@
+{
+  "schema_version": "shared-visual-design-system-lock.v1",
+  "package": "@lightcolor/shared-visual-design-system",
+  "package_version": "1.1.0",
+  "consumer": "content-visual-studio",
+  "source_kind": "owner-authorized-generic-public-projection",
+  "source_commit": null,
+  "files": {
+    "schemas/global-visual-context.v1.schema.json": {
+      "projected_ref": "schemas/global-visual-context.v1.schema.json",
+      "sha256": "af2dfd9fc25558f25d9328d7c86f62173c6d433e91698d568f3464e01fa162d8"
+    },
+    "schemas/data-visual-spec.v1.schema.json": {
+      "projected_ref": "schemas/data-visual-spec.v1.schema.json",
+      "sha256": "97b517a450824b7e788e52f2740c3b0f4245106569b344972855a60232986d1f"
+    },
+    "schemas/visual-conformance-receipt.v1.schema.json": {
+      "projected_ref": "schemas/visual-conformance-receipt.v1.schema.json",
+      "sha256": "34aba2e357e8e3196367109fa3aa362c44e6ccc3ae271a3d8e7722d69563ab7d"
+    },
+    "contracts/guidelines.v1.json": {
+      "projected_ref": "contracts/guidelines.v1.json",
+      "sha256": "9bc76885794fce14256c100c819fca872a149bc4ee9e1fbeb0f82f906e2731ed"
+    },
+    "contracts/chinese-typography.v1.json": {
+      "projected_ref": "contracts/chinese-typography.v1.json",
+      "sha256": "3fafd041ed8db8e4fabcf1c610b2dd67101d78bdd93fdf98da2ca4f80d3322f0"
+    },
+    "contracts/icon-registry.v1.json": {
+      "projected_ref": "contracts/icon-registry.v1.json",
+      "sha256": "a98f67ed8fa6b797d79a3530da368e21c123f5ee9fe685f8634719236b8fdd20"
+    },
+    "contracts/imagery-grammar.v1.json": {
+      "projected_ref": "contracts/imagery-grammar.v1.json",
+      "sha256": "cc11b5c0985aafe41d676d3dd6e303004e8a54e7b4cafab9d70dc026c5146e59"
+    },
+    "contracts/motion-grammar.v1.json": {
+      "projected_ref": "contracts/motion-grammar.v1.json",
+      "sha256": "fe747e502432f03613add3817e624e958b98791f13fdc1c2db756ee37f7319e0"
+    },
+    "contracts/cross-medium-conformance.v1.json": {
+      "projected_ref": "contracts/cross-medium-conformance.v1.json",
+      "sha256": "f85800c48be90026a37d2a311481cdc721b8927416c878a0ef2d0bdff77f0c5e"
+    }
+  }
+}

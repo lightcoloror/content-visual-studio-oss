@@ -1,0 +1,406 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/content-visual-studio/schemas/data-visual-spec.v1.schema.json",
+  "title": "Normalized data visual specification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "chart_family",
+    "comparison_question",
+    "title",
+    "takeaway",
+    "unit",
+    "precision",
+    "uncertainty",
+    "direct_labels",
+    "annotation",
+    "table_alternative",
+    "responsive_fallback",
+    "data",
+    "sources",
+    "scope",
+    "updated_at",
+    "manual_only"
+  ],
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "label",
+        "evidence_status",
+        "source_date"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 2
+        },
+        "evidence_status": {
+          "enum": [
+            "verified",
+            "user-confirmed",
+            "draft-only",
+            "needs-review",
+            "unknown"
+          ]
+        },
+        "source_date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "const": "data-visual-spec.v1"
+    },
+    "artifact_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{2,95}$"
+    },
+    "chart_family": {
+      "enum": [
+        "comparison",
+        "trend",
+        "uncertainty",
+        "timeline",
+        "process",
+        "decision-chain",
+        "mechanism",
+        "step"
+      ]
+    },
+    "comparison_question": {
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 180
+    },
+    "title": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 48
+    },
+    "takeaway": {
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 120
+    },
+    "unit": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 24
+    },
+    "zero_baseline": {
+      "type": "boolean"
+    },
+    "precision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decimals",
+        "rounding",
+        "preserve_source_value"
+      ],
+      "properties": {
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        },
+        "rounding": {
+          "enum": [
+            "half-up",
+            "half-even",
+            "none"
+          ]
+        },
+        "preserve_source_value": {
+          "const": true
+        }
+      }
+    },
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "note"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "none",
+            "known",
+            "unknown",
+            "not-applicable"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        }
+      }
+    },
+    "direct_labels": {
+      "const": true
+    },
+    "annotation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "table_alternative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "format"
+      ],
+      "properties": {
+        "required": {
+          "const": true
+        },
+        "format": {
+          "enum": [
+            "markdown",
+            "html",
+            "json"
+          ]
+        }
+      }
+    },
+    "responsive_fallback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "hover_only"
+      ],
+      "properties": {
+        "strategy": {
+          "enum": [
+            "simplify",
+            "table",
+            "transpose",
+            "scroll-with-static-labels"
+          ]
+        },
+        "hover_only": {
+          "const": false
+        }
+      }
+    },
+    "data": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 24,
+      "items": {
+        "type": "object"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 300
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "manual_only": {
+      "const": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "chart_family": {
+            "const": "comparison"
+          }
+        },
+        "required": [
+          "chart_family"
+        ]
+      },
+      "then": {
+        "required": [
+          "zero_baseline"
+        ],
+        "properties": {
+          "zero_baseline": {
+            "const": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "value"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "value": {
+                  "type": "number"
+                },
+                "source_value": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "chart_family": {
+            "const": "trend"
+          }
+        },
+        "required": [
+          "chart_family"
+        ]
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "period",
+                "value"
+              ],
+              "properties": {
+                "period": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "value": {
+                  "type": "number"
+                },
+                "source_value": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "chart_family": {
+            "const": "uncertainty"
+          }
+        },
+        "required": [
+          "chart_family"
+        ]
+      },
+      "then": {
+        "properties": {
+          "uncertainty": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "const": "known"
+              }
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "period",
+                "estimate",
+                "lower",
+                "upper"
+              ],
+              "properties": {
+                "period": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "estimate": {
+                  "type": "number"
+                },
+                "lower": {
+                  "type": "number"
+                },
+                "upper": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

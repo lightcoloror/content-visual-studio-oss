@@ -1,0 +1,83 @@
+{
+  "version": "0.1.9",
+  "base_public_commit": "5a4ac1a9937ff580b06674a408be4c101dd27bff",
+  "first_party_sources": [
+    {
+      "path": "scripts/global_visual_validation.py",
+      "sha256": "9f80313c6307ad89d04b2793d62742dfcebad25886c5b426cc915418b7275182"
+    },
+    {
+      "path": "scripts/check_shared_visual_lock.py",
+      "sha256": "49242b3727a79e70bc79571ecdbb72c740f223cf4137f23d19c5d8e29f4d6b1d"
+    },
+    {
+      "path": "shared/visual_asset_routing.py",
+      "sha256": "395227a7242fda0ba3a212b823fe2664fc6beeef2e3a0cd3439fd73e7ce0503d"
+    }
+  ],
+  "contracts": [
+    {
+      "path": "schemas/global-visual-context.v1.schema.json",
+      "original_sha256": "e30a55170ac25dbb4c99d35a1e1f750c3c0218dfd42ccc8b53ebd74729b8c55a",
+      "public_sha256": "af2dfd9fc25558f25d9328d7c86f62173c6d433e91698d568f3464e01fa162d8",
+      "adaptation": "symbolic schema $id genericized"
+    },
+    {
+      "path": "schemas/data-visual-spec.v1.schema.json",
+      "original_sha256": "f286bb42c1fe7cb92342ac97ada7fd00cda3123de54ed1dd65786fc45a80e399",
+      "public_sha256": "97b517a450824b7e788e52f2740c3b0f4245106569b344972855a60232986d1f",
+      "adaptation": "symbolic schema $id genericized"
+    },
+    {
+      "path": "schemas/visual-conformance-receipt.v1.schema.json",
+      "original_sha256": "ab4b46303c4cdc67e8c377f77b6a6a093006a5c85ec9fb717a7216e2dcb0e17f",
+      "public_sha256": "34aba2e357e8e3196367109fa3aa362c44e6ccc3ae271a3d8e7722d69563ab7d",
+      "adaptation": "symbolic schema $id genericized"
+    },
+    {
+      "path": "contracts/guidelines.v1.json",
+      "original_sha256": "9bc76885794fce14256c100c819fca872a149bc4ee9e1fbeb0f82f906e2731ed",
+      "public_sha256": "9bc76885794fce14256c100c819fca872a149bc4ee9e1fbeb0f82f906e2731ed",
+      "adaptation": "byte-identical generic first-party contract"
+    },
+    {
+      "path": "contracts/chinese-typography.v1.json",
+      "original_sha256": "3fafd041ed8db8e4fabcf1c610b2dd67101d78bdd93fdf98da2ca4f80d3322f0",
+      "public_sha256": "3fafd041ed8db8e4fabcf1c610b2dd67101d78bdd93fdf98da2ca4f80d3322f0",
+      "adaptation": "byte-identical generic first-party contract"
+    },
+    {
+      "path": "contracts/icon-registry.v1.json",
+      "original_sha256": "a98f67ed8fa6b797d79a3530da368e21c123f5ee9fe685f8634719236b8fdd20",
+      "public_sha256": "a98f67ed8fa6b797d79a3530da368e21c123f5ee9fe685f8634719236b8fdd20",
+      "adaptation": "byte-identical generic first-party contract"
+    },
+    {
+      "path": "contracts/imagery-grammar.v1.json",
+      "original_sha256": "cc11b5c0985aafe41d676d3dd6e303004e8a54e7b4cafab9d70dc026c5146e59",
+      "public_sha256": "cc11b5c0985aafe41d676d3dd6e303004e8a54e7b4cafab9d70dc026c5146e59",
+      "adaptation": "byte-identical generic first-party contract"
+    },
+    {
+      "path": "contracts/motion-grammar.v1.json",
+      "original_sha256": "fe747e502432f03613add3817e624e958b98791f13fdc1c2db756ee37f7319e0",
+      "public_sha256": "fe747e502432f03613add3817e624e958b98791f13fdc1c2db756ee37f7319e0",
+      "adaptation": "byte-identical generic first-party contract"
+    },
+    {
+      "path": "contracts/cross-medium-conformance.v1.json",
+      "original_sha256": "f85800c48be90026a37d2a311481cdc721b8927416c878a0ef2d0bdff77f0c5e",
+      "public_sha256": "f85800c48be90026a37d2a311481cdc721b8927416c878a0ef2d0bdff77f0c5e",
+      "adaptation": "byte-identical generic first-party contract"
+    }
+  ],
+  "generic_contracts": 9,
+  "authority_registry": "empty explicitly synthetic sample",
+  "third_party_dependencies": {
+    "jsonschema": "MIT; separately installed",
+    "referencing": "MIT; separately installed"
+  },
+  "private_brand_tokens_assets_distributed": false,
+  "new_runtime_binaries_distributed": false,
+  "originals_modified": false
+}

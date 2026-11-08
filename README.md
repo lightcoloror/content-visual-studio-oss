@@ -250,3 +250,12 @@ there is no bundled upstream asset, automatic download, provider call or image
 generation. [Adapter guide](docs/HANDDRAW_ADAPTERS.md). Upstream credit:
 [yang0 / handraw-style](https://github.com/yang0/handraw-style), under its actual
 attribution license; the older index's rights remain unverified.
+
+## Generic shared visual contract checks
+
+The existing shared-lock and global conformance APIs now use installed resources
+and explicit roots. `content-studio-visual-lock --help` describes the read-only
+check. [Generic contract guide](docs/GLOBAL_VISUAL_CONTRACTS.md). The9 generic
+first-party contracts and empty synthetic authority sample contain no private
+brand registry/tokens/assets. A structural receipt or recorded opt-in metadata
+does not execute a renderer or establish human/source/privacy/publishing consent.

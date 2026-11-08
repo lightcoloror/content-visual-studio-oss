@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/content-visual-studio/schemas/global-visual-context.v1.schema.json",
+  "title": "Global visual context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "ruleset",
+    "locale",
+    "writing_mode",
+    "conformance_profile",
+    "authority_scope",
+    "enforcement"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "global-visual-context.v1"
+    },
+    "ruleset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref",
+        "version",
+        "sha256"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "locale": {
+      "enum": [
+        "zh-Hans",
+        "zh-Hant"
+      ]
+    },
+    "writing_mode": {
+      "const": "horizontal-tb"
+    },
+    "conformance_profile": {
+      "enum": [
+        "article.v1",
+        "social-card.v1",
+        "infographic.v1",
+        "pptx.v1",
+        "web.v1"
+      ]
+    },
+    "authority_scope": {
+      "enum": [
+        "global-only",
+        "brand-bound"
+      ]
+    },
+    "brand_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "profile_version",
+        "repository_ref",
+        "authority_version",
+        "profile_ref",
+        "tokens_ref",
+        "projection_sha256",
+        "qa_receipt_ref",
+        "qa_receipt_sha256"
+      ],
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repository_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tokens_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "projection_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "qa_receipt_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "qa_receipt_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "enforcement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "p0",
+        "p1",
+        "p2"
+      ],
+      "properties": {
+        "p0": {
+          "const": "blocking"
+        },
+        "p1": {
+          "enum": [
+            "report-only",
+            "blocking"
+          ]
+        },
+        "p2": {
+          "const": "explicit-only"
+        }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "none",
+            "explicit"
+          ]
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "static_fallback_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rule_id",
+          "reason",
+          "reviewer",
+          "expires_at"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 8
+          },
+          "reviewer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "authority_scope": {
+            "const": "brand-bound"
+          }
+        },
+        "required": [
+          "authority_scope"
+        ]
+      },
+      "then": {
+        "required": [
+          "brand_authority"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "motion": {
+            "properties": {
+              "mode": {
+                "const": "explicit"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          }
+        },
+        "required": [
+          "motion"
+        ]
+      },
+      "then": {
+        "properties": {
+          "conformance_profile": {
+            "const": "web.v1"
+          }
+        },
+        "required": [
+          "motion"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/content-visual-studio/schemas/visual-conformance-receipt.v1.schema.json",
+  "title": "Visual conformance receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "artifact_id",
+    "content_id",
+    "created_at",
+    "ruleset",
+    "output",
+    "authority_receipts",
+    "media_qa",
+    "findings",
+    "result",
+    "policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "visual-conformance-receipt.v1"
+    },
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"
+    },
+    "artifact_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "content_id": {
+      "type": "string",
+      "minLength": 6
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ruleset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref",
+        "version",
+        "sha256"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref",
+        "sha256"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "authority_receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "ref",
+          "schema_version",
+          "sha256"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "global-rules",
+              "brand-authority",
+              "media-qa",
+              "motion-review"
+            ]
+          },
+          "ref": {
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "media_qa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "hard_checks",
+        "result"
+      ],
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hard_checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "status"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "pass",
+                  "fail"
+                ]
+              },
+              "details": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "result": {
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "diagnostic_id",
+          "rule_id",
+          "priority",
+          "enforcement",
+          "status",
+          "message"
+        ],
+        "properties": {
+          "diagnostic_id": {
+            "type": "string"
+          },
+          "rule_id": {
+            "type": "string"
+          },
+          "priority": {
+            "enum": [
+              "P0",
+              "P1",
+              "P2"
+            ]
+          },
+          "enforcement": {
+            "enum": [
+              "blocking",
+              "report-only",
+              "human-check",
+              "not-applicable"
+            ]
+          },
+          "status": {
+            "enum": [
+              "pass",
+              "fail",
+              "needs-review",
+              "not-applicable"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "evidence_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rule_id",
+          "reason",
+          "reviewer",
+          "expires_at"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 8
+          },
+          "reviewer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "result": {
+      "enum": [
+        "pass",
+        "fail",
+        "review-required"
+      ]
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manual_only",
+        "candidate_only",
+        "p1_mode",
+        "p2_mode"
+      ],
+      "properties": {
+        "manual_only": {
+          "type": "boolean"
+        },
+        "candidate_only": {
+          "type": "boolean"
+        },
+        "p1_mode": {
+          "enum": [
+            "report-only",
+            "blocking"
+          ]
+        },
+        "p2_mode": {
+          "const": "explicit-only"
+        }
+      }
+    }
+  }
+}

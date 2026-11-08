@@ -1,0 +1,22 @@
+{
+  "schema_version": "motion-grammar.v1",
+  "version": "1.0.0",
+  "policy": {
+    "eligible_media_adapters": ["web"],
+    "activation": "explicit-item-only",
+    "automatic_routing": false,
+    "allowed_properties": ["transform", "opacity"],
+    "purpose_required": true,
+    "reduced_motion_required": true,
+    "static_fallback_required": true,
+    "manual_review_required": true
+  },
+  "roles": ["direction", "state", "interaction", "wayfinding"],
+  "diagnostics": {
+    "implicit_motion": "GVL-MOTION-001",
+    "unsupported_media": "GVL-MOTION-002",
+    "layout_property": "GVL-MOTION-003",
+    "reduced_motion_missing": "GVL-MOTION-004",
+    "static_fallback_missing": "GVL-MOTION-005"
+  }
+}

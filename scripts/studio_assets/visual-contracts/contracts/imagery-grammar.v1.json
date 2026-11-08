@@ -1,0 +1,23 @@
+{
+  "schema_version": "imagery-grammar.v1",
+  "version": "1.0.0",
+  "roles": ["evidence-photo", "documentary-photo", "explanatory-illustration", "diagram", "decoration"],
+  "treatments": ["natural", "documentary", "annotated", "muted-support", "none"],
+  "text_overlay_policies": ["none", "safe-area-only", "explicit-approved"],
+  "evidence_statuses": ["verified", "user-confirmed", "illustrative-only", "needs-review", "unknown"],
+  "policy": {
+    "real_photo_default_text_overlay": "none",
+    "evidence_photo_cannot_be_stock": true,
+    "rights_and_privacy_required": true,
+    "focal_cover_requires_focal_point": true,
+    "overlay_requires_safe_crop": true,
+    "generated_image_requires_explicit_user_request": true
+  },
+  "diagnostics": {
+    "role_missing": "GVL-IMAGE-001",
+    "evidence_mismatch": "GVL-IMAGE-002",
+    "overlay_without_safe_crop": "GVL-IMAGE-003",
+    "rights_or_privacy": "GVL-IMAGE-004",
+    "ai_authorization": "GVL-IMAGE-005"
+  }
+}

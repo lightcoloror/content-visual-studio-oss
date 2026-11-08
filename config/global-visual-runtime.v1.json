@@ -1,0 +1,23 @@
+{
+  "schema_version": "global-visual-runtime.v1",
+  "shared_root": null,
+  "playwright_package": {
+    "env": "PLAYWRIGHT_PACKAGE_JSON",
+    "fallback_ref": null,
+    "expected_name": "playwright",
+    "expected_version": "1.61.1"
+  },
+  "shared_package": "@lightcolor/shared-visual-design-system",
+  "shared_package_version": "1.1.0",
+  "ruleset_ref": "contracts/guidelines.v1.json",
+  "ruleset_version": "1.0.0",
+  "authority_registry_ref": "contracts/authority-registry.v1.json",
+  "shared_lock_ref": "vendor/shared-visual-design-system/shared-visual-design-system.lock.json",
+  "p0_activation": "active",
+  "p1_mode": "report-only",
+  "p2_mode": "explicit-only",
+  "new_artifact_opt_in": "renderer_options.global_visual_v1=true",
+  "automatic_publication": false,
+  "automatic_ai_image_generation": false,
+  "boundary": "generic structural contract/projection only; no authority, renderer, generation or publishing permission"
+}

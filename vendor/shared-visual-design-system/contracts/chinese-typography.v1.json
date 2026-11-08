@@ -1,0 +1,32 @@
+{
+  "schema_version": "chinese-typography.v1",
+  "version": "1.0.0",
+  "source_refs": [
+    "https://github.com/w3c/clreq/tree/96c4986a9e1d74a815e0c045995b1853f018f7ec"
+  ],
+  "policy": {
+    "writing_modes": ["horizontal-tb"],
+    "locales": ["zh-Hans", "zh-Hant"],
+    "rendered_output_is_authority": true,
+    "raster_requires_structural_source": true,
+    "automatic_copy_rewrite": false
+  },
+  "rules": {
+    "line_start_forbidden": "，。、；：！？）》】〕〉…",
+    "line_end_forbidden": "（《【〔〈",
+    "western_word_break": "keep-whole-when-fit",
+    "mixed_script_spacing": "renderer-managed",
+    "orphan_control": { "minimum_cjk_characters_on_final_line": 2 },
+    "heading_keep_with_next": true,
+    "font_fallback_must_resolve": true
+  },
+  "diagnostics": {
+    "line_start": "GVL-TYPE-001",
+    "line_end": "GVL-TYPE-002",
+    "western_word_break": "GVL-TYPE-003",
+    "orphan": "GVL-TYPE-004",
+    "heading_keep": "GVL-TYPE-005",
+    "font_missing": "GVL-TYPE-006",
+    "raster_source_missing": "GVL-TYPE-007"
+  }
+}

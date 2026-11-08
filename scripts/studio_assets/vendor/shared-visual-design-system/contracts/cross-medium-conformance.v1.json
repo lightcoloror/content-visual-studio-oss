@@ -1,0 +1,35 @@
+{
+  "schema_version": "cross-medium-conformance.v1",
+  "version": "1.0.0",
+  "rollout": {
+    "p0": "blocking-after-fixture-acceptance",
+    "p1": "report-only",
+    "p2": "explicit-only",
+    "p1_promotion": {
+      "minimum_specimens_per_applicable_medium": 3,
+      "consecutive_stable_runs": 2,
+      "maximum_noncritical_false_positive_rate": 0.05,
+      "critical_false_positives_allowed": 0,
+      "manual_owner_approval_required": true
+    }
+  },
+  "profiles": {
+    "article.v1": { "media_adapter": "article", "rules": ["brand-authority-conformance", "chinese-typography", "imagery-and-illustration-grammar", "iconography-grammar", "qa-receipt-bridge"], "static_fallback": "html-or-markdown" },
+    "social-card.v1": { "media_adapter": "social-card", "rules": ["brand-authority-conformance", "chinese-typography", "imagery-and-illustration-grammar", "iconography-grammar", "qa-receipt-bridge"], "static_fallback": "png-with-structural-source" },
+    "infographic.v1": { "media_adapter": "infographic", "rules": ["brand-authority-conformance", "chinese-typography", "data-visual-language", "imagery-and-illustration-grammar", "iconography-grammar", "qa-receipt-bridge"], "static_fallback": "svg-or-png-with-structural-source" },
+    "pptx.v1": { "media_adapter": "pptx", "rules": ["brand-authority-conformance", "chinese-typography", "data-visual-language", "imagery-and-illustration-grammar", "iconography-grammar", "qa-receipt-bridge"], "static_fallback": "pptx-plus-rendered-preview" },
+    "web.v1": { "media_adapter": "web", "rules": ["brand-authority-conformance", "chinese-typography", "data-visual-language", "imagery-and-illustration-grammar", "iconography-grammar", "qa-receipt-bridge", "motion-grammar"], "static_fallback": "static-html-or-image" }
+  },
+  "enforcement": {
+    "brand-authority-conformance": { "priority": "P0", "default": "blocking" },
+    "chinese-typography": { "priority": "P0", "default": "blocking" },
+    "data-visual-language": { "priority": "P0", "default": "blocking" },
+    "iconography-grammar": { "priority": "P1", "default": "report-only" },
+    "imagery-and-illustration-grammar": { "priority": "P1", "default": "report-only" },
+    "guideline-lifecycle-and-provenance": { "priority": "P1", "default": "report-only" },
+    "cross-medium-conformance-matrix": { "priority": "P1", "default": "report-only" },
+    "qa-receipt-bridge": { "priority": "P1", "default": "report-only" },
+    "motion-grammar": { "priority": "P2", "default": "human-check" },
+    "specimen-and-calibration-gallery": { "priority": "P2", "default": "not-applicable" }
+  }
+}
