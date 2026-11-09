@@ -332,3 +332,7 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+## Legacy workspace validation entry source
+
+See [complete shadow-JSON staging and validation-chain source](docs/legacy-workspace-validation-entries.md). This is a source reference for a compatible external workspace; PowerShell syntax and actual workflows remain unverified.
