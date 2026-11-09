@@ -283,3 +283,7 @@ This is a source-only checkout utility under Apache-2.0; external Playwright pac
 ### Static Browser QA Source Helpers
 
 The repository includes optional source-only Node.js diagnostics in `scripts/` (`article_browser_qa.mjs` and `social_card_playwright_bridge.mjs`) sharing `browser_qa_runtime.mjs` and `typography_gate_collector.mjs`. These inspect static HTML/SVG desktop/mobile layouts and social cards using operator-supplied Chromium, driver packages, and hash-verified typography policies. Browsers, runtime dependencies, and fonts are not bundled. Dynamic application scripts and `--no-sandbox` flags are not supported. Full configuration details, placeholder commands, exit codes, and verification limits are documented in [docs/static-browser-qa-source.md](docs/static-browser-qa-source.md).
+
+### Synthetic Editorial Evidence Tests
+
+Optional source-only synthetic unit tests in `tests/test_human_voice_editorial_evidence.py` validate schema and hash-bound contracts for `human_voice_gate`. Running via direct Python invocation, the 5 test methods verify idempotent repairs, unchanged passes, and fail-closed rejections without modifying production dependencies. Real author approval, audio review, and prose naturalness evaluation are excluded. See [docs/editorial-evidence-tests.md](docs/editorial-evidence-tests.md).
