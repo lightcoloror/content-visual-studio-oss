@@ -332,3 +332,7 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+## AntV eight-template regression source
+
+See [complete two-method source and dependency limits](docs/antv-artifact-regression-source.md). Syntax is checked; original fixture validation, module imports and Chromium rendering remain unverified.
