@@ -279,3 +279,7 @@ generator configuration are not included. See
 The repository includes `scripts/chinese_typography_browser_qa.mjs` for inspecting Chinese typography heuristics in local HTML and SVG files using Playwright. It evaluates line punctuation, word splitting, CJK orphans, stranded headings, and font families (`GVL-TYPE-001..006`) within a 1280x1600 viewport.
 
 This is a source-only checkout utility under Apache-2.0; external Playwright packages and browsers are operator-supplied and unverified. See [docs/chinese-typography-browser-qa.md](docs/chinese-typography-browser-qa.md) and [examples/chinese-typography/synthetic-article.html](examples/chinese-typography/synthetic-article.html) for CLI parameters, heuristic limitations, and synthetic usage.
+
+### Static Browser QA Source Helpers
+
+The repository includes optional source-only Node.js diagnostics in `scripts/` (`article_browser_qa.mjs` and `social_card_playwright_bridge.mjs`) sharing `browser_qa_runtime.mjs` and `typography_gate_collector.mjs`. These inspect static HTML/SVG desktop/mobile layouts and social cards using operator-supplied Chromium, driver packages, and hash-verified typography policies. Browsers, runtime dependencies, and fonts are not bundled. Dynamic application scripts and `--no-sandbox` flags are not supported. Full configuration details, placeholder commands, exit codes, and verification limits are documented in [docs/static-browser-qa-source.md](docs/static-browser-qa-source.md).
