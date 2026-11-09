@@ -332,3 +332,7 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+## Clause-explanation regression source
+
+See [complete thirteen-method source and external input limits](docs/clause-regression-source.md). Syntax is checked; original scenarios, product terms and PDF/schema/fixture facts remain unverified.
