@@ -317,3 +317,8 @@ The explicit integration entries `tests/handdraw_style_brief_integration.py` (20
 ### HTML semantic visual binding checks
 
 - [Semantic Visual Binding Checks](docs/semantic-visual-binding-checks.md): Standalone structural verification of HTML `data-semantic-id` container bindings, copy anchors, and image asset basename co-location without browser rendering or image existence guarantees.
+
+
+### Social-card typography regression source
+
+[Source and explicit runtime/canonical-binding guide](docs/social-card-typography-regression-source.md): the existing eight test intentions and seven first-party synthetic fixtures, with configured browser paths and faithful early hash refusal. Six core method bodies and fixture bytes are preserved. Source-only: 17 controlled helper checks and one real Node hash-preflight negative control passed; zero browser methods or real canonical policies were executed. The operator-supplied canonical binding remains required for that case; the public registry is unchanged.
