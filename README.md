@@ -322,3 +322,13 @@ The explicit integration entries `tests/handdraw_style_brief_integration.py` (20
 ### Social-card typography regression source
 
 [Source and explicit runtime/canonical-binding guide](docs/social-card-typography-regression-source.md): the existing eight test intentions and seven first-party synthetic fixtures, with configured browser paths and faithful early hash refusal. Six core method bodies and fixture bytes are preserved. Source-only: 17 controlled helper checks and one real Node hash-preflight negative control passed; zero browser methods or real canonical policies were executed. The operator-supplied canonical binding remains required for that case; the public registry is unchanged.
+
+
+### Deterministic PPT chart projection source
+
+The [PPT data projection adapter](docs/ppt-data-projection-source.md) exposes
+standard-library chart-to-native-payload mapping and slide-SVG text construction.
+Materialization still requires the separately supplied, provenance-held parent
+renderer and fails closed when it is absent. No renderer source, PPT runtime,
+font files or real chart data is bundled; synthetic checks do not prove actual
+PPT rendering or source-fact verification.
