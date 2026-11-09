@@ -332,3 +332,12 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+
+## Conformance and preview regression source references
+
+Two complete existing test sources retain their original ten methods. See
+[the source reference guide](docs/conformance-preview-regression-source.md) for
+receipt/preview boundaries, monorepo import precedence, required compatible
+adapters and unexecuted filesystem/integration behavior. No plugin, vault or
+browser acceptance is claimed.
