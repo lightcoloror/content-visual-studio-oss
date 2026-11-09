@@ -312,3 +312,8 @@ The test helper in `tests/temp_workspace.py` checks repository-local scratch roo
 ### Original Handdraw Regression Test Sources
 
 The explicit integration entries `tests/handdraw_style_brief_integration.py` (20 methods) and `tests/handdraw_style_library_integration.py` (16 methods), plus two fictional JSON fixtures, complement the existing self-contained contract suites. They require operator-supplied upstream trees and are outside standard default discovery patterns; no cases are marked skipped or passed here. The library gallery tests use temporary output outside the pinned and installed resource trees; production guards and all assertions remain intact. External pinned checkouts are operator-supplied and not redistributed. Full-suite execution and asset rights remain unverified. See [the source-only guide](docs/handdraw-original-regression-tests.md).
+
+
+### HTML semantic visual binding checks
+
+- [Semantic Visual Binding Checks](docs/semantic-visual-binding-checks.md): Standalone structural verification of HTML `data-semantic-id` container bindings, copy anchors, and image asset basename co-location without browser rendering or image existence guarantees.

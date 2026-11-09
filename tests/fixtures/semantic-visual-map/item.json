@@ -1,0 +1,94 @@
+{
+  "id": "synthetic-toy-blocks-tutorial",
+  "title": "Synthetic Tutorial: Sorting and Stacking Toy Blocks",
+  "fixture_meta": {
+    "is_synthetic_fixture": true,
+    "purpose": "Standalone structural validation fixture for semantic visual binding checks",
+    "disclaimer": "Synthetic tutorial data only; does not represent clinical, customer, manuscript, or real visual acceptance."
+  },
+  "visual": {
+    "route": "explanatory_illustration",
+    "render_recipe": {
+      "renderer": "html-playwright"
+    },
+    "cognitive_anchors": [
+      {
+        "anchor_index": 0,
+        "concept": "color_sorting",
+        "description": "Sort toy blocks into bins according to primary color."
+      },
+      {
+        "anchor_index": 1,
+        "concept": "shape_matching",
+        "description": "Match geometric shapes to corresponding cutout slots."
+      },
+      {
+        "anchor_index": 2,
+        "concept": "tower_stacking",
+        "description": "Stack aligned blocks vertically to form a balanced tower."
+      }
+    ],
+    "semantic_visual_map": [
+      {
+        "variant_id": "a",
+        "output_ref": "a.html",
+        "bindings": [
+          {
+            "semantic_id": "block-sort-color",
+            "anchor_index": 0,
+            "role": "explanatory",
+            "placement": "inline",
+            "copy_anchor": "Sort blocks into red, blue, and yellow trays",
+            "visual_ref": "assets/toy-blocks-color.svg"
+          },
+          {
+            "semantic_id": "block-match-shape",
+            "anchor_index": 1,
+            "role": "explanatory",
+            "placement": "inline",
+            "copy_anchor": "Align square and round blocks with tray cutouts",
+            "visual_ref": "assets/toy-blocks-shape.svg"
+          },
+          {
+            "semantic_id": "block-stack-tower",
+            "anchor_index": 2,
+            "role": "explanatory",
+            "placement": "inline",
+            "copy_anchor": "Stack blocks carefully to build a stable tower",
+            "visual_ref": "assets/toy-blocks-stack.svg"
+          }
+        ]
+      },
+      {
+        "variant_id": "b",
+        "output_ref": "b.html",
+        "bindings": [
+          {
+            "semantic_id": "step-color-grouping",
+            "anchor_index": 0,
+            "role": "explanatory",
+            "placement": "inline",
+            "copy_anchor": "Separate blocks by primary hue before assembly",
+            "visual_ref": "assets/toy-blocks-grouping.svg"
+          },
+          {
+            "semantic_id": "step-shape-fitting",
+            "anchor_index": 1,
+            "role": "explanatory",
+            "placement": "inline",
+            "copy_anchor": "Fit geometric shapes into matching base cutouts",
+            "visual_ref": "assets/toy-blocks-fitting.svg"
+          },
+          {
+            "semantic_id": "step-tower-balance",
+            "anchor_index": 2,
+            "role": "explanatory",
+            "placement": "inline",
+            "copy_anchor": "Place top blocks gently to maintain center of gravity",
+            "visual_ref": "assets/toy-blocks-balance.svg"
+          }
+        ]
+      }
+    ]
+  }
+}
