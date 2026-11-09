@@ -18,6 +18,20 @@ class TestTempRootError(RuntimeError):
     """Raised when the explicit repository-local test temp root is unusable."""
 
 
+def _validate_prefix(prefix: object) -> None:
+    """Require one ordinary path component; reject separators and control text."""
+
+    if (
+        not isinstance(prefix, str)
+        or not prefix
+        or prefix in {".", ".."}
+        or any(ch in {"/", "\\", ":"} or ord(ch) < 32 or 127 <= ord(ch) <= 159 for ch in prefix)
+    ):
+        raise TestTempRootError(
+            f"Invalid test directory prefix (must be a single path component): {prefix!r}"
+        )
+
+
 def _is_within_project(path: Path) -> bool:
     try:
         path.relative_to(PROJECT_ROOT)
@@ -60,6 +74,7 @@ def isolated_test_directory(
 ) -> Iterator[Path]:
     """Create an isolated directory under the explicit local test temp root."""
 
+    _validate_prefix(prefix)
     parent = prepare_test_temp_root(root)
     temporary: Path | None = None
     for _ in range(16):

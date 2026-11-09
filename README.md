@@ -303,3 +303,7 @@ Optional source-only unit tests in `tests/test_article_visual_validation.py` val
 ### AI Image Opt-In Record Tests
 
 Optional stdlib-only unit tests in `tests/test_ai_image_generation_opt_in.py` validate 5 trigger-matching and opt-in record consistency rules for AI image routing. Tests use fictional metadata without invoking models, generating assets, or certifying authentic user intent. See [docs/ai-image-optin-record-tests.md](docs/ai-image-optin-record-tests.md).
+
+### Repository-Local Test Workspace
+
+The test helper in `tests/temp_workspace.py` checks repository-local scratch roots and creates per-run directories under `outputs/.test-runtime/temp` with strict single-component prefix validation. Regression tests in `tests/test_temp_workspace.py` verify multithreaded cleanup, residue isolation, and pre-filesystem rejection of invalid separators or control characters without relying on OS temp directories. See [docs/repository-local-test-workspace.md](docs/repository-local-test-workspace.md).
