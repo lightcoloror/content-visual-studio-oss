@@ -332,3 +332,12 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+
+## Article-direction regression source
+
+The complete existing editorial-field-guide and reflective-personal-essay test
+sources are documented in [the article-direction regression guide](docs/article-direction-regression-source.md).
+The portable policy expectation is explicitly hash-bound. Three original pure
+methods and eight read-only binding checks have limited proof; the full suites
+and their external catalog, registry and fixture integration remain unverified.
