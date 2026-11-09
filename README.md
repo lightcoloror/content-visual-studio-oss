@@ -307,3 +307,8 @@ Optional stdlib-only unit tests in `tests/test_ai_image_generation_opt_in.py` va
 ### Repository-Local Test Workspace
 
 The test helper in `tests/temp_workspace.py` checks repository-local scratch roots and creates per-run directories under `outputs/.test-runtime/temp` with strict single-component prefix validation. Regression tests in `tests/test_temp_workspace.py` verify multithreaded cleanup, residue isolation, and pre-filesystem rejection of invalid separators or control characters without relying on OS temp directories. See [docs/repository-local-test-workspace.md](docs/repository-local-test-workspace.md).
+
+
+### Original Handdraw Regression Test Sources
+
+The explicit integration entries `tests/handdraw_style_brief_integration.py` (20 methods) and `tests/handdraw_style_library_integration.py` (16 methods), plus two fictional JSON fixtures, complement the existing self-contained contract suites. They require operator-supplied upstream trees and are outside standard default discovery patterns; no cases are marked skipped or passed here. The library gallery tests use temporary output outside the pinned and installed resource trees; production guards and all assertions remain intact. External pinned checkouts are operator-supplied and not redistributed. Full-suite execution and asset rights remain unverified. See [the source-only guide](docs/handdraw-original-regression-tests.md).

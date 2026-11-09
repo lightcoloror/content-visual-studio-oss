@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.2",
+  "content_id": "synthetic-handdraw-notes",
+  "visual": {
+    "design_system": {
+      "media_adapter": "article",
+      "design_direction": {
+        "direction_id": "reflective-personal-essay",
+        "version": "1.0.0"
+      }
+    },
+    "article_visual_plan": {
+      "workflow": "human-in-the-loop",
+      "ai_generation_policy": "explicit-opt-in-only",
+      "slots": [
+        {
+          "slot_id": "notes",
+          "route": "generated-image",
+          "status": "planned",
+          "media_role": "explanatory",
+          "purpose": "虚构样例：用整理笔记解释信息归类，不代表真实经历。"
+        }
+      ]
+    }
+  }
+}

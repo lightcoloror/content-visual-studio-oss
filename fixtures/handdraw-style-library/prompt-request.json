@@ -1,0 +1,19 @@
+{
+  "style_number": "175",
+  "theme": {
+    "zh": "桌面上三组按用途分类的空白便签，旁边放着一本合上的笔记本；无人物。",
+    "en": "Three groups of blank sticky notes sorted by purpose on a desk, beside a closed notebook; no people."
+  },
+  "layout_id": "SC-001",
+  "composition": {
+    "zh": "上方留标题区，下方以俯视角呈现便签和笔记本。",
+    "en": "Reserve a title area above; show the notes and notebook from overhead below."
+  },
+  "color_ids": [
+    "C-01"
+  ],
+  "mode": "graphic-text",
+  "frozen_text": [
+    "先整理，再决定"
+  ]
+}
