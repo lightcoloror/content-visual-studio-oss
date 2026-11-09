@@ -332,3 +332,7 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+## Social-card font evidence receipt regression source
+
+See [the complete three-method source and unexecuted contract expectations](docs/font-receipt-regression-source.md). Inline passed flags are test inputs, not measured font QA or publication approval.
