@@ -1,0 +1,55 @@
+{
+  "schema": "lucas.typography_gates.v1",
+  "version": "test-only",
+  "policy_id": "synthetic-content-studio-font-gate",
+  "profiles": {
+    "synthetic_social_card": {
+      "viewport": {"width": 1080, "height": 1440},
+      "preview": {"width": 270, "height": 360},
+      "hard_gate": true,
+      "required_roles": ["primary_headline"],
+      "roles": {
+        "primary_headline": {"min_font_px": 60},
+        "scene_title": {"min_font_px": 48},
+        "body": {"min_font_px": 36},
+        "multi_column_body": {"min_font_px": 30},
+        "key_number": {"min_font_px": 36},
+        "label": {"min_font_px": 24},
+        "disclosure": {"min_font_px": 22},
+        "attribution": {"min_font_px": 22}
+      }
+    },
+    "synthetic_article_desktop": {
+      "viewport": {"width": 1200, "height": 900},
+      "preview": {"width": 360, "height": 270},
+      "hard_gate": true,
+      "required_roles": ["primary_headline", "body"],
+      "roles": {
+        "primary_headline": {"min_font_px": 48},
+        "scene_title": {"min_font_px": 30},
+        "body": {"min_font_px": 18},
+        "multi_column_body": {"min_font_px": 16},
+        "key_number": {"min_font_px": 24},
+        "label": {"min_font_px": 14},
+        "disclosure": {"min_font_px": 12},
+        "attribution": {"min_font_px": 12}
+      }
+    },
+    "synthetic_article_mobile": {
+      "viewport": {"width": 390, "height": 844},
+      "preview": {"width": 270, "height": 360},
+      "hard_gate": true,
+      "required_roles": ["primary_headline", "body"],
+      "roles": {
+        "primary_headline": {"min_font_px": 32},
+        "scene_title": {"min_font_px": 24},
+        "body": {"min_font_px": 17},
+        "multi_column_body": {"min_font_px": 16},
+        "key_number": {"min_font_px": 22},
+        "label": {"min_font_px": 14},
+        "disclosure": {"min_font_px": 12},
+        "attribution": {"min_font_px": 12}
+      }
+    }
+  }
+}
