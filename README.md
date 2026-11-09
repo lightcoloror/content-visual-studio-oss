@@ -295,3 +295,7 @@ Optional source-only unit tests in `tests/test_original_synthesis_generalization
 ### Interview Review Category Coverage Tests
 
 Optional source-only unit tests in `tests/test_interview_review_category_coverage.py` validate schema compliance for four required review categories in `schemas/case-interview-guide-review.v1.schema.json`. Running in-memory with existing dependencies, the 7 test methods enforce category coverage and fail-closed rejections without assessing question quality or granting publication authority. See [docs/interview-review-category-tests.md](docs/interview-review-category-tests.md).
+
+### Article Visual Validation Tests
+
+Optional source-only unit tests in `tests/test_article_visual_validation.py` validate 14 visual planning and schema constraints using existing public schemas and registry configurations. Running via direct Python invocation, the suite checks declared rights, attribution, and role bounds on synthetic metadata without rendering images or clearing licenses. See [docs/article-visual-validation-tests.md](docs/article-visual-validation-tests.md).
