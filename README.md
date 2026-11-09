@@ -332,3 +332,7 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+## Handdraw gallery UI runner source
+
+See [complete parameterized gallery runner and runtime limits](docs/handdraw-gallery-runner-source.md). Node syntax is checked; browser UI, external gallery assets and Playwright execution remain unverified.
