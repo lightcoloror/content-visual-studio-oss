@@ -332,3 +332,11 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+
+### Optional pinned CMS entry source
+
+[CMS entry HTML and boundaries](docs/cms-entry-source.md) documents an optional
+network-capable loader for the pinned Sveltia CMS script. Opening the HTML
+requests its CDN script; no CMS bundle is distributed and schema-only offline
+validation does not prove CMS UI, authentication or publishing functionality.
