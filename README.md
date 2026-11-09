@@ -291,3 +291,7 @@ Optional source-only synthetic unit tests in `tests/test_human_voice_editorial_e
 ### Synthesis Generalization Tests
 
 Optional source-only unit tests in `tests/test_original_synthesis_generalization.py` validate 10 topic-isolation and plan-compilation rules adapted to the public Question-Research-PoC (QRP) interface. Requiring an explicit `$env:CONTENT_STUDIO_QRP_ROOT` and existing dependencies, tests run in isolated scratch workspaces without network, browser, or LLM execution. Compiled outputs remain synthetic candidates. See [docs/synthesis-generalization-tests.md](docs/synthesis-generalization-tests.md).
+
+### Interview Review Category Coverage Tests
+
+Optional source-only unit tests in `tests/test_interview_review_category_coverage.py` validate schema compliance for four required review categories in `schemas/case-interview-guide-review.v1.schema.json`. Running in-memory with existing dependencies, the 7 test methods enforce category coverage and fail-closed rejections without assessing question quality or granting publication authority. See [docs/interview-review-category-tests.md](docs/interview-review-category-tests.md).
