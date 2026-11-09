@@ -287,3 +287,7 @@ The repository includes optional source-only Node.js diagnostics in `scripts/` (
 ### Synthetic Editorial Evidence Tests
 
 Optional source-only synthetic unit tests in `tests/test_human_voice_editorial_evidence.py` validate schema and hash-bound contracts for `human_voice_gate`. Running via direct Python invocation, the 5 test methods verify idempotent repairs, unchanged passes, and fail-closed rejections without modifying production dependencies. Real author approval, audio review, and prose naturalness evaluation are excluded. See [docs/editorial-evidence-tests.md](docs/editorial-evidence-tests.md).
+
+### Synthesis Generalization Tests
+
+Optional source-only unit tests in `tests/test_original_synthesis_generalization.py` validate 10 topic-isolation and plan-compilation rules adapted to the public Question-Research-PoC (QRP) interface. Requiring an explicit `$env:CONTENT_STUDIO_QRP_ROOT` and existing dependencies, tests run in isolated scratch workspaces without network, browser, or LLM execution. Compiled outputs remain synthetic candidates. See [docs/synthesis-generalization-tests.md](docs/synthesis-generalization-tests.md).
