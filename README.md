@@ -332,3 +332,13 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+
+### Shared render-artifact validation source
+
+[Artifact and receipt validation](docs/render-artifact-validation.md) preserves
+existing cross-file checks with public resource paths. The held data backend
+loads only for data-required branches and missing support blocks validation.
+Ten isolated boundary tests passed; full integration, rendering and publication
+remain unverified. This source reports errors rather than granting author or
+publication approval.
