@@ -332,3 +332,7 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+## Chart-spec regression source reference
+
+See [complete fourteen-method source and input limits](docs/chart-spec-regression-source.md). Explicit directory binding and empty-input rejection are checked; original chart scenarios and the held renderer remain unverified.
