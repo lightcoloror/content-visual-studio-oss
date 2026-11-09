@@ -332,3 +332,7 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+## Managed unittest entry source
+
+See [the existing adapter wrapper with explicit path inputs](docs/managed-test-entry-source.md). Original adapter and exit statements are retained; PowerShell parsing, binding and runtime behavior remain unverified.
