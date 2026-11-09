@@ -332,3 +332,7 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+## Article and vertical-cover adapter regression source
+
+See [complete source reference and input limits](docs/article-cover-adapter-regression-source.md). Six original methods retained; renderer/integration not verified.
