@@ -342,3 +342,8 @@ loads only for data-required branches and missing support blocks validation.
 Ten isolated boundary tests passed; full integration, rendering and publication
 remain unverified. This source reports errors rather than granting author or
 publication approval.
+
+
+## Content-artifact orchestrator source
+
+[Existing orchestrator](docs/render-artifact-orchestrator-source.md) reuses public roots, explicit runtime paths and deferred held-backend imports. Twelve isolated boundary tests passed; full rendering, external runtimes and integration remain unverified.
