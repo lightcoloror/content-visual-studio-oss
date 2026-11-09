@@ -299,3 +299,7 @@ Optional source-only unit tests in `tests/test_interview_review_category_coverag
 ### Article Visual Validation Tests
 
 Optional source-only unit tests in `tests/test_article_visual_validation.py` validate 14 visual planning and schema constraints using existing public schemas and registry configurations. Running via direct Python invocation, the suite checks declared rights, attribution, and role bounds on synthetic metadata without rendering images or clearing licenses. See [docs/article-visual-validation-tests.md](docs/article-visual-validation-tests.md).
+
+### AI Image Opt-In Record Tests
+
+Optional stdlib-only unit tests in `tests/test_ai_image_generation_opt_in.py` validate 5 trigger-matching and opt-in record consistency rules for AI image routing. Tests use fictional metadata without invoking models, generating assets, or certifying authentic user intent. See [docs/ai-image-optin-record-tests.md](docs/ai-image-optin-record-tests.md).
