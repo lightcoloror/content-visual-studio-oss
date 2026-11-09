@@ -259,3 +259,17 @@ check. [Generic contract guide](docs/GLOBAL_VISUAL_CONTRACTS.md). The9 generic
 first-party contracts and empty synthetic authority sample contain no private
 brand registry/tokens/assets. A structural receipt or recorded opt-in metadata
 does not execute a renderer or establish human/source/privacy/publishing consent.
+
+## Optional theme source assets
+
+The public source tree also includes three first-party CSS source records under
+`themes/`: `cover-photo-overlay.css`, `section-photo-overlay.css` and
+`insurance-observational-advisor.css`. They document portrait cover and section
+overlay styling at 1080 by 1350 pixels plus the associated `--ioa-*` token
+projection. These are source records only, not selectable by the article HTML theme loader.
+`content-studio-visual render-html` does not load them; the top-level `themes/`
+tree is not installed by the wheel; and no external consumer or renderer setup
+is supplied or verified. The overlay files retain an `@import "default"`
+reference whose base stylesheet is not included, and the token source and
+generator configuration are not included. See
+[the theme asset notes](docs/THEME-ASSETS.md) for scope and limits.
