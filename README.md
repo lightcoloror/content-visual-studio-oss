@@ -332,3 +332,7 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+## Visual-profile regression source reference
+
+See [complete five-method source and explicit workspace input](docs/visual-profile-regression-source.md). Controlled imports are checked; actual profiles, contrast validator and original scenarios remain unverified.
