@@ -332,3 +332,7 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+## Stored-chart review artifact regression source
+
+See [complete four-method regression source and explicit workspace contract](docs/review-artifact-regression-source.md). Root-binding and empty-glob controls are checked; original artifact scenarios and rendered quality remain unverified.
