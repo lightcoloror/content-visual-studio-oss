@@ -332,3 +332,7 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+## PPT Master regression sources
+
+See [paired adapter and native chart projection source expectations](docs/ppt-master-regression-sources.md). Both modules compile; all twelve original scenarios and external inputs remain unverified.
