@@ -332,3 +332,8 @@ Materialization still requires the separately supplied, provenance-held parent
 renderer and fails closed when it is absent. No renderer source, PPT runtime,
 font files or real chart data is bundled; synthetic checks do not prove actual
 PPT rendering or source-fact verification.
+
+
+## Protected content regression source
+
+See [the original three-method content preservation tests and dependency limits](docs/protected-content-regressions-source.md). Source inspection and syntax checks do not establish the protected-content or rendering workflow passed.
