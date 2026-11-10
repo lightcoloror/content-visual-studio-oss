@@ -340,3 +340,8 @@ PPT rendering or source-fact verification.
 network-capable loader for the pinned Sveltia CMS script. Opening the HTML
 requests its CDN script; no CMS bundle is distributed and schema-only offline
 validation does not prove CMS UI, authentication or publishing functionality.
+
+
+## Legacy Sveltia pin regression source
+
+See [the original four test contracts, explicit external inputs and verification limits](docs/sveltia-pin-regressions-source.md). Source and extracted path bindings are checked; the original suite, bundle provenance and browser workflow are unverified.
