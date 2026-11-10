@@ -340,3 +340,8 @@ PPT rendering or source-fact verification.
 network-capable loader for the pinned Sveltia CMS script. Opening the HTML
 requests its CDN script; no CMS bundle is distributed and schema-only offline
 validation does not prove CMS UI, authentication or publishing functionality.
+
+
+## Legacy medical artifact regression source
+
+See [the four original artifact assertions, explicit input bindings and execution limits](docs/special-medical-artifact-regressions-source.md). Source and extracted bindings are checked; real medical content, renderer execution and third-party assets are not included or verified.
