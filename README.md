@@ -340,3 +340,8 @@ PPT rendering or source-fact verification.
 network-capable loader for the pinned Sveltia CMS script. Opening the HTML
 requests its CDN script; no CMS bundle is distributed and schema-only offline
 validation does not prove CMS UI, authentication or publishing functionality.
+
+
+## Optional five-medium acceptance source
+
+See [explicit inputs, pure preflight and unverified runtime boundaries](docs/global-visual-acceptance-source.md). Only source and isolated synthetic path checks are included; five-medium rendering and real review are not verified.
