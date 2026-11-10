@@ -342,3 +342,8 @@ loads only for data-required branches and missing support blocks validation.
 Ten isolated boundary tests passed; full integration, rendering and publication
 remain unverified. This source reports errors rather than granting author or
 publication approval.
+
+
+## Render artifact and receipt regression source
+
+See [the original 18-case regression source and limits](docs/render-receipt-regressions-source.md).
