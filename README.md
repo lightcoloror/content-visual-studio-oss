@@ -340,3 +340,9 @@ PPT rendering or source-fact verification.
 network-capable loader for the pinned Sveltia CMS script. Opening the HTML
 requests its CDN script; no CMS bundle is distributed and schema-only offline
 validation does not prove CMS UI, authentication or publishing functionality.
+
+
+### Synthetic PPT acceptance gate
+
+[Standalone synthetic state checks](docs/ppt-synthetic-gate.md) preserve the
+original ten negative fixtures. The isolated run stopped at fixture creation.
