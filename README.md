@@ -346,3 +346,100 @@ validation does not prove CMS UI, authentication or publishing functionality.
 
 [Standalone synthetic state checks](docs/ppt-synthetic-gate.md) preserve the
 original ten negative fixtures. The isolated run stopped at fixture creation.
+
+### Shared render-artifact validation source
+
+[Artifact and receipt validation](docs/render-artifact-validation.md) preserves
+existing cross-file checks with public resource paths. The held data backend
+loads only for data-required branches and missing support blocks validation.
+Ten isolated boundary tests passed; full integration, rendering and publication
+remain unverified. This source reports errors rather than granting author or
+publication approval.
+
+## AntV eight-template regression source
+
+See [complete two-method source and dependency limits](docs/antv-artifact-regression-source.md). Syntax is checked; original fixture validation, module imports and Chromium rendering remain unverified.
+
+## Article and vertical-cover adapter regression source
+
+See [complete source reference and input limits](docs/article-cover-adapter-regression-source.md). Six original methods retained; renderer/integration not verified.
+
+## Article-direction regression source
+
+The complete existing editorial-field-guide and reflective-personal-essay test
+sources are documented in [the article-direction regression guide](docs/article-direction-regression-source.md).
+The portable policy expectation is explicitly hash-bound. Three original pure
+methods and eight read-only binding checks have limited proof; the full suites
+and their external catalog, registry and fixture integration remain unverified.
+
+### Article typography regression source
+
+[Article typography browser regression source](docs/article-typography-regression-source.md) — the existing synthetic typography fixtures, the adapted regression test (including the public preflight policy-hash failure contract) and the two explicit browser-runtime settings needed to run it.
+
+## Chart-spec regression source reference
+
+See [complete fourteen-method source and input limits](docs/chart-spec-regression-source.md). Explicit directory binding and empty-input rejection are checked; original chart scenarios and the held renderer remain unverified.
+
+## Clause-explanation regression source
+
+See [complete thirteen-method source and external input limits](docs/clause-regression-source.md). Syntax is checked; original scenarios, product terms and PDF/schema/fixture facts remain unverified.
+
+## Conformance and preview regression source references
+
+Two complete existing test sources retain their original ten methods. See
+[the source reference guide](docs/conformance-preview-regression-source.md) for
+receipt/preview boundaries, monorepo import precedence, required compatible
+adapters and unexecuted filesystem/integration behavior. No plugin, vault or
+browser acceptance is claimed.
+
+## Social-card font evidence receipt regression source
+
+See [the complete three-method source and unexecuted contract expectations](docs/font-receipt-regression-source.md). Inline passed flags are test inputs, not measured font QA or publication approval.
+
+## Optional five-medium acceptance source
+
+See [explicit inputs, pure preflight and unverified runtime boundaries](docs/global-visual-acceptance-source.md). Only source and isolated synthetic path checks are included; five-medium rendering and real review are not verified.
+
+## Handdraw gallery UI runner source
+
+See [complete parameterized gallery runner and runtime limits](docs/handdraw-gallery-runner-source.md). Node syntax is checked; browser UI, external gallery assets and Playwright execution remain unverified.
+
+## Legacy workspace validation entry source
+
+See [complete shadow-JSON staging and validation-chain source](docs/legacy-workspace-validation-entries.md). This is a source reference for a compatible external workspace; PowerShell syntax and actual workflows remain unverified.
+
+## Managed unittest entry source
+
+See [the existing adapter wrapper with explicit path inputs](docs/managed-test-entry-source.md). Original adapter and exit statements are retained; PowerShell parsing, binding and runtime behavior remain unverified.
+
+## Legacy medical artifact regression source
+
+See [the four original artifact assertions, explicit input bindings and execution limits](docs/special-medical-artifact-regressions-source.md). Source and extracted bindings are checked; real medical content, renderer execution and third-party assets are not included or verified.
+
+## PPT Master regression sources
+
+See [paired adapter and native chart projection source expectations](docs/ppt-master-regression-sources.md). Both modules compile; all twelve original scenarios and external inputs remain unverified.
+
+## Protected content regression source
+
+See [the original three-method content preservation tests and dependency limits](docs/protected-content-regressions-source.md). Source inspection and syntax checks do not establish the protected-content or rendering workflow passed.
+
+## Content-artifact orchestrator source
+
+[Existing orchestrator](docs/render-artifact-orchestrator-source.md) reuses public roots, explicit runtime paths and deferred held-backend imports. Twelve isolated boundary tests passed; full rendering, external runtimes and integration remain unverified.
+
+## Render artifact and receipt regression source
+
+See [the original 18-case regression source and limits](docs/render-receipt-regressions-source.md).
+
+## Stored-chart review artifact regression source
+
+See [complete four-method regression source and explicit workspace contract](docs/review-artifact-regression-source.md). Root-binding and empty-glob controls are checked; original artifact scenarios and rendered quality remain unverified.
+
+## Legacy Sveltia pin regression source
+
+See [the original four test contracts, explicit external inputs and verification limits](docs/sveltia-pin-regressions-source.md). Source and extracted path bindings are checked; the original suite, bundle provenance and browser workflow are unverified.
+
+## Visual-profile regression source reference
+
+See [complete five-method source and explicit workspace input](docs/visual-profile-regression-source.md). Controlled imports are checked; actual profiles, contrast validator and original scenarios remain unverified.
