@@ -4,19 +4,19 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "content-visual-studio"
-version = "0.1.9"
+version = "0.1.11"
 description = "Offline evidence-to-content and hash-bound case review contracts"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 license-files = ["LICENSE", "licenses/*.txt"]
-dependencies = ["jsonschema>=4.23,<5", "referencing>=0.35,<1", "rfc3339-validator>=0.1.4,<1", "markdown-it-py>=4,<5", "filelock>=3.12,<4", "question-research-poc @ git+https://github.com/lightcoloror/question-research-poc-oss.git@646b3871257b0861446615e7c96390f5dc714bde"]
+dependencies = ["jsonschema>=4.23,<5", "referencing>=0.35,<1", "rfc3339-validator>=0.1.4,<1", "markdown-it-py>=4,<5", "filelock>=3.12,<4", "question-research-poc @ git+https://github.com/lightcoloror/question-research-poc-oss.git@c9957bf680da8a7232ef332519e33a788a17c93d"]
 
 [project.optional-dependencies]
 cms = ["PyYAML>=6.0.3,<7"]
 feedback = ["openpyxl>=3.1,<4", "psutil>=7,<8"]
-test = ["pytest>=8,<10", "question-research-poc[topic] @ git+https://github.com/lightcoloror/question-research-poc-oss.git@646b3871257b0861446615e7c96390f5dc714bde", "web-content-fetcher @ git+https://github.com/lightcoloror/web-content-fetcher-oss.git@c9432cd98bafa69523722e3ab8e081f373fcb7fb"]
-capture = ["question-research-poc[topic] @ git+https://github.com/lightcoloror/question-research-poc-oss.git@646b3871257b0861446615e7c96390f5dc714bde"]
-gateway = ["model-provider-gateway @ git+https://github.com/lightcoloror/model-provider-gateway-oss.git@6e69689d02dc97bc2cd3e476518ac7571e310461"]
+test = ["pytest>=8,<10", "question-research-poc[topic] @ git+https://github.com/lightcoloror/question-research-poc-oss.git@c9957bf680da8a7232ef332519e33a788a17c93d", "web-content-fetcher @ git+https://github.com/lightcoloror/web-content-fetcher-oss.git@99d63462ebe9b3e2dfb9f36f121a3f6cfc970e1a"]
+capture = ["question-research-poc[topic] @ git+https://github.com/lightcoloror/question-research-poc-oss.git@c9957bf680da8a7232ef332519e33a788a17c93d"]
+gateway = ["model-provider-gateway @ git+https://github.com/lightcoloror/model-provider-gateway-oss.git@bdbae4edf28f599c951d2e6f755d390961ddc134"]
 
 [project.scripts]
 content-studio-visual-lock = "check_shared_visual_lock:main"
