@@ -17,7 +17,16 @@ import uuid
 from pathlib import Path
 
 from filelock import FileLock
-from research_output_adapter import main as consume
+from research_output_adapter import (
+    AdapterError,
+    DEFAULT_CONTENT_SCHEMA,
+    DEFAULT_VIDEO_SCHEMA,
+    load_json,
+    main as consume,
+    sha256_value,
+    validate_instance,
+    validate_unverified_draft_semantics,
+)
 from selected_delivery import selection as delivery_selection
 
 
@@ -63,6 +72,69 @@ def contained(root, name):
     return path
 
 
+def checked_export(exported, schema_path, requested_output):
+    research = load_json(exported)
+    validate_instance(research, load_json(schema_path), 'research-output.v1')
+    if research['requested_outputs'] != [requested_output]:
+        raise ValueError('research_export_output_binding_mismatch')
+    return research
+
+
+def verify_candidate(root, candidate, result, research):
+    content_id = result['content_id']
+    manifest = load_json(contained(candidate, content_id + '.manifest.json'))
+    expected = {
+        content_id + '.article.md',
+        content_id + '.article.html',
+        content_id + '.content-item.json',
+        content_id + '.content-video-brief.json',
+    }
+    artifacts = {row['path']: row['sha256'] for row in manifest['artifacts']}
+    policy = validate_unverified_draft_semantics(research)
+    draft_basis = policy['draft_basis']
+    status = 'generated_unverified_draft_only' if draft_basis == 'candidate' else 'generated_draft_only'
+    if (
+        result['status'] != status
+        or Path(result['output_dir']).resolve() != candidate
+        or manifest['schema_version'] != 'research-content-adapter-manifest.v1'
+        or manifest['content_id'] != content_id
+        or manifest['research_id'] != research['research_id']
+        or manifest['input']['sha256'] != sha256_value(research)
+        or manifest['mode'] != 'draft_only'
+        or manifest['draft_basis'] != draft_basis
+        or manifest['quality']['status'] != 'human_review_required'
+        or manifest['quality']['publication_boundary'] != 'manual-only'
+        or len(manifest['artifacts']) != len(expected)
+        or set(artifacts) != expected
+    ):
+        raise ValueError('candidate_manifest_binding_invalid')
+    provenance = manifest['provenance']
+    for output_key, policy_key, id_key in (
+        ('claim_ids', 'selected_claims', 'claim_id'),
+        ('source_ids', 'used_sources', 'source_id'),
+        ('evidence_ids', 'used_evidence', 'evidence_id'),
+    ):
+        if provenance[output_key] != [item[id_key] for item in policy[policy_key]]:
+            raise ValueError('candidate_provenance_binding_invalid')
+    verify(candidate, artifacts)
+    item = load_json(candidate / (content_id + '.content-item.json'))
+    validate_instance(item, load_json(DEFAULT_CONTENT_SCHEMA), 'content-item')
+    brief = load_json(candidate / (content_id + '.content-video-brief.json'))
+    validate_instance(brief, load_json(DEFAULT_VIDEO_SCHEMA), 'content-video-brief.v1')
+    if (
+        item['content_id'] != content_id
+        or item['status'] != 'review'
+        or item['publication'] != {'boundary': 'manual-only', 'receipts': []}
+        or item['qa']['human_review']['status'] != 'required'
+        or item['provenance']['verified_facts'] != [claim['text'] for claim in policy['verified_claims']]
+    ):
+        raise ValueError('candidate_draft_boundary_invalid')
+    if any(not (candidate / name).stat().st_size for name in expected):
+        raise ValueError('candidate_artifact_empty')
+    artifacts[content_id + '.manifest.json'] = sha((candidate / (content_id + '.manifest.json')).read_bytes())
+    return {(candidate / name).relative_to(root).as_posix(): digest for name, digest in artifacts.items()}
+
+
 def project_candidate(input_path, capture_root, output_root, qrp_root, *, work_request=None):
     input_path, capture_root, output_root, qrp_root = [Path(p).resolve() for p in
                                                     (input_path, capture_root, output_root, qrp_root)]
@@ -78,6 +150,9 @@ def project_candidate(input_path, capture_root, output_root, qrp_root, *, work_r
     core._validate_fixture_semantics(material)
     core._validate_public_archives(material, capture_root)
     delivery = delivery_selection(work_request, material['question'])
+    requested_output = delivery['requested_output'] if delivery else 'guarded_answer'
+    schema_path = qrp_root / 'schemas/research-output.v1.schema.json'
+    exported = output_root / 'research-output.v1.json'
     binding = {'input_sha256': sha(raw), 'capture_root': str(capture_root),
                'qrp_root': str(qrp_root), 'captures': {s['archive_path']: s['archive_sha256'] for s in material['sources']}}
     if delivery is not None:
@@ -91,6 +166,18 @@ def project_candidate(input_path, capture_root, output_root, qrp_root, *, work_r
         if state.get('complete'):
             verify(output_root, state['hashes'])
             result = {**state['result'], 'reused': True}
+            if 'project' not in state or state.get('export_sha256') != sha(exported.read_bytes()):
+                raise ValueError('candidate_predecessor_missing')
+            verify(output_root, state['project_hashes'])
+            research = checked_export(exported, schema_path, requested_output)
+            if delivery and requested_output != 'article':
+                if result['status'] != 'needs_format_adapter':
+                    raise ValueError('candidate_result_route_invalid')
+            else:
+                candidate = Path(result['candidate_dir']).resolve()
+                if candidate.parent != output_root / 'candidates' or result['status'] != 'candidate_only':
+                    raise ValueError('candidate_result_route_invalid')
+                verify_candidate(output_root, candidate, result['consumer'], research)
             if delivery is None:
                 result.update(artifact_role='intermediate_research_draft',platform_selected=None,delivery_selection=None)
             return result
@@ -138,16 +225,18 @@ def project_candidate(input_path, capture_root, output_root, qrp_root, *, work_r
                          project_hashes={p.relative_to(output_root).as_posix(): sha(p.read_bytes())
                                          for p in project.rglob('*') if p.is_file()})
             atomic_json(state_path, state)
-        exported = output_root / 'research-output.v1.json'
         if 'export_sha256' not in state:
             call(qrp, ['export-research-output', '--project', str(project), '--output', str(exported),
                 '--scope', material['question'], '--audience', material['audience'],
-                '--requested-output', delivery['requested_output'] if delivery else 'guarded_answer',
+                '--requested-output', requested_output,
                 '--scope-constraint', 'Saved excerpts, unreviewed, no publication authority.'])
+            research = checked_export(exported, schema_path, requested_output)
             state['export_sha256'] = sha(exported.read_bytes())
             atomic_json(state_path, state)
-        elif sha(exported.read_bytes()) != state['export_sha256']:
-            raise ValueError('export_drift')
+        else:
+            if sha(exported.read_bytes()) != state['export_sha256']:
+                raise ValueError('export_drift')
+            research = checked_export(exported, schema_path, requested_output)
         def verify_inputs():
             if sha(input_path.read_bytes()) != binding['input_sha256']:
                 raise ValueError('input_changed_during_projection')
@@ -168,7 +257,8 @@ def project_candidate(input_path, capture_root, output_root, qrp_root, *, work_r
             return result
         candidate = output_root / 'candidates' / uuid.uuid4().hex
         result = call(consume, ['--research-output', str(exported), '--output-dir', str(candidate),
-                               '--allow-unverified-draft'])
+                               '--research-schema', str(schema_path), '--allow-unverified-draft'])
+        candidate_hashes = verify_candidate(output_root, candidate, result, research)
         # Recheck immutable inputs before declaring the projection complete.
         verify_inputs()
         atomic_json(output_root / 'projection-trace.json', {'binding': binding, **trace})
@@ -179,8 +269,7 @@ def project_candidate(input_path, capture_root, output_root, qrp_root, *, work_r
             completion_boundary='Candidate only; no topic adoption or platform decision is inferred from the draft shape.')
         state.update(complete=True, result=result,
                      hashes={**state['project_hashes'],
-                             **{p.relative_to(output_root).as_posix(): sha(p.read_bytes())
-                                for p in candidate.rglob('*') if p.is_file()},
+                             **candidate_hashes,
                              'research-output.v1.json': sha(exported.read_bytes()),
                              'projection-trace.json': sha((output_root / 'projection-trace.json').read_bytes())})
         atomic_json(state_path, state)
@@ -198,7 +287,7 @@ def main(argv=None):
     try:
         print(json.dumps(project_candidate(args.input, args.capture_root, args.output_dir, args.qrp_root, work_request=args.work_request), ensure_ascii=False))
         return 0
-    except (ValueError, OSError) as exc:
+    except (AdapterError, ValueError, OSError, KeyError, TypeError) as exc:
         print(json.dumps({'status': 'failed', 'error': str(exc)}, ensure_ascii=False), file=sys.stderr)
         return 2
 

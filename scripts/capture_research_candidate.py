@@ -8,6 +8,7 @@ import sys
 
 from filelock import FileLock
 from saved_research_candidate import atomic_json, contained, project_candidate, sha
+from research_output_adapter import AdapterError
 from reference_intake import assess_reference, write_reference_handoff
 from selected_delivery import selection as delivery_selection
 
@@ -42,12 +43,24 @@ def advance(topic, captures, output, qrp_root, *, observation=None, work_request
                 raise ValueError('nonempty_workflow_output')
             state = {'binding': binding}
             atomic_json(state_path, state)
-        research = core.run_bounded_deep_loop(topic, output / 'research', closure_run_id='saved-capture-research',
-                    resume=True, observation_path=observation, saved_capture_index=captures)
+        try:
+            research = core.run_bounded_deep_loop(topic, output / 'research', closure_run_id='saved-capture-research',
+                        resume=True, observation_path=observation, saved_capture_index=captures)
+        except core.BoundedDeepLoopError as error:
+            raise ValueError(error.code) from error
         if research.get('execution_status') == 'awaiting_codex_observation':
             result = {'status': 'awaiting_observation', 'research': research, 'publish_authorized': False}
         else:
             run = output / 'research/saved-capture-research'
+            manifest = run / 'bounded-deep-loop.v1.json'
+            if (research.get('execution_status') != 'complete'
+                    or research.get('completed_stages') != list(core.STAGES)
+                    or research.get('resume_from') is not None
+                    or research.get('finalization_authorized') is not False
+                    or research.get('manifest_path') != str(manifest)
+                    or not manifest.is_file()
+                    or research.get('manifest_sha256') != sha(manifest.read_bytes())):
+                raise ValueError('research_stage_chain_incomplete')
             synthesis = run / 'artifacts/04-guarded_synthesis.json'
             material = json.loads(synthesis.read_text(encoding='utf-8'))
             reference = assess_reference(index, material.get('derived_material'))
@@ -80,15 +93,20 @@ def main(argv=None):
                       help='Derive bounded mechanical excerpts/gaps from saved captures; semantic analysis remains unexecuted.')
     parser.add_argument('--qrp-root', type=Path, default=default_qrp_root())
     args = parser.parse_args(argv)
-    if args.auto_observations:
-        from qrp_owner_binding import bind_qrp
-        bind_qrp(args.qrp_root)
-        from question_research_poc.evidence_autoflow import advance_automatically
-        from functools import partial
-        result = advance_automatically(args.topic, args.captures, args.output_dir, args.qrp_root,
-                                       advance=partial(advance,work_request=args.work_request))
-    else:
-        result = advance(args.topic, args.captures, args.output_dir, args.qrp_root, observation=args.observation,work_request=args.work_request)
+    try:
+        if args.auto_observations:
+            from qrp_owner_binding import bind_qrp
+            bind_qrp(args.qrp_root)
+            from question_research_poc.evidence_autoflow import advance_automatically
+            from functools import partial
+            result = advance_automatically(args.topic, args.captures, args.output_dir, args.qrp_root,
+                                           advance=partial(advance,work_request=args.work_request))
+        else:
+            result = advance(args.topic, args.captures, args.output_dir, args.qrp_root, observation=args.observation,work_request=args.work_request)
+    except (AdapterError, ValueError, OSError, KeyError, TypeError) as error:
+        code = error.code if isinstance(error, AdapterError) else str(error)
+        print(json.dumps({'status': 'failed', 'error': code, 'publish_authorized': False}, ensure_ascii=False))
+        return 2
     print(json.dumps(result, ensure_ascii=False))
     return 0 if result['status'] == 'candidate_only' else 2
 
